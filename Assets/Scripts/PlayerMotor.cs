@@ -5,6 +5,10 @@ using UnityEngine;
 public class PlayerMotor : MonoBehaviour
 {
     private const float LANE_DISTANCE = 3.0f;
+    private const float TURN_SPEED = 0.05F;
+
+    // Animation
+    private Animator anim;
 
     // Movements
     private CharacterController controller;
@@ -19,6 +23,7 @@ public class PlayerMotor : MonoBehaviour
     private void Start()
     {
         controller = GetComponent<CharacterController>();
+        anim = GetComponent<Animator>();
     }
 
     private void Update()
@@ -48,11 +53,46 @@ public class PlayerMotor : MonoBehaviour
 
         // where we should be - where we are to get a normalised vector. 
         moveVector.x = (targetPosition - transform.position).normalized.x * speed;
-        moveVector.y = -0.1f;
+
+        bool isGrounded = IsGrounded();
+        anim.SetBool("Grounded", isGrounded);
+
+        // Calculate Y
+        if (isGrounded) // if grounded
+        {
+            verticalVelocity = -0.1f;
+
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                // Jump
+                anim.SetTrigger("Jump");
+                verticalVelocity = jumpForce;
+            }
+        }
+        else // fast fall
+        {
+            verticalVelocity -= (gravity * Time.deltaTime);
+
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                verticalVelocity = -jumpForce;
+            }
+        }
+
+        moveVector.y = verticalVelocity;
         moveVector.z = speed;
 
         // Move the actual character
         controller.Move(moveVector * Time.deltaTime);
+
+        // Rotate the character while moving
+        Vector3 dir = controller.velocity;
+        if (dir != Vector3.zero)
+        {
+            dir.y = 0;
+            transform.forward = Vector3.Lerp(transform.forward, dir, TURN_SPEED);
+        }
+
     }
 
     private void MoveLane(bool goRight)
@@ -61,5 +101,18 @@ public class PlayerMotor : MonoBehaviour
         // Switches lanes, and is clamped between 0 and 2
         lane += (goRight) ? 1 : -1;
         lane = Mathf.Clamp(lane, 0, 2);
-    }   
+    }
+
+    private bool IsGrounded()
+    {
+        Ray groundRay = new Ray(
+            new Vector3(
+                controller.bounds.center.x,
+                (controller.bounds.center.y - controller.bounds.extents.y) + 0.2f,
+                controller.bounds.center.z),
+                Vector3.down
+        );
+
+        return Physics.Raycast(groundRay, 0.2f + 0.1f);
+    }
 }
