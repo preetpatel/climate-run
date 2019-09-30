@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4120342913540634}
   - component: {fileID: 95147693590012022}
+  - component: {fileID: 1602494285}
+  - component: {fileID: 1602494283}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -44,7 +46,7 @@ Animator:
   m_GameObject: {fileID: 1924461072777916}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 095f379f461e4554c8999ccdc9f2e131, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f7d699ddfa53b0045b627395684b0853, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -53,6 +55,36 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!143 &1602494285
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1924461072777916}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 1
+  m_Radius: 0.25
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &1602494283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1924461072777916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0688671d3c9149c46a98b4a8531a0138, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8991967888605138688
 GameObject:
   m_ObjectHideFlags: 0
