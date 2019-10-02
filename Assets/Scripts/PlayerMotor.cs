@@ -18,13 +18,21 @@ public class PlayerMotor : MonoBehaviour
     private float jumpForce = 6.0f;
     private float gravity = 12.0f;
     private float verticalVelocity;
+
+
+    // speed modifier
+    private float originalSpeed = 7.0f;
     private float speed = 7.0f;
+    private float speedIncreaseLastTick;
+    private float speedIncreaseTime = 2.5f;
+    private float speedIncreaseAmount = 0.1f;
 
     // 0 is left, 1 is middle, 2 is right
     private int lane = 1;
 
     private void Start()
     {
+        speed = originalSpeed;
         controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
     }
@@ -34,6 +42,13 @@ public class PlayerMotor : MonoBehaviour
         if (!isRunning)
         {
             return;
+        }
+
+        if(Time.time - speedIncreaseLastTick > speedIncreaseTime)
+        {
+            speedIncreaseLastTick = Time.time;
+            speed += speedIncreaseAmount;
+            GameManager.Instance.updateModifer(speed - originalSpeed);
         }
 
         // Check which lane we should be
@@ -146,6 +161,8 @@ public class PlayerMotor : MonoBehaviour
     public void StopSliding()
     {
         anim.SetBool("Sliding", false);
+        controller.height *= 2;
+        controller.center = new Vector3(controller.center.x, controller.center.y * 2, controller.center.z);
     }
 
     private void Crash()
