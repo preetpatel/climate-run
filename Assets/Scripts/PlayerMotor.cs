@@ -10,6 +10,9 @@ public class PlayerMotor : MonoBehaviour
     // Animation
     private Animator anim;
 
+    // Wait for player
+    private bool isRunning = false;
+
     // Movements
     private CharacterController controller;
     private float jumpForce = 6.0f;
@@ -28,6 +31,11 @@ public class PlayerMotor : MonoBehaviour
 
     private void Update()
     {
+        if (!isRunning)
+        {
+            return;
+        }
+
         // Check which lane we should be
         if(Input.GetKeyDown(KeyCode.A))
         {
@@ -67,6 +75,12 @@ public class PlayerMotor : MonoBehaviour
                 // Jump
                 anim.SetTrigger("Jump");
                 verticalVelocity = jumpForce;
+            }
+            else if  (Input.GetKeyDown(KeyCode.S))
+            {
+                // Slide
+                StartSliding();
+                Invoke("StopSliding", 1.0f);
             }
         }
         else // fast fall
@@ -114,5 +128,39 @@ public class PlayerMotor : MonoBehaviour
         );
 
         return Physics.Raycast(groundRay, 0.2f + 0.1f);
+    }
+
+    public void StartRunning()
+    {
+        isRunning = true;
+        anim.SetTrigger("StartRunning");
+    }
+
+    public void StartSliding()
+    {
+        anim.SetBool("Sliding", true);
+        controller.height /= 2;
+        controller.center = new Vector3(controller.center.x, controller.center.y / 2, controller.center.z);
+    }
+
+    public void StopSliding()
+    {
+        anim.SetBool("Sliding", false);
+    }
+
+    private void Crash()
+    {
+        anim.SetTrigger("Death");
+        isRunning = false;
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        switch (hit.gameObject.tag)
+        {
+            case "Obstacle":
+                Crash();
+                break;
+        }
     }
 }
