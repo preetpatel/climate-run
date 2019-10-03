@@ -48,18 +48,18 @@ public class GameManager : MonoBehaviour
             else if (score > 15)
             {
                 informationText.text = "The ice is melting!";
-            } else if (score > 10)
+            }
+            else if (score > 10)
             {
                 informationText.text = "Use W to jump over obstacles";
-            } else if (score > 5)
+            }
+            else if (score > 5)
             {
                 informationText.text = "Use S to slide under obstacles";
-            } else if (score > 0)
+            }
+            else if (score > 0)
             {
                 informationText.text = "Use A and D to move";
-            } else
-            {
-                informationText.text = "";
             }
 
             if (score.ToString("0").Equals("15"))
@@ -68,7 +68,6 @@ public class GameManager : MonoBehaviour
             }
 
         }
-
     }
 
 }
