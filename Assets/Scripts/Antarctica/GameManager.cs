@@ -41,9 +41,9 @@ public class GameManager : MonoBehaviour
             scoreText.text = score.ToString("0");
 
             // refactor later
-            if (score > 20)
+            if (score > 30)
             {
-                SceneManager.LoadScene("MainMenu");
+                informationText.text = "Congratulations!";
             }
             else if (score > 15)
             {
