@@ -12,7 +12,7 @@ public class MainMenu : MonoBehaviour
     {
         if (isStory)
         {
-            Debug.Log("Story Mode");
+            SceneManager.LoadScene("Antarctica");
         }
         if (isEndless)
         {
