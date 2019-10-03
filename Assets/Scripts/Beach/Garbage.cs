@@ -16,7 +16,7 @@ public class Garbage : MonoBehaviour
  
         if(other.tag == "Player")
         {
-            GameManager.Instance.getGarbage();
+            LevelManagerBeach.Instance.getGarbage();
             anim.SetTrigger("Collected");
             Destroy(this.gameObject, 1.5f);
         }

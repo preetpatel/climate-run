@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour
+public class LevelManagerBeach : MonoBehaviour
 {
 
-    public static GameManager Instance { set; get; }
+    public static LevelManagerBeach Instance { set; get; }
 
     private bool isGameStarted = false;
     private bool startedShaking = false;
@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
         cameraMotor = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMotor>();
         scoreText.text = "Score : " + score.ToString("0");
         garbageText.text = "Garbage : " + garbage.ToString();
-        modifierText.text = "Modifer : x" + modifier.ToString("0.0");
+        //modifierText.text = "Modifer : x" + modifier.ToString("0.0");
 
     }
 

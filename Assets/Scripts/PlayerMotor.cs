@@ -22,18 +22,13 @@ public class PlayerMotor : MonoBehaviour
 
 
     // speed modifier
-    private float originalSpeed = 7.0f;
     private float speed = 7.0f;
-    private float speedIncreaseLastTick;
-    private float speedIncreaseTime = 2.5f;
-    private float speedIncreaseAmount = 0.1f;
 
     // 0 is left, 1 is middle, 2 is right
     private int lane = 1;
 
     private void Start()
     {
-        speed = originalSpeed;
         controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
     }
@@ -44,14 +39,6 @@ public class PlayerMotor : MonoBehaviour
         {
             return;
         }
-
-        if(Time.time - speedIncreaseLastTick > speedIncreaseTime)
-        {
-            speedIncreaseLastTick = Time.time;
-            speed += speedIncreaseAmount;
-            GameManager.Instance.updateModifer(speed - originalSpeed);
-        }
-
         // Check which lane we should be
         if(Input.GetKeyDown(KeyCode.A))
         {
