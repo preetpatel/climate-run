@@ -90,7 +90,7 @@ public class PlayerMotor : MonoBehaviour
         {
             verticalVelocity -= (gravity * Time.deltaTime);
 
-            if (Input.GetKeyDown(KeyCode.W))
+            if (Input.GetKeyDown(KeyCode.S))
             {
                 verticalVelocity = -jumpForce;
             }
