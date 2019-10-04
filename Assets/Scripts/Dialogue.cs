@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// Followed tutorial from https://github.com/SABentley/Zelda-Dialogue
+
 [RequireComponent(typeof(Text))]
 public class Dialogue : MonoBehaviour
 {
