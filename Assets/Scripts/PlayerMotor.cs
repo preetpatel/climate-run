@@ -19,6 +19,9 @@ public class PlayerMotor : MonoBehaviour
     private float jumpForce = 6.0f;
     private float gravity = 12.0f;
     private float verticalVelocity;
+
+
+    // speed modifier
     private float speed = 7.0f;
 
     // 0 is left, 1 is middle, 2 is right
@@ -36,7 +39,6 @@ public class PlayerMotor : MonoBehaviour
         {
             return;
         }
-
         // Check which lane we should be
         if(Input.GetKeyDown(KeyCode.A))
         {
@@ -88,7 +90,7 @@ public class PlayerMotor : MonoBehaviour
         {
             verticalVelocity -= (gravity * Time.deltaTime);
 
-            if (Input.GetKeyDown(KeyCode.W))
+            if (Input.GetKeyDown(KeyCode.S))
             {
                 verticalVelocity = -jumpForce;
             }
@@ -147,6 +149,8 @@ public class PlayerMotor : MonoBehaviour
     public void StopSliding()
     {
         anim.SetBool("Sliding", false);
+        controller.height *= 2;
+        controller.center = new Vector3(controller.center.x, controller.center.y * 2, controller.center.z);
     }
 
     private void Crash()
