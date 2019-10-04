@@ -87,7 +87,7 @@ public class PlayerMotor : MonoBehaviour
             }
         }
         else // fast fall
-        {
+        { 
             verticalVelocity -= (gravity * Time.deltaTime);
 
             if (Input.GetKeyDown(KeyCode.S))
