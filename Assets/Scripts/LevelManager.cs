@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    private const bool SHOW_COLLIDER = true;
+    public bool SHOW_COLLIDER = false; //$$
 
     public static LevelManager Instance {set;get;}
 

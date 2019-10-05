@@ -157,7 +157,8 @@ public class PlayerMotor : MonoBehaviour
     {
         anim.SetTrigger("Death");
         isRunning = false;
-        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+        LevelManagerBeach.IsDead = true;
+        //SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)

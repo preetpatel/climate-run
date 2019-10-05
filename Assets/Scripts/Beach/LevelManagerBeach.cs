@@ -8,7 +8,7 @@ public class LevelManagerBeach : MonoBehaviour
 
     public static LevelManagerBeach Instance { set; get; }
 
-    public bool IsDead = false;
+    public static bool IsDead { set; get; }
 
     private bool isGameStarted = false;
     private bool startedShaking = false;

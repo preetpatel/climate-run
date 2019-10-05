@@ -11,25 +11,43 @@ public class Segement : MonoBehaviour
     public int beginY1, beginY2, beginY3;
     public int endY1, endY2, endY3;
 
-    private Piece[] pieces;
+    private PieceSpawner[] pieces;
 
     private void Awake()
     {
-        pieces = gameObject.GetComponentsInChildren<Piece>();
+        pieces = gameObject.GetComponentsInChildren<PieceSpawner>();
+        for (int i = 0; i < pieces.Length; i++)
+        {
+            foreach (MeshRenderer mr in pieces[i].GetComponentsInChildren<MeshRenderer>())
+            {
+                mr.enabled = LevelManager.Instance.SHOW_COLLIDER;
+            }
+        }
     }
 
     public void Spawn()
     {
         gameObject.SetActive(true);
+
+        for (int i = 0; i < pieces.Length; i++)
+        {
+            pieces[i].Spawn();
+        }
     }
 
     public void DeSpawn()
     {
         gameObject.SetActive(false);
+        for (int i = 0; i < pieces.Length; i++)
+        {
+            pieces[i].DeSpawn();
+        }
     }
     // Start is called before the first frame update
     void Start()
     {
+
+
         
     }
 
