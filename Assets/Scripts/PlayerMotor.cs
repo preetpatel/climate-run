@@ -76,14 +76,12 @@ public class PlayerMotor : MonoBehaviour
             if (MobileInput.Instance.SwipeUp)
             {
                 // Jump
-                Debug.Log("Jumping");
                 anim.SetTrigger("Jump");
                 verticalVelocity = jumpForce;
             }
             else if  (MobileInput.Instance.SwipeDown)
             {
                 // Slide
-                Debug.Log("Sliding");
                 StartSliding();
                 Invoke("StopSliding", 1.0f);
             }
