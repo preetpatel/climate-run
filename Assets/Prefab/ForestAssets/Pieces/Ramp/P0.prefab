@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5510293881299993016}
   - component: {fileID: 7854458584691105750}
   m_Layer: 0
-  m_Name: P2
+  m_Name: P0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -101,6 +101,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23491409157441386, guid: a98ed4246e159144a9b586a81a43f7b2,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c5ba34e2bdc63b647a9ff2cdb2b13da6, type: 2}
     m_RemovedComponents:
     - {fileID: 95121170935967594, guid: a98ed4246e159144a9b586a81a43f7b2, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a98ed4246e159144a9b586a81a43f7b2, type: 3}
