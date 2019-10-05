@@ -6,9 +6,14 @@ public class Seed : MonoBehaviour
 {
     private Animator animator;
 
-    private void Start()
+    private void Awake()
     {
         animator = GetComponent<Animator>();
+    }
+
+    private void OnEnable()
+    {
+        animator.SetTrigger("Spawn");
     }
 
     private void OnTriggerEnter(Collider other)
@@ -17,7 +22,6 @@ public class Seed : MonoBehaviour
         {
             ForestLevelManager.Instance.getSeeds();
             animator.SetTrigger("Collected");
-            Destroy(this.gameObject, 1.5f);
         }
     }
 }
