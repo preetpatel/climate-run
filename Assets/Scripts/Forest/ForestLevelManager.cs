@@ -8,7 +8,6 @@ public class ForestLevelManager : MonoBehaviour
 	public static ForestLevelManager Instance { set; get; }
 
 	private bool isGameStarted = false;
-	private bool startedShaking = false;
 	private PlayerMotor playerMotor;
 	private CameraMotor cameraMotor;
 
