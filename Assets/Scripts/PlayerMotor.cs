@@ -40,11 +40,11 @@ public class PlayerMotor : MonoBehaviour
             return;
         }
         // Check which lane we should be
-        if(Input.GetKeyDown(KeyCode.A))
+        if(MobileInput.Instance.SwipeLeft)
         {
             MoveLane(false);
         }
-        if(Input.GetKeyDown(KeyCode.D))
+        if(MobileInput.Instance.SwipeRight)
         {
             MoveLane(true);
         }
@@ -73,15 +73,17 @@ public class PlayerMotor : MonoBehaviour
         {
             verticalVelocity = -0.1f;
 
-            if (Input.GetKeyDown(KeyCode.W))
+            if (MobileInput.Instance.SwipeUp)
             {
                 // Jump
+                Debug.Log("Jumping");
                 anim.SetTrigger("Jump");
                 verticalVelocity = jumpForce;
             }
-            else if  (Input.GetKeyDown(KeyCode.S))
+            else if  (MobileInput.Instance.SwipeDown)
             {
                 // Slide
+                Debug.Log("Sliding");
                 StartSliding();
                 Invoke("StopSliding", 1.0f);
             }
@@ -90,7 +92,7 @@ public class PlayerMotor : MonoBehaviour
         {
             verticalVelocity -= (gravity * Time.deltaTime);
 
-            if (Input.GetKeyDown(KeyCode.S))
+            if (MobileInput.Instance.SwipeDown)
             {
                 verticalVelocity = -jumpForce;
             }

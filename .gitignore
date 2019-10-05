@@ -13,6 +13,7 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Mm]emoryCaptures/
+/[iI]OSBuild/
 
 # Never ignore Asset meta data
 !/[Aa]ssets/**/*.meta
@@ -65,6 +66,9 @@ sysinfo.txt
 
 # Crashlytics generated file
 crashlytics-build.properties
+
+*.DS_Store
+.DS_Store
 
 
 # End of https://www.gitignore.io/api/unity
