@@ -16,6 +16,10 @@ public class Segment : MonoBehaviour
     private void Awake()
     {
         pieces = gameObject.GetComponentsInChildren<PieceSpawner>();
+        // $$
+        for (int i = 0; i < pieces.Length; i++)
+            foreach (MeshRenderer mr in pieces[i].GetComponentsInChildren<MeshRenderer>())
+                mr.enabled = ForestSpawnManager.Instance.SHOW_COLLIDER;
     }
 
     public void Spawn()
