@@ -1052,6 +1052,7 @@ GameObject:
   - component: {fileID: 1839098352}
   - component: {fileID: 1839098354}
   - component: {fileID: 1839098353}
+  - component: {fileID: 1839098355}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -1114,6 +1115,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1839098351}
   m_CullTransparentMesh: 0
+--- !u!95 &1839098355
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839098351}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b69881bbd9271fc4b9a066563c30dda4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1971072375
 GameObject:
   m_ObjectHideFlags: 0
@@ -1246,7 +1266,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameText: {fileID: 1617396284}
   dialogueText: {fileID: 1227641900}
-  animator: {fileID: 669495977}
+  DialogueAnimator: {fileID: 669495977}
+  backgroundAnimator: {fileID: 1839098355}
 --- !u!4 &2123042226
 Transform:
   m_ObjectHideFlags: 0
