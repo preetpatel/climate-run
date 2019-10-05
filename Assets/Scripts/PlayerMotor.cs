@@ -22,7 +22,11 @@ public class PlayerMotor : MonoBehaviour
 
 
     // speed modifier
-    private float speed = 7.0f;
+    private float originalSpeed = 7.0f;
+    private float speed;
+    private float speedIncreaseLastTick;
+    private float speedIncreaseTime = 2.5f;
+    private float speedIncrement = 0.1f;
 
     // 0 is left, 1 is middle, 2 is right
     private int lane = 1;
@@ -31,6 +35,7 @@ public class PlayerMotor : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
+        speed = originalSpeed;
     }
 
     private void Update()
@@ -38,6 +43,25 @@ public class PlayerMotor : MonoBehaviour
         if (!isRunning)
         {
             return;
+        }
+
+        if (Time.time - speedIncreaseLastTick > speedIncreaseTime)
+        {
+            speedIncreaseLastTick = Time.time;
+            speed += speedIncrement;
+
+            Scene gameScene = SceneManager.GetActiveScene();
+            if (gameScene.name.Equals("Forest"))
+            {
+                ForestLevelManager.Instance.updateModifer(speed - originalSpeed);
+            } else if (gameScene.name.Equals("Beach"))
+            {
+                // Add speed increments for Beach
+            } else if (gameScene.name.Equals("Antarctica"))
+            {
+                // Add speed increments for Antarctica
+            }
+
         }
         // Check which lane we should be
         if(MobileInput.Instance.SwipeLeft)
