@@ -8,6 +8,8 @@ public class LevelManagerBeach : MonoBehaviour
 
     public static LevelManagerBeach Instance { set; get; }
 
+    public bool IsDead = false;
+
     private bool isGameStarted = false;
     private bool startedShaking = false;
     private PlayerMotor playerMotor;
@@ -21,6 +23,10 @@ public class LevelManagerBeach : MonoBehaviour
     private float score = 0;
     private float garbage = 0;
     private float modifier = 1.0f;
+
+    //Death menu
+    public Animator deathMenuAnim;
+    public Text deadScoreText, deadGarbageText;
 
     private void Awake()
     {
@@ -45,7 +51,7 @@ public class LevelManagerBeach : MonoBehaviour
             informationText.text = "";
         }
 
-        if (isGameStarted)
+        if (isGameStarted&&!IsDead)
         {
             score += (Time.deltaTime * modifier);
             scoreText.text = "Score : " + score.ToString("0");
@@ -65,4 +71,13 @@ public class LevelManagerBeach : MonoBehaviour
         modifierText.text = "Modifer : x" + modifier.ToString("0.0");
     }
 
+    public void OnDeath()
+    {
+        IsDead = true;
+        deadScoreText.text = score.ToString("0");
+        deadGarbageText.text = garbage.ToString("0");
+        deathMenuAnim.SetTrigger("Dead");
+        //completely pause the game
+        //Time.timeScale = 0;
+    }
 }
