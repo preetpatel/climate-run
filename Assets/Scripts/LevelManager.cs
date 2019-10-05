@@ -166,6 +166,15 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(currentSpawnZ - cameraContainer.position.z < DISTANCE_BEFORE_SPAWN)
+        {
+            GenerateSegment();
+        }
+
+        if(amountOfActiveSegments >= MAX_SEGMENTS_ON_SCREEN)
+        {
+            segments[amountOfActiveSegments - 1].DeSpawn();
+            amountOfActiveSegments--;
+        }
     }
 }
