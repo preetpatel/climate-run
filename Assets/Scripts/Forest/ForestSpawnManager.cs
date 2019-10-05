@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ForestSpawnManager : MonoBehaviour
 {
-    public bool SHOW_COLLIDER = true; // $$$
+    public bool SHOW_COLLIDER = false; // $$$
 
     public static ForestSpawnManager Instance { set; get; }
 

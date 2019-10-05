@@ -9,7 +9,25 @@ public class PieceSpawner : MonoBehaviour
 
     public void Spawn()
     {
-        currentPiece = ForestSpawnManager.Instance.GetPiece(type, 0);
+        int amtObj = 0;
+        switch (type)
+        {
+            case PieceType.jump:
+                amtObj = ForestSpawnManager.Instance.jumps.Count;
+                break;
+            case PieceType.slide:
+                amtObj = ForestSpawnManager.Instance.slides.Count;
+                break;
+            case PieceType.longblock:
+                amtObj = ForestSpawnManager.Instance.longblocks.Count;
+                break;
+            case PieceType.ramp:
+                amtObj = ForestSpawnManager.Instance.ramps.Count;
+                break;
+        }
+
+        currentPiece = ForestSpawnManager.Instance.GetPiece(type, 
+            Random.Range(0, amtObj));
         currentPiece.gameObject.SetActive(true);
         currentPiece.transform.SetParent(transform, false);
     }
