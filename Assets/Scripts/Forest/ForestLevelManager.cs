@@ -14,11 +14,11 @@ public class ForestLevelManager : MonoBehaviour
 
 	// UI and the UI fields
 	public Text scoreText;
-	public Text garbageText;
+	public Text seedCountText;
 	public Text informationText;
 	public Text modifierText;
 	private float score = 0;
-	private float garbage = 0;
+	private float seeds = 0;
 	private float modifier = 1.0f;
 
 	private void Awake()
@@ -29,8 +29,8 @@ public class ForestLevelManager : MonoBehaviour
 		playerMotor = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMotor>();
 		cameraMotor = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMotor>();
 		scoreText.text = "Score : " + score.ToString("0");
-		garbageText.text = "Garbage : " + garbage.ToString();
-		//modifierText.text = "Modifer : x" + modifier.ToString("0.0");
+		seedCountText.text = "Seeds : " + seeds.ToString();
+		modifierText.text = "Modifer : x" + modifier.ToString("0.0");
 
 	}
 
@@ -52,10 +52,10 @@ public class ForestLevelManager : MonoBehaviour
 
 	}
 
-	public void getGarbage()
+	public void getSeeds()
 	{
-		garbage++;
-		garbageText.text = "Garbage : " + garbage.ToString();
+		seeds++;
+		seedCountText.text = "Seeds : " + seeds.ToString();
 	}
 
 	public void updateModifer(float modifierAmount)
