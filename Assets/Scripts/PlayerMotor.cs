@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMotor : MonoBehaviour
 {
-    private const float LANE_DISTANCE = 3.0f;
+    private const float LANE_DISTANCE = 2.0f;
     private const float TURN_SPEED = 0.05F;
 
     // Animation

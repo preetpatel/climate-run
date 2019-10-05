@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Garbage : MonoBehaviour
 {
-
     private Animator anim;
 
     private void Start()
