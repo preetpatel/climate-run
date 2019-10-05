@@ -8,12 +8,16 @@ public class Seed : MonoBehaviour
 
     private void Start()
     {
-        animator.GetComponent<Animator>();
+        animator = GetComponent<Animator>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        ForestLevelManager.Instance.getSeeds();
-        animator.SetTrigger("Collected");
+        if (other.tag == "Player")
+        {
+            ForestLevelManager.Instance.getSeeds();
+            animator.SetTrigger("Collected");
+            Destroy(this.gameObject, 1.5f);
+        }
     }
 }
