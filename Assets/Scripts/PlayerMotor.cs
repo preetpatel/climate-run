@@ -112,7 +112,7 @@ public class PlayerMotor : MonoBehaviour
             }
         }
         else // fast fall
-        {
+        { 
             verticalVelocity -= (gravity * Time.deltaTime);
 
             if (MobileInput.Instance.SwipeDown)
