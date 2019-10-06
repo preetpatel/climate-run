@@ -6,7 +6,7 @@ public class CameraMotor : MonoBehaviour
 {
     public Transform lookAt; // our player
     public Vector3 offset;
-    private Vector3 initialOffset = new Vector3(0, 5.0f, -2.0f);
+    private Vector3 initialOffset = new Vector3(0, 5.0f, -4.0f);
 
     // Shakes the camera
     public float shakeDuration = 0f;
