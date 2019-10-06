@@ -1001,7 +1001,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 76
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -1046,7 +1046,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookAt: {fileID: 1668863691}
-  offset: {x: 0, y: 6, z: -7}
+  offset: {x: 0, y: 3.5, z: 2}
   shakeDuration: 0
   shakeAmount: 0.2
 --- !u!1001 &666453446
@@ -3469,6 +3469,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0.0064971475
       objectReference: {fileID: 0}
+    - target: {fileID: 1602494285, guid: 46cfac75a979e4e4d9dc5b90acf813cd, type: 3}
+      propertyPath: m_SlopeLimit
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 8991967888604713854, guid: 46cfac75a979e4e4d9dc5b90acf813cd,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -4003,10 +4007,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.9923979
-      objectReference: {fileID: 0}
-    - target: {fileID: 1602494285, guid: 46cfac75a979e4e4d9dc5b90acf813cd, type: 3}
-      propertyPath: m_SlopeLimit
-      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46cfac75a979e4e4d9dc5b90acf813cd, type: 3}
