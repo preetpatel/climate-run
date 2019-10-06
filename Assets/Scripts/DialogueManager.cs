@@ -10,6 +10,7 @@ public class DialogueManager : MonoBehaviour
     public GameObject ContinueIcon;
     public Animator DialogueAnimator;
     public Animator backgroundAnimator;
+    public Animator CharacterAnimator;
 
     private Queue<string> Sentences;
     private bool isSentenceShowing = false;
@@ -34,6 +35,7 @@ public class DialogueManager : MonoBehaviour
     {
         DialogueAnimator.SetBool("isOpen", true);
         backgroundAnimator.SetBool("isOpen", true);
+        CharacterAnimator.SetBool("isOpen", true);
         nameText.text = dialogue.name;
 
         Sentences.Clear();
@@ -78,6 +80,7 @@ public class DialogueManager : MonoBehaviour
     {
         DialogueAnimator.SetBool("isOpen", false);
         backgroundAnimator.SetBool("isOpen", false);
+        CharacterAnimator.SetBool("isOpen", false);
     }
    
 }
