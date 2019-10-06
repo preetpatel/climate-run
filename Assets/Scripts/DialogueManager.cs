@@ -7,11 +7,13 @@ public class DialogueManager : MonoBehaviour
 {
     public Text nameText;
     public Text dialogueText;
-
+    public GameObject ContinueIcon;
     public Animator DialogueAnimator;
     public Animator backgroundAnimator;
 
     private Queue<string> Sentences;
+    private bool isSentenceShowing = false;
+   
 
     // Start is called before the first frame update
     void Start()
@@ -21,8 +23,9 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
-        if(Input.anyKeyDown && !Input.GetKey(KeyCode.Mouse0))
+        if(Input.anyKeyDown && !isSentenceShowing)
         {
+            isSentenceShowing = true;
             DisplayNextSentence();
         }
     }
@@ -44,7 +47,8 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence()
     {
-        if(Sentences.Count == 0)
+        ContinueIcon.SetActive(false);
+        if (Sentences.Count == 0)
         {
             EndDialogue();
             return;
@@ -66,6 +70,8 @@ public class DialogueManager : MonoBehaviour
             // wait a single frame
             yield return null;
         }
+        isSentenceShowing = false;
+        ContinueIcon.SetActive(true);
     }
 
     void EndDialogue()
