@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -11,9 +12,11 @@ public class DialogueManager : MonoBehaviour
     public Animator DialogueAnimator;
     public Animator backgroundAnimator;
     public Animator CharacterAnimator;
+    public string nextScene;
 
     private Queue<string> Sentences;
     private bool isSentenceShowing = false;
+    private int secondsToWaitAtEnd = 2;
    
 
     // Start is called before the first frame update
@@ -52,7 +55,7 @@ public class DialogueManager : MonoBehaviour
         ContinueIcon.SetActive(false);
         if (Sentences.Count == 0)
         {
-            EndDialogue();
+            StartCoroutine(EndDialogue());
             return;
         }
 
@@ -76,11 +79,13 @@ public class DialogueManager : MonoBehaviour
         ContinueIcon.SetActive(true);
     }
 
-    void EndDialogue()
+    IEnumerator EndDialogue()
     {
         DialogueAnimator.SetBool("isOpen", false);
         backgroundAnimator.SetBool("isOpen", false);
         CharacterAnimator.SetBool("isOpen", false);
+        yield return new WaitForSeconds(secondsToWaitAtEnd);
+        SceneManager.LoadScene(nextScene);
     }
-   
+
 }
