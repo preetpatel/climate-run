@@ -86,8 +86,12 @@ public class PlayerMotor : MonoBehaviour
         // Calculating our move vector
         Vector3 moveVector = Vector3.zero;
 
-        // where we should be - where we are to get a normalised vector. 
-        moveVector.x = (targetPosition - transform.position).normalized.x * speed;
+        // where we should be - where we are to get a normalised vector.
+        if(Mathf.Abs((targetPosition - transform.position).x) > 0.1)
+            moveVector.x = (targetPosition - transform.position).normalized.x * speed;
+
+        Debug.Log("Lane: " + lane);
+        Debug.Log("xDelta: " + (targetPosition - transform.position).x);
 
         bool isGrounded = IsGrounded();
         anim.SetBool("Grounded", isGrounded);
@@ -122,6 +126,9 @@ public class PlayerMotor : MonoBehaviour
 
         moveVector.y = verticalVelocity;
         moveVector.z = speed;
+
+  
+        Debug.Log("moveVector.x: " + moveVector.x);
 
         // Move the actual character
         controller.Move(moveVector * Time.deltaTime);
