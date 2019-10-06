@@ -18,7 +18,7 @@ public class PlayerMotor : MonoBehaviour
     private CharacterController controller;
     private float jumpForce = 6.0f;
     private float gravity = 12.0f;
-    private float verticalVelocity;
+    private float verticalVelocity = 0;
 
 
     // speed modifier
@@ -95,7 +95,7 @@ public class PlayerMotor : MonoBehaviour
         // Calculate Y
         if (isGrounded) // if grounded
         {
-            verticalVelocity = -0.1f;
+            verticalVelocity = 0.0f;
 
             if (MobileInput.Instance.SwipeUp)
             {
@@ -103,7 +103,7 @@ public class PlayerMotor : MonoBehaviour
                 anim.SetTrigger("Jump");
                 verticalVelocity = jumpForce;
             }
-            else if  (MobileInput.Instance.SwipeDown)
+            else if (MobileInput.Instance.SwipeDown)
             {
                 // Slide
                 StartSliding();
