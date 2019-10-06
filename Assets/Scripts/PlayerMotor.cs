@@ -90,9 +90,6 @@ public class PlayerMotor : MonoBehaviour
         if(Mathf.Abs((targetPosition - transform.position).x) > 0.1)
             moveVector.x = (targetPosition - transform.position).normalized.x * speed;
 
-        Debug.Log("Lane: " + lane);
-        Debug.Log("xDelta: " + (targetPosition - transform.position).x);
-
         bool isGrounded = IsGrounded();
         anim.SetBool("Grounded", isGrounded);
 
@@ -115,7 +112,7 @@ public class PlayerMotor : MonoBehaviour
             }
         }
         else // fast fall
-        {
+        { 
             verticalVelocity -= (gravity * Time.deltaTime);
 
             if (MobileInput.Instance.SwipeDown)
@@ -126,9 +123,6 @@ public class PlayerMotor : MonoBehaviour
 
         moveVector.y = verticalVelocity;
         moveVector.z = speed;
-
-  
-        Debug.Log("moveVector.x: " + moveVector.x);
 
         // Move the actual character
         controller.Move(moveVector * Time.deltaTime);
