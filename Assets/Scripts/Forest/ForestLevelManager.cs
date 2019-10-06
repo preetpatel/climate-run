@@ -41,6 +41,7 @@ public class ForestLevelManager : MonoBehaviour
 			playerMotor.StartRunning();
 			cameraMotor.StartFollowing();
 			informationText.text = "";
+            FindObjectOfType<SideObjectSpawner>().IsScrolling = true;
 		}
 
 		if (isGameStarted)
