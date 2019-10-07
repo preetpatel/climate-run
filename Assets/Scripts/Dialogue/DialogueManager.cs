@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+/**
+ * Class is used to hold the animators for the dialogue, the
+ * name of the speaker and their dialogue.
+ **/
 public class DialogueManager : MonoBehaviour
 {
     public Text nameText;
@@ -22,11 +26,13 @@ public class DialogueManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // create a queue for the sentences
         Sentences = new Queue<string>();
     }
 
     private void Update()
     {
+        // used for the player to show the next sentence when they tap on the screen
         if(Input.anyKeyDown && !isSentenceShowing)
         {
             isSentenceShowing = true;
@@ -36,12 +42,16 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue)
     {
+        // animate the dialogue, background and character to appear
         DialogueAnimator.SetBool("isOpen", true);
         backgroundAnimator.SetBool("isOpen", true);
         CharacterAnimator.SetBool("isOpen", true);
         nameText.text = dialogue.name;
 
+        // clear any queue that may be left over from other dialogue
         Sentences.Clear();
+
+        // add the sentences needed into the queue
         foreach (string sentence in dialogue.sentences)
         {
             Sentences.Enqueue(sentence);
@@ -53,12 +63,14 @@ public class DialogueManager : MonoBehaviour
     public void DisplayNextSentence()
     {
         ContinueIcon.SetActive(false);
-        if (Sentences.Count == 0)
+        if (Sentences.Count == 0) // This checks that the queue is empty
         {
+            // end the dialogue if true
             StartCoroutine(EndDialogue());
             return;
         }
 
+        // Type out the sentence on the screen
         string sentence = Sentences.Dequeue();
         dialogueText.text = sentence;
         StopAllCoroutines();
@@ -69,6 +81,7 @@ public class DialogueManager : MonoBehaviour
     {
         dialogueText.text = "";
         
+        // used to type out the sentence letter by letter
         foreach ( char letter in sentence.ToCharArray())
         {
             dialogueText.text += letter;
@@ -81,6 +94,7 @@ public class DialogueManager : MonoBehaviour
 
     IEnumerator EndDialogue()
     {
+        // trigger the closing animations
         DialogueAnimator.SetBool("isOpen", false);
         backgroundAnimator.SetBool("isOpen", false);
         CharacterAnimator.SetBool("isOpen", false);

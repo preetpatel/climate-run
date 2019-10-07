@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * Used to call the DialogueManager and start the dialgoue 
+ **/
 public class DialogueTrigger : MonoBehaviour
 {
 
@@ -10,6 +13,7 @@ public class DialogueTrigger : MonoBehaviour
 
     public void Start()
     {
+        // use a coroutine to wait for a few seconds before calling the dialogue starter
        StartCoroutine(TriggerDialogue());
     }
 

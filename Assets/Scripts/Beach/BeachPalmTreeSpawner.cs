@@ -36,8 +36,10 @@ public class BeachPalmTreeSpawner : MonoBehaviour
         Vector3 newLocation = (playerTransform.position.z + scrollLocation) * Vector3.forward;
         transform.position = newLocation;
 
+        //penguin reached certain point
         if (transform.GetChild(0).transform.position.z < playerTransform.position.z - DISTANCE_TO_RESPAWN_OBJECT)
         {
+            //move the first two in the list to the end of the list
             transform.GetChild(0).localPosition += Vector3.forward * totalLength;
             transform.GetChild(0).SetSiblingIndex(transform.childCount);
 

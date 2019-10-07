@@ -43,16 +43,16 @@ public class LevelManagerBeach : MonoBehaviour
 
     private void Update()
     {
-        if (Input.anyKey && !isGameStarted)
+        if (Input.anyKey && !isGameStarted) //check if the player clicked the screen or not
         {
             isGameStarted = true;
             playerMotor.StartRunning();
             cameraMotor.StartFollowing();
             informationText.text = "";
-            FindObjectOfType<BeachPalmTreeSpawner>().IsScrolling = true;
+            FindObjectOfType<BeachPalmTreeSpawner>().IsScrolling = true; //start the environment scrolling on start game
         }
 
-        if (isGameStarted&&!IsDead)
+        if (isGameStarted&&!IsDead) //calculate score on death
         {
             score += (Time.deltaTime * modifier);
             scoreText.text = "Score : " + score.ToString("0");

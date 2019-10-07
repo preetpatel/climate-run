@@ -51,7 +51,7 @@ public class BeachLevelManager : MonoBehaviour
         Segement s = null;
         s = segments.Find(x => x.SegId == id && x.transition == transition && !x.gameObject.activeSelf);
 
-        if( s == null)
+        if( s == null) //no segment instantiated
         {
             GameObject go = Instantiate((transition)?availableTransitions[id].gameObject : availableSegments[id].gameObject) as GameObject;
             s = go.GetComponent<Segement>();
@@ -59,7 +59,7 @@ public class BeachLevelManager : MonoBehaviour
             s.SegId = id;
             s.transition = transition;
 
-            segments.Insert(0, s);
+            segments.Insert(0, s); //always keep the last one first in list
 
         }
         else
@@ -73,6 +73,9 @@ public class BeachLevelManager : MonoBehaviour
     }
     
 
+    /**
+     * Returns the correct piece according to the beachpiecetype and the visual Index given
+     */
     public BeachPiece GetPiece(BeachPieceType pt, int visualIndex)
     {
         BeachPiece p = pieces.Find( x => x.type == pt && x.visualIndex == visualIndex && !x.gameObject.activeSelf);
@@ -106,8 +109,8 @@ public class BeachLevelManager : MonoBehaviour
     {
         for (int i = 0; i < INITIAL_SEGMENTS; i++)
         {
-            //generate a segment
-            GenerateSegment();
+            //generate a segment to fill the list
+            GenerateSegment(); 
         }
     }
 
@@ -129,8 +132,9 @@ public class BeachLevelManager : MonoBehaviour
 
     private void SpawnSegment()
     {
+        //find segment in correct line
         List<Segement> possibleSeg = availableSegments.FindAll(x => x.beginY1 == y1 || x.beginY2 == y2 || x.beginY3 == y3);
-        int id = Random.Range(0, possibleSeg.Count);
+        int id = Random.Range(0, possibleSeg.Count); //randomly select a segment
 
         Segement s = GetSegment(id, false);
 
@@ -139,7 +143,7 @@ public class BeachLevelManager : MonoBehaviour
         y3 = s.endY3;
 
         s.transform.SetParent(transform);
-        s.transform.localPosition = Vector3.forward * currentSpawnZ;
+        s.transform.localPosition = Vector3.forward * currentSpawnZ; //move segment to last
 
         currentSpawnZ += s.length;
         amountOfActiveSegments++;
@@ -173,7 +177,7 @@ public class BeachLevelManager : MonoBehaviour
             GenerateSegment();
         }
 
-        if(amountOfActiveSegments >= MAX_SEGMENTS_ON_SCREEN)
+        if(amountOfActiveSegments >= MAX_SEGMENTS_ON_SCREEN) //if max number of segment reached in order to protect memory, we despawn pieces
         {
             segments[amountOfActiveSegments - 1].DeSpawn();
             amountOfActiveSegments--;
