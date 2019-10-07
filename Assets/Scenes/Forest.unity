@@ -5542,6 +5542,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bec7f03bca5bc40888f5e957fab53130, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1668863688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1668863686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21e37c39cc09d484f981f438b8915b38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1668863691 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4120342913540634, guid: 46cfac75a979e4e4d9dc5b90acf813cd,
@@ -6882,7 +6894,8 @@ PrefabInstance:
       propertyPath: m_LocalRotation.w
       value: 0.9923979
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1602494283, guid: 46cfac75a979e4e4d9dc5b90acf813cd, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 46cfac75a979e4e4d9dc5b90acf813cd, type: 3}
 --- !u!1001 &1965974361
 PrefabInstance:

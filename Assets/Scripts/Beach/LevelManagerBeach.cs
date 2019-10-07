@@ -12,7 +12,7 @@ public class LevelManagerBeach : MonoBehaviour
 
     private bool isGameStarted = false;
     private bool startedShaking = false;
-    private BeachPlayerMotor playerMotor;
+    private PlayerMotor playerMotor;
     private CameraMotor cameraMotor;
 
     // UI and the UI fields
@@ -33,7 +33,7 @@ public class LevelManagerBeach : MonoBehaviour
         Instance = this;
 
         informationText.text = "Press any key to start";
-        playerMotor = GameObject.FindGameObjectWithTag("Player").GetComponent<BeachPlayerMotor>();
+        playerMotor = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMotor>();
         cameraMotor = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMotor>();
         scoreText.text = "Score : " + score.ToString("0");
         garbageText.text = "Garbage : " + garbage.ToString();
@@ -49,6 +49,7 @@ public class LevelManagerBeach : MonoBehaviour
             playerMotor.StartRunning();
             cameraMotor.StartFollowing();
             informationText.text = "";
+            FindObjectOfType<BeachPalmTreeSpawner>().IsScrolling = true;
         }
 
         if (isGameStarted&&!IsDead)
