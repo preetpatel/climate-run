@@ -9,6 +9,7 @@ public class Seed : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        GetComponent<Collider>().enabled = true;
     }
 
     private void OnEnable()
@@ -20,6 +21,7 @@ public class Seed : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            GetComponent<Collider>().enabled = false;
             ForestLevelManager.Instance.getSeeds();
             animator.SetTrigger("Collected");
         }
