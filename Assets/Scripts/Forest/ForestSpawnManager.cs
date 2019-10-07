@@ -94,6 +94,14 @@ public class ForestSpawnManager : MonoBehaviour
         List<Segment> possibleSeg = availableSegments.FindAll(
             x => x.beginY1 == y1 || x.beginY2 == y2 || x.beginY3 == y3);
         int id = Random.Range(0, possibleSeg.Count);
+        if (segments[0].SegId == 1 && id == 1)
+        {
+            bool beforeRange = Random.Range(0, 2) == 1 ? true : false;
+            if (beforeRange)
+                id = 0;
+            else
+                id = Random.Range(2, possibleSeg.Count);
+        }
 
         Segment s = GetSegment(id, false);
 
