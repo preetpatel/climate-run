@@ -12,7 +12,7 @@ public class LevelManagerBeach : MonoBehaviour
 
     private bool isGameStarted = false;
     private bool startedShaking = false;
-    private PlayerMotor playerMotor;
+    private BeachPlayerMotor playerMotor;
     private CameraMotor cameraMotor;
 
     // UI and the UI fields
@@ -33,7 +33,7 @@ public class LevelManagerBeach : MonoBehaviour
         Instance = this;
 
         informationText.text = "Press any key to start";
-        playerMotor = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMotor>();
+        playerMotor = GameObject.FindGameObjectWithTag("Player").GetComponent<BeachPlayerMotor>();
         cameraMotor = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMotor>();
         scoreText.text = "Score : " + score.ToString("0");
         garbageText.text = "Garbage : " + garbage.ToString();

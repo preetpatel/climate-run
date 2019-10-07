@@ -11,16 +11,16 @@ public class Segement : MonoBehaviour
     public int beginY1, beginY2, beginY3;
     public int endY1, endY2, endY3;
 
-    private PieceSpawner[] pieces;
+    private BeachPieceSpawner[] pieces;
 
     private void Awake()
     {
-        pieces = gameObject.GetComponentsInChildren<PieceSpawner>();
+        pieces = gameObject.GetComponentsInChildren<BeachPieceSpawner>();
         for (int i = 0; i < pieces.Length; i++)
         {
             foreach (MeshRenderer mr in pieces[i].GetComponentsInChildren<MeshRenderer>())
             {
-                mr.enabled = LevelManager.Instance.SHOW_COLLIDER;
+                mr.enabled = BeachLevelManager.Instance.SHOW_COLLIDER;
             }
         }
     }
