@@ -10,7 +10,7 @@ public class BeachPieceSpawner : MonoBehaviour
     public void Spawn()
     {
         int amtObj = 0;
-        switch (type)
+        switch (type)// choose piece to instantiate
         {
             case BeachPieceType.jump:
                 amtObj = BeachLevelManager.Instance.jumps.Count;

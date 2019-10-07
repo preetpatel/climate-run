@@ -15,11 +15,13 @@ public class Segement : MonoBehaviour
 
     private void Awake()
     {
+        //get the piece spawners
         pieces = gameObject.GetComponentsInChildren<BeachPieceSpawner>();
         for (int i = 0; i < pieces.Length; i++)
         {
             foreach (MeshRenderer mr in pieces[i].GetComponentsInChildren<MeshRenderer>())
             {
+                //if SHOW_COLLIDER is on then show all colliders
                 mr.enabled = BeachLevelManager.Instance.SHOW_COLLIDER;
             }
         }
@@ -30,7 +32,8 @@ public class Segement : MonoBehaviour
         gameObject.SetActive(true);
 
         for (int i = 0; i < pieces.Length; i++)
-        {
+        {   
+            //spawn all pieces
             pieces[i].Spawn();
         }
     }
@@ -39,7 +42,8 @@ public class Segement : MonoBehaviour
     {
         gameObject.SetActive(false);
         for (int i = 0; i < pieces.Length; i++)
-        {
+        {   
+            //despawn all pieces
             pieces[i].DeSpawn();
         }
     }
