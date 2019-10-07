@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3716951133408193282}
   - component: {fileID: 3432827267002309934}
   - component: {fileID: 4171659056925525514}
-  - component: {fileID: 7337864438746889901}
   m_Layer: 0
   m_Name: Cylinder (1)
   m_TagString: Untagged
@@ -79,20 +78,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &7337864438746889901
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 256637895475825760}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &1751670701466554192
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,7 +409,6 @@ GameObject:
   - component: {fileID: 2953740871807671782}
   - component: {fileID: 2896099125748014651}
   - component: {fileID: 5647940734901745963}
-  - component: {fileID: 54518831816868083}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -492,20 +476,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &54518831816868083
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4272144770910742397}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1001 &1783273822722164102
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -801,10 +771,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 624365475883333353}
     m_Modifications:
-    - target: {fileID: 1496565673490738, guid: afc10fca670497c4b800e1ba4e0cf767, type: 3}
-      propertyPath: m_Name
-      value: SS_Glazier1
-      objectReference: {fileID: 0}
     - target: {fileID: 4932520384075246, guid: afc10fca670497c4b800e1ba4e0cf767, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.713772
@@ -852,6 +818,10 @@ PrefabInstance:
     - target: {fileID: 4932520384075246, guid: afc10fca670497c4b800e1ba4e0cf767, type: 3}
       propertyPath: m_LocalScale.z
       value: 3.9511
+      objectReference: {fileID: 0}
+    - target: {fileID: 1496565673490738, guid: afc10fca670497c4b800e1ba4e0cf767, type: 3}
+      propertyPath: m_Name
+      value: SS_Glazier1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afc10fca670497c4b800e1ba4e0cf767, type: 3}
