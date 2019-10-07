@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
         {
             isGameStarted = true;
             playerMotor.StartRunning();
-            cameraMotor.StartFollowing();
+            cameraMotor.StartFollowing();    
         }
 
         if (isGameStarted)
