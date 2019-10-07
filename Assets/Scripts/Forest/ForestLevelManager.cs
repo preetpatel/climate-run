@@ -29,7 +29,7 @@ public class ForestLevelManager : MonoBehaviour
 	{
 		Instance = this;
 
-		informationText.text = "Tap Anywhere To Begin \n Hello";
+		informationText.text = "Tap Anywhere To Begin \n\n Remember to collect as many of those young green plants along the way!";
 		playerMotor = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMotor>();
 		cameraMotor = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMotor>();
 		scoreText.text = "Score : " + score.ToString("0");
@@ -82,5 +82,11 @@ public class ForestLevelManager : MonoBehaviour
         deathSeedText.text = "Seeds Collected: " + seeds.ToString("0");
         deathMenuAnim.SetTrigger("Dead");
         SideObjectSpawner.Instance.IsScrolling = false;
+    }
+
+    public void OnExitButtonPress()
+    {
+
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Forest_EndingCutscene");
     }
 }

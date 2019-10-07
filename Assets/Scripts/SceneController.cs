@@ -10,12 +10,12 @@ public class SceneController : MonoBehaviour
 
     public void GoToAntarctica()
     {
-        SceneManager.LoadScene("Antarctica");
+        SceneManager.LoadScene("Antarctica_StartingCutscene");
     }
 
     public void GoToForest()
     {
-        SceneManager.LoadScene("Forest");
+        SceneManager.LoadScene("Forest_StartingCutscene");
     }
 
     public void GoToBeach()
