@@ -182,7 +182,12 @@ public class PlayerMotor : MonoBehaviour
     {
         anim.SetTrigger("Death");
         isRunning = false;
-        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+        LevelManagerBeach.IsDead = true;
+
+        if (SceneManager.GetActiveScene().name.Equals("Forest"))
+            ForestLevelManager.Instance.OnDeath();
+        else
+            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)

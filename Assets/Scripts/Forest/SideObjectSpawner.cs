@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SideObjectSpawner : MonoBehaviour
 {
+    public static SideObjectSpawner Instance { set; get; }
     private const float DISTANCE_TO_DESPAWN_OBJECT = 10f;
     public float scrollSpeed = -2;
     public float totalLength;
@@ -11,6 +12,11 @@ public class SideObjectSpawner : MonoBehaviour
 
     private float scrollLocation;
     private Transform playerTransform;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     {
