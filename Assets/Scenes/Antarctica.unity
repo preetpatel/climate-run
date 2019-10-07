@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4505977, g: 0.49857748, b: 0.5642941, a: 1}
+  m_IndirectSpecularColor: {r: 0.45059824, g: 0.49857837, b: 0.5642952, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -738,7 +738,7 @@ GameObject:
   - component: {fileID: 1564091548}
   - component: {fileID: 1564091549}
   m_Layer: 0
-  m_Name: AntarcticaTileManager
+  m_Name: TileManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -770,9 +770,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d732f331f1ce5694bb1de6e9c07c1b19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelTilePrefabs:
-  - {fileID: 0}
-  - {fileID: 0}
+  tilePrefabs:
+  - {fileID: 1751670701466554192, guid: 309acf5668fbd2749a11bce6633a209e, type: 3}
+  - {fileID: 7517843524884100363, guid: 89da41476042e4840a45531d9e8134f5, type: 3}
 --- !u!1 &1570381319
 GameObject:
   m_ObjectHideFlags: 0
