@@ -17,6 +17,7 @@ public class BeachPalmTreeSpawner : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        IsScrolling = false;
     }
 
     private void Start()

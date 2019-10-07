@@ -42,7 +42,7 @@ public class BeachLevelManager : MonoBehaviour
         cameraContainer = Camera.main.transform;
         currentSpawnZ = 0;
         currentLevel = 0;
-        FindObjectOfType<BeachPalmTreeSpawner>().IsScrolling = true;
+ 
         //FindObjectOfType<CameraMotor>().isFollowing = true;
     }
 

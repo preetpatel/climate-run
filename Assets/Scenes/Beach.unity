@@ -292,7 +292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1383bd2a6cb5c2047b072526acff70ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: -2
+  scrollSpeed: -7
   totalLength: 50
 --- !u!1 &544794551
 GameObject:
@@ -625,7 +625,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1094767079
 GameObject:
@@ -969,6 +969,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bec7f03bca5bc40888f5e957fab53130, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1813041648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1813041645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21e37c39cc09d484f981f438b8915b38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1884833940
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1032,7 +1044,8 @@ PrefabInstance:
       propertyPath: m_SlopeLimit
       value: 46
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1602494283, guid: 46cfac75a979e4e4d9dc5b90acf813cd, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 46cfac75a979e4e4d9dc5b90acf813cd, type: 3}
 --- !u!1 &2001923919
 GameObject:
@@ -1132,8 +1145,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lookAt: {fileID: 1602494284}
   offset: {x: 0, y: 2.5, z: -1}
+  rotation: {x: 35, y: 0, z: 0}
   shakeDuration: 0
   shakeAmount: 0.2
+  isFollowing: 0
 --- !u!1 &2130709641
 GameObject:
   m_ObjectHideFlags: 0
