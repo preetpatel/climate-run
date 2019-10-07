@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour
+public class AntarcticaGameManager : MonoBehaviour
 {
-    public static GameManager Instance {set; get;}
+    public static AntarcticaGameManager Instance {set; get;}
 
     private bool isGameStarted = false;
     private PlayerMotor playerMotor;
@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public Text informationText;
     private float score = 0;
 
+    // Sets what happens when game starts
     private void Awake()
     {
         Instance = this;
@@ -26,21 +27,24 @@ public class GameManager : MonoBehaviour
         cameraMotor = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMotor>();
     }
 
+    // Gets called every frame
     private void Update()
     {
+        // Start camera and player
         if (Input.anyKey && !isGameStarted)
         {
             isGameStarted = true;
             playerMotor.StartRunning();
             cameraMotor.StartFollowing();    
         }
-
+        
         if (isGameStarted)
         {
+            // Keeps score
             score += Time.deltaTime;
             scoreText.text = score.ToString("0");
 
-            // refactor later
+            // Gives commands or moves to next cutscene
             if (score > 60)
             {
                 SceneManager.LoadScene("Antarctica_EndingCutscene");

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour
+public class AntarcticaSpawner : MonoBehaviour
 {
     private int minZ = 100;
     private int maxZ = 200;
