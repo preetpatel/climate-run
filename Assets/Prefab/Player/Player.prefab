@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 95147693590012022}
   - component: {fileID: 1602494285}
   - component: {fileID: 1602494283}
+  - component: {fileID: -3585563176674745068}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -83,6 +84,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0688671d3c9149c46a98b4a8531a0138, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-3585563176674745068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1924461072777916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bec7f03bca5bc40888f5e957fab53130, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8991967888605138688
@@ -635,6 +648,7 @@ SkinnedMeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -1281,6 +1295,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
