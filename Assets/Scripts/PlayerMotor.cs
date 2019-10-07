@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMotor : MonoBehaviour
 {
-    private const float LANE_DISTANCE = 3.0f;
+    private const float LANE_DISTANCE = 2.5f;
     private const float TURN_SPEED = 0.05F;
 
     // Animation
@@ -18,11 +18,15 @@ public class PlayerMotor : MonoBehaviour
     private CharacterController controller;
     private float jumpForce = 6.0f;
     private float gravity = 12.0f;
-    private float verticalVelocity;
+    private float verticalVelocity = 0;
 
 
     // speed modifier
-    private float speed = 7.0f;
+    private float originalSpeed = 7.0f;
+    private float speed;
+    private float speedIncreaseLastTick;
+    private float speedIncreaseTime = 2.5f;
+    private float speedIncrement = 0.1f;
 
     // 0 is left, 1 is middle, 2 is right
     private int lane = 1;
@@ -31,6 +35,7 @@ public class PlayerMotor : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
+        speed = originalSpeed;
     }
 
     private void Update()
@@ -39,12 +44,31 @@ public class PlayerMotor : MonoBehaviour
         {
             return;
         }
+
+        if (Time.time - speedIncreaseLastTick > speedIncreaseTime)
+        {
+            speedIncreaseLastTick = Time.time;
+            speed += speedIncrement;
+
+            Scene gameScene = SceneManager.GetActiveScene();
+            if (gameScene.name.Equals("Forest"))
+            {
+                ForestLevelManager.Instance.updateModifer(speed - originalSpeed);
+            } else if (gameScene.name.Equals("Beach"))
+            {
+                // Add speed increments for Beach
+            } else if (gameScene.name.Equals("Antarctica"))
+            {
+                // Add speed increments for Antarctica
+            }
+
+        }
         // Check which lane we should be
-        if(Input.GetKeyDown(KeyCode.A))
+        if(MobileInput.Instance.SwipeLeft)
         {
             MoveLane(false);
         }
-        if(Input.GetKeyDown(KeyCode.D))
+        if(MobileInput.Instance.SwipeRight)
         {
             MoveLane(true);
         }
@@ -62,8 +86,9 @@ public class PlayerMotor : MonoBehaviour
         // Calculating our move vector
         Vector3 moveVector = Vector3.zero;
 
-        // where we should be - where we are to get a normalised vector. 
-        moveVector.x = (targetPosition - transform.position).normalized.x * speed;
+        // where we should be - where we are to get a normalised vector.
+        if(Mathf.Abs((targetPosition - transform.position).x) > 0.1)
+            moveVector.x = (targetPosition - transform.position).normalized.x * speed;
 
         bool isGrounded = IsGrounded();
         anim.SetBool("Grounded", isGrounded);
@@ -71,15 +96,15 @@ public class PlayerMotor : MonoBehaviour
         // Calculate Y
         if (isGrounded) // if grounded
         {
-            verticalVelocity = -0.1f;
+            verticalVelocity = 0.0f;
 
-            if (Input.GetKeyDown(KeyCode.W))
+            if (MobileInput.Instance.SwipeUp)
             {
                 // Jump
                 anim.SetTrigger("Jump");
                 verticalVelocity = jumpForce;
             }
-            else if  (Input.GetKeyDown(KeyCode.S))
+            else if (MobileInput.Instance.SwipeDown)
             {
                 // Slide
                 StartSliding();
@@ -90,7 +115,7 @@ public class PlayerMotor : MonoBehaviour
         { 
             verticalVelocity -= (gravity * Time.deltaTime);
 
-            if (Input.GetKeyDown(KeyCode.S))
+            if (MobileInput.Instance.SwipeDown)
             {
                 verticalVelocity = -jumpForce;
             }
