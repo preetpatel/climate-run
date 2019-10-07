@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+// Manages the different mechanics in the game
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance {set; get;}
@@ -16,9 +17,11 @@ public class GameManager : MonoBehaviour
     public Text scoreText;
     public Text informationText;
     private float score = 0;
-
+    
+    // Sets what happens when game starts
     private void Awake()
     {
+        // Sets initial text and motoes
         Instance = this;
         scoreText.text = score.ToString();
         informationText.text = "Touch to start";
@@ -26,8 +29,10 @@ public class GameManager : MonoBehaviour
         cameraMotor = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMotor>();
     }
 
+    // Method called on every frame
     private void Update()
     {
+        // Start camera and player
         if (Input.anyKey && !isGameStarted)
         {
             isGameStarted = true;
@@ -40,7 +45,7 @@ public class GameManager : MonoBehaviour
             score += Time.deltaTime;
             scoreText.text = score.ToString("0");
 
-            // refactor later
+            // // Gives commands in floating text or moves to next cut scene
             if (score > 60)
             {
                 SceneManager.LoadScene("Antarctica_EndingCutscene");
@@ -62,6 +67,7 @@ public class GameManager : MonoBehaviour
                 informationText.text = "Swipe to move";
             }
 
+            // Shakes game to represent melting
             if (score.ToString("0").Equals("15"))
             {
                 cameraMotor.shakeDuration = 2f;
