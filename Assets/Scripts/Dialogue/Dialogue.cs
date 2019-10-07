@@ -5,6 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class Dialogue
 {
+    // class used to add names and sentences wanted from unity
     public string name;
 
     [TextArea(3, 10)]
