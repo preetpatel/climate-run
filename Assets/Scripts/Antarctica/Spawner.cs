@@ -41,9 +41,7 @@ public class Spawner : MonoBehaviour
     }
 
     private void Update()
-    {
-        print(playerTransform.position.z);
-        
+    {        
         if (minZ -  playerTransform.position.z <  safeZone )
         {
             LoadObstacles();

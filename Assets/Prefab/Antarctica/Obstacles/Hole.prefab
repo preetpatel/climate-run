@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8156236270010066271}
   - component: {fileID: 5067508066774476049}
   - component: {fileID: 2300846866202296119}
-  - component: {fileID: 1422310500739243222}
   m_Layer: 0
   m_Name: Cylinder (1)
   m_TagString: Obstacle
@@ -79,20 +78,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &1422310500739243222
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 106309267352535812}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &1032934045667390423
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,7 +181,6 @@ GameObject:
   - component: {fileID: 7706868171377450093}
   - component: {fileID: 3822788681990529059}
   - component: {fileID: 2994662448625256457}
-  - component: {fileID: 3449921391468610589}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Obstacle
@@ -264,19 +248,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &3449921391468610589
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1984253978393988123}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7171445398091385055
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,7 +259,6 @@ GameObject:
   - component: {fileID: 2916508602794783724}
   - component: {fileID: 7394242541810516566}
   - component: {fileID: 3677088774572509725}
-  - component: {fileID: 3237490515021555585}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Obstacle
@@ -356,20 +326,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &3237490515021555585
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7171445398091385055}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &8148362769632591685
 GameObject:
   m_ObjectHideFlags: 0
