@@ -27,7 +27,7 @@ public class Spawner : MonoBehaviour
     private void LoadObstacles()
     {
         
-        for (int i = minZ; i < maxZ; i += 20)
+        for (int i = minZ; i < maxZ; i += 25)
         {
             Vector3 randomPos = new Vector3(Random.Range(minX, maxX), 0, i);
             Instantiate(gameObject, randomPos, Quaternion.identity);
