@@ -182,6 +182,7 @@ public class PlayerMotor : MonoBehaviour
     {
         anim.SetTrigger("Death");
         isRunning = false;
+        LevelManagerBeach.IsDead = true;
 
         if (SceneManager.GetActiveScene().name.Equals("Forest"))
             ForestLevelManager.Instance.OnDeath();
