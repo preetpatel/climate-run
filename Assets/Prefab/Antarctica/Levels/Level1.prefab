@@ -500,10 +500,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1368858365953794187}
     m_Modifications:
-    - target: {fileID: 1496565673490738, guid: afc10fca670497c4b800e1ba4e0cf767, type: 3}
-      propertyPath: m_Name
-      value: SS_Glazier1
-      objectReference: {fileID: 0}
     - target: {fileID: 4932520384075246, guid: afc10fca670497c4b800e1ba4e0cf767, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.4466157
@@ -551,6 +547,10 @@ PrefabInstance:
     - target: {fileID: 4932520384075246, guid: afc10fca670497c4b800e1ba4e0cf767, type: 3}
       propertyPath: m_LocalScale.z
       value: 3.9510999
+      objectReference: {fileID: 0}
+    - target: {fileID: 1496565673490738, guid: afc10fca670497c4b800e1ba4e0cf767, type: 3}
+      propertyPath: m_Name
+      value: SS_Glazier1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afc10fca670497c4b800e1ba4e0cf767, type: 3}
@@ -1296,11 +1296,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1368858365953794187}
     m_Modifications:
-    - target: {fileID: 4729483434116187875, guid: 606764765a7022944ba23c8952f04f30,
-        type: 3}
-      propertyPath: m_Name
-      value: Spawner
-      objectReference: {fileID: 0}
     - target: {fileID: 4729483434116187873, guid: 606764765a7022944ba23c8952f04f30,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1355,6 +1350,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4729483434116187875, guid: 606764765a7022944ba23c8952f04f30,
+        type: 3}
+      propertyPath: m_Name
+      value: Spawner
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 606764765a7022944ba23c8952f04f30, type: 3}
