@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Represents a collectable seed
 public class Seed : MonoBehaviour
 {
     private Animator animator;
@@ -17,6 +18,7 @@ public class Seed : MonoBehaviour
         animator.SetTrigger("Spawn");
     }
 
+    // When the player collides with the seed trigger the Collected animation and increment seeds grabbed
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")

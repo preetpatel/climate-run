@@ -8,12 +8,14 @@ public class FollowPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Gets Player Transform
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Updates position based on player position
         transform.position = Vector3.forward * playerTransform.position.z;
     }
 }

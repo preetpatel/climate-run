@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Represents a segment
 public class Segment : MonoBehaviour
 {
     public int SegId { set; get; }
@@ -13,6 +14,7 @@ public class Segment : MonoBehaviour
 
     private PieceSpawner[] pieces;
 
+    // Gets the segments pieces.
     private void Awake()
     {
         pieces = gameObject.GetComponentsInChildren<PieceSpawner>();
@@ -22,6 +24,7 @@ public class Segment : MonoBehaviour
                 mr.enabled = ForestSpawnManager.Instance.SHOW_COLLIDER;
     }
 
+    // Spawns the segment pieces
     public void Spawn()
     {
         gameObject.SetActive(true);
@@ -30,6 +33,7 @@ public class Segment : MonoBehaviour
             pieces[i].Spawn();
     }
 
+    // Despawns the segment pieces
     public void DeSpawn()
     {
         gameObject.SetActive(false);

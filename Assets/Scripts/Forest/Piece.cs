@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Types of obstacles
 public enum PieceType
 {
     none = -1,

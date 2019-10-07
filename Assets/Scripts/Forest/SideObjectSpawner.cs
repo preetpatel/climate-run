@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Spawns the side display
 public class SideObjectSpawner : MonoBehaviour
 {
     public static SideObjectSpawner Instance { set; get; }
@@ -23,8 +24,10 @@ public class SideObjectSpawner : MonoBehaviour
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
+    // Updates the side objects
     private void Update()
     {
+        // Only updates when still playing
         if (!IsScrolling)
         {
             return;
@@ -33,6 +36,7 @@ public class SideObjectSpawner : MonoBehaviour
         Vector3 newLocation = (playerTransform.position.z + scrollLocation) * Vector3.forward;
         transform.position = newLocation;
 
+        // If the user has travelled far enough, spawn new side objects
         if (transform.GetChild(0).transform.position.z < playerTransform.position.z - DISTANCE_TO_DESPAWN_OBJECT)
         {
             transform.GetChild(0).localPosition += Vector3.forward * totalLength;

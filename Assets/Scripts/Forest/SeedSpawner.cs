@@ -10,6 +10,7 @@ public class SeedSpawner : MonoBehaviour
 
     private GameObject[] coins;
 
+    // Initialises coin/seed object
     private void Awake()
     {
         coins = new GameObject[transform.childCount];
@@ -20,8 +21,10 @@ public class SeedSpawner : MonoBehaviour
         OnDisable();
     }
 
+    // Randomly spawns the seeds
     private void OnEnable()
     {
+        // Randomly decides whether to spawn seeds
         if (Random.Range(0.0f, 1.0f) > chanceToSpawn)
         {
             return;
@@ -32,6 +35,7 @@ public class SeedSpawner : MonoBehaviour
                 coins[i].SetActive(true);
         } else
         {
+            // Randomly spawns a select number of seeds
             int r = Random.Range(0, maxCoin);
             for (int i = 0; i < r; i++)
             {
