@@ -29,7 +29,7 @@ public class ForestLevelManager : MonoBehaviour
 	{
 		Instance = this;
 
-		informationText.text = "Press any key to start";
+		informationText.text = "Tap Anywhere To Begin";
 		playerMotor = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMotor>();
 		cameraMotor = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMotor>();
 		scoreText.text = "Score : " + score.ToString("0");
@@ -78,8 +78,8 @@ public class ForestLevelManager : MonoBehaviour
     public void OnDeath()
 	{
         
-        deathScoreText.text = score.ToString("0");
-        deathSeedText.text = seeds.ToString("0");
+        deathScoreText.text = "Score: " + score.ToString("0");
+        deathSeedText.text = "Seeds Collected: " + seeds.ToString("0");
         deathMenuAnim.SetTrigger("Dead");
         SideObjectSpawner.Instance.IsScrolling = false;
     }
