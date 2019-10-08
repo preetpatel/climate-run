@@ -27,6 +27,7 @@ public class PlayerMotor : MonoBehaviour
     private float speedIncreaseLastTick;
     private float speedIncreaseTime = 2.5f;
     private float speedIncrement = 0.1f;
+    private int livesCounter = 3;
 
     // 0 is left, 1 is middle, 2 is right
     private int lane = 1;
@@ -87,7 +88,7 @@ public class PlayerMotor : MonoBehaviour
         Vector3 moveVector = Vector3.zero;
 
         // where we should be - where we are to get a normalised vector.
-        if(Mathf.Abs((targetPosition - transform.position).x) > 0.1)
+        if(Mathf.Abs((targetPosition - transform.position).x) > 0.08)
             moveVector.x = (targetPosition - transform.position).normalized.x * speed;
 
         bool isGrounded = IsGrounded();
@@ -180,14 +181,31 @@ public class PlayerMotor : MonoBehaviour
 
     private void Crash()
     {
-        anim.SetTrigger("Death");
-        isRunning = false;
-        LevelManagerBeach.IsDead = true;
 
-        if (SceneManager.GetActiveScene().name.Equals("Forest"))
-            ForestLevelManager.Instance.OnDeath();
-        else
-            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+        livesCounter -= 1;
+        Debug.Log(livesCounter);
+
+        // If no more lives are left, do a crash
+        if (livesCounter < 1)
+        {
+            anim.SetTrigger("Death");
+            isRunning = false;
+            LevelManagerBeach.IsDead = true;
+
+            if (SceneManager.GetActiveScene().name.Equals("Forest"))
+                ForestLevelManager.Instance.OnDeath();
+            else
+                SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+        } else // Otherwise if we still have lives remaining, move the character up and give another chance
+        {
+            anim.SetTrigger("Jump");
+            verticalVelocity = jumpForce;
+            Vector3 hitButRevert = new Vector3(0, 5, 11);
+            CameraMotor cameraMotor = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMotor>();
+            controller.Move(hitButRevert);
+            cameraMotor.shakeDuration = 0.5f;
+
+        }
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
@@ -195,6 +213,7 @@ public class PlayerMotor : MonoBehaviour
         switch (hit.gameObject.tag)
         {
             case "Obstacle":
+				hit.collider.enabled = false;
                 Crash();
                 break;
         }

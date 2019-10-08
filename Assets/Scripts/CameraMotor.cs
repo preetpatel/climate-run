@@ -49,10 +49,8 @@ public class CameraMotor : MonoBehaviour
             targetPos.z = Mathf.Lerp(transform.position.z, desiredPos.z, Time.deltaTime);
             targetPos.y = Mathf.Lerp(transform.position.y, desiredPos.y, Time.deltaTime);
 
-            Debug.Log("desired x pos: " + desiredPos.x);
             targetPos.x = Mathf.SmoothStep(transform.position.x, desiredPos.x, Time.deltaTime * 7);
 
-            Debug.Log("target x pos: " + targetPos.x);
 
             transform.position = targetPos;
         }

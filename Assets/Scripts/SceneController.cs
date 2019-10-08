@@ -15,7 +15,7 @@ public class SceneController : MonoBehaviour
 
     public void GoToForest()
     {
-        SceneManager.LoadScene("Forest_StartingCutscene");
+        SceneManager.LoadScene("Forest");
     }
 
     public void GoToBeach()
