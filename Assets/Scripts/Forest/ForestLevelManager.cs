@@ -29,7 +29,7 @@ public class ForestLevelManager : MonoBehaviour
 	{
 		Instance = this;
 
-		informationText.text = "Tap Anywhere To Begin \n\n Remember to collect as many of those young green plants along the way!";
+		informationText.text = "Tap Anywhere To Begin!";
 		playerMotor = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMotor>();
 		cameraMotor = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMotor>();
 		scoreText.text = "Score : " + score.ToString("0");
