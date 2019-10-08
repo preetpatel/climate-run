@@ -54,7 +54,7 @@ public class PlayerMotor : MonoBehaviour
             Scene gameScene = SceneManager.GetActiveScene();
             if (gameScene.name.Equals("Forest"))
             {
-                ForestLevelManager.Instance.updateModifer(speed - originalSpeed);
+                // ForestLevelManager.Instance.updateLives(speed - originalSpeed);
             } else if (gameScene.name.Equals("Beach"))
             {
                 // Add speed increments for Beach
@@ -196,7 +196,8 @@ public class PlayerMotor : MonoBehaviour
                 ForestLevelManager.Instance.OnDeath();
             else
                 SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
-        } else // Otherwise if we still have lives remaining, move the character up and give another chance
+        }
+        else // Otherwise if we still have lives remaining, move the character up and give another chance
         {
             anim.SetTrigger("Jump");
             verticalVelocity = jumpForce;
@@ -205,6 +206,12 @@ public class PlayerMotor : MonoBehaviour
             controller.Move(hitButRevert);
             cameraMotor.shakeDuration = 0.5f;
 
+            // Update lives for forest
+            Scene gameScene = SceneManager.GetActiveScene();
+            if (gameScene.name.Equals("Forest"))
+            {
+                ForestLevelManager.Instance.updateLives(livesCounter);
+            }
         }
     }
 

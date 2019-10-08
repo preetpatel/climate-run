@@ -20,7 +20,7 @@ public class ForestLevelManager : MonoBehaviour
 	public Text scoreText;
 	public Text seedCountText;
 	public Text informationText;
-	public Text modifierText;
+	public Text livesText;
 	private float score = 0;
 	private float seeds = 0;
 	private float modifier = 1.0f;
@@ -34,7 +34,7 @@ public class ForestLevelManager : MonoBehaviour
 		cameraMotor = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMotor>();
 		scoreText.text = "Score : " + score.ToString("0");
 		seedCountText.text = "Seeds : " + seeds.ToString();
-		modifierText.text = "Modifer : x" + modifier.ToString("0.0");
+		livesText.text = "Lives Remaining : 3";
 
 	}
 
@@ -64,10 +64,9 @@ public class ForestLevelManager : MonoBehaviour
 		seedCountText.text = "Seeds : " + seeds.ToString();
 	}
 
-	public void updateModifer(float modifierAmount)
+	public void updateLives(float livesAmount)
 	{
-		modifier = 1.0f + modifierAmount;
-		modifierText.text = "Modifer : x" + modifier.ToString("0.0");
+		livesText.text = "Lives Remaining : " + livesAmount.ToString("0");
 	}
 
     public void OnRetryButton()
