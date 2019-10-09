@@ -8,8 +8,6 @@ public class BeachLevelManager : MonoBehaviour
 
     public static BeachLevelManager Instance { set; get; }
 
-    public static bool IsDead { set; get; }
-
     private bool isGameStarted = false;
     private bool startedShaking = false;
     private PlayerMotor playerMotor;
@@ -19,7 +17,7 @@ public class BeachLevelManager : MonoBehaviour
     public Text scoreText;
     public Text garbageText;
     public Text informationText;
-    public Text modifierText;
+    public Text livesText;
     private float score = 0;
     private float garbage = 0;
     private float modifier = 1.0f;
@@ -37,6 +35,7 @@ public class BeachLevelManager : MonoBehaviour
         cameraMotor = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMotor>();
         scoreText.text = "Score : " + score.ToString("0");
         garbageText.text = "Garbage : " + garbage.ToString();
+        livesText.text = "Lives Remaining : 3";
         //modifierText.text = "Modifer : x" + modifier.ToString("0.0");
 
     }
@@ -51,7 +50,7 @@ public class BeachLevelManager : MonoBehaviour
             informationText.text = "";
         }
 
-        if (isGameStarted&&!IsDead)
+        if (isGameStarted)
         {
             score += (Time.deltaTime * modifier);
             scoreText.text = "Score : " + score.ToString("0");
@@ -64,20 +63,34 @@ public class BeachLevelManager : MonoBehaviour
         garbage++;
         garbageText.text = "Garbage : " + garbage.ToString();
     }
-
-    public void updateModifer( float modifierAmount)
+    
+    public void updateLives(float livesAmount)
     {
-        modifier = 1.0f + modifierAmount;
-        modifierText.text = "Modifer : x" + modifier.ToString("0.0");
+        livesText.text = "Lives Remaining : " + livesAmount.ToString("0");
     }
+
+    // public void updateModifer( float modifierAmount)
+    // {
+    //     modifier = 1.0f + modifierAmount;
+    //     modifierText.text = "Modifer : x" + modifier.ToString("0.0");
+    // }
 
     public void OnDeath()
     {
-        IsDead = true;
-        deadScoreText.text = score.ToString("0");
-        deadGarbageText.text = garbage.ToString("0");
+        deadScoreText.text = "Score: " + score.ToString("0");
+        deadGarbageText.text = "Garbage Collected: " + garbage.ToString("0");
         deathMenuAnim.SetTrigger("Dead");
         //completely pause the game
         //Time.timeScale = 0;
+    }
+
+    public void OnRetryButton()
+	{
+		UnityEngine.SceneManagement.SceneManager.LoadScene("Beach");
+	}
+
+    public void OnExitButtonPress()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
 }
