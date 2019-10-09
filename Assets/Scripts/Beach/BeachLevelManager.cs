@@ -35,7 +35,7 @@ public class BeachLevelManager : MonoBehaviour
         cameraMotor = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMotor>();
         scoreText.text = "Score : " + score.ToString("0");
         garbageText.text = "Garbage : " + garbage.ToString();
-        livesText.text = "Lives Remaining : 3";
+        //livesText.text = "Lives Remaining : 3";
         //modifierText.text = "Modifer : x" + modifier.ToString("0.0");
 
     }
