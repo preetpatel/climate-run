@@ -25,6 +25,12 @@ public class GarbageSpawner : MonoBehaviour
         {
             return;
         }
+        
+        if (forceSpawnAll)
+        {
+            for (int i = 0; i < garbage.Length; i++)
+                garbage[i].SetActive(true);
+        } else
         {
             for (int i = 0; i < garbage.Length; i++)
             {
