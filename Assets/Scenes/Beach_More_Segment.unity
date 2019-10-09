@@ -240,7 +240,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &474090907
 GameObject:
@@ -714,7 +714,7 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!1 &1588963556
+--- !u!1 &1518610696
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -722,8 +722,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1588963558}
-  - component: {fileID: 1588963557}
+  - component: {fileID: 1518610698}
+  - component: {fileID: 1518610697}
   m_Layer: 0
   m_Name: BeachSpawnManager
   m_TagString: Untagged
@@ -731,13 +731,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1588963557
+--- !u!114 &1518610697
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1588963556}
+  m_GameObject: {fileID: 1518610696}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e24cd358384436f4b870fab6d9243af9, type: 3}
@@ -751,8 +751,8 @@ MonoBehaviour:
   - {fileID: 7537513208907289819, guid: b1d4a2eb215335f4ab34ad45d383f2ba, type: 3}
   jumps:
   - {fileID: 7287434681386983424, guid: 43601145df4352143b8615c4d04e44de, type: 3}
-  - {fileID: 6080301866849173998, guid: b578018e286202d48bd79c0c9a0d97f3, type: 3}
   - {fileID: 6272316887010515826, guid: 7e6a993d0a07ae14683b9d5e1fea9de8, type: 3}
+  - {fileID: 6080301866849173998, guid: b578018e286202d48bd79c0c9a0d97f3, type: 3}
   slides:
   - {fileID: 7390322518517567530, guid: 979fad5df01af2a4b9972f67a7f9d3a4, type: 3}
   - {fileID: 9175711776171268573, guid: daf73fb049cc1ce4784de50c3c56cd91, type: 3}
@@ -761,22 +761,25 @@ MonoBehaviour:
   - {fileID: 8163647029438462476, guid: aa2fad5f3ebd2f24996c480648542d7e, type: 3}
   - {fileID: 4523778955706409358, guid: 66b0d90e8607ab143a0242a5b98820db, type: 3}
   - {fileID: 3538992793338094633, guid: c96551f4929b34741a74c287b444cb3c, type: 3}
+  - {fileID: 7201692872008110923, guid: 37bfd4678ae808848a0d1276c6146c79, type: 3}
+  - {fileID: 2874167608000408201, guid: 5bca059c062e8a242941b5c48a0908a0, type: 3}
+  - {fileID: 3535003828202356786, guid: 5e783388adaeeb748b635a11bc6ef46e, type: 3}
   availableTransitions:
   - {fileID: 4323896662055346297, guid: 5c20dfb7ebce29046b3e3cab51c26405, type: 3}
   segments: []
---- !u!4 &1588963558
+--- !u!4 &1518610698
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1588963556}
+  m_GameObject: {fileID: 1518610696}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1732901600
 PrefabInstance:
