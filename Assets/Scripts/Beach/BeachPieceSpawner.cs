@@ -13,20 +13,20 @@ public class BeachPieceSpawner : MonoBehaviour
         switch (type)
         {
             case BeachPieceType.jump:
-                amtObj = BeachSpawnManager.Instance.jumps.Count;
+                amtObj = BeachLevelManager.Instance.jumps.Count;
                 break;
             case BeachPieceType.slide:
-                amtObj = BeachSpawnManager.Instance.slides.Count;
+                amtObj = BeachLevelManager.Instance.slides.Count;
                 break;
             case BeachPieceType.longblock:
-                amtObj = BeachSpawnManager.Instance.longblocks.Count;
+                amtObj = BeachLevelManager.Instance.longblocks.Count;
                 break;
             case BeachPieceType.ramp:
-                amtObj = BeachSpawnManager.Instance.ramps.Count;
+                amtObj = BeachLevelManager.Instance.ramps.Count;
                 break;
         }
 
-        currentPiece = BeachSpawnManager.Instance.GetPiece(type, Random.Range(0, amtObj));
+        currentPiece = BeachLevelManager.Instance.GetPiece(type, Random.Range(0, amtObj));
         currentPiece.gameObject.SetActive(true);
         currentPiece.transform.SetParent(transform, false);
     }

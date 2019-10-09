@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerMotor : MonoBehaviour
+public class BeachPlayerMotor : MonoBehaviour
 {
     private const float LANE_DISTANCE = 2.5f;
     private const float TURN_SPEED = 0.05F;
@@ -18,16 +18,11 @@ public class PlayerMotor : MonoBehaviour
     private CharacterController controller;
     private float jumpForce = 6.0f;
     private float gravity = 12.0f;
-    private float verticalVelocity = 0;
+    private float verticalVelocity;
 
 
     // speed modifier
-    private float originalSpeed = 7.0f;
-    private float speed;
-    private float speedIncreaseLastTick;
-    private float speedIncreaseTime = 2.5f;
-    private float speedIncrement = 0.1f;
-    private int livesCounter = 3;
+    private float speed = 7.0f;
 
     // 0 is left, 1 is middle, 2 is right
     private int lane = 1;
@@ -36,7 +31,6 @@ public class PlayerMotor : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
-        speed = originalSpeed;
     }
 
     private void Update()
@@ -45,31 +39,12 @@ public class PlayerMotor : MonoBehaviour
         {
             return;
         }
-
-        if (Time.time - speedIncreaseLastTick > speedIncreaseTime)
-        {
-            speedIncreaseLastTick = Time.time;
-            speed += speedIncrement;
-
-            Scene gameScene = SceneManager.GetActiveScene();
-            if (gameScene.name.Equals("Forest"))
-            {
-                // ForestLevelManager.Instance.updateLives(speed - originalSpeed);
-            } else if (gameScene.name.Equals("Beach"))
-            {
-                // Add speed increments for Beach
-            } else if (gameScene.name.Equals("Antarctica"))
-            {
-                // Add speed increments for Antarctica
-            }
-
-        }
         // Check which lane we should be
-        if(MobileInput.Instance.SwipeLeft)
+        if(Input.GetKeyDown(KeyCode.A))
         {
             MoveLane(false);
         }
-        if(MobileInput.Instance.SwipeRight)
+        if(Input.GetKeyDown(KeyCode.D))
         {
             MoveLane(true);
         }
@@ -87,9 +62,8 @@ public class PlayerMotor : MonoBehaviour
         // Calculating our move vector
         Vector3 moveVector = Vector3.zero;
 
-        // where we should be - where we are to get a normalised vector.
-        if(Mathf.Abs((targetPosition - transform.position).x) > 0.08)
-            moveVector.x = (targetPosition - transform.position).normalized.x * speed;
+        // where we should be - where we are to get a normalised vector. 
+        moveVector.x = (targetPosition - transform.position).normalized.x * speed;
 
         bool isGrounded = IsGrounded();
         anim.SetBool("Grounded", isGrounded);
@@ -97,15 +71,15 @@ public class PlayerMotor : MonoBehaviour
         // Calculate Y
         if (isGrounded) // if grounded
         {
-            verticalVelocity = 0.0f;
+            verticalVelocity = -0.1f;
 
-            if (MobileInput.Instance.SwipeUp)
+            if (Input.GetKeyDown(KeyCode.W))
             {
                 // Jump
                 anim.SetTrigger("Jump");
                 verticalVelocity = jumpForce;
             }
-            else if (MobileInput.Instance.SwipeDown)
+            else if  (Input.GetKeyDown(KeyCode.S))
             {
                 // Slide
                 StartSliding();
@@ -113,10 +87,10 @@ public class PlayerMotor : MonoBehaviour
             }
         }
         else // fast fall
-        { 
+        {
             verticalVelocity -= (gravity * Time.deltaTime);
 
-            if (MobileInput.Instance.SwipeDown)
+            if (Input.GetKeyDown(KeyCode.S))
             {
                 verticalVelocity = -jumpForce;
             }
@@ -181,38 +155,10 @@ public class PlayerMotor : MonoBehaviour
 
     private void Crash()
     {
-
-        livesCounter -= 1;
-        Debug.Log(livesCounter);
-
-        // If no more lives are left, do a crash
-        if (livesCounter < 1)
-        {
-            anim.SetTrigger("Death");
-            isRunning = false;
-            LevelManagerBeach.IsDead = true;
-
-            if (SceneManager.GetActiveScene().name.Equals("Forest"))
-                ForestLevelManager.Instance.OnDeath();
-            else
-                SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
-        }
-        else // Otherwise if we still have lives remaining, move the character up and give another chance
-        {
-            anim.SetTrigger("Jump");
-            verticalVelocity = jumpForce;
-            Vector3 hitButRevert = new Vector3(0, 5, 11);
-            CameraMotor cameraMotor = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMotor>();
-            controller.Move(hitButRevert);
-            cameraMotor.shakeDuration = 0.5f;
-
-            // Update lives for forest
-            Scene gameScene = SceneManager.GetActiveScene();
-            if (gameScene.name.Equals("Forest"))
-            {
-                ForestLevelManager.Instance.updateLives(livesCounter);
-            }
-        }
+        anim.SetTrigger("Death");
+        isRunning = false;
+        LevelManagerBeach.IsDead = true;
+        //SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
@@ -220,7 +166,6 @@ public class PlayerMotor : MonoBehaviour
         switch (hit.gameObject.tag)
         {
             case "Obstacle":
-				hit.collider.enabled = false;
                 Crash();
                 break;
         }

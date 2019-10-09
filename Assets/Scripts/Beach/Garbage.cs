@@ -1,27 +1,24 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Garbage : MonoBehaviour
 {
-    private Animator animator;
+    private Animator anim;
 
-    private void Awake()
+    private void Start()
     {
-        animator = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
     }
-
-    private void OnEnable()
-    {
-        animator.SetTrigger("Spawn");
-    }
-
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+ 
+        if(other.tag == "Player")
         {
-            BeachLevelManager.Instance.getGarbage();
-            animator.SetTrigger("Collected");
+            LevelManagerBeach.Instance.getGarbage();
+            anim.SetTrigger("Collected");
+            Destroy(this.gameObject, 1.5f);
         }
+        
     }
 }
