@@ -190,12 +190,17 @@ public class PlayerMotor : MonoBehaviour
         {
             anim.SetTrigger("Death");
             isRunning = false;
-            LevelManagerBeach.IsDead = true;
 
             if (SceneManager.GetActiveScene().name.Equals("Forest"))
+            {
                 ForestLevelManager.Instance.OnDeath();
-            else
+            } else if (SceneManager.GetActiveScene().name.Equals("Beach"))
+            {
+                BeachLevelManager.Instance.OnDeath();
+            } else
+            {
                 SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+            }
         }
         else // Otherwise if we still have lives remaining, move the character up and give another chance
         {
