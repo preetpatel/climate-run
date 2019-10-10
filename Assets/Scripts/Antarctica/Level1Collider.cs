@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Collider : MonoBehaviour
+public class Level1Collider : MonoBehaviour
 {
     public GameObject[] gameObjects;
     private Transform playerTransform;
@@ -30,19 +30,20 @@ public class Collider : MonoBehaviour
 
     private void LoadNextObstacle(float colliderPosition)
     {
-        cameraMotor.shakeDuration = 1f;
-        int objectIndex = Random.Range(0, gameObjects.Length);
-        nextObstacleZLocation = colliderPosition + 38;
-        float xcord = 22;
 
-        if (objectIndex == 0)
+        float loadingPosition = colliderPosition + 20;
+
+        int[] xcords = new int[] {-3, 0, 3};
+        
+        for (int i = (int) loadingPosition; i < loadingPosition + 120; i += 20)
         {
-            xcord = 49;
+            int xcord = xcords[Random.Range(0, 3)];
+            Vector3 randomPos = new Vector3(xcord, 0.74f, i);
+            GameObject go = Instantiate(gameObjects[0], randomPos, gameObjects[0].transform.rotation);
+            obstacleList.Add(go);        
         }
         
-        Vector3 pos = new Vector3(xcord, 0, nextObstacleZLocation);
-        GameObject go = Instantiate(gameObjects[objectIndex], pos, gameObjects[objectIndex].transform.rotation);
-        obstacleList.Add(go);
+    
     }
 
     private void Update()
@@ -64,5 +65,4 @@ public class Collider : MonoBehaviour
         LoadNextObstacle(other.transform.position.z);
         DeleteObstacles();
     }
-
 }
