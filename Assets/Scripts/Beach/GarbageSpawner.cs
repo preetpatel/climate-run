@@ -7,14 +7,13 @@ public class GarbageSpawner : MonoBehaviour
     public float chanceToSpawn = 0.5f;
     public bool forceSpawnAll = false;
     public bool isTrashObtacle = false;
-    public float garbageMultiplier = 1.0f;
+    public static float garbageMultiplier = 1.0f;
 
     private GameObject[] garbage;
 
     private void Awake()
     {
         garbage = new GameObject[transform.childCount];
-        Debug.Log(garbage.Length);
         for (int i = 0; i < transform.childCount; i++)
         {
             garbage[i] = transform.GetChild(i).gameObject;
