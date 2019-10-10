@@ -24,4 +24,9 @@ public class Garbage : MonoBehaviour
             animator.SetTrigger("Collected");
         }
     }
+
+    public void OnTriggerThrow()
+    {
+        animator.SetTrigger("Thrown");
+    }
 }
