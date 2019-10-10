@@ -84,7 +84,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8686847457980788017}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.5, y: 2.54, z: 1.31}
+  m_LocalPosition: {x: -2.5, y: 2.54, z: 4.79}
   m_LocalScale: {x: 1.7389516, y: 1.84714, z: 1.2263116}
   m_Children:
   - {fileID: 8959843138664781681}
@@ -134,6 +134,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1424839868252433060}
     m_Modifications:
+    - target: {fileID: 7067195863179617396, guid: 6f878d36e5a066a49a800fbedb3b8579,
+        type: 3}
+      propertyPath: m_Name
+      value: Longblock (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 6054422280829877677, guid: 6f878d36e5a066a49a800fbedb3b8579,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -189,11 +194,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7067195863179617396, guid: 6f878d36e5a066a49a800fbedb3b8579,
-        type: 3}
-      propertyPath: m_Name
-      value: Longblock (1)
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f878d36e5a066a49a800fbedb3b8579, type: 3}
 --- !u!4 &6510234522014279166 stripped
@@ -209,6 +209,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1424839868252433060}
     m_Modifications:
+    - target: {fileID: 2192974437400782782, guid: 3674e1cb83897f34d8bf5ae28d9fef6e,
+        type: 3}
+      propertyPath: m_Name
+      value: Ramp
+      objectReference: {fileID: 0}
     - target: {fileID: 2192974437400782780, guid: 3674e1cb83897f34d8bf5ae28d9fef6e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -263,11 +268,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2192974437400782782, guid: 3674e1cb83897f34d8bf5ae28d9fef6e,
-        type: 3}
-      propertyPath: m_Name
-      value: Ramp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3674e1cb83897f34d8bf5ae28d9fef6e, type: 3}
@@ -359,6 +359,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1424839868252433060}
     m_Modifications:
+    - target: {fileID: 7067195863179617396, guid: 6f878d36e5a066a49a800fbedb3b8579,
+        type: 3}
+      propertyPath: m_Name
+      value: Longblock
+      objectReference: {fileID: 0}
     - target: {fileID: 6054422280829877677, guid: 6f878d36e5a066a49a800fbedb3b8579,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -414,11 +419,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7067195863179617396, guid: 6f878d36e5a066a49a800fbedb3b8579,
-        type: 3}
-      propertyPath: m_Name
-      value: Longblock
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f878d36e5a066a49a800fbedb3b8579, type: 3}
 --- !u!4 &1619009778957981412 stripped
@@ -434,6 +434,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1424839868252433060}
     m_Modifications:
+    - target: {fileID: 4705041462972141644, guid: da30162a5fb90e5499e1ae85f61ffe48,
+        type: 3}
+      propertyPath: m_Name
+      value: Slide
+      objectReference: {fileID: 0}
     - target: {fileID: 4705041462972141646, guid: da30162a5fb90e5499e1ae85f61ffe48,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -489,11 +494,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4705041462972141644, guid: da30162a5fb90e5499e1ae85f61ffe48,
-        type: 3}
-      propertyPath: m_Name
-      value: Slide
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da30162a5fb90e5499e1ae85f61ffe48, type: 3}
 --- !u!4 &169141098735617967 stripped
@@ -532,7 +532,7 @@ PrefabInstance:
     - target: {fileID: 3562069040758127674, guid: d97aca79f8ea9bf47bd44e864d986ceb,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.01
+      value: -0.32
       objectReference: {fileID: 0}
     - target: {fileID: 3562069040758127674, guid: d97aca79f8ea9bf47bd44e864d986ceb,
         type: 3}
