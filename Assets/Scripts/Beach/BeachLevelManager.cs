@@ -37,7 +37,7 @@ public class BeachLevelManager : MonoBehaviour
         compMotor = GameObject.FindGameObjectWithTag("Companion").GetComponent<CompanionMotor>();
         scoreText.text = "Score : " + score.ToString("0");
         garbageText.text = "Garbage : " + garbage.ToString();
-        //livesText.text = "Lives Remaining : 3";
+        livesText.text = "Lives Remaining : 3";
         //modifierText.text = "Modifer : x" + modifier.ToString("0.0");
 
     }
