@@ -13,6 +13,8 @@ public class BeachLevelManager : MonoBehaviour
     private PlayerMotor playerMotor;
     private CameraMotor cameraMotor;
     private CompanionMotor compMotor;
+    private bool garbageCollected = false;
+    private float timeSinceGarbageCollected = 0.0f;
 
     // UI and the UI fields
     public Text scoreText;
@@ -57,10 +59,12 @@ public class BeachLevelManager : MonoBehaviour
 
         if (isGameStarted)
         {
-            float garbMulti = GarbageSpawner.garbageMultiplier;
-            GarbageSpawner.garbageMultiplier = Mathf.Clamp(garbMulti += 0.001f, 0.0f, 1.0f);
-            Debug.Log("Garbage multiplier: " + GarbageSpawner.garbageMultiplier);
-            pollutionSlide.value = GarbageSpawner.garbageMultiplier;
+            if (!garbageCollected)
+            {
+                float garbMulti = GarbageSpawner.garbageMultiplier;
+                GarbageSpawner.garbageMultiplier = Mathf.Clamp(garbMulti += 0.001f, 0.0f, 1.0f);
+                pollutionSlide.value = GarbageSpawner.garbageMultiplier;
+            }
             score += (Time.deltaTime * modifier);
             scoreText.text = "Score : " + score.ToString("0");
 
@@ -93,6 +97,14 @@ public class BeachLevelManager : MonoBehaviour
                 informationText.text = "Flippy, you have to collect the garbage people throw on the beach!";
             }
 
+            timeSinceGarbageCollected += Time.deltaTime;
+            Debug.Log(timeSinceGarbageCollected);
+            if(timeSinceGarbageCollected > 5.0f)
+            {
+                garbageCollected = false;
+                timeSinceGarbageCollected = 0.0f;
+            }
+
         }
 
     }
@@ -101,6 +113,7 @@ public class BeachLevelManager : MonoBehaviour
     {
         garbage++;
         garbageText.text = "Garbage : " + garbage.ToString();
+        garbageCollected = true;
         float garbMulti = GarbageSpawner.garbageMultiplier;
         GarbageSpawner.garbageMultiplier = Mathf.Clamp(garbMulti -= 0.25f, 0.0f, 1.0f);
         pollutionSlide.value = GarbageSpawner.garbageMultiplier;
