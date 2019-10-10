@@ -98,7 +98,6 @@ public class BeachLevelManager : MonoBehaviour
             }
 
             timeSinceGarbageCollected += Time.deltaTime;
-            Debug.Log(timeSinceGarbageCollected);
             if(timeSinceGarbageCollected > 5.0f)
             {
                 garbageCollected = false;
