@@ -12,6 +12,7 @@ public class BeachLevelManager : MonoBehaviour
     private bool startedShaking = false;
     private PlayerMotor playerMotor;
     private CameraMotor cameraMotor;
+    private CompanionMotor compMotor;
 
     // UI and the UI fields
     public Text scoreText;
@@ -33,6 +34,7 @@ public class BeachLevelManager : MonoBehaviour
         informationText.text = "Press any key to start";
         playerMotor = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMotor>();
         cameraMotor = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMotor>();
+        compMotor = GameObject.FindGameObjectWithTag("Companion").GetComponent<CompanionMotor>();
         scoreText.text = "Score : " + score.ToString("0");
         garbageText.text = "Garbage : " + garbage.ToString();
         //livesText.text = "Lives Remaining : 3";
@@ -47,6 +49,7 @@ public class BeachLevelManager : MonoBehaviour
             isGameStarted = true;
             playerMotor.StartRunning();
             cameraMotor.StartFollowing();
+            compMotor.StartRunning();
             informationText.text = "";
         }
 
