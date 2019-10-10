@@ -54,6 +54,36 @@ public class BeachLevelManager : MonoBehaviour
         {
             score += (Time.deltaTime * modifier);
             scoreText.text = "Score : " + score.ToString("0");
+
+            /*            if (score > 60)
+                        {
+                            SceneManager.LoadScene("Antarctica_EndingCutscene");
+                        }*/
+            if(score > 25)
+            {
+                informationText.text = "";
+            }
+            else if (score > 20)
+            {
+                informationText.text = "Good luck";
+            }
+            else if (score > 15)
+            {
+                informationText.text = "More obstacles will appear on your track as the pollution meter rises";
+            }
+            else if (score > 10)
+            {
+                informationText.text = "The pollution meter rises whenever you don't collect a garbage";
+            }
+            else if (score > 5)
+            {
+                informationText.text = "Garbage will pile up if you leave them unhandled";
+            }
+            else if (score > 0)
+            {
+                informationText.text = "Flippy, you have to collect the garbage people throw on the beach!";
+            }
+
         }
 
     }
