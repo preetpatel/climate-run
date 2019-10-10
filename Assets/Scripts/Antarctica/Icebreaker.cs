@@ -16,7 +16,7 @@ public class Icebreaker : MonoBehaviour
     // Ice breaks as player moves forward
     private void LateUpdate()
     {
-        if (lookAt.position.z > 10) // wait for player to move
+        if (lookAt.position.z > gameObject.transform.position.z) // wait for player to move
         {
             Vector3 desiredPos = lookAt.position + offset;
             Vector3 targetPos = Vector3.zero;
