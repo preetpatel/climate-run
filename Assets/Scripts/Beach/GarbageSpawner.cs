@@ -6,6 +6,8 @@ public class GarbageSpawner : MonoBehaviour
 {
     public float chanceToSpawn = 0.5f;
     public bool forceSpawnAll = false;
+    public bool isTrashObtacle = false;
+    public static float garbageMultiplier = 1.0f;
 
     private GameObject[] garbage;
 
@@ -21,7 +23,15 @@ public class GarbageSpawner : MonoBehaviour
 
     private void OnEnable()
     {
-        if (Random.Range(0.0f, 1.0f) > chanceToSpawn)
+        float chance;
+        if (isTrashObtacle)
+        {
+            chance = garbageMultiplier;
+        } else
+        {
+            chance = chanceToSpawn;
+        }
+        if (Random.Range(0.0f, 1.0f) > chance)
         {
             return;
         }

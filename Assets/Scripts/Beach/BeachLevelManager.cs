@@ -19,6 +19,7 @@ public class BeachLevelManager : MonoBehaviour
     public Text garbageText;
     public Text informationText;
     public Text livesText;
+    public Slider pollutionSlide;
     private float score = 0;
     private float garbage = 0;
     private float modifier = 1.0f;
@@ -30,14 +31,15 @@ public class BeachLevelManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-
+        pollutionSlide.value = GarbageSpawner.garbageMultiplier;
         informationText.text = "Press any key to start";
         playerMotor = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMotor>();
         cameraMotor = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMotor>();
         compMotor = GameObject.FindGameObjectWithTag("Companion").GetComponent<CompanionMotor>();
         scoreText.text = "Score : " + score.ToString("0");
         garbageText.text = "Garbage : " + garbage.ToString();
-        //livesText.text = "Lives Remaining : 3";
+        livesText.text = "Lives Remaining : 3";
+        
         //modifierText.text = "Modifer : x" + modifier.ToString("0.0");
 
     }
@@ -55,6 +57,10 @@ public class BeachLevelManager : MonoBehaviour
 
         if (isGameStarted)
         {
+            float garbMulti = GarbageSpawner.garbageMultiplier;
+            GarbageSpawner.garbageMultiplier = Mathf.Clamp(garbMulti += 0.001f, 0.0f, 1.0f);
+            Debug.Log("Garbage multiplier: " + GarbageSpawner.garbageMultiplier);
+            pollutionSlide.value = GarbageSpawner.garbageMultiplier;
             score += (Time.deltaTime * modifier);
             scoreText.text = "Score : " + score.ToString("0");
 
@@ -95,6 +101,9 @@ public class BeachLevelManager : MonoBehaviour
     {
         garbage++;
         garbageText.text = "Garbage : " + garbage.ToString();
+        float garbMulti = GarbageSpawner.garbageMultiplier;
+        GarbageSpawner.garbageMultiplier = Mathf.Clamp(garbMulti -= 0.25f, 0.0f, 1.0f);
+        pollutionSlide.value = GarbageSpawner.garbageMultiplier;
     }
     
     public void updateLives(float livesAmount)
@@ -102,10 +111,10 @@ public class BeachLevelManager : MonoBehaviour
         livesText.text = "Lives Remaining : " + livesAmount.ToString("0");
     }
 
-    // public void updateModifer( float modifierAmount)
+    // public void updatemodifer( float modifieramount)
     // {
-    //     modifier = 1.0f + modifierAmount;
-    //     modifierText.text = "Modifer : x" + modifier.ToString("0.0");
+    //     modifier = 1.0f + modifieramount;
+    //     modifiertext.text = "modifer : x" + modifier.tostring("0.0");
     // }
 
     public void OnDeath()
