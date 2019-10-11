@@ -38,11 +38,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4472808957313901551}
     m_Modifications:
-    - target: {fileID: 8781169041212635771, guid: 3f206dd09503ff6408a927c942fc5c4e,
-        type: 3}
-      propertyPath: m_Name
-      value: mountain1
-      objectReference: {fileID: 0}
     - target: {fileID: 8781169041212794459, guid: 3f206dd09503ff6408a927c942fc5c4e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -97,6 +92,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8781169041212794459, guid: 3f206dd09503ff6408a927c942fc5c4e,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8781169041212635771, guid: 3f206dd09503ff6408a927c942fc5c4e,
+        type: 3}
+      propertyPath: m_Name
+      value: mountain1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318788346428079281, guid: 3f206dd09503ff6408a927c942fc5c4e,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318788346428079281, guid: 3f206dd09503ff6408a927c942fc5c4e,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f206dd09503ff6408a927c942fc5c4e, type: 3}

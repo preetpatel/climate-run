@@ -62,10 +62,7 @@ public class GameManager : MonoBehaviour
                 informationText.text = "Swipe to move";
             }
 
-            if (score.ToString("0").Equals("15"))
-            {
-                cameraMotor.shakeDuration = 2f;
-            }
+        
 
         }
     }

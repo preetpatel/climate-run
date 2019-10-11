@@ -33,11 +33,11 @@ public class Collider : MonoBehaviour
         cameraMotor.shakeDuration = 1f;
         int objectIndex = Random.Range(0, gameObjects.Length);
         nextObstacleZLocation = colliderPosition + 38;
-        float xcord = 22;
+        float xcord = 21;
 
         if (objectIndex == 0)
         {
-            xcord = 49;
+            xcord = 45;
         }
         
         Vector3 pos = new Vector3(xcord, 0, nextObstacleZLocation);
