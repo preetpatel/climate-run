@@ -35,7 +35,7 @@ public class Level1Collider : MonoBehaviour
 
         int[] xcords = new int[] {-3, 0, 3};
         
-        for (int i = (int) loadingPosition; i < loadingPosition + 120; i += 20)
+        for (int i = (int) loadingPosition; i < loadingPosition + 80; i += 20)
         {
             int xcord = xcords[Random.Range(0, 3)];
             Vector3 randomPos = new Vector3(xcord, 0.74f, i);
