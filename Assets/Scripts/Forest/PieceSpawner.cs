@@ -24,6 +24,9 @@ public class PieceSpawner : MonoBehaviour
             case PieceType.ramp:
                 amtObj = ForestSpawnManager.Instance.ramps.Count;
                 break;
+            case PieceType.treeRow:
+                amtObj = ForestSpawnManager.Instance.treeRow.Count;
+                break;
         }
 
         currentPiece = ForestSpawnManager.Instance.GetPiece(type, 

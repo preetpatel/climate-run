@@ -25,6 +25,7 @@ public class ForestSpawnManager : MonoBehaviour
     public List<Piece> longblocks = new List<Piece>();
     public List<Piece> jumps = new List<Piece>();
     public List<Piece> slides = new List<Piece>();
+    public List<Piece> treeRow = new List<Piece>();
 
     [HideInInspector]
     public List<Piece> pieces = new List<Piece>(); // active pieces
@@ -183,6 +184,8 @@ public class ForestSpawnManager : MonoBehaviour
                 go = jumps[visualIndex].gameObject;
             else if (pt == PieceType.slide)
                 go = slides[visualIndex].gameObject;
+            else if (pt == PieceType.treeRow)
+                go = treeRow[visualIndex].gameObject;
 
             go = Instantiate(go);
             p = go.GetComponent<Piece>();
