@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenuUI;
     public GameObject pauseButtonUI;
 
-    // Update is called once per frame
+    // For enabling pause menu on PC using the escape key
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -19,14 +20,10 @@ public class PauseMenu : MonoBehaviour
             else
                 PressPauseButtonHandler();
         }
-      
-
-        
     }
 
     public void PressPauseButtonHandler()
     {
-        Debug.Log("Hi");
         pauseMenuUI.SetActive(true);
         pauseButtonUI.SetActive(false);
         Time.timeScale = 0f;
@@ -40,5 +37,12 @@ public class PauseMenu : MonoBehaviour
         pauseButtonUI.SetActive(true);
         Time.timeScale = 1f;
         isPaused = false;
+    }
+
+    public void PressMenuButtonHandler()
+    {
+        Time.timeScale = 1f;
+        isPaused = false;
+        SceneManager.LoadScene("MainMenu");
     }
 }
