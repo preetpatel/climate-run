@@ -10,9 +10,9 @@ public class TileManager : MonoBehaviour
 
     private float spawnZ = 0.0f;
 
-    private float levelLength = 100.0f;
+    private float levelLength = 105.0f;
 
-    private int amnLevelsOnScreen = 2;
+    private int amnLevelsOnScreen = 3;
 
     private float safeZone = 110.0f;
 
@@ -38,7 +38,7 @@ public class TileManager : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (playerTransform.position.z - safeZone > (spawnZ - amnLevelsOnScreen * levelLength))
+        if ((playerTransform.position.z - safeZone) > (spawnZ - amnLevelsOnScreen * levelLength))
         {
             SpawnLevel();
             DeleteLevel();
@@ -51,11 +51,9 @@ public class TileManager : MonoBehaviour
         go = Instantiate(tilePrefabs[lastPrefabIndex]) as GameObject;
         go.transform.SetParent(transform);
 
-        if (lastPrefabIndex == 0)
-        {
-            lastPrefabIndex = 1;
-        }
-        else
+        lastPrefabIndex++;
+        
+        if (lastPrefabIndex == 4)
         {
             lastPrefabIndex = 0;
         }

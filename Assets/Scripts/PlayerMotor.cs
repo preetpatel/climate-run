@@ -136,6 +136,12 @@ public class PlayerMotor : MonoBehaviour
             transform.forward = Vector3.Lerp(transform.forward, dir, TURN_SPEED);
         }
 
+        // Player falls through level
+        if (transform.position.y < 0)
+        {
+            Crash();
+            //transform.position = new Vector3(0, 0, 0);
+        }
     }
 
     private void MoveLane(bool goRight)
@@ -206,7 +212,7 @@ public class PlayerMotor : MonoBehaviour
         {
             anim.SetTrigger("Jump");
             verticalVelocity = jumpForce;
-            Vector3 hitButRevert = new Vector3(0, 5, 11);
+            Vector3 hitButRevert = new Vector3(0, 2, 3);
             CameraMotor cameraMotor = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMotor>();
             controller.Move(hitButRevert);
             cameraMotor.shakeDuration = 0.5f;
