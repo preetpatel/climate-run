@@ -136,6 +136,12 @@ public class PlayerMotor : MonoBehaviour
             transform.forward = Vector3.Lerp(transform.forward, dir, TURN_SPEED);
         }
 
+        // Player falls through level
+        if (transform.position.y < 0)
+        {
+            Crash();
+            //transform.position = new Vector3(0, 0, 0);
+        }
     }
 
     private void MoveLane(bool goRight)
