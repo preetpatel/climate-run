@@ -38,7 +38,7 @@ public class TileManager : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (playerTransform.position.z - safeZone > (spawnZ - amnLevelsOnScreen * levelLength))
+        if ((playerTransform.position.z - safeZone) > (spawnZ - amnLevelsOnScreen * levelLength))
         {
             SpawnLevel();
             DeleteLevel();
@@ -53,7 +53,7 @@ public class TileManager : MonoBehaviour
 
         lastPrefabIndex++;
         
-        if (lastPrefabIndex == 3)
+        if (lastPrefabIndex == 4)
         {
             lastPrefabIndex = 0;
         }

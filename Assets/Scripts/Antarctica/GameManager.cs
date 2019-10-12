@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
             // refactor later
             if (score > 60)
             {
-                SceneManager.LoadScene("Antarctica_EndingCutscene");
+               // SceneManager.LoadScene("Antarctica_EndingCutscene");
             }
             else if (score > 15)
             {
