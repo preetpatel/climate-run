@@ -6,6 +6,7 @@ public class SceneController : MonoBehaviour
     private void Start()
     {
         Time.timeScale = 1f;
+        Application.targetFrameRate = 60;
     }
     public void GoToLevelSelector()
     {

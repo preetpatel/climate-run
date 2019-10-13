@@ -22,7 +22,7 @@ public class MobileInput : MonoBehaviour
         set { instance = value; }
     }
 
-    private readonly float ignoreInputDelay = 50.0f;
+    private readonly float ignoreInputDelay = 5.0f;
     private readonly float doubleTapDelta = 0.5f;
 
     private bool tap, doubleTap, swipeLeft, swipeRight, swipeUp, swipeDown;

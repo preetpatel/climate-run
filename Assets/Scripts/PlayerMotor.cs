@@ -88,7 +88,7 @@ public class PlayerMotor : MonoBehaviour
         Vector3 moveVector = Vector3.zero;
 
         // where we should be - where we are to get a normalised vector.
-        if(Mathf.Abs((targetPosition - transform.position).x) > 0.08)
+        if(Mathf.Abs((targetPosition - transform.position).x) > 0.1)
             moveVector.x = (targetPosition - transform.position).normalized.x * speed;
 
         bool isGrounded = IsGrounded();
@@ -113,12 +113,27 @@ public class PlayerMotor : MonoBehaviour
             }
         }
         else // fast fall
-        { 
-            verticalVelocity -= (gravity * Time.deltaTime);
-
-            if (MobileInput.Instance.SwipeDown)
+        {
+            if (MobileInput.Instance.SwipeUp)
             {
-                verticalVelocity = -jumpForce;
+                // Jump
+                anim.SetTrigger("Jump");
+                verticalVelocity = jumpForce;
+            }
+            else if (MobileInput.Instance.SwipeDown)
+            {
+                // Slide
+                StartSliding();
+                Invoke("StopSliding", 1.0f);
+            }
+            else
+            {
+                verticalVelocity -= (gravity * Time.deltaTime);
+
+                if (MobileInput.Instance.SwipeDown)
+                {
+                    verticalVelocity = -jumpForce;
+                }
             }
         }
 
