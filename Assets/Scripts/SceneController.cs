@@ -3,6 +3,10 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
+    private void Start()
+    {
+        Time.timeScale = 1f;
+    }
     public void GoToLevelSelector()
     {
         SceneManager.LoadScene("LevelSelector");
@@ -10,7 +14,7 @@ public class SceneController : MonoBehaviour
 
     public void GoToAntarctica()
     {
-        SceneManager.LoadScene("Antarctica_StartingCutscene");
+        SceneManager.LoadScene("Antarctica");
     }
 
     public void GoToForest()
