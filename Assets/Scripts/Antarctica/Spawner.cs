@@ -2,56 +2,42 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Spawns the obstacles for user to avoid
 public class Spawner : MonoBehaviour
 {
-    private int minZ = 100;
-    private int maxZ = 200;
-    private int minX = -3;
-    private int maxX = 3;
-    public new GameObject gameObject;
+    public GameObject[] gameObjects;
     private Transform playerTransform;
-    private int LoadingDistance = 210;
-
-    private float safeZone = 75.0f;
+    private int nextLoadingDistanceIncrement = 40;
     private List<GameObject> obstacleList;
+    private int triggerDistance = 20;
+    private int nextObstacleZLocation = 40;
 
-
+    private float lengthOfLevelTile = 100f;
     // Start is called before the first frame update
     void Start()
     {
         obstacleList = new List<GameObject>();
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        
     }
 
-    private void LoadObstacles()
+    private void LoadNextObstacle()
     {
-        
-        for (int i = minZ; i < maxZ; i += 25)
-        {
-            Vector3 randomPos = new Vector3(Random.Range(minX, maxX), 0, i);
-            Instantiate(gameObject, randomPos, Quaternion.identity);
-        }
+        int objectIndex = Random.Range(0, gameObjects.Length);
 
-        obstacleList.Add(gameObject);
-        
-        minZ += LoadingDistance;
-        maxZ += LoadingDistance;
-    
+        Vector3 pos = new Vector3(10, 0, nextObstacleZLocation);
+        GameObject go = Instantiate(gameObjects[objectIndex], pos, gameObjects[objectIndex].transform.rotation);
+        obstacleList.Add(go);
+        nextObstacleZLocation += 40;
     }
+
 
     private void Update()
     {        
-        if (minZ -  playerTransform.position.z <  safeZone )
+        if (playerTransform.position.z >= triggerDistance && playerTransform.position.z <     lengthOfLevelTile )
         {
-            LoadObstacles();
-            DeleteObstacles();
-    
+            LoadNextObstacle();
+            triggerDistance += nextLoadingDistanceIncrement;
         }
-
-   
-        
-        
     }
 
     private void DeleteObstacles()

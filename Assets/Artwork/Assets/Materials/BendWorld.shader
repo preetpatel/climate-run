@@ -27,7 +27,7 @@
 		{
 			float4 worldSpace = mul(unity_ObjectToWorld, v.vertex);
 			worldSpace.xyz -= _WorldSpaceCameraPos.xyz;
-			worldSpace = float4(0.0f, (worldSpace.z * worldSpace.z) * -_Curvature, 0.0f, 0.0f);
+			worldSpace = float4(0.0f, (worldSpace.z * worldSpace.z) * 0.0f, 0.0f, 0.0f);
 
 			v.vertex += mul(unity_WorldToObject, worldSpace);
 		}
