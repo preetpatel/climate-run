@@ -10,6 +10,11 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenuUI;
     public GameObject pauseButtonUI;
 
+    private void Start()
+    {
+        Time.timeScale = 1f;
+    }
+
     // For enabling pause menu on PC using the escape key
     void Update()
     {
