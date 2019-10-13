@@ -16,12 +16,17 @@ public class Garbage : MonoBehaviour
         animator.SetTrigger("Spawn");
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(UnityEngine.Collider other)
     {
         if (other.tag == "Player")
         {
             BeachLevelManager.Instance.getGarbage();
             animator.SetTrigger("Collected");
         }
+    }
+
+    public void OnTriggerThrow()
+    {
+        animator.SetTrigger("Thrown");
     }
 }
