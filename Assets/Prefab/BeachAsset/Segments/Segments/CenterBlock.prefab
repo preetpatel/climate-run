@@ -70,7 +70,6 @@ MonoBehaviour:
   chanceToSpawn: 1
   forceSpawnAll: 0
   isTrashObtacle: 1
-  garbageMultiplier: 1
 --- !u!1 &8155212990606507801
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,7 +198,6 @@ MonoBehaviour:
   chanceToSpawn: 1
   forceSpawnAll: 0
   isTrashObtacle: 1
-  garbageMultiplier: 1
 --- !u!1001 &376739334694699776
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -207,16 +205,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7623386099233509114}
     m_Modifications:
-    - target: {fileID: 3562069040758127653, guid: d97aca79f8ea9bf47bd44e864d986ceb,
-        type: 3}
-      propertyPath: m_Name
-      value: Trash (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 3562069040758127653, guid: d97aca79f8ea9bf47bd44e864d986ceb,
-        type: 3}
-      propertyPath: m_TagString
-      value: Obstacle
-      objectReference: {fileID: 0}
     - target: {fileID: 3562069040758127674, guid: d97aca79f8ea9bf47bd44e864d986ceb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -287,6 +275,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.4077272
       objectReference: {fileID: 0}
+    - target: {fileID: 3562069040758127653, guid: d97aca79f8ea9bf47bd44e864d986ceb,
+        type: 3}
+      propertyPath: m_Name
+      value: Trash (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3562069040758127653, guid: d97aca79f8ea9bf47bd44e864d986ceb,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d97aca79f8ea9bf47bd44e864d986ceb, type: 3}
 --- !u!4 &3771043986885115706 stripped
@@ -302,16 +300,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3267590173975696729}
     m_Modifications:
-    - target: {fileID: 3562069040758127653, guid: d97aca79f8ea9bf47bd44e864d986ceb,
-        type: 3}
-      propertyPath: m_Name
-      value: Trash
-      objectReference: {fileID: 0}
-    - target: {fileID: 3562069040758127653, guid: d97aca79f8ea9bf47bd44e864d986ceb,
-        type: 3}
-      propertyPath: m_TagString
-      value: Obstacle
-      objectReference: {fileID: 0}
     - target: {fileID: 3562069040758127674, guid: d97aca79f8ea9bf47bd44e864d986ceb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -381,6 +369,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.4077272
+      objectReference: {fileID: 0}
+    - target: {fileID: 3562069040758127653, guid: d97aca79f8ea9bf47bd44e864d986ceb,
+        type: 3}
+      propertyPath: m_Name
+      value: Trash
+      objectReference: {fileID: 0}
+    - target: {fileID: 3562069040758127653, guid: d97aca79f8ea9bf47bd44e864d986ceb,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d97aca79f8ea9bf47bd44e864d986ceb, type: 3}
@@ -710,7 +708,7 @@ PrefabInstance:
     - target: {fileID: 2711710536905457516, guid: 802c44d3a11d9c445bfcf556f042464b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 3.22
       objectReference: {fileID: 0}
     - target: {fileID: 2711710536905457516, guid: 802c44d3a11d9c445bfcf556f042464b,
         type: 3}
