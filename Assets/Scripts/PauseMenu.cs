@@ -50,3 +50,4 @@ public class PauseMenu : MonoBehaviour
         isPaused = false;
         SceneManager.LoadScene("MainMenu");
     }
+}
