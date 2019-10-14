@@ -23,6 +23,7 @@ public class BeachLevelManager : MonoBehaviour
     public Text livesText;
     public Slider pollutionSlide;
     public Button pauseButton;
+    public Image infoBox;
     private float score = 0;
     private float garbage = 0;
     private float modifier = 1.0f;
@@ -75,7 +76,7 @@ public class BeachLevelManager : MonoBehaviour
                         }*/
             if(score > 25)
             {
-                informationText.text = "";
+                infoBox.gameObject.SetActive(false);
             }
             else if (score > 20)
             {
@@ -142,7 +143,8 @@ public class BeachLevelManager : MonoBehaviour
         informationText.gameObject.SetActive(false);
         pollutionSlide.gameObject.SetActive(false);
         pauseButton.gameObject.SetActive(false);
-}
+        infoBox.gameObject.SetActive(false);
+    }
 
     public void OnRetryButton()
 	{
