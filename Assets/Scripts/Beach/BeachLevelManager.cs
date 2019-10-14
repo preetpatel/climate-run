@@ -88,15 +88,16 @@ public class BeachLevelManager : MonoBehaviour
             }
             else if (score > 10)
             {
-                informationText.text = "The pollution meter rises whenever you don't collect a garbage";
+                informationText.text = "The pollution meter on the top right" +
+                    "rises whenever you don't collect the garbage, and will decrease when you do";
             }
             else if (score > 5)
             {
-                informationText.text = "Garbage will pile up if you leave them unhandled";
+                informationText.text = "Garbage will pile up if you leave it unhandled";
             }
             else if (score > 0)
             {
-                informationText.text = "Flippy, you have to collect the garbage people throw on the beach!";
+                informationText.text = "Flippy, you have to collect the garbage that people throw on the beach!";
             }
 
             timeSinceGarbageCollected += Time.deltaTime;
