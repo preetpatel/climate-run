@@ -120,8 +120,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 18e3871963d340640bf6e75955b7f66e, type: 2}
-  - {fileID: 2100000, guid: a15658896ca8aab42b9ca914ab73b5ea, type: 2}
+  - {fileID: 2100000, guid: 8368e2b099c9970478f6c1ed97b0e324, type: 2}
+  - {fileID: 2100000, guid: 89104d4f6efc949458200639443f0c4c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -198,10 +198,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7388894285277163551}
     m_Modifications:
-    - target: {fileID: 1247846330800260, guid: 287d299a9d2286749acea0d6a16f804f, type: 3}
-      propertyPath: m_Name
-      value: Fire01_Mobile
-      objectReference: {fileID: 0}
     - target: {fileID: 4657715108521408, guid: 287d299a9d2286749acea0d6a16f804f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.072
@@ -245,6 +241,10 @@ PrefabInstance:
     - target: {fileID: 4657715108521408, guid: 287d299a9d2286749acea0d6a16f804f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1247846330800260, guid: 287d299a9d2286749acea0d6a16f804f, type: 3}
+      propertyPath: m_Name
+      value: Fire01_Mobile
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 287d299a9d2286749acea0d6a16f804f, type: 3}

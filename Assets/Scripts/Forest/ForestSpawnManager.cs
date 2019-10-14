@@ -187,7 +187,7 @@ public class ForestSpawnManager : MonoBehaviour
             else if (pt == PieceType.slide)
                 go = slides[visualIndex].gameObject;
             else if (pt == PieceType.treeRow)
-                go = treeRow[visualIndex].gameObject;
+                go = treeRows[visualIndex].gameObject;
             else if (pt == PieceType.longRamp)
                 go = longRamps[visualIndex].gameObject;
             else if (pt == PieceType.fallenTree)
