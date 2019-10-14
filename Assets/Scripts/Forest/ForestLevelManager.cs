@@ -27,7 +27,8 @@ public class ForestLevelManager : MonoBehaviour
 
 	private void Awake()
 	{
-		Instance = this;
+        FindObjectOfType<AudioManager>().Play("Theme");
+        Instance = this;
 
 		informationText.text = "Tap Anywhere To Begin!";
 		playerMotor = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMotor>();
