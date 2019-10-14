@@ -219,7 +219,7 @@ public class PlayerMotor : MonoBehaviour
                 BeachLevelManager.Instance.OnDeath();
             } else
             {
-                SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+                AntarcticaLevelManager.Instance.OnDeath();
             }
         }
         else // Otherwise if we still have lives remaining, move the character up and give another chance
