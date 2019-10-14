@@ -15,6 +15,7 @@ public class AntarcticaLevelManager : MonoBehaviour
     // UI and the UI fields
     public Text scoreText;
     public Text informationText;
+    public Text livesText;
     private float score = 0;
 
     //Death menu
@@ -27,6 +28,7 @@ public class AntarcticaLevelManager : MonoBehaviour
         Instance = this;
         scoreText.text = score.ToString();
         informationText.text = "Touch to start";
+        livesText.text = "Lives Remaining : 3";
         playerMotor = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMotor>();
         cameraMotor = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMotor>();
     }
@@ -43,7 +45,7 @@ public class AntarcticaLevelManager : MonoBehaviour
         if (isGameStarted)
         {
             score += Time.deltaTime;
-            scoreText.text = score.ToString("0");
+            scoreText.text = "Score: " + score.ToString("0");
 
             // refactor later
             if (score > 60)
@@ -84,13 +86,16 @@ public class AntarcticaLevelManager : MonoBehaviour
 
     public void OnRetryButton()
     {
-        Debug.Log("Retry");
         SceneManager.LoadScene("Antarctica");
     }
 
     public void OnExitButtonPress()
     {
-        Debug.Log("Exit");
         SceneManager.LoadScene("MainMenu");
+    }
+
+    public void updateLives(float livesAmount)
+    {
+        livesText.text = "Lives Remaining : " + livesAmount.ToString("0");
     }
 }
