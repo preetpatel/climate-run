@@ -134,8 +134,7 @@ public class BeachLevelManager : MonoBehaviour
         deadScoreText.text = "Score: " + score.ToString("0");
         deadGarbageText.text = "Garbage Collected: " + garbage.ToString("0");
         deathMenuAnim.SetTrigger("Dead");
-        //completely pause the game
-        //Time.timeScale = 0;
+       
     }
 
     public void OnRetryButton()
