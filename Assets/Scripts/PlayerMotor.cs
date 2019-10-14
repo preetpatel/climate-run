@@ -204,7 +204,6 @@ public class PlayerMotor : MonoBehaviour
     {
 
         livesCounter -= 1;
-        Debug.Log(livesCounter);
 
         // If no more lives are left, do a crash
         if (livesCounter < 1)
