@@ -9,10 +9,10 @@ public class ForestSpawnManager : MonoBehaviour
     public static ForestSpawnManager Instance { set; get; }
 
     // Level Spawning
-    private const float DISTANCE_BEFORE_SPAWN = 100.0f;
-    private const int INITIAL_SEGMENTS = 10;
+    private const float DISTANCE_BEFORE_SPAWN = 50.0f;
+    private const int INITIAL_SEGMENTS = 5;
     private const int INITIAL_TRANSITION_SEGMENTS = 2;
-    private const int MAX_SEGMENTS_ON = 15;
+    private const int MAX_SEGMENTS_ON = 10;
     private Transform cameraContainer;
     private int amountOfActiveSegments;
     private int continuousSegments;
