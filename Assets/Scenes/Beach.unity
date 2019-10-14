@@ -1365,8 +1365,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookAt: {fileID: 1096890605}
-  offset: {x: 0, y: 3.5, z: -2}
-  rotation: {x: 35, y: 0, z: 0}
+  offset: {x: 0, y: 3.5, z: -1}
+  rotation: {x: 15, y: 0, z: 0}
   shakeDuration: 0
   shakeAmount: 0.2
   isFollowing: 0
@@ -1523,11 +1523,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 587786019}
     m_Modifications:
-    - target: {fileID: 3299821735586376754, guid: f22f3a959706c4114b6dbf23a2cb6b09,
-        type: 3}
-      propertyPath: m_Name
-      value: PauseMenuPanel
-      objectReference: {fileID: 0}
     - target: {fileID: 3299821735586376755, guid: f22f3a959706c4114b6dbf23a2cb6b09,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1647,6 +1642,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3299821735586376754, guid: f22f3a959706c4114b6dbf23a2cb6b09,
+        type: 3}
+      propertyPath: m_Name
+      value: PauseMenuPanel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f22f3a959706c4114b6dbf23a2cb6b09, type: 3}
