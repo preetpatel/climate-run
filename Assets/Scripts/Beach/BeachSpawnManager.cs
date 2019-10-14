@@ -162,7 +162,7 @@ public class BeachSpawnManager : MonoBehaviour
 
         currentSpawnZ += s.length;
         amountOfActiveSegments++;
-        s.Spawn();
+        s.Spawn(); 
     }
 
     // Update is called once per frame
