@@ -117,8 +117,8 @@ public class PlayerMotor : MonoBehaviour
             if (MobileInput.Instance.SwipeUp)
             {
                 // Jump
-                anim.SetTrigger("Jump");
-                verticalVelocity = jumpForce;
+ //               anim.SetTrigger("Jump");
+   //             verticalVelocity = jumpForce;
             }
             else if (MobileInput.Instance.SwipeDown)
             {
