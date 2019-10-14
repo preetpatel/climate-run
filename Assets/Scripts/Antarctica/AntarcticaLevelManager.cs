@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour
+public class AntarcticaLevelManager : MonoBehaviour
 {
-    public static GameManager Instance {set; get;}
+    public static AntarcticaLevelManager Instance {set; get;}
 
     private bool isGameStarted = false;
     private PlayerMotor playerMotor;
@@ -16,6 +16,11 @@ public class GameManager : MonoBehaviour
     public Text scoreText;
     public Text informationText;
     private float score = 0;
+
+    //Death menu
+    public Animator deathMenuAnim;
+    public Text deadScoreText;
+    public Button pauseButton;
 
     private void Awake()
     {
@@ -67,4 +72,25 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void OnDeath()
+    {
+        deadScoreText.text = "Score: " + score.ToString("0");
+        deathMenuAnim.SetTrigger("Dead");
+        isGameStarted = false;
+        scoreText.gameObject.SetActive(false);
+        informationText.gameObject.SetActive(false);
+        pauseButton.gameObject.SetActive(false);
+    }
+
+    public void OnRetryButton()
+    {
+        Debug.Log("Retry");
+        SceneManager.LoadScene("Antarctica");
+    }
+
+    public void OnExitButtonPress()
+    {
+        Debug.Log("Exit");
+        SceneManager.LoadScene("MainMenu");
+    }
 }
