@@ -27,6 +27,12 @@ public class PieceSpawner : MonoBehaviour
             case PieceType.treeRow:
                 amtObj = ForestSpawnManager.Instance.treeRow.Count;
                 break;
+            case PieceType.longRamp:
+                amtObj = ForestSpawnManager.Instance.longRamps.Count;
+                break;
+            case PieceType.fallenTree:
+                amtObj = ForestSpawnManager.Instance.fallenTrees.Count;
+                break;
         }
 
         currentPiece = ForestSpawnManager.Instance.GetPiece(type, 
