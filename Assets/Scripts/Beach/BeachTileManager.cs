@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BeachTileManager : MonoBehaviour
 {
-    public GameObject[] tilePrefabs;
+    public List<GameObject> tilePrefabs;
 
     private Transform playerTransform;
 
@@ -20,10 +20,12 @@ public class BeachTileManager : MonoBehaviour
     
     
     private List<GameObject> activeLevels;
+    private List<GameObject> instantiatedLevels;
     // Start is called before the first frame update
     private void Start()
     {
         activeLevels = new List<GameObject>();
+        instantiatedLevels = new List<GameObject>();
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
 
         for (int i = 0; i < amnLevelsOnScreen; i++)
@@ -32,8 +34,6 @@ public class BeachTileManager : MonoBehaviour
         }
        
     }
-
-   
 
     // Update is called once per frame
     private void Update()
@@ -48,16 +48,33 @@ public class BeachTileManager : MonoBehaviour
 
     private void SpawnLevel()
     {
-        GameObject go;
+        List<GameObject> possibleTiles = null;
+        possibleTiles = instantiatedLevels.FindAll(
+            x => !x.gameObject.activeSelf);
         Vector3 pos = new Vector3(0, 0, nextLevelZLocation);
-        go = Instantiate(tilePrefabs[0], pos, Quaternion.identity);
+
+        if (possibleTiles == null || possibleTiles.Count == 0)
+        {
+            int tileToSpawn = Random.Range(0, tilePrefabs.Count);
+            GameObject go = Instantiate(tilePrefabs[tileToSpawn], pos, Quaternion.identity);
+            activeLevels.Add(go);
+            instantiatedLevels.Add(go);
+        } else 
+        {
+            int tileToSpawn = Random.Range(0, possibleTiles.Count);
+            GameObject go = possibleTiles[tileToSpawn];
+            go.transform.position = pos;
+            go.SetActive(true);
+            activeLevels.Add(go);
+        }
+        
+
         nextLevelZLocation += levelLength;
-        activeLevels.Add(go);
     }
 
     public void DeleteLevel()
     {
-        Destroy(activeLevels[0]);
+        activeLevels[0].SetActive(false);
         activeLevels.RemoveAt(0);
     }
 }
