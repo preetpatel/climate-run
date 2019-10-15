@@ -20,7 +20,7 @@ public class CameraMotor : MonoBehaviour
     private void Start()
     {
         // Remove the if statemtnt if you want your scenes to have the start menu Forest level has
-        if (!SceneManager.GetActiveScene().name.Equals("Forest"))
+        if (!SceneManager.GetActiveScene().name.Equals("Forest") && !SceneManager.GetActiveScene().name.Equals("Beach"))
             transform.position = lookAt.position + initialOffset;
     } 
 
@@ -54,7 +54,7 @@ public class CameraMotor : MonoBehaviour
 
             transform.position = targetPos;
         }
-        if (SceneManager.GetActiveScene().name.Equals("Forest"))
+        if (SceneManager.GetActiveScene().name.Equals("Forest") || SceneManager.GetActiveScene().name.Equals("Beach"))
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(rotation), 0.05f);
 
     }

@@ -204,7 +204,6 @@ public class PlayerMotor : MonoBehaviour
     {
 
         livesCounter -= 1;
-        Debug.Log(livesCounter);
 
         // If no more lives are left, do a crash
         if (livesCounter < 1)
@@ -220,7 +219,7 @@ public class PlayerMotor : MonoBehaviour
                 BeachLevelManager.Instance.OnDeath();
             } else
             {
-                SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+                AntarcticaLevelManager.Instance.OnDeath();
             }
         }
         else // Otherwise if we still have lives remaining, move the character up and give another chance
@@ -237,6 +236,12 @@ public class PlayerMotor : MonoBehaviour
             if (gameScene.name.Equals("Forest"))
             {
                 ForestLevelManager.Instance.updateLives(livesCounter);
+            } else if (gameScene.name.Equals("Beach"))
+            {
+                BeachLevelManager.Instance.updateLives(livesCounter);
+            } else
+            {
+                AntarcticaLevelManager.Instance.updateLives(livesCounter);
             }
         }
     }
