@@ -38,7 +38,7 @@ public class Level1Collider : MonoBehaviour
         for (int i = (int) loadingPosition; i < loadingPosition + 80; i += 20)
         {
             int xcord = xcords[Random.Range(0, 3)];
-            Vector3 randomPos = new Vector3(xcord, 0.74f, i);
+            Vector3 randomPos = new Vector3(xcord, 0.5f, i);
             GameObject go = Instantiate(gameObjects[0], randomPos, gameObjects[0].transform.rotation);
             obstacleList.Add(go);        
         }
