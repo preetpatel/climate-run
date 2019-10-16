@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TrashSpawner : MonoBehaviour
 {
-    public static float garbageMultiplier = 1.0f;
+    public static float garbageMultiplier = 0.5f;
 
     private GameObject trash;
 
