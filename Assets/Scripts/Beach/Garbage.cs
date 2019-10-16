@@ -11,6 +11,7 @@ public class Garbage : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+    
     private void OnEnable()
     {
         animator.SetTrigger("Spawn");

@@ -6,26 +6,33 @@ public class GarbageSpawner : MonoBehaviour
 {
     public float chanceToSpawn = 0.5f;
 
-    private GameObject garbage;
+    private GameObject[] garbageAndThrower;
 
     private Transform playerTransform;
+
+    private bool thrown = false;
 
     private void Awake()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        // Should only be one piece of garbage per script
-        garbage = transform.GetChild(0).gameObject;
+
+        garbageAndThrower = new GameObject[transform.childCount];
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            garbageAndThrower[i] = transform.GetChild(i).gameObject;
+        }
         OnDisable();
     }
 
     private void Update() 
     {
-        for (int i = 0; i < transform.childCount; i++)
+        if (garbageAndThrower[0].activeInHierarchy && transform.position.z < playerTransform.position.z + 35 && !thrown)
         {
-            if (garbage.activeInHierarchy && garbage.transform.position.z < playerTransform.position.z + 25)
+            for (int i = 0; i < transform.childCount; i++)
             {
-                garbage.SendMessage("OnTriggerThrow");
+                garbageAndThrower[i].SendMessage("OnTriggerThrow");
             }
+            thrown = true;
         }
     }
 
@@ -36,11 +43,17 @@ public class GarbageSpawner : MonoBehaviour
             return;
         }
 
-        garbage.SetActive(true);
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            garbageAndThrower[i].SetActive(true);
+        }
     }
 
     public void OnDisable()
     {
-        garbage.SetActive(false);
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            garbageAndThrower[i].SetActive(false);
+        }
     }
 }
