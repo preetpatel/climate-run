@@ -35,7 +35,7 @@ public class BeachLevelManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        pollutionSlide.value = GarbageSpawner.garbageMultiplier;
+        pollutionSlide.value = TrashSpawner.garbageMultiplier;
         informationText.text = "Press any key to start";
         playerMotor = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMotor>();
         cameraMotor = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMotor>();
@@ -63,9 +63,9 @@ public class BeachLevelManager : MonoBehaviour
         {
             if (!garbageCollected)
             {
-                float garbMulti = GarbageSpawner.garbageMultiplier;
-                GarbageSpawner.garbageMultiplier = Mathf.Clamp(garbMulti += 0.001f, 0.0f, 1.0f);
-                pollutionSlide.value = GarbageSpawner.garbageMultiplier;
+                float garbMulti = TrashSpawner.garbageMultiplier;
+                TrashSpawner.garbageMultiplier = Mathf.Clamp(garbMulti += 0.001f, 0.0f, 1.0f);
+                pollutionSlide.value = TrashSpawner.garbageMultiplier;
             }
             score += (Time.deltaTime * modifier);
             scoreText.text = "Score : " + score.ToString("0");
@@ -116,9 +116,9 @@ public class BeachLevelManager : MonoBehaviour
         garbage++;
         garbageText.text = "Garbage : " + garbage.ToString();
         garbageCollected = true;
-        float garbMulti = GarbageSpawner.garbageMultiplier;
-        GarbageSpawner.garbageMultiplier = Mathf.Clamp(garbMulti -= 0.25f, 0.0f, 1.0f);
-        pollutionSlide.value = GarbageSpawner.garbageMultiplier;
+        float garbMulti = TrashSpawner.garbageMultiplier;
+        TrashSpawner.garbageMultiplier = Mathf.Clamp(garbMulti -= 0.25f, 0.0f, 1.0f);
+        pollutionSlide.value = TrashSpawner.garbageMultiplier;
     }
     
     public void updateLives(float livesAmount)
