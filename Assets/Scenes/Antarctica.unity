@@ -868,6 +868,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!1 &1350976851
 GameObject:
   m_ObjectHideFlags: 0
@@ -1046,6 +1047,8 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1497986563}
   m_CullTransparentMesh: 0
+=======
+>>>>>>> 83bad4e0ccbbcd260de4339059b76ac78d288991
 --- !u!114 &1510422867 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3299821735020795984, guid: f22f3a959706c4114b6dbf23a2cb6b09,
@@ -1151,6 +1154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 1919915683}
   informationText: {fileID: 62785940}
+<<<<<<< HEAD
   livesText: {fileID: 1497986565}
   deathMenuAnim: {fileID: 1765975227804391157}
   deadScoreText: {fileID: 1765975225839852294}
@@ -1232,6 +1236,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
+=======
+  deathMenuAnim: {fileID: 1765975227804391157}
+  deadScoreText: {fileID: 1765975225839852294}
+  pauseButton: {fileID: 1510422867}
+>>>>>>> 83bad4e0ccbbcd260de4339059b76ac78d288991
 --- !u!222 &1765975225839852289
 CanvasRenderer:
   m_ObjectHideFlags: 0
