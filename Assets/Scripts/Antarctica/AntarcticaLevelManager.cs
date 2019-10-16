@@ -86,16 +86,11 @@ public class AntarcticaLevelManager : MonoBehaviour
 
     public void OnRetryButton()
     {
-<<<<<<< HEAD:Assets/Scripts/Antarctica/AntarcticaLevelManager.cs
-=======
-        Debug.Log("Retry");
->>>>>>> 83bad4e0ccbbcd260de4339059b76ac78d288991:Assets/Scripts/Antarctica/AntarcticaLevelManager.cs
         SceneManager.LoadScene("Antarctica");
     }
 
     public void OnExitButtonPress()
     {
-<<<<<<< HEAD:Assets/Scripts/Antarctica/AntarcticaLevelManager.cs
         SceneManager.LoadScene("MainMenu");
     }
 
@@ -103,9 +98,4 @@ public class AntarcticaLevelManager : MonoBehaviour
     {
         livesText.text = "Lives Remaining : " + livesAmount.ToString("0");
     }
-=======
-        Debug.Log("Exit");
-        SceneManager.LoadScene("MainMenu");
-    }
->>>>>>> 83bad4e0ccbbcd260de4339059b76ac78d288991:Assets/Scripts/Antarctica/AntarcticaLevelManager.cs
 }
