@@ -186,6 +186,12 @@ public class PlayerMotor : MonoBehaviour
         anim.SetTrigger("StartRunning");
     }
 
+    public void StopRunning()
+    {
+        isRunning = false;
+        anim.SetTrigger("StopRunning");
+    }
+
     public void StartSliding()
     {
         anim.SetBool("Sliding", true);

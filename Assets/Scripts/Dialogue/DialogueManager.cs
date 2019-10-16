@@ -10,13 +10,11 @@ public class DialogueManager : MonoBehaviour
     public Text dialogueText;
     public GameObject ContinueIcon;
     public Animator DialogueAnimator;
-    public Animator backgroundAnimator;
-    public Animator CharacterAnimator;
-    public string nextScene;
 
     private Queue<string> Sentences;
     private bool isSentenceShowing = false;
-    private int secondsToWaitAtEnd = 2;
+    private int secondsToWaitAtEnd = 0;
+    private bool finishInstantly = false;
    
 
     // Start is called before the first frame update
@@ -31,14 +29,15 @@ public class DialogueManager : MonoBehaviour
         {
             isSentenceShowing = true;
             DisplayNextSentence();
+        } else if (Input.anyKeyDown && isSentenceShowing)
+        {
+            finishInstantly = true;
         }
     }
 
     public void StartDialogue(Dialogue dialogue)
     {
         DialogueAnimator.SetBool("isOpen", true);
-        backgroundAnimator.SetBool("isOpen", true);
-        CharacterAnimator.SetBool("isOpen", true);
         nameText.text = dialogue.name;
 
         Sentences.Clear();
@@ -68,13 +67,20 @@ public class DialogueManager : MonoBehaviour
     IEnumerator TypeSentence(string sentence)
     {
         dialogueText.text = "";
-        
         foreach ( char letter in sentence.ToCharArray())
         {
             dialogueText.text += letter;
             // wait a single frame
             yield return null;
+
+            if (finishInstantly) // skip text animation
+            {
+                dialogueText.text = sentence;
+                break;
+            }
         }
+
+        finishInstantly = false;
         isSentenceShowing = false;
         ContinueIcon.SetActive(true);
     }
@@ -82,10 +88,7 @@ public class DialogueManager : MonoBehaviour
     IEnumerator EndDialogue()
     {
         DialogueAnimator.SetBool("isOpen", false);
-        backgroundAnimator.SetBool("isOpen", false);
-        CharacterAnimator.SetBool("isOpen", false);
         yield return new WaitForSeconds(secondsToWaitAtEnd);
-        SceneManager.LoadScene(nextScene);
     }
 
 }

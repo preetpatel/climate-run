@@ -12,6 +12,11 @@ public class AntarcticaLevelManager : MonoBehaviour
     private PlayerMotor playerMotor;
     private CameraMotor cameraMotor;
 
+    // Cutscenes
+    public DialogueTrigger startCutscene;
+    public DialogueTrigger endCutscene;
+    public Animator DialogueAnimator;
+
     // UI and the UI fields
     public Text scoreText;
     public Text informationText;
@@ -31,11 +36,14 @@ public class AntarcticaLevelManager : MonoBehaviour
         livesText.text = "Lives Remaining : 3";
         playerMotor = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMotor>();
         cameraMotor = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMotor>();
+
+        startCutscene.Begin();
     }
 
     private void Update()
     {
-        if (Input.anyKey && !isGameStarted)
+
+        if (Input.anyKey && !isGameStarted && !DialogueAnimator.GetBool("isOpen"))
         {
             isGameStarted = true;
             playerMotor.StartRunning();
@@ -50,7 +58,12 @@ public class AntarcticaLevelManager : MonoBehaviour
             // refactor later
             if (score > 60)
             {
-               // SceneManager.LoadScene("Antarctica_EndingCutscene");
+                isGameStarted = false;
+                playerMotor.StopRunning();
+                cameraMotor.StopFollowing();
+                endCutscene.Begin();
+
+                score = 0;
             }
             else if (score > 15)
             {
@@ -69,8 +82,6 @@ public class AntarcticaLevelManager : MonoBehaviour
                 informationText.text = "Swipe to move";
             }
 
-        
-
         }
     }
 
@@ -81,6 +92,7 @@ public class AntarcticaLevelManager : MonoBehaviour
         isGameStarted = false;
         scoreText.gameObject.SetActive(false);
         informationText.gameObject.SetActive(false);
+        livesText.gameObject.SetActive(false);
         pauseButton.gameObject.SetActive(false);
     }
 

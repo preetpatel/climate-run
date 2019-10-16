@@ -6,9 +6,9 @@ public class DialogueTrigger : MonoBehaviour
 {
 
     public Dialogue dialogue;
-    private int secondsToWait = 3;
+    private int secondsToWait = 0;
 
-    public void Start()
+    public void Begin()
     {
        StartCoroutine(TriggerDialogue());
     }

@@ -64,4 +64,8 @@ public class CameraMotor : MonoBehaviour
         isFollowing = true;
     }
 
+    public void StopFollowing()
+    {
+        isFollowing = false;
+    }
 }
