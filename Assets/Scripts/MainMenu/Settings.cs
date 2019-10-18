@@ -11,17 +11,35 @@ public class Settings : MonoBehaviour
     public Button musicButton;
     public Button sfxButton;
     
-    private bool isMusicPressed = false;
-    private bool isSfxPressed = false;
+    private bool isMusicOn = true;
+    private bool isSfxOn = true;
 
     public void onMusicPress()
     {
-        isMusicPressed = buttonPressed(musicButton, isMusicPressed);
+        isMusicOn = buttonPressed(musicButton, isMusicOn);
+
+        AudioSource[] audios = GameObject.FindObjectsOfType<AudioSource>();
+        foreach (AudioSource audio in audios)
+        {
+            if (audio.CompareTag("Music"))
+            {
+               
+                if (isMusicOn)
+                {
+                    audio.Play();
+                } else
+                {
+                    audio.Pause();
+                }
+                
+            }
+        }
+        
     }
 
     public void onSFXPress()
     {
-        isSfxPressed = buttonPressed(sfxButton, isSfxPressed);
+        isSfxOn = buttonPressed(sfxButton, isSfxOn);
     }
 
     public void goBackToMainMenu()
@@ -29,22 +47,22 @@ public class Settings : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
-    private bool buttonPressed(Button buttonPressed, bool buttonStatus)
+    private bool buttonPressed(Button buttonPressed, bool isButtonOn)
     {
         Text text = buttonPressed.GetComponentInChildren<Text>();
         Image image = buttonPressed.image;
-        if (buttonStatus)
-        {
-            buttonPressed.image.color = Color.green;
-            text.text = "On";
-            buttonStatus = false;
-        }
-        else
+        if (isButtonOn)
         {
             buttonPressed.image.color = Color.red;
             text.text = "Off";
-            buttonStatus = true;
+            isButtonOn = false;
         }
-        return buttonStatus;
+        else
+        {
+            buttonPressed.image.color = Color.green;
+            text.text = "On";
+            isButtonOn = true;
+        }
+        return isButtonOn;
     }
 }
