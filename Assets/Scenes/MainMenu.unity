@@ -526,6 +526,16 @@ PrefabInstance:
       propertyPath: m_Text
       value: Settings
       objectReference: {fileID: 0}
+    - target: {fileID: 8286548184341119523, guid: 15aadf4aec1d2a64881c16742b23d6cf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1833813310}
+    - target: {fileID: 8286548184341119523, guid: 15aadf4aec1d2a64881c16742b23d6cf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoToSettings
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15aadf4aec1d2a64881c16742b23d6cf, type: 3}
 --- !u!224 &1186622432 stripped
