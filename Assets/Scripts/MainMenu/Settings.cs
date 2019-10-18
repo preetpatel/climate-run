@@ -11,8 +11,29 @@ public class Settings : MonoBehaviour
     public Button musicButton;
     public Button sfxButton;
     
-    private bool isMusicOn = true;
-    private bool isSfxOn = true;
+    private bool isMusicOn;
+    private bool isSfxOn;
+
+    public void Awake()
+    {
+        AudioSource[] audios = GameObject.FindObjectsOfType<AudioSource>();
+        foreach (AudioSource audio in audios)
+        {
+            if(audio.CompareTag("Music"))
+            {
+                isMusicOn = !audio.isPlaying;
+                onMusicPress();
+            }
+            
+            if(audio.CompareTag("SFX"))
+            {
+                isSfxOn = DontDestroy.isSfxOn;
+                isSfxOn = !isSfxOn;
+                onSFXPress();
+            }
+        }
+
+    }
 
     public void onMusicPress()
     {
@@ -23,10 +44,12 @@ public class Settings : MonoBehaviour
         {
             if (audio.CompareTag("Music"))
             {
-               
-                if (isMusicOn)
+                if (isMusicOn)  
                 {
-                    audio.Play();
+                    if (!audio.isPlaying)
+                    {
+                        audio.Play();
+                    }
                 } else
                 {
                     audio.Pause();
@@ -40,6 +63,19 @@ public class Settings : MonoBehaviour
     public void onSFXPress()
     {
         isSfxOn = buttonPressed(sfxButton, isSfxOn);
+
+        GameObject sfx = GameObject.FindGameObjectWithTag("SFX");
+        if (isSfxOn)
+        {
+            DontDestroy.isSfxOn = false;
+            sfx.SetActive(false);
+        }
+        else
+        {
+            DontDestroy.isSfxOn = true;
+            sfx.SetActive(true);
+        }
+
     }
 
     public void goBackToMainMenu()

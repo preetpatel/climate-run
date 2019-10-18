@@ -26,7 +26,6 @@ public class CloudScript : MonoBehaviour
         //Set camWidth. Will be used later to check whether or not cloud is off screen.
         RectTransform panel = (RectTransform) GameObject.FindGameObjectWithTag("Canvas").transform;
         camWidth = panel.rect.width;
-        Debug.Log(camWidth);
 
         //Set Cloud Movement Speed, and Position to random values within range defined above
         speed = Random.Range(minSpeed, maxSpeed);
