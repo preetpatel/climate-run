@@ -27,8 +27,7 @@ public class Settings : MonoBehaviour
             
             if(audio.CompareTag("SFX"))
             {
-                isSfxOn = DontDestroy.isSfxOn;
-                isSfxOn = !isSfxOn;
+                isSfxOn = !DontDestroy.isSfxOn;
                 onSFXPress();
             }
         }
@@ -64,17 +63,17 @@ public class Settings : MonoBehaviour
     {
         isSfxOn = buttonPressed(sfxButton, isSfxOn);
 
+        Debug.Log("Settings: " + isSfxOn);
         GameObject sfx = GameObject.FindGameObjectWithTag("SFX");
         if (isSfxOn)
         {
-            DontDestroy.isSfxOn = false;
-            sfx.SetActive(false);
+            DontDestroy.isSfxOn = true;
         }
         else
         {
-            DontDestroy.isSfxOn = true;
-            sfx.SetActive(true);
+            DontDestroy.isSfxOn = false;
         }
+        Debug.Log("DontDestroy: " + DontDestroy.isSfxOn);
 
     }
 

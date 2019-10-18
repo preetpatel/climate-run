@@ -44,9 +44,11 @@ public class DontDestroy : MonoBehaviour
     }
     public void playSound()
     {
+        
         if(isSfxOn)
         {
             buttonSound.PlayOneShot(buttonSoundClip);
         }
+        Debug.Log(isSfxOn);
     }
 }
