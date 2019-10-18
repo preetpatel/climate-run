@@ -49,6 +49,6 @@ public class DontDestroy : MonoBehaviour
         {
             buttonSound.PlayOneShot(buttonSoundClip);
         }
-        Debug.Log(isSfxOn);
+        
     }
 }
