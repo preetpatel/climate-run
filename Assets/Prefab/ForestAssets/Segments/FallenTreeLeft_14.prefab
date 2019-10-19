@@ -71,7 +71,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a9a560b7bc05a6a46978b53fe4b40f49, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a9a560b7bc05a6a46978b53fe4b40f49, type: 3}
       propertyPath: m_LocalPosition.z
@@ -111,7 +111,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a9a560b7bc05a6a46978b53fe4b40f49, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.14
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: a9a560b7bc05a6a46978b53fe4b40f49, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -132,11 +132,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8565023618193661037}
     m_Modifications:
-    - target: {fileID: 1058906358135713854, guid: d3f435083eb69904795ce488bebb2bb1,
-        type: 3}
-      propertyPath: m_Name
-      value: LongRamp
-      objectReference: {fileID: 0}
     - target: {fileID: 1058906358135713852, guid: d3f435083eb69904795ce488bebb2bb1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -192,6 +187,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1058906358135713854, guid: d3f435083eb69904795ce488bebb2bb1,
+        type: 3}
+      propertyPath: m_Name
+      value: LongRamp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d3f435083eb69904795ce488bebb2bb1, type: 3}
 --- !u!4 &7222414331628709184 stripped
@@ -207,11 +207,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8565023618193661037}
     m_Modifications:
-    - target: {fileID: 2300344014204391265, guid: 4c225b23cbd6dfb4fa552e566a67e3b5,
-        type: 3}
-      propertyPath: m_Name
-      value: FallenTree
-      objectReference: {fileID: 0}
     - target: {fileID: 2300344014204391267, guid: 4c225b23cbd6dfb4fa552e566a67e3b5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -266,6 +261,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300344014204391265, guid: 4c225b23cbd6dfb4fa552e566a67e3b5,
+        type: 3}
+      propertyPath: m_Name
+      value: FallenTree
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c225b23cbd6dfb4fa552e566a67e3b5, type: 3}
