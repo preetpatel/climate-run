@@ -24,6 +24,7 @@ public class BeachSpawnManager : MonoBehaviour
     public List<BeachPiece> longblocks = new List<BeachPiece>();
     public List<BeachPiece> jumps = new List<BeachPiece>();
     public List<BeachPiece> slides = new List<BeachPiece>();
+    public List<BeachPiece> shipwrecks = new List<BeachPiece>();
     [HideInInspector]
     public List<BeachPiece> pieces = new List<BeachPiece>();//all the pieces in the pool
 
@@ -92,6 +93,9 @@ public class BeachSpawnManager : MonoBehaviour
             }else if (pt == BeachPieceType.slide)
             {
                 go = slides[visualIndex].gameObject;
+            }else if (pt == BeachPieceType.shipwreck)
+            {
+                go = shipwrecks[visualIndex].gameObject;
             }
             go = Instantiate(go);
             p = go.GetComponent<BeachPiece>();
