@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class BeachLevelManager : MonoBehaviour
@@ -26,6 +27,7 @@ public class BeachLevelManager : MonoBehaviour
     private float score = 0;
     private float garbage = 0;
     private float modifier = 1.0f;
+    private AudioSource audioPlayer;
 
     //Death menu
     public Animator deathMenuAnim;
@@ -42,7 +44,21 @@ public class BeachLevelManager : MonoBehaviour
         scoreText.text = "Score : " + score.ToString("0");
         garbageText.text = "Garbage : " + garbage.ToString();
         livesText.text = "Lives Remaining : 3";
-        
+
+        if (Settings.isMusicOn)
+        {
+            AudioSource[] audios = FindObjectsOfType<AudioSource>();
+            foreach (AudioSource audio in audios)
+            {
+                if (audio.CompareTag("Music"))
+                {
+                    audioPlayer = audio;
+                }
+            }
+
+            StartCoroutine(AudioController.FadeOut(audioPlayer, 0.5f));
+        }
+
         //modifierText.text = "Modifer : x" + modifier.ToString("0.0");
 
     }
@@ -56,6 +72,13 @@ public class BeachLevelManager : MonoBehaviour
             cameraMotor.StartFollowing();
             compMotor.StartRunning();
             informationText.text = "";
+
+            if (Settings.isMusicOn)
+            {
+                GameObject musicPlayer = GameObject.FindGameObjectWithTag("Music");
+                Music music = musicPlayer.GetComponent<Music>();
+                music.changeMusic(SceneManager.GetActiveScene());
+            }
         }
 
         if (isGameStarted)
@@ -72,8 +95,9 @@ public class BeachLevelManager : MonoBehaviour
             /*            if (score > 60)
                         {
                             SceneManager.LoadScene("Antarctica_EndingCutscene");
+                             StartCoroutine(AudioController.FadeOut(audioPlayer, 0.5f));
                         }*/
-            if(score > 25)
+            if (score > 25)
             {
                 infoBox.gameObject.SetActive(false);
             }
