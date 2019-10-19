@@ -151,7 +151,7 @@ public class BeachSpawnManager : MonoBehaviour
         List<BeachSegment> possibleTransition = availableTransitions.FindAll(x => x.beginY1 == y1 || x.beginY2 == y2 || x.beginY3 == y3);
         int id = Random.Range(0, possibleTransition.Count);
 
-        BeachSegment s = GetSegment(id, false);
+        BeachSegment s = GetSegment(id, true);
 
         y1 = s.endY1;
         y2 = s.endY2;
