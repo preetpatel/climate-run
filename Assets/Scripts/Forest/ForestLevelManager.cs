@@ -103,6 +103,6 @@ public class ForestLevelManager : MonoBehaviour
     public void OnExitButtonPress()
     {
 
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Forest_EndingCutscene");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
 }
