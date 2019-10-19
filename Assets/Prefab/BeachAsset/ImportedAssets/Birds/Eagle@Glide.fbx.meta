@@ -1,380 +1,483 @@
 fileFormatVersion: 2
-guid: 40615883f592c124eac373308f0e0c57
+guid: 2e0b54f565356b74c8d9378b25484097
 ModelImporter:
   serializedVersion: 28
   internalIDToNameTable:
   - first:
       1: 100000
-    second: LeftFeatherOuterEnd
+    second: RightRingFinger1
   - first:
       1: 100002
-    second: LeftFeatherInner
+    second: LeftIndexFinger2
   - first:
       1: 100004
-    second: RightFeatherInnerEnd
+    second: RightIndexFingerEnd
   - first:
       1: 100006
-    second: RightFeatherInner
+    second: LeftFeatherOuterEnd
   - first:
       1: 100008
-    second: LeftFeatherOuter
+    second: LeftMiddleFinger1
   - first:
       1: 100010
-    second: RightFeatherOuter
+    second: LeftIndexFinger1
   - first:
       1: 100012
-    second: RightFeatherOuterEnd
+    second: RightIndexFinger3
   - first:
       1: 100014
-    second: LeftFeatherInnerEnd
+    second: LeftMiddleFingerEnd
   - first:
       1: 100016
-    second: RightWingEnd
+    second: RightMiddleFinger2
   - first:
       1: 100018
-    second: RightWing5
+    second: LeftRingFingerEnd
   - first:
       1: 100020
-    second: RightWing4
+    second: RightMiddleFinger3
   - first:
       1: 100022
-    second: RightWing3
+    second: RightIndexFinger1
   - first:
       1: 100024
-    second: RightWing2
+    second: RightRingFingerEnd
   - first:
       1: 100026
-    second: RightWing1
+    second: LeftIndexFingerEnd
   - first:
       1: 100028
-    second: LeftWingEnd
+    second: RightRingFinger3
   - first:
       1: 100030
-    second: LeftWing5
+    second: LeftMiddleFinger3
   - first:
       1: 100032
-    second: LeftWing4
+    second: RightFeatherInnerEnd
   - first:
       1: 100034
-    second: LeftWing3
+    second: RightFeatherOuter
   - first:
       1: 100036
-    second: LeftWing2
+    second: RightFeatherOuterEnd
   - first:
       1: 100038
-    second: LeftWing1
+    second: RightIndexFinger2
   - first:
       1: 100040
-    second: JawEnd
+    second: LeftMiddleFinger2
   - first:
       1: 100042
-    second: Jaw
+    second: RightFeatherInner
   - first:
       1: 100044
-    second: HeadEnd
+    second: LeftFeatherInner
   - first:
       1: 100046
-    second: Head
+    second: LeftFeatherOuter
   - first:
       1: 100048
-    second: Neck
+    second: RightRingFinger2
   - first:
       1: 100050
-    second: Spine1
+    second: RightMiddleFinger1
   - first:
       1: 100052
-    second: Spine
+    second: LeftFeatherInnerEnd
   - first:
       1: 100054
-    second: Hips
+    second: RightMiddleFingerEnd
   - first:
       1: 100056
-    second: //RootNode
+    second: LeftIndexFinger3
   - first:
       1: 100058
-    second: SeagullGeo1
+    second: Neck
   - first:
       1: 100060
-    second: TailSplayREnd
+    second: Spine4
   - first:
       1: 100062
-    second: TailSplayR3
+    second: Spine3
   - first:
       1: 100064
-    second: TailSplayR2
+    second: Spine2
   - first:
       1: 100066
-    second: TailSplayLEnd
+    second: Spine1
   - first:
       1: 100068
-    second: TailSplayL3
+    second: Root
   - first:
       1: 100070
     second: TailSplayL2
   - first:
       1: 100072
-    second: RightRingEnd
-  - first:
-      1: 100074
-    second: RightRing1
-  - first:
-      1: 100076
-    second: RightMiddleEnd
-  - first:
-      1: 100078
-    second: RightMiddle1
-  - first:
-      1: 100080
-    second: RightIndexEnd
-  - first:
-      1: 100082
-    second: RightIndex1
-  - first:
-      1: 100084
-    second: RightToeBase
-  - first:
-      1: 100086
-    second: RightFoot
-  - first:
-      1: 100088
-    second: RightLeg
-  - first:
-      1: 100090
-    second: RightUpLeg
-  - first:
-      1: 100092
-    second: LeftRingEnd
-  - first:
-      1: 100094
-    second: LeftRing1
-  - first:
-      1: 100096
-    second: LeftMiddleEnd
-  - first:
-      1: 100098
-    second: LeftMiddle1
-  - first:
-      1: 100100
-    second: LeftIndexEnd
-  - first:
-      1: 100102
-    second: LeftIndex1
-  - first:
-      1: 100104
-    second: LeftToeBase
-  - first:
-      1: 100106
-    second: LeftFoot
-  - first:
-      1: 100108
-    second: LeftLeg
-  - first:
-      1: 100110
-    second: LeftUpLeg
-  - first:
-      1: 100112
-    second: TailEnd
-  - first:
-      1: 100114
-    second: Tail1
-  - first:
-      1: 100116
-    second: Tail
-  - first:
-      4: 400000
-    second: LeftFeatherOuterEnd
-  - first:
-      4: 400002
-    second: LeftFeatherInner
-  - first:
-      4: 400004
-    second: RightFeatherInnerEnd
-  - first:
-      4: 400006
-    second: RightFeatherInner
-  - first:
-      4: 400008
-    second: LeftFeatherOuter
-  - first:
-      4: 400010
-    second: RightFeatherOuter
-  - first:
-      4: 400012
-    second: RightFeatherOuterEnd
-  - first:
-      4: 400014
-    second: LeftFeatherInnerEnd
-  - first:
-      4: 400016
-    second: RightWingEnd
-  - first:
-      4: 400018
-    second: RightWing5
-  - first:
-      4: 400020
-    second: RightWing4
-  - first:
-      4: 400022
-    second: RightWing3
-  - first:
-      4: 400024
-    second: RightWing2
-  - first:
-      4: 400026
-    second: RightWing1
-  - first:
-      4: 400028
-    second: LeftWingEnd
-  - first:
-      4: 400030
-    second: LeftWing5
-  - first:
-      4: 400032
-    second: LeftWing4
-  - first:
-      4: 400034
-    second: LeftWing3
-  - first:
-      4: 400036
-    second: LeftWing2
-  - first:
-      4: 400038
-    second: LeftWing1
-  - first:
-      4: 400040
-    second: JawEnd
-  - first:
-      4: 400042
-    second: Jaw
-  - first:
-      4: 400044
-    second: HeadEnd
-  - first:
-      4: 400046
-    second: Head
-  - first:
-      4: 400048
-    second: Neck
-  - first:
-      4: 400050
-    second: Spine1
-  - first:
-      4: 400052
-    second: Spine
-  - first:
-      4: 400054
-    second: Hips
-  - first:
-      4: 400056
-    second: //RootNode
-  - first:
-      4: 400058
-    second: SeagullGeo1
-  - first:
-      4: 400060
-    second: TailSplayREnd
-  - first:
-      4: 400062
-    second: TailSplayR3
-  - first:
-      4: 400064
-    second: TailSplayR2
-  - first:
-      4: 400066
     second: TailSplayLEnd
   - first:
-      4: 400068
+      1: 100074
     second: TailSplayL3
+  - first:
+      1: 100076
+    second: //RootNode
+  - first:
+      1: 100078
+    second: TailSplayR2
+  - first:
+      1: 100080
+    second: TailSplayREnd
+  - first:
+      1: 100082
+    second: TailSplayR3
+  - first:
+      1: 100084
+    second: TailEnd
+  - first:
+      1: 100086
+    second: Tail3
+  - first:
+      1: 100088
+    second: Tail2
+  - first:
+      1: 100090
+    second: Tail1
+  - first:
+      1: 100092
+    second: RightThumbEnd
+  - first:
+      1: 100094
+    second: RightThumb3
+  - first:
+      1: 100096
+    second: RightThumb2
+  - first:
+      1: 100098
+    second: RightThumb1
+  - first:
+      1: 100100
+    second: RightToeBase
+  - first:
+      1: 100102
+    second: Rightfoot
+  - first:
+      1: 100104
+    second: RightLeg
+  - first:
+      1: 100106
+    second: RightUpLeg
+  - first:
+      1: 100108
+    second: LeftThumbEnd
+  - first:
+      1: 100110
+    second: LeftThumb3
+  - first:
+      1: 100112
+    second: LeftThumb2
+  - first:
+      1: 100114
+    second: LeftThumb1
+  - first:
+      1: 100116
+    second: LeftRingFinger3
+  - first:
+      1: 100118
+    second: LeftRingFinger2
+  - first:
+      1: 100120
+    second: LeftRingFinger1
+  - first:
+      1: 100122
+    second: LeftToeBase
+  - first:
+      1: 100124
+    second: LeftFoot
+  - first:
+      1: 100126
+    second: LeftLeg
+  - first:
+      1: 100128
+    second: LeftUpLeg
+  - first:
+      1: 100130
+    second: RightWingEnd
+  - first:
+      1: 100132
+    second: RightWing4
+  - first:
+      1: 100134
+    second: RightWing3
+  - first:
+      1: 100136
+    second: RightWing2
+  - first:
+      1: 100138
+    second: RightWing1
+  - first:
+      1: 100140
+    second: LeftWingEnd
+  - first:
+      1: 100142
+    second: LeftWing4
+  - first:
+      1: 100144
+    second: LeftWing3
+  - first:
+      1: 100146
+    second: LeftWing2
+  - first:
+      1: 100148
+    second: LeftWing1
+  - first:
+      1: 100150
+    second: HeadEnd 1
+  - first:
+      1: 100152
+    second: HeadEnd
+  - first:
+      1: 100154
+    second: Head
+  - first:
+      4: 400000
+    second: RightRingFinger1
+  - first:
+      4: 400002
+    second: LeftIndexFinger2
+  - first:
+      4: 400004
+    second: RightIndexFingerEnd
+  - first:
+      4: 400006
+    second: LeftFeatherOuterEnd
+  - first:
+      4: 400008
+    second: LeftMiddleFinger1
+  - first:
+      4: 400010
+    second: LeftIndexFinger1
+  - first:
+      4: 400012
+    second: RightIndexFinger3
+  - first:
+      4: 400014
+    second: LeftMiddleFingerEnd
+  - first:
+      4: 400016
+    second: RightMiddleFinger2
+  - first:
+      4: 400018
+    second: LeftRingFingerEnd
+  - first:
+      4: 400020
+    second: RightMiddleFinger3
+  - first:
+      4: 400022
+    second: RightIndexFinger1
+  - first:
+      4: 400024
+    second: RightRingFingerEnd
+  - first:
+      4: 400026
+    second: LeftIndexFingerEnd
+  - first:
+      4: 400028
+    second: RightRingFinger3
+  - first:
+      4: 400030
+    second: LeftMiddleFinger3
+  - first:
+      4: 400032
+    second: RightFeatherInnerEnd
+  - first:
+      4: 400034
+    second: RightFeatherOuter
+  - first:
+      4: 400036
+    second: RightFeatherOuterEnd
+  - first:
+      4: 400038
+    second: RightIndexFinger2
+  - first:
+      4: 400040
+    second: LeftMiddleFinger2
+  - first:
+      4: 400042
+    second: RightFeatherInner
+  - first:
+      4: 400044
+    second: LeftFeatherInner
+  - first:
+      4: 400046
+    second: LeftFeatherOuter
+  - first:
+      4: 400048
+    second: RightRingFinger2
+  - first:
+      4: 400050
+    second: RightMiddleFinger1
+  - first:
+      4: 400052
+    second: LeftFeatherInnerEnd
+  - first:
+      4: 400054
+    second: RightMiddleFingerEnd
+  - first:
+      4: 400056
+    second: LeftIndexFinger3
+  - first:
+      4: 400058
+    second: Neck
+  - first:
+      4: 400060
+    second: Spine4
+  - first:
+      4: 400062
+    second: Spine3
+  - first:
+      4: 400064
+    second: Spine2
+  - first:
+      4: 400066
+    second: Spine1
+  - first:
+      4: 400068
+    second: Root
   - first:
       4: 400070
     second: TailSplayL2
   - first:
       4: 400072
-    second: RightRingEnd
+    second: TailSplayLEnd
   - first:
       4: 400074
-    second: RightRing1
+    second: TailSplayL3
   - first:
       4: 400076
-    second: RightMiddleEnd
+    second: //RootNode
   - first:
       4: 400078
-    second: RightMiddle1
+    second: TailSplayR2
   - first:
       4: 400080
-    second: RightIndexEnd
+    second: TailSplayREnd
   - first:
       4: 400082
-    second: RightIndex1
+    second: TailSplayR3
   - first:
       4: 400084
-    second: RightToeBase
-  - first:
-      4: 400086
-    second: RightFoot
-  - first:
-      4: 400088
-    second: RightLeg
-  - first:
-      4: 400090
-    second: RightUpLeg
-  - first:
-      4: 400092
-    second: LeftRingEnd
-  - first:
-      4: 400094
-    second: LeftRing1
-  - first:
-      4: 400096
-    second: LeftMiddleEnd
-  - first:
-      4: 400098
-    second: LeftMiddle1
-  - first:
-      4: 400100
-    second: LeftIndexEnd
-  - first:
-      4: 400102
-    second: LeftIndex1
-  - first:
-      4: 400104
-    second: LeftToeBase
-  - first:
-      4: 400106
-    second: LeftFoot
-  - first:
-      4: 400108
-    second: LeftLeg
-  - first:
-      4: 400110
-    second: LeftUpLeg
-  - first:
-      4: 400112
     second: TailEnd
   - first:
-      4: 400114
+      4: 400086
+    second: Tail3
+  - first:
+      4: 400088
+    second: Tail2
+  - first:
+      4: 400090
     second: Tail1
   - first:
-      4: 400116
-    second: Tail
+      4: 400092
+    second: RightThumbEnd
   - first:
-      43: 4300000
-    second: SeagullGeo1
+      4: 400094
+    second: RightThumb3
+  - first:
+      4: 400096
+    second: RightThumb2
+  - first:
+      4: 400098
+    second: RightThumb1
+  - first:
+      4: 400100
+    second: RightToeBase
+  - first:
+      4: 400102
+    second: Rightfoot
+  - first:
+      4: 400104
+    second: RightLeg
+  - first:
+      4: 400106
+    second: RightUpLeg
+  - first:
+      4: 400108
+    second: LeftThumbEnd
+  - first:
+      4: 400110
+    second: LeftThumb3
+  - first:
+      4: 400112
+    second: LeftThumb2
+  - first:
+      4: 400114
+    second: LeftThumb1
+  - first:
+      4: 400116
+    second: LeftRingFinger3
+  - first:
+      4: 400118
+    second: LeftRingFinger2
+  - first:
+      4: 400120
+    second: LeftRingFinger1
+  - first:
+      4: 400122
+    second: LeftToeBase
+  - first:
+      4: 400124
+    second: LeftFoot
+  - first:
+      4: 400126
+    second: LeftLeg
+  - first:
+      4: 400128
+    second: LeftUpLeg
+  - first:
+      4: 400130
+    second: RightWingEnd
+  - first:
+      4: 400132
+    second: RightWing4
+  - first:
+      4: 400134
+    second: RightWing3
+  - first:
+      4: 400136
+    second: RightWing2
+  - first:
+      4: 400138
+    second: RightWing1
+  - first:
+      4: 400140
+    second: LeftWingEnd
+  - first:
+      4: 400142
+    second: LeftWing4
+  - first:
+      4: 400144
+    second: LeftWing3
+  - first:
+      4: 400146
+    second: LeftWing2
+  - first:
+      4: 400148
+    second: LeftWing1
+  - first:
+      4: 400150
+    second: HeadEnd 1
+  - first:
+      4: 400152
+    second: HeadEnd
+  - first:
+      4: 400154
+    second: Head
+  - first:
+      74: 7400000
+    second: Take 001
   - first:
       111: 11100000
     second: //RootNode
-  - first:
-      137: 13700000
-    second: Hips
-  - first:
-      137: 13700002
-    second: SeagullGeo1
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Seagull_High_SeagullMat
-    second: {fileID: 2100000, guid: 952cc4805f9dccd4b8b25bf8e33abec2, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 1
     materialName: 3
@@ -438,11 +541,7 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  referencedClips:
-  - 5a04ac9d92c861b43b046082d3deeeae
-  - 8af699e403b5ee84ebe70927c1229a24
-  - bb0a4ecb11beafe41b6e5bd367c1134d
-  - d4c20550259c52f49a6c514cae310562
+  referencedClips: []
   importAnimation: 1
   humanDescription:
     serializedVersion: 3

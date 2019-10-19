@@ -489,7 +489,12 @@ ModelImporter:
   - first:
       137: 13700002
     second: Eagle
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EagleLamb
+    second: {fileID: 2100000, guid: 1037262bdf4a3844ea2877fe236240ed, type: 2}
   materials:
     materialImportMode: 1
     materialName: 3
@@ -555,6 +560,9 @@ ModelImporter:
     normalSmoothingSource: 0
   referencedClips:
   - abc3053fb032bd24fb3f8163526d1997
+  - 9ca00bb291ee74c4ebfd5d49729c175a
+  - 2e0b54f565356b74c8d9378b25484097
+  - 2cbc8531ea957744abb651fbb4caa9d6
   importAnimation: 1
   humanDescription:
     serializedVersion: 3
