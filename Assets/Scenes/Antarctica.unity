@@ -207,7 +207,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Information
+  m_Text: 
 --- !u!222 &62785941
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -347,6 +347,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.5625
+      objectReference: {fileID: 0}
+    - target: {fileID: 6755504049117100517, guid: f22f3a959706c4114b6dbf23a2cb6b09,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 31.299805
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025269785645401192, guid: f22f3a959706c4114b6dbf23a2cb6b09,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5168301438131943842, guid: f22f3a959706c4114b6dbf23a2cb6b09,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f22f3a959706c4114b6dbf23a2cb6b09, type: 3}
@@ -1383,7 +1398,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1564091547}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d732f331f1ce5694bb1de6e9c07c1b19, type: 3}
+  m_Script: {fileID: 11500000, guid: 9e607f4fcd0280148b837dc83dfd8186, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tilePrefabs:
