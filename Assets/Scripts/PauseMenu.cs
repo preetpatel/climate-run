@@ -15,12 +15,15 @@ public class PauseMenu : MonoBehaviour
     private void Start()
     {
         Time.timeScale = 1f;
-        AudioSource[] audios = FindObjectsOfType<AudioSource>();
-        foreach (AudioSource audio in audios)
+        if (Settings.isMusicOn)
         {
-            if (audio.CompareTag("Music"))
+            AudioSource[] audios = FindObjectsOfType<AudioSource>();
+            foreach (AudioSource audio in audios)
             {
-                audioPlayer = audio;
+                if (audio.CompareTag("Music"))
+                {
+                    audioPlayer = audio;
+                }
             }
         }
     }
@@ -39,12 +42,12 @@ public class PauseMenu : MonoBehaviour
 
     public void PressPauseButtonHandler()
     {
-        
         pauseMenuUI.SetActive(true);
         pauseButtonUI.SetActive(false);
         Time.timeScale = 0f;
         isPaused = true;
-        audioPlayer.Pause();
+        if (Settings.isMusicOn)
+            audioPlayer.Pause();
     }
 
     public void PressResumeButtonHandler()
@@ -53,7 +56,8 @@ public class PauseMenu : MonoBehaviour
         pauseButtonUI.SetActive(true);
         Time.timeScale = 1f;
         isPaused = false;
-        audioPlayer.Play();
+        if (Settings.isMusicOn)
+            audioPlayer.Play();
     }
 
     public void PressMenuButtonHandler()

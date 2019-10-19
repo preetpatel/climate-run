@@ -58,17 +58,12 @@ public class Music : MonoBehaviour
     }
     public void playSound()
     {
-        
-        if(isSfxOn)
+
+        if (isSfxOn)
         {
             buttonSound.PlayOneShot(buttonSoundClip);
         }
-        
-    }
 
-    public IEnumerator wait(float sec)
-    {
-        yield return new WaitForSeconds(sec);
     }
 
     public void changeMusic(Scene aScene)
@@ -92,7 +87,7 @@ public class Music : MonoBehaviour
     {
         if (scene.name.Equals("Settings") || scene.name.Equals("MainMenu"))
         {
-            if (!music.clip.name.Equals(mainMenuMusic.name))
+            if (!music.clip.name.Equals(mainMenuMusic.name) && Settings.isMusicOn)
             { 
                 StartCoroutine(AudioController.FadeIn(music, 0.5f));
                 music.clip = mainMenuMusic;

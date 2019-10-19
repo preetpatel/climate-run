@@ -43,17 +43,20 @@ public class ForestLevelManager : MonoBehaviour
 		seedCountText.text = "Seeds : " + seeds.ToString();
 		livesText.text = "Lives Remaining : 3";
 
-        AudioSource[] audios = FindObjectsOfType<AudioSource>();
-        foreach (AudioSource audio in audios)
+        if(Settings.isMusicOn)
         {
-            if (audio.CompareTag("Music"))
+            AudioSource[] audios = FindObjectsOfType<AudioSource>();
+            foreach (AudioSource audio in audios)
             {
-                audioPlayer = audio;
+                if (audio.CompareTag("Music"))
+                {
+                    audioPlayer = audio;
+                }
             }
+
+            StartCoroutine(AudioController.FadeOut(audioPlayer, 0.5f));
         }
-
-        StartCoroutine(AudioController.FadeOut(audioPlayer, 0.5f));
-
+       
         startCutscene.Begin();
 	}
 
@@ -67,9 +70,12 @@ public class ForestLevelManager : MonoBehaviour
 			informationText.text = "";
             FindObjectOfType<SideObjectSpawner>().IsScrolling = true;
             FindObjectOfType<CameraMotor>().isFollowing = true;
-            GameObject musicPlayer = GameObject.FindGameObjectWithTag("Music");
-            Music music = musicPlayer.GetComponent<Music>();
-            music.changeMusic(SceneManager.GetActiveScene());
+            if (Settings.isMusicOn)
+            {
+                GameObject musicPlayer = GameObject.FindGameObjectWithTag("Music");
+                Music music = musicPlayer.GetComponent<Music>();
+                music.changeMusic(SceneManager.GetActiveScene());
+            }
 
         }
 
