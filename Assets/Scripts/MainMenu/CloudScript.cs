@@ -12,7 +12,7 @@ public class CloudScript : MonoBehaviour
     //Set these variables to the lowest and highest y values you want clouds to spawn at.
     //For Example, I have these set to 1 and 4
     public float minY;
-    public float maxY;
+    private float maxY;
 
     //Set this variable to how far off screen you want the cloud to spawn, and how far off the screen you want the cloud to be for it to despawn. You probably want this value to be greater than or equal to half the width of your cloud.
     //For Example, I have this set to 4, which should be more than enough for any cloud.
@@ -24,12 +24,28 @@ public class CloudScript : MonoBehaviour
     void Start()
     {
         //Set camWidth. Will be used later to check whether or not cloud is off screen.
-        RectTransform panel = (RectTransform) GameObject.FindGameObjectWithTag("Canvas").transform;
-        camWidth = panel.rect.width;
+        camWidth = Screen.width;
+        Debug.Log(camWidth);
+
+        maxY = Screen.height - 100;
+        Debug.Log("Height: " + maxY);
+
+        float tempNum = camWidth;
+        int digits = 0;
+        while(tempNum != 0)
+        {
+            tempNum /= 10;
+            Mathf.Round(tempNum);
+            digits++;
+        }
+
+        speed *= digits;
 
         //Set Cloud Movement Speed, and Position to random values within range defined above
         speed = Random.Range(minSpeed, maxSpeed);
         transform.position = new Vector3(-buffer, Random.Range(minY, maxY), transform.position.z);
+
+        
     }
 
     // Update is called once per frame
