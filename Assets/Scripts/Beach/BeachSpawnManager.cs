@@ -148,6 +148,21 @@ public class BeachSpawnManager : MonoBehaviour
         currentSpawnZ += s.length;
         amountOfActiveSegments++;
         s.Spawn();
+
+        //birds animations
+        GameObject[] birds = new GameObject[17];
+        birds = GameObject.FindGameObjectsWithTag("Bird");
+        for (int i = 0; i < 17; i++)
+        {
+            Animation anim = birds[i].GetComponent<Animation>();
+            if (Random.Range(0.0f, 1.0f) > 0.5f)
+            {
+                anim.Play("Flap");
+                continue;
+            }
+            anim = birds[i].GetComponent<Animation>();
+            anim.Play("Glide");
+        }
     }
 
     private void SpawnTransition()
