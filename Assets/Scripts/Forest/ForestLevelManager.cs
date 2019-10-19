@@ -67,9 +67,9 @@ public class ForestLevelManager : MonoBehaviour
 			informationText.text = "";
             FindObjectOfType<SideObjectSpawner>().IsScrolling = true;
             FindObjectOfType<CameraMotor>().isFollowing = true;
-            GameObject player = GameObject.FindGameObjectWithTag("Music");
-            Music musicPlayer = player.GetComponent<Music>();
-            musicPlayer.changeMusic(SceneManager.GetActiveScene());
+            GameObject musicPlayer = GameObject.FindGameObjectWithTag("Music");
+            Music music = musicPlayer.GetComponent<Music>();
+            music.changeMusic(SceneManager.GetActiveScene());
 
         }
 
