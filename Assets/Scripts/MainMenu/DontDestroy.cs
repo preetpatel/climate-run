@@ -10,6 +10,8 @@ public class DontDestroy : MonoBehaviour
     public AudioSource buttonSound;
     public AudioClip buttonSoundClip;
 
+    public AudioSource music;
+
     void Awake()
     {
         GameObject[] objs = GameObject.FindGameObjectsWithTag("Music");
@@ -31,7 +33,15 @@ public class DontDestroy : MonoBehaviour
     }
     private void OnSceneLoaded(Scene aScene, LoadSceneMode aMode)
     {
-        addButtonListeners();
+        if(music.CompareTag("Music"))
+        {
+            IEnumerator fadeSound1 = AudioFadeOut.FadeOut(music, 0.5f);
+            StartCoroutine(fadeSound1);
+        }
+        if(buttonSound.CompareTag("SFX"))
+        {
+            addButtonListeners();
+        }
     }
 
     private void addButtonListeners()
