@@ -1155,6 +1155,7 @@ MonoBehaviour:
   - {fileID: 7517843524884100363, guid: 89da41476042e4840a45531d9e8134f5, type: 3}
   - {fileID: 7517843524884100363, guid: 0b604b07c58f1a648866c5cdf04e135c, type: 3}
   - {fileID: 7277442359888401394, guid: 6950ceacbf765434f9fe70cc8e12dbd9, type: 3}
+  - {fileID: 4825482634149409173, guid: c655e51a9a0ab9745881ef3bed3afc5e, type: 3}
 --- !u!1 &1570381319
 GameObject:
   m_ObjectHideFlags: 0
@@ -1369,11 +1370,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 281913648}
     m_Modifications:
-    - target: {fileID: 132422553982956019, guid: 7fecaac0aab7a7e41a830b0d912116fe,
-        type: 3}
-      propertyPath: m_Name
-      value: DialogueBox
-      objectReference: {fileID: 0}
     - target: {fileID: 132422553982956018, guid: 7fecaac0aab7a7e41a830b0d912116fe,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1479,6 +1475,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 132422553982956019, guid: 7fecaac0aab7a7e41a830b0d912116fe,
+        type: 3}
+      propertyPath: m_Name
+      value: DialogueBox
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fecaac0aab7a7e41a830b0d912116fe, type: 3}
 --- !u!1001 &407205875146939694
@@ -1488,86 +1489,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8137986397950877536, guid: c248e38ca17dc6843b4546e93ea81d48,
-        type: 3}
-      propertyPath: m_Name
-      value: Dialogue
-      objectReference: {fileID: 0}
-    - target: {fileID: 4321955176050261300, guid: c248e38ca17dc6843b4546e93ea81d48,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 15.9375
-      objectReference: {fileID: 0}
-    - target: {fileID: 4321955176050261300, guid: c248e38ca17dc6843b4546e93ea81d48,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 124.78125
-      objectReference: {fileID: 0}
-    - target: {fileID: 4321955176050261300, guid: c248e38ca17dc6843b4546e93ea81d48,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 273
-      objectReference: {fileID: 0}
-    - target: {fileID: 4321955176050261300, guid: c248e38ca17dc6843b4546e93ea81d48,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4321955176050261300, guid: c248e38ca17dc6843b4546e93ea81d48,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4321955176050261300, guid: c248e38ca17dc6843b4546e93ea81d48,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4321955176050261300, guid: c248e38ca17dc6843b4546e93ea81d48,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4321955176050261300, guid: c248e38ca17dc6843b4546e93ea81d48,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4321955176050261300, guid: c248e38ca17dc6843b4546e93ea81d48,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4321955176050261300, guid: c248e38ca17dc6843b4546e93ea81d48,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4321955176050261300, guid: c248e38ca17dc6843b4546e93ea81d48,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 407205876787200674, guid: c248e38ca17dc6843b4546e93ea81d48,
-        type: 3}
-      propertyPath: nameText
-      value: 
-      objectReference: {fileID: 1408874342}
-    - target: {fileID: 407205876787200674, guid: c248e38ca17dc6843b4546e93ea81d48,
-        type: 3}
-      propertyPath: dialogueText
-      value: 
-      objectReference: {fileID: 1097090083}
-    - target: {fileID: 407205876787200674, guid: c248e38ca17dc6843b4546e93ea81d48,
-        type: 3}
-      propertyPath: ContinueIcon
-      value: 
-      objectReference: {fileID: 1846525763}
-    - target: {fileID: 407205876787200674, guid: c248e38ca17dc6843b4546e93ea81d48,
-        type: 3}
-      propertyPath: DialogueAnimator
-      value: 
-      objectReference: {fileID: 336986190}
     - target: {fileID: 407205876563168740, guid: c248e38ca17dc6843b4546e93ea81d48,
         type: 3}
       propertyPath: dialogue.sentences.Array.size
@@ -1690,6 +1611,86 @@ PrefabInstance:
       propertyPath: dialogue.sentences.Array.data[15]
       value: So let's go and help others!
       objectReference: {fileID: 0}
+    - target: {fileID: 8137986397950877536, guid: c248e38ca17dc6843b4546e93ea81d48,
+        type: 3}
+      propertyPath: m_Name
+      value: Dialogue
+      objectReference: {fileID: 0}
+    - target: {fileID: 4321955176050261300, guid: c248e38ca17dc6843b4546e93ea81d48,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15.9375
+      objectReference: {fileID: 0}
+    - target: {fileID: 4321955176050261300, guid: c248e38ca17dc6843b4546e93ea81d48,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 124.78125
+      objectReference: {fileID: 0}
+    - target: {fileID: 4321955176050261300, guid: c248e38ca17dc6843b4546e93ea81d48,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 273
+      objectReference: {fileID: 0}
+    - target: {fileID: 4321955176050261300, guid: c248e38ca17dc6843b4546e93ea81d48,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4321955176050261300, guid: c248e38ca17dc6843b4546e93ea81d48,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4321955176050261300, guid: c248e38ca17dc6843b4546e93ea81d48,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4321955176050261300, guid: c248e38ca17dc6843b4546e93ea81d48,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4321955176050261300, guid: c248e38ca17dc6843b4546e93ea81d48,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4321955176050261300, guid: c248e38ca17dc6843b4546e93ea81d48,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4321955176050261300, guid: c248e38ca17dc6843b4546e93ea81d48,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4321955176050261300, guid: c248e38ca17dc6843b4546e93ea81d48,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 407205876787200674, guid: c248e38ca17dc6843b4546e93ea81d48,
+        type: 3}
+      propertyPath: nameText
+      value: 
+      objectReference: {fileID: 1408874342}
+    - target: {fileID: 407205876787200674, guid: c248e38ca17dc6843b4546e93ea81d48,
+        type: 3}
+      propertyPath: dialogueText
+      value: 
+      objectReference: {fileID: 1097090083}
+    - target: {fileID: 407205876787200674, guid: c248e38ca17dc6843b4546e93ea81d48,
+        type: 3}
+      propertyPath: ContinueIcon
+      value: 
+      objectReference: {fileID: 1846525763}
+    - target: {fileID: 407205876787200674, guid: c248e38ca17dc6843b4546e93ea81d48,
+        type: 3}
+      propertyPath: DialogueAnimator
+      value: 
+      objectReference: {fileID: 336986190}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c248e38ca17dc6843b4546e93ea81d48, type: 3}
 --- !u!222 &1765975225839852289
