@@ -11,8 +11,8 @@ public class Settings : MonoBehaviour
     public Button musicButton;
     public Button sfxButton;
     
-    private bool isMusicOn;
-    private bool isSfxOn;
+    public static bool isMusicOn = true;
+    public static bool isSfxOn;
 
     public void Awake()
     {
