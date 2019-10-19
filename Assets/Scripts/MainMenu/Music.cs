@@ -10,8 +10,11 @@ public class Music : MonoBehaviour
     public AudioSource buttonSound;
     public AudioClip buttonSoundClip;
 
+    public AudioClip mainMenuMusic;
+
     public AudioClip forestLevelMusic;
 
+  
     public AudioSource music;
 
     void Awake()
@@ -31,26 +34,15 @@ public class Music : MonoBehaviour
         if (buttonSound.CompareTag("SFX")) {
             addButtonListeners();
             SceneManager.sceneLoaded += OnSceneLoaded;
+
         }
     }
     private void OnSceneLoaded(Scene aScene, LoadSceneMode aMode)
     {
-        if(music.CompareTag("Music"))
-        {
-            if(aScene.name != "Settings" && aScene.name != "MainMenu")
-            {
-                IEnumerator fadeSound1 = AudioController.FadeOut(music, 0.5f);
-                StartCoroutine(fadeSound1);
-                if (aScene.name.Equals("Forest"))
-                {
-                    StartCoroutine(AudioController.FadeIn(music, 2f));
-                    music.clip = forestLevelMusic;
-                    music.Play();
-                }
-            }
-           
-        }
-        if(buttonSound.CompareTag("SFX"))
+
+        playMainMenuMusic(aScene);
+
+        if (buttonSound.CompareTag("SFX"))
         {
             addButtonListeners();
         }
@@ -77,5 +69,36 @@ public class Music : MonoBehaviour
     public IEnumerator wait(float sec)
     {
         yield return new WaitForSeconds(sec);
+    }
+
+    public void changeMusic(Scene aScene)
+    {
+        if (!aScene.name.Equals("Settings") && !aScene.name.Equals("MainMenu"))
+        {
+            if (aScene.name.Equals("Forest"))
+            { 
+                StartCoroutine(AudioController.FadeIn(music, 0.5f));
+                music.clip = forestLevelMusic;
+                music.Play();
+            }
+        } else
+        {
+            playMainMenuMusic(aScene);
+        }
+        
+    }
+
+    private void playMainMenuMusic(Scene scene)
+    {
+        if (scene.name.Equals("Settings") || scene.name.Equals("MainMenu"))
+        {
+            if (!music.clip.name.Equals(mainMenuMusic.name))
+            { 
+                StartCoroutine(AudioController.FadeIn(music, 0.5f));
+                music.clip = mainMenuMusic;
+                music.loop = true;
+                music.Play();
+            }
+        }
     }
 }

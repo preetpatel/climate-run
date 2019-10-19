@@ -29,8 +29,10 @@ public class ForestLevelManager : MonoBehaviour
 	private float score = 0;
 	private float seeds = 0;
 	private float modifier = 1.0f;
+    private AudioSource audioPlayer;
 
-	private void Awake()
+
+    private void Awake()
 	{
         Instance = this;
 
@@ -41,8 +43,18 @@ public class ForestLevelManager : MonoBehaviour
 		seedCountText.text = "Seeds : " + seeds.ToString();
 		livesText.text = "Lives Remaining : 3";
 
-        startCutscene.Begin();
+        AudioSource[] audios = FindObjectsOfType<AudioSource>();
+        foreach (AudioSource audio in audios)
+        {
+            if (audio.CompareTag("Music"))
+            {
+                audioPlayer = audio;
+            }
+        }
 
+        StartCoroutine(AudioController.FadeOut(audioPlayer, 0.5f));
+
+        startCutscene.Begin();
 	}
 
 	private void Update()
@@ -55,7 +67,11 @@ public class ForestLevelManager : MonoBehaviour
 			informationText.text = "";
             FindObjectOfType<SideObjectSpawner>().IsScrolling = true;
             FindObjectOfType<CameraMotor>().isFollowing = true;
-		}
+            GameObject player = GameObject.FindGameObjectWithTag("Music");
+            Music musicPlayer = player.GetComponent<Music>();
+            musicPlayer.changeMusic(SceneManager.GetActiveScene());
+
+        }
 
 		if (isGameStarted)
 		{
@@ -68,7 +84,7 @@ public class ForestLevelManager : MonoBehaviour
                 playerMotor.StopRunning();
                 cameraMotor.StopFollowing();
                 endCutscene.Begin();
-
+                StartCoroutine(AudioController.FadeOut(audioPlayer, 0.5f));
                 score = 0;
             }
         }
@@ -103,7 +119,6 @@ public class ForestLevelManager : MonoBehaviour
 
     public void OnExitButtonPress()
     {
-
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
 }
