@@ -253,8 +253,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 1772021604}
   - {fileID: 1815258558}
+  - {fileID: 1772021604}
   - {fileID: 1873486003}
   m_Father: {fileID: 0}
   m_RootOrder: 6
@@ -1458,7 +1458,7 @@ RectTransform:
   - {fileID: 1939821856}
   - {fileID: 776462185}
   m_Father: {fileID: 114088958}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1546,7 +1546,7 @@ PrefabInstance:
     - target: {fileID: 1765975225821437119, guid: 455e5a868541845d387486db738e3ebd,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1765975225821437119, guid: 455e5a868541845d387486db738e3ebd,
         type: 3}
@@ -1639,6 +1639,26 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2038921045}
     - target: {fileID: 1765975226931323371, guid: 455e5a868541845d387486db738e3ebd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnRetryButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 357087051097554775, guid: 455e5a868541845d387486db738e3ebd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2038921045}
+    - target: {fileID: 357087051097554775, guid: 455e5a868541845d387486db738e3ebd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnExitButtonPress
+      objectReference: {fileID: 0}
+    - target: {fileID: 6180666587646583287, guid: 455e5a868541845d387486db738e3ebd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2038921045}
+    - target: {fileID: 6180666587646583287, guid: 455e5a868541845d387486db738e3ebd,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnRetryButton
@@ -2238,7 +2258,6 @@ MonoBehaviour:
   DialogueAnimator: {fileID: 250712039}
   scoreText: {fileID: 1628142524}
   garbageText: {fileID: 566574271}
-  informationText: {fileID: 0}
   livesText: {fileID: 759888111}
   pollutionSlide: {fileID: 1939821857}
   infoBox: {fileID: 0}

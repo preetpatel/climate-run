@@ -25,7 +25,6 @@ public class BeachLevelManager : MonoBehaviour
     // UI and the UI fields
     public Text scoreText;
     public Text garbageText;
-    public Text informationText;
     public Text livesText;
     public Slider pollutionSlide;
     public Image infoBox;
@@ -78,7 +77,6 @@ public class BeachLevelManager : MonoBehaviour
             playerMotor.StartRunning();
             cameraMotor.StartFollowing();
             compMotor.StartRunning();
-            informationText.text = "";
 
             if (Settings.isMusicOn)
             {
@@ -105,32 +103,6 @@ public class BeachLevelManager : MonoBehaviour
                             SceneManager.LoadScene("Antarctica_EndingCutscene");
                              StartCoroutine(AudioController.FadeOut(audioPlayer, 0.5f));
                         }*/
-            if (score > 25)
-            {
-                infoBox.gameObject.SetActive(false);
-            }
-            else if (score > 20)
-            {
-                informationText.text = "Good luck";
-            }
-            else if (score > 15)
-            {
-                informationText.text = "More obstacles will appear on your track as the pollution meter rises";
-            }
-            else if (score > 10)
-            {
-                informationText.text = "The pollution meter on the top right" +
-                    "rises whenever you don't collect the garbage, and will decrease when you do";
-            }
-            else if (score > 5)
-            {
-                informationText.text = "Garbage will pile up if you leave it unhandled";
-            }
-            else if (score > 0)
-            {
-                informationText.text = "Flippy, you have to collect the garbage that people throw on the beach!";
-            }
-
 
             timeSinceGarbageCollected += Time.deltaTime;
             if(timeSinceGarbageCollected > 5.0f)
