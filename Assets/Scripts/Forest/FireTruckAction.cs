@@ -11,19 +11,19 @@ public class FireTruckAction : MonoBehaviour
     private bool triggeredAlready = false;
     private bool transitioning = false;
     private int framesSinceTrigger = 0;
-    private Dictionary<ExtinguishableFire, bool> extinguishableFireParticles;
+    private int framesSinceExtinguish = 0;
+    private Dictionary<SplashFireCombo, bool> extinguishableFireParticles;
 
     internal void doWaterSpray()
     {
         if (!triggeredAlready)
         {
-            Debug.Log("Triggering the firetruck");
             triggeredAlready = true;
-            Time.timeScale = 0.5f;
+            Time.timeScale = 0.3f;
             transitioning = true;
 
-            extinguishableFireParticles = new Dictionary<ExtinguishableFire, bool>();
-            ExtinguishableFire[] fireParticles = GetComponentsInChildren<ExtinguishableFire>();
+            extinguishableFireParticles = new Dictionary<SplashFireCombo, bool>();
+            SplashFireCombo[] fireParticles = GetComponentsInChildren<SplashFireCombo>();
             for (int i = 0; i < fireParticles.Length; i++)
             {
                 extinguishableFireParticles.Add(fireParticles[i], false);
@@ -35,25 +35,33 @@ public class FireTruckAction : MonoBehaviour
     {
         if(transitioning)
         {
-            framesSinceTrigger++;
-
-            foreach (KeyValuePair<ExtinguishableFire, bool> particleHasDespawned in extinguishableFireParticles)
-            {
-                ExtinguishableFire particle = particleHasDespawned.Key;
-                if(!particleHasDespawned.Value)
-                {
-                    extinguishableFireParticles[particle] = true;
-                    particle.Trigger();
-
-                    break;
-                }
-            }
-
-            if (framesSinceTrigger > 240)
+            if (framesSinceTrigger > 160)
             {
                 transitioning = false;
                 Time.timeScale = 1.0f;
+                return;
             }
+
+            framesSinceExtinguish++;
+
+            if (framesSinceExtinguish >= 15)
+            {
+                framesSinceExtinguish = 0;
+
+                foreach (KeyValuePair<SplashFireCombo, bool> particleHasDespawned in extinguishableFireParticles)
+                {
+                    SplashFireCombo particle = particleHasDespawned.Key;
+                    if (!particleHasDespawned.Value)
+                    {
+                        extinguishableFireParticles[particle] = true;
+                        particle.Trigger();
+
+                        break;
+                    }
+                }
+            }
+
+            framesSinceTrigger++;
         }
     }
 }
