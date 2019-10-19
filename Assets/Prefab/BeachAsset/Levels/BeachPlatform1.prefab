@@ -291,6 +291,7 @@ GameObject:
   - component: {fileID: 3221301147566844284}
   - component: {fileID: 7266402553306010493}
   - component: {fileID: 437782596289893636}
+  - component: {fileID: 2078583489087398687}
   m_Layer: 0
   m_Name: Water
   m_TagString: Untagged
@@ -319,7 +320,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7032752791035097089}
-  m_Mesh: {fileID: 4300000, guid: ebfb4988eb16add4784122504f75fe2f, type: 2}
+  m_Mesh: {fileID: 4300000, guid: 546b394fba8f70043af1e8a0d012b6f3, type: 2}
 --- !u!23 &7266402553306010493
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -375,6 +376,20 @@ MonoBehaviour:
   waveFrequency: 0.5
   waveLength: 0.75
   waveOriginPosition: {x: 0, y: 0, z: 0}
+--- !u!64 &2078583489087398687
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7032752791035097089}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 546b394fba8f70043af1e8a0d012b6f3, type: 2}
 --- !u!1001 &25364644836738870
 PrefabInstance:
   m_ObjectHideFlags: 0
