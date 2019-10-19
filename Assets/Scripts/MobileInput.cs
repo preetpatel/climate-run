@@ -61,6 +61,33 @@ public class MobileInput : MonoBehaviour
 
     private void UpdateDesktop()
     {
+        bool didKeyPress = false;
+
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            swipeUp = true;
+            didKeyPress = true;
+        }
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            swipeDown = true;
+            didKeyPress = true;
+        }
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            swipeLeft = true;
+            didKeyPress = true;
+        }
+        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            swipeRight = true;
+            didKeyPress = true;
+        }
+
+
+        if (didKeyPress)
+            return;
+
         if (Input.GetMouseButtonDown(0))
         {
             tap = true;

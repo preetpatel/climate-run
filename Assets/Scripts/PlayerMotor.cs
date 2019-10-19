@@ -260,6 +260,11 @@ public class PlayerMotor : MonoBehaviour
 				hit.collider.enabled = false;
                 Crash();
                 break;
+            case "FireTruck":
+                GameObject segment = hit.gameObject.transform.parent.gameObject;
+                FireTruckAction sprayScript = segment.GetComponent<FireTruckAction>();
+                sprayScript.doWaterSpray();
+                break;
         }
     }
 }
