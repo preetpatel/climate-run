@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44300264, g: 0.492195, b: 0.571925, a: 1}
+  m_IndirectSpecularColor: {r: 0.44300318, g: 0.49219632, b: 0.57192606, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -576,7 +576,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 1f904e7eecf0b4da88026fa91ff9939e, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.475
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -695,11 +695,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1520451158}
     m_Modifications:
-    - target: {fileID: 8286548184341119521, guid: 15aadf4aec1d2a64881c16742b23d6cf,
-        type: 3}
-      propertyPath: m_Name
-      value: Settings
-      objectReference: {fileID: 0}
     - target: {fileID: 8286548184341119522, guid: 15aadf4aec1d2a64881c16742b23d6cf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -804,6 +799,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8286548184341119521, guid: 15aadf4aec1d2a64881c16742b23d6cf,
+        type: 3}
+      propertyPath: m_Name
+      value: Settings
       objectReference: {fileID: 0}
     - target: {fileID: 8286548183434189261, guid: 15aadf4aec1d2a64881c16742b23d6cf,
         type: 3}
@@ -1188,11 +1188,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1520451158}
     m_Modifications:
-    - target: {fileID: 8286548184341119521, guid: 15aadf4aec1d2a64881c16742b23d6cf,
-        type: 3}
-      propertyPath: m_Name
-      value: Endless
-      objectReference: {fileID: 0}
     - target: {fileID: 8286548184341119522, guid: 15aadf4aec1d2a64881c16742b23d6cf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1298,6 +1293,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8286548184341119521, guid: 15aadf4aec1d2a64881c16742b23d6cf,
+        type: 3}
+      propertyPath: m_Name
+      value: Endless
+      objectReference: {fileID: 0}
     - target: {fileID: 8286548183434189261, guid: 15aadf4aec1d2a64881c16742b23d6cf,
         type: 3}
       propertyPath: m_Text
@@ -1318,11 +1318,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1520451158}
     m_Modifications:
-    - target: {fileID: 8286548184341119521, guid: 15aadf4aec1d2a64881c16742b23d6cf,
-        type: 3}
-      propertyPath: m_Name
-      value: Story
-      objectReference: {fileID: 0}
     - target: {fileID: 8286548184341119522, guid: 15aadf4aec1d2a64881c16742b23d6cf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1428,10 +1423,25 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8286548184341119521, guid: 15aadf4aec1d2a64881c16742b23d6cf,
+        type: 3}
+      propertyPath: m_Name
+      value: Story
+      objectReference: {fileID: 0}
+    - target: {fileID: 8286548183434189261, guid: 15aadf4aec1d2a64881c16742b23d6cf,
+        type: 3}
+      propertyPath: m_Text
+      value: Story
+      objectReference: {fileID: 0}
     - target: {fileID: 8286548184341119523, guid: 15aadf4aec1d2a64881c16742b23d6cf,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1833813310}
+    - target: {fileID: 8286548184341119523, guid: 15aadf4aec1d2a64881c16742b23d6cf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoToLevelSelector
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15aadf4aec1d2a64881c16742b23d6cf, type: 3}
