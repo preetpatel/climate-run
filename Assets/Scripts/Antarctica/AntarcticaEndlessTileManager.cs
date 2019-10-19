@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
 
-public class TileManager : MonoBehaviour
+public class AntarcticaEndlessTileManager : MonoBehaviour
 {
     public GameObject[] tilePrefabs;
 
@@ -10,7 +11,7 @@ public class TileManager : MonoBehaviour
 
     private float spawnZ = 0.0f;
 
-    private float levelLength = 105.0f;
+    private float levelLength = 118.0f;
 
     private int amnLevelsOnScreen = 3;
 
@@ -18,6 +19,7 @@ public class TileManager : MonoBehaviour
 
     private int lastPrefabIndex = 0;
     
+    private static int numberOfLevelTiles = 0;
     
     private List<GameObject> activeLevels;
     // Start is called before the first frame update
@@ -25,15 +27,13 @@ public class TileManager : MonoBehaviour
     {
         activeLevels = new List<GameObject>();
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-
+        numberOfLevelTiles = 0;
         for (int i = 0; i < amnLevelsOnScreen; i++)
         {
             SpawnLevel();
         }
        
     }
-
-   
 
     // Update is called once per frame
     private void Update()
@@ -48,20 +48,26 @@ public class TileManager : MonoBehaviour
     private void SpawnLevel(int prefabIndex = -1)
     {
         GameObject go;
-        go = Instantiate(tilePrefabs[lastPrefabIndex]) as GameObject;
+        int spawnLevelTileIndex = 0;
+        int[] levelTiles;
+
+        if (numberOfLevelTiles > 0)
+        {
+            levelTiles = new int[] {0, 1, 2, 3};
+        }
+        else
+        {
+            levelTiles = new int[] {0, 2, 3};
+        }
+
+        spawnLevelTileIndex = Random.Range(0, levelTiles.Length);
+        go = Instantiate(tilePrefabs[levelTiles[spawnLevelTileIndex]]) as GameObject;
         go.transform.SetParent(transform);
 
-        lastPrefabIndex++;
-        
-        if (lastPrefabIndex == 4)
-        {
-            lastPrefabIndex = 0;
-        }
-        
         go.transform.position = Vector3.forward * spawnZ;
         spawnZ += levelLength;
         activeLevels.Add(go);
-
+        numberOfLevelTiles++;
     }
 
     public void DeleteLevel()
@@ -70,4 +76,4 @@ public class TileManager : MonoBehaviour
         activeLevels.RemoveAt(0);
 
     }
-}
+ }

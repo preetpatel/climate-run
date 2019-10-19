@@ -31,7 +31,7 @@ public class Level1Collider : MonoBehaviour
     private void LoadNextObstacle(float colliderPosition)
     {
 
-        float loadingPosition = colliderPosition + 20;
+        float loadingPosition = colliderPosition + 50;
 
         int[] xcords = new int[] {-3, 0, 3};
         

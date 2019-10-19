@@ -1,13 +1,12 @@
-﻿  
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class AntarcticaLevelManager : MonoBehaviour
+public class AntarcticaEndlessLevelManager : MonoBehaviour
 {
-    public static AntarcticaLevelManager Instance {set; get;}
+    public static AntarcticaEndlessLevelManager Instance {set; get;}
 
     private bool isGameStarted = false;
     private PlayerMotor playerMotor;
@@ -28,14 +27,15 @@ public class AntarcticaLevelManager : MonoBehaviour
     {
         Instance = this;
         scoreText.text = score.ToString();
-        livesText.text = "Lives Remaining : 3";
         informationText.text = "Touch to start";
+        livesText.text = "Lives Remaining : 3";
         playerMotor = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMotor>();
         cameraMotor = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMotor>();
     }
 
     private void Update()
     {
+
         if (Input.anyKey && !isGameStarted)
         {
             isGameStarted = true;
@@ -45,33 +45,9 @@ public class AntarcticaLevelManager : MonoBehaviour
 
         if (isGameStarted)
         {
+            informationText.text = null;
             score += Time.deltaTime;
             scoreText.text = "Score: " + score.ToString("0");
-
-            // refactor later
-            if (score > 50)
-            {
-               SceneManager.LoadScene("Antarctica_EndingCutscene");
-            }
-            else if (score > 11)
-            {
-                informationText.text = "The ice is melting!";
-            }
-            else if (score > 8)
-            {
-                informationText.text = "Swipe up to jump";
-            }
-            else if (score > 5)
-            {
-                informationText.text = "Swipe down to slide";
-            }
-            else if (score > 0)
-            {
-                informationText.text = "Swipe to move";
-            }
-
-        
-
         }
     }
 
@@ -87,7 +63,7 @@ public class AntarcticaLevelManager : MonoBehaviour
 
     public void OnRetryButton()
     {
-        SceneManager.LoadScene("Antarctica",LoadSceneMode.Single);
+        SceneManager.LoadScene("Antarctica_Endless",LoadSceneMode.Single);
     }
 
     public void OnExitButtonPress()

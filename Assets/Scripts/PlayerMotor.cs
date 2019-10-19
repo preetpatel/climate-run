@@ -217,9 +217,13 @@ public class PlayerMotor : MonoBehaviour
             } else if (SceneManager.GetActiveScene().name.Equals("Beach"))
             {
                 BeachLevelManager.Instance.OnDeath();
-            } else
+            } else if (SceneManager.GetActiveScene().name.Equals("Antarctica"))
             {
                 AntarcticaLevelManager.Instance.OnDeath();
+            } else if (SceneManager.GetActiveScene().name.Equals("Antarctica_Endless"))
+            {
+                AntarcticaEndlessLevelManager.Instance.OnDeath();
+
             }
         }
         else // Otherwise if we still have lives remaining, move the character up and give another chance
@@ -239,9 +243,13 @@ public class PlayerMotor : MonoBehaviour
             } else if (gameScene.name.Equals("Beach"))
             {
                 BeachLevelManager.Instance.updateLives(livesCounter);
-            } else
+            } else if  (gameScene.name.Equals("Antarctica"))
             {
                 AntarcticaLevelManager.Instance.updateLives(livesCounter);
+            } else if (gameScene.name.Equals("Antarctica_Endless"))
+            {
+                AntarcticaEndlessLevelManager.Instance.updateLives(livesCounter);
+                
             }
         }
     }
