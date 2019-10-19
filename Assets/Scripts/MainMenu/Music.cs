@@ -37,14 +37,18 @@ public class Music : MonoBehaviour
     {
         if(music.CompareTag("Music"))
         {
-            IEnumerator fadeSound1 = AudioController.FadeOut(music, 0.5f);
-            StartCoroutine(fadeSound1);
-            if (aScene.name.Equals("Forest"))
+            if(aScene.name != "Settings" && aScene.name != "MainMenu")
             {
-                StartCoroutine(AudioController.FadeIn(music, 2f));
-                music.clip = forestLevelMusic;
-                music.Play();
+                IEnumerator fadeSound1 = AudioController.FadeOut(music, 0.5f);
+                StartCoroutine(fadeSound1);
+                if (aScene.name.Equals("Forest"))
+                {
+                    StartCoroutine(AudioController.FadeIn(music, 2f));
+                    music.clip = forestLevelMusic;
+                    music.Play();
+                }
             }
+           
         }
         if(buttonSound.CompareTag("SFX"))
         {
