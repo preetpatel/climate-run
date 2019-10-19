@@ -54,7 +54,7 @@ public class CameraMotor : MonoBehaviour
 
             transform.position = targetPos;
         }
-        if (SceneManager.GetActiveScene().name.Equals("Forest") || SceneManager.GetActiveScene().name.Equals("BeachUpdateDialoge"))
+        if (SceneManager.GetActiveScene().name.Equals("Forest") || SceneManager.GetActiveScene().name.Equals("Beach"))
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(rotation), 0.05f);
 
     }

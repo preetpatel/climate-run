@@ -242,7 +242,7 @@ public class PlayerMotor : MonoBehaviour
             if (gameScene.name.Equals("Forest"))
             {
                 ForestLevelManager.Instance.updateLives(livesCounter);
-            } else if (gameScene.name.Equals("BeachUpdateDialoge"))
+            } else if (gameScene.name.Equals("Beach"))
             {
                 BeachLevelManager.Instance.updateLives(livesCounter);
             } else
