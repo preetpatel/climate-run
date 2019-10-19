@@ -25,6 +25,9 @@ public class ForestSpawnManager : MonoBehaviour
     public List<Piece> longblocks = new List<Piece>();
     public List<Piece> jumps = new List<Piece>();
     public List<Piece> slides = new List<Piece>();
+    public List<Piece> treeRows = new List<Piece>();
+    public List<Piece> longRamps = new List<Piece>();
+    public List<Piece> fallenTrees = new List<Piece>();
 
     [HideInInspector]
     public List<Piece> pieces = new List<Piece>(); // active pieces
@@ -75,9 +78,9 @@ public class ForestSpawnManager : MonoBehaviour
 
     private void GenerateSegment()
     {
-        SpawnSegment();
+        bool spawnedTransition = SpawnSegment();
 
-        if (Random.Range(0f, 1f) < (continuousSegments * 0.25f))
+        if (Random.Range(0f, 1f) < (continuousSegments * 0.25f) && !spawnedTransition)
         {
             // Spawn transition seg
             continuousSegments = 0;
@@ -89,18 +92,31 @@ public class ForestSpawnManager : MonoBehaviour
         }
     }
 
-    private void SpawnSegment()
+    private bool SpawnSegment()
     {
         List<Segment> possibleSeg = availableSegments.FindAll(
             x => x.beginY1 == y1 || x.beginY2 == y2 || x.beginY3 == y3);
+
+        //if(possibleSeg.Count == 0)
+        //{
+        //    continuousSegments = 0;
+        //    SpawnTransition();
+        //    return true;
+        //}
+
         int id = Random.Range(0, possibleSeg.Count);
+        //int id = possibleSeg[i].SegId;
+
         if (segments[0].SegId == 1 && id == 1)
         {
-            bool beforeRange = Random.Range(0, 2) == 1 ? true : false;
+            bool beforeRange = Random.Range(0, 5) <= 1 ? true : false;
             if (beforeRange)
                 id = 0;
             else
+            {
                 id = Random.Range(2, possibleSeg.Count);
+                //id = possibleSeg[i].SegId;
+            }
         }
 
         Segment s = GetSegment(id, false);
@@ -115,6 +131,7 @@ public class ForestSpawnManager : MonoBehaviour
         currentSpawnZ += s.length;
         amountOfActiveSegments++;
         s.Spawn();
+        return false;
     }
 
     private void SpawnTransition()
@@ -183,6 +200,12 @@ public class ForestSpawnManager : MonoBehaviour
                 go = jumps[visualIndex].gameObject;
             else if (pt == PieceType.slide)
                 go = slides[visualIndex].gameObject;
+            else if (pt == PieceType.treeRow)
+                go = treeRows[visualIndex].gameObject;
+            else if (pt == PieceType.longRamp)
+                go = longRamps[visualIndex].gameObject;
+            else if (pt == PieceType.fallenTree)
+                go = fallenTrees[visualIndex].gameObject;
 
             go = Instantiate(go);
             p = go.GetComponent<Piece>();

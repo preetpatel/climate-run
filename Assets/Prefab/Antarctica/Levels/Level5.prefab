@@ -91,7 +91,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c6d38711520119c4e89ddf1ea6adc007, type: 2}
+  - {fileID: 2100000, guid: e5347e624bf727f41b70f5429dccf3a9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -173,11 +173,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2185720197482530418}
     m_Modifications:
-    - target: {fileID: 5655322023253823005, guid: dee94e3f264ef45468d1c5bd67f6dfc7,
-        type: 3}
-      propertyPath: m_Name
-      value: 011
-      objectReference: {fileID: 0}
     - target: {fileID: 5655322023253823010, guid: dee94e3f264ef45468d1c5bd67f6dfc7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -232,6 +227,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5655322023253823005, guid: dee94e3f264ef45468d1c5bd67f6dfc7,
+        type: 3}
+      propertyPath: m_Name
+      value: 011
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dee94e3f264ef45468d1c5bd67f6dfc7, type: 3}
@@ -308,6 +308,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Environment_1 (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 23028024744328754, guid: 93acc49b5a9f4e84b89aa62e0282a2a3,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3fdde0cb92350b24eba98062a406d536, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93acc49b5a9f4e84b89aa62e0282a2a3, type: 3}
 --- !u!4 &650253506392775781 stripped
@@ -636,6 +641,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Environment_1 (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 23028024744328754, guid: 93acc49b5a9f4e84b89aa62e0282a2a3,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3fdde0cb92350b24eba98062a406d536, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93acc49b5a9f4e84b89aa62e0282a2a3, type: 3}
 --- !u!4 &4158587668305991497 stripped
