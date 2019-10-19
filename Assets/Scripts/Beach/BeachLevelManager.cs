@@ -16,6 +16,11 @@ public class BeachLevelManager : MonoBehaviour
     private bool garbageCollected = false;
     private float timeSinceGarbageCollected = 0.0f;
 
+    // Cutscenes
+    public DialogueTrigger startCutscene;
+    public DialogueTrigger endCutscene;
+    public Animator DialogueAnimator;
+
     // UI and the UI fields
     public Text scoreText;
     public Text garbageText;
@@ -35,27 +40,29 @@ public class BeachLevelManager : MonoBehaviour
     {
         Instance = this;
         pollutionSlide.value = TrashSpawner.garbageMultiplier;
-        informationText.text = "Press any key to start";
+        //informationText.text = "Press any key to start";
         playerMotor = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMotor>();
         cameraMotor = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMotor>();
         compMotor = GameObject.FindGameObjectWithTag("Companion").GetComponent<CompanionMotor>();
         scoreText.text = "Score : " + score.ToString("0");
         garbageText.text = "Garbage : " + garbage.ToString();
         livesText.text = "Lives Remaining : 3";
-        
+
         //modifierText.text = "Modifer : x" + modifier.ToString("0.0");
+
+        startCutscene.Begin();
 
     }
 
     private void Update()
     {
-        if (Input.anyKey && !isGameStarted)
+        if (Input.anyKey && !isGameStarted && !DialogueAnimator.GetBool("isOpen"))
         {
             isGameStarted = true;
             playerMotor.StartRunning();
             cameraMotor.StartFollowing();
             compMotor.StartRunning();
-            informationText.text = "";
+            FindObjectOfType<CameraMotor>().isFollowing = true;
         }
 
         if (isGameStarted)
@@ -73,31 +80,7 @@ public class BeachLevelManager : MonoBehaviour
                         {
                             SceneManager.LoadScene("Antarctica_EndingCutscene");
                         }*/
-            if(score > 25)
-            {
-                infoBox.gameObject.SetActive(false);
-            }
-            else if (score > 20)
-            {
-                informationText.text = "Good luck";
-            }
-            else if (score > 15)
-            {
-                informationText.text = "More obstacles will appear on your track as the pollution meter rises";
-            }
-            else if (score > 10)
-            {
-                informationText.text = "The pollution meter on the top right" +
-                    "rises whenever you don't collect the garbage, and will decrease when you do";
-            }
-            else if (score > 5)
-            {
-                informationText.text = "Garbage will pile up if you leave it unhandled";
-            }
-            else if (score > 0)
-            {
-                informationText.text = "Flippy, you have to collect the garbage that people throw on the beach!";
-            }
+
 
             timeSinceGarbageCollected += Time.deltaTime;
             if(timeSinceGarbageCollected > 5.0f)
