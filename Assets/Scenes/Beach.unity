@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.47801256, g: 0.6362454, b: 0.696304, a: 1}
+  m_IndirectSpecularColor: {r: 0.47801262, g: 0.63624567, b: 0.6963044, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -133,6 +133,74 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &162516265
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 162516267}
+  - component: {fileID: 162516266}
+  m_Layer: 0
+  m_Name: BeachSpawnManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &162516266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 162516265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e24cd358384436f4b870fab6d9243af9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SHOW_COLLIDER: 0
+  ramps:
+  - {fileID: 5190813677633460369, guid: a451a2da2b3920246b8edff9fdf2f40b, type: 3}
+  - {fileID: 9111013812032384620, guid: cd06fe6ec83c22c498a4b7951798176b, type: 3}
+  longblocks:
+  - {fileID: 7537513208907289819, guid: b1d4a2eb215335f4ab34ad45d383f2ba, type: 3}
+  jumps:
+  - {fileID: 7287434681386983424, guid: 43601145df4352143b8615c4d04e44de, type: 3}
+  - {fileID: 6272316887010515826, guid: 7e6a993d0a07ae14683b9d5e1fea9de8, type: 3}
+  - {fileID: 6080301866849173998, guid: b578018e286202d48bd79c0c9a0d97f3, type: 3}
+  - {fileID: 6080301866849173998, guid: 590c44a6a8efa304e850f171661ce2fd, type: 3}
+  slides:
+  - {fileID: 7390322518517567530, guid: 979fad5df01af2a4b9972f67a7f9d3a4, type: 3}
+  - {fileID: 9175711776171268573, guid: daf73fb049cc1ce4784de50c3c56cd91, type: 3}
+  pieces: []
+  availableSegments:
+  - {fileID: 8163647029438462476, guid: aa2fad5f3ebd2f24996c480648542d7e, type: 3}
+  - {fileID: 4523778955706409358, guid: 66b0d90e8607ab143a0242a5b98820db, type: 3}
+  - {fileID: 3538992793338094633, guid: c96551f4929b34741a74c287b444cb3c, type: 3}
+  - {fileID: 7201692872008110923, guid: 37bfd4678ae808848a0d1276c6146c79, type: 3}
+  - {fileID: 2874167608000408201, guid: 5bca059c062e8a242941b5c48a0908a0, type: 3}
+  - {fileID: 3535003828202356786, guid: 5e783388adaeeb748b635a11bc6ef46e, type: 3}
+  availableTransitions:
+  - {fileID: 4323896662055346297, guid: 5c20dfb7ebce29046b3e3cab51c26405, type: 3}
+  segments: []
+--- !u!4 &162516267
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 162516265}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &311463656
 GameObject:
   m_ObjectHideFlags: 0
@@ -299,73 +367,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &474647436
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 474647438}
-  - component: {fileID: 474647437}
-  m_Layer: 0
-  m_Name: BeachSpawnManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &474647437
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 474647436}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e24cd358384436f4b870fab6d9243af9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SHOW_COLLIDER: 0
-  ramps:
-  - {fileID: 5190813677633460369, guid: a451a2da2b3920246b8edff9fdf2f40b, type: 3}
-  - {fileID: 9065190194238017347, guid: cd06fe6ec83c22c498a4b7951798176b, type: 3}
-  longblocks:
-  - {fileID: 7537513208907289819, guid: b1d4a2eb215335f4ab34ad45d383f2ba, type: 3}
-  jumps:
-  - {fileID: 7287434681386983424, guid: 43601145df4352143b8615c4d04e44de, type: 3}
-  - {fileID: 6272316887010515826, guid: 7e6a993d0a07ae14683b9d5e1fea9de8, type: 3}
-  - {fileID: 6080301866849173998, guid: b578018e286202d48bd79c0c9a0d97f3, type: 3}
-  slides:
-  - {fileID: 7390322518517567530, guid: 979fad5df01af2a4b9972f67a7f9d3a4, type: 3}
-  - {fileID: 9175711776171268573, guid: daf73fb049cc1ce4784de50c3c56cd91, type: 3}
-  pieces: []
-  availableSegments:
-  - {fileID: 8163647029438462476, guid: aa2fad5f3ebd2f24996c480648542d7e, type: 3}
-  - {fileID: 4523778955706409358, guid: 66b0d90e8607ab143a0242a5b98820db, type: 3}
-  - {fileID: 3538992793338094633, guid: c96551f4929b34741a74c287b444cb3c, type: 3}
-  - {fileID: 7201692872008110923, guid: 37bfd4678ae808848a0d1276c6146c79, type: 3}
-  - {fileID: 2874167608000408201, guid: 5bca059c062e8a242941b5c48a0908a0, type: 3}
-  - {fileID: 3535003828202356786, guid: 5e783388adaeeb748b635a11bc6ef46e, type: 3}
-  availableTransitions:
-  - {fileID: 4323896662055346297, guid: 5c20dfb7ebce29046b3e3cab51c26405, type: 3}
-  segments: []
---- !u!4 &474647438
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 474647436}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &526319376
 GameObject:
   m_ObjectHideFlags: 0
@@ -536,7 +537,7 @@ RectTransform:
   - {fileID: 1605065732}
   - {fileID: 697546880}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1155,7 +1156,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4303844821561524, guid: 312b31977ed9b2d48a14849ebb8c7fb3, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 95943282229431942, guid: 312b31977ed9b2d48a14849ebb8c7fb3,
         type: 3}
@@ -1496,7 +1497,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1769613253
 GameObject:
@@ -1814,7 +1815,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 114}
+  m_AnchoredPosition: {x: 0, y: 133}
   m_SizeDelta: {x: 130, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1908943613
@@ -1957,6 +1958,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilePrefabs:
   - {fileID: 5780021485349039964, guid: 8a09da45a0b138646956c1629f15b740, type: 3}
+  - {fileID: 8561708710973451157, guid: f4f666f6b6227544b872646c6fc8aea1, type: 3}
+  - {fileID: 2570380844778494922, guid: e1d3feed86b545d49b2b68d51ad1f2e2, type: 3}
 --- !u!4 &1989935140
 Transform:
   m_ObjectHideFlags: 0
@@ -2014,6 +2017,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 587786019}
     m_Modifications:
+    - target: {fileID: 3299821735586376754, guid: f22f3a959706c4114b6dbf23a2cb6b09,
+        type: 3}
+      propertyPath: m_Name
+      value: PauseMenuPanel
+      objectReference: {fileID: 0}
     - target: {fileID: 3299821735586376755, guid: f22f3a959706c4114b6dbf23a2cb6b09,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2133,11 +2141,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3299821735586376754, guid: f22f3a959706c4114b6dbf23a2cb6b09,
-        type: 3}
-      propertyPath: m_Name
-      value: PauseMenuPanel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f22f3a959706c4114b6dbf23a2cb6b09, type: 3}
