@@ -186,6 +186,12 @@ public class PlayerMotor : MonoBehaviour
         anim.SetTrigger("StartRunning");
     }
 
+    public void StopRunning()
+    {
+        isRunning = false;
+        anim.SetTrigger("StopRunning");
+    }
+
     public void StartSliding()
     {
         anim.SetBool("Sliding", true);
@@ -239,6 +245,9 @@ public class PlayerMotor : MonoBehaviour
             } else if (gameScene.name.Equals("Beach"))
             {
                 BeachLevelManager.Instance.updateLives(livesCounter);
+            } else
+            {
+                AntarcticaLevelManager.Instance.updateLives(livesCounter);
             }
         }
     }
