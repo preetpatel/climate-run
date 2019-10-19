@@ -623,17 +623,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1643119220528137421}
     m_Modifications:
-    - target: {fileID: 1256858306203008, guid: 93acc49b5a9f4e84b89aa62e0282a2a3, type: 3}
-      propertyPath: m_Name
-      value: Environment_1
-      objectReference: {fileID: 0}
     - target: {fileID: 4156798437703472, guid: 93acc49b5a9f4e84b89aa62e0282a2a3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4156798437703472, guid: 93acc49b5a9f4e84b89aa62e0282a2a3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4156798437703472, guid: 93acc49b5a9f4e84b89aa62e0282a2a3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -671,6 +667,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4156798437703472, guid: 93acc49b5a9f4e84b89aa62e0282a2a3, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1256858306203008, guid: 93acc49b5a9f4e84b89aa62e0282a2a3, type: 3}
+      propertyPath: m_Name
+      value: Environment_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 64820798451078254, guid: 93acc49b5a9f4e84b89aa62e0282a2a3,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93acc49b5a9f4e84b89aa62e0282a2a3, type: 3}
 --- !u!4 &3027193765573203433 stripped
@@ -686,10 +695,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1643119220528137421}
     m_Modifications:
-    - target: {fileID: 1281751402789776, guid: c74135ed198083f4fb4d515df70d0bd9, type: 3}
-      propertyPath: m_Name
-      value: Fireflies_HighPerformance
-      objectReference: {fileID: 0}
     - target: {fileID: 4849745810582040, guid: c74135ed198083f4fb4d515df70d0bd9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.26
@@ -734,6 +739,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1281751402789776, guid: c74135ed198083f4fb4d515df70d0bd9, type: 3}
+      propertyPath: m_Name
+      value: Fireflies_HighPerformance
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c74135ed198083f4fb4d515df70d0bd9, type: 3}
 --- !u!4 &6764546451600058796 stripped
@@ -749,11 +758,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1643119220528137421}
     m_Modifications:
-    - target: {fileID: 1223009196841000124, guid: 9db783d9251088d46ad9a5b0dd05adb9,
-        type: 3}
-      propertyPath: m_Name
-      value: Jump
-      objectReference: {fileID: 0}
     - target: {fileID: 6490127884061395562, guid: 9db783d9251088d46ad9a5b0dd05adb9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -808,6 +812,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1223009196841000124, guid: 9db783d9251088d46ad9a5b0dd05adb9,
+        type: 3}
+      propertyPath: m_Name
+      value: Jump
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9db783d9251088d46ad9a5b0dd05adb9, type: 3}
