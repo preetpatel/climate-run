@@ -4,11 +4,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class DontDestroy : MonoBehaviour
+public class Music : MonoBehaviour
 {
     public static bool isSfxOn = true;
     public AudioSource buttonSound;
     public AudioClip buttonSoundClip;
+
+    public AudioClip forestLevelMusic;
 
     public AudioSource music;
 
@@ -35,8 +37,14 @@ public class DontDestroy : MonoBehaviour
     {
         if(music.CompareTag("Music"))
         {
-            IEnumerator fadeSound1 = AudioFadeOut.FadeOut(music, 0.5f);
+            IEnumerator fadeSound1 = AudioController.FadeOut(music, 0.5f);
             StartCoroutine(fadeSound1);
+            if (aScene.name.Equals("Forest"))
+            {
+                StartCoroutine(AudioController.FadeIn(music, 2f));
+                music.clip = forestLevelMusic;
+                music.Play();
+            }
         }
         if(buttonSound.CompareTag("SFX"))
         {
@@ -60,5 +68,10 @@ public class DontDestroy : MonoBehaviour
             buttonSound.PlayOneShot(buttonSoundClip);
         }
         
+    }
+
+    public IEnumerator wait(float sec)
+    {
+        yield return new WaitForSeconds(sec);
     }
 }
