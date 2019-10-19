@@ -351,7 +351,7 @@ PrefabInstance:
     - target: {fileID: 132422553982956018, guid: 7fecaac0aab7a7e41a830b0d912116fe,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -375
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 132422553982956018, guid: 7fecaac0aab7a7e41a830b0d912116fe,
         type: 3}
@@ -361,7 +361,7 @@ PrefabInstance:
     - target: {fileID: 132422553982956018, guid: 7fecaac0aab7a7e41a830b0d912116fe,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: -770
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 132422553982956018, guid: 7fecaac0aab7a7e41a830b0d912116fe,
         type: 3}
@@ -397,6 +397,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 132422552719275420, guid: 7fecaac0aab7a7e41a830b0d912116fe,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 132422552961730265, guid: 7fecaac0aab7a7e41a830b0d912116fe,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 132422553982956019, guid: 7fecaac0aab7a7e41a830b0d912116fe,
         type: 3}
@@ -4166,7 +4176,7 @@ PrefabInstance:
     - target: {fileID: 407205876563168740, guid: c248e38ca17dc6843b4546e93ea81d48,
         type: 3}
       propertyPath: dialogue.sentences.Array.size
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 407205876563168740, guid: c248e38ca17dc6843b4546e93ea81d48,
         type: 3}
@@ -4176,12 +4186,93 @@ PrefabInstance:
     - target: {fileID: 407205876563168740, guid: c248e38ca17dc6843b4546e93ea81d48,
         type: 3}
       propertyPath: dialogue.sentences.Array.data[0]
-      value: OMG RUN!
+      value: 'Woah! Where did you come from? '
       objectReference: {fileID: 0}
     - target: {fileID: 407205876563168740, guid: c248e38ca17dc6843b4546e93ea81d48,
         type: 3}
       propertyPath: dialogue.sentences.Array.data[1]
-      value: RUN!
+      value: Watch out!
+      objectReference: {fileID: 0}
+    - target: {fileID: 407205876563168740, guid: c248e38ca17dc6843b4546e93ea81d48,
+        type: 3}
+      propertyPath: dialogue.sentences.Array.data[2]
+      value: "There\u2019s a fire coming this way."
+      objectReference: {fileID: 0}
+    - target: {fileID: 407205876563168740, guid: c248e38ca17dc6843b4546e93ea81d48,
+        type: 3}
+      propertyPath: dialogue.sentences.Array.data[3]
+      value: "Quick, let\u2019s move to safety!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 407205876532410014, guid: c248e38ca17dc6843b4546e93ea81d48,
+        type: 3}
+      propertyPath: dialogue.sentences.Array.size
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 407205876532410014, guid: c248e38ca17dc6843b4546e93ea81d48,
+        type: 3}
+      propertyPath: dialogue.sentences.Array.data[0]
+      value: Phew that was close!
+      objectReference: {fileID: 0}
+    - target: {fileID: 407205876532410014, guid: c248e38ca17dc6843b4546e93ea81d48,
+        type: 3}
+      propertyPath: dialogue.sentences.Array.data[1]
+      value: "You sure don\u2019t look like you\u2019re from around here\u2026 "
+      objectReference: {fileID: 0}
+    - target: {fileID: 407205876532410014, guid: c248e38ca17dc6843b4546e93ea81d48,
+        type: 3}
+      propertyPath: dialogue.sentences.Array.data[2]
+      value: "Oh where are my manners. My name\u2019s Darwin"
+      objectReference: {fileID: 0}
+    - target: {fileID: 407205876532410014, guid: c248e38ca17dc6843b4546e93ea81d48,
+        type: 3}
+      propertyPath: dialogue.sentences.Array.data[3]
+      value: We never used to get fires around here like that.
+      objectReference: {fileID: 0}
+    - target: {fileID: 407205876532410014, guid: c248e38ca17dc6843b4546e93ea81d48,
+        type: 3}
+      propertyPath: dialogue.sentences.Array.data[4]
+      value: "The humans like to clear land using fire and this year it\u2019s getting
+        out of hand!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 407205876532410014, guid: c248e38ca17dc6843b4546e93ea81d48,
+        type: 3}
+      propertyPath: dialogue.sentences.Array.data[5]
+      value: "The rising temperatures and dryness sure don\u2019t help either!\r"
+      objectReference: {fileID: 0}
+    - target: {fileID: 407205876532410014, guid: c248e38ca17dc6843b4546e93ea81d48,
+        type: 3}
+      propertyPath: dialogue.sentences.Array.data[6]
+      value: 'Thank you for helping us out though!
+
+        Collecting those seeds
+        and planting them will help a lot in rebuilding our home!'
+      objectReference: {fileID: 0}
+    - target: {fileID: 407205876532410014, guid: c248e38ca17dc6843b4546e93ea81d48,
+        type: 3}
+      propertyPath: dialogue.sentences.Array.data[7]
+      value: I hope more people could help out like you did!
+      objectReference: {fileID: 0}
+    - target: {fileID: 407205876532410014, guid: c248e38ca17dc6843b4546e93ea81d48,
+        type: 3}
+      propertyPath: dialogue.sentences.Array.data[8]
+      value: "You can further help our environment by planting more trees like you
+        did!\r"
+      objectReference: {fileID: 0}
+    - target: {fileID: 407205876532410014, guid: c248e38ca17dc6843b4546e93ea81d48,
+        type: 3}
+      propertyPath: dialogue.sentences.Array.data[9]
+      value: "You can also help by speaking up for those who can\u2019t,"
+      objectReference: {fileID: 0}
+    - target: {fileID: 407205876532410014, guid: c248e38ca17dc6843b4546e93ea81d48,
+        type: 3}
+      propertyPath: dialogue.sentences.Array.data[10]
+      value: and protect our natural habitats from poachers and those that are trying
+        to deforest them!
+      objectReference: {fileID: 0}
+    - target: {fileID: 407205876532410014, guid: c248e38ca17dc6843b4546e93ea81d48,
+        type: 3}
+      propertyPath: dialogue.name
+      value: Monkey
       objectReference: {fileID: 0}
     - target: {fileID: 8137986397950877536, guid: c248e38ca17dc6843b4546e93ea81d48,
         type: 3}

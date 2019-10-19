@@ -61,7 +61,17 @@ public class ForestLevelManager : MonoBehaviour
 		{
 			score += (Time.deltaTime * modifier);
 			scoreText.text = "Score : " + score.ToString("0");
-		}
+
+            if (score > 60)
+            {
+                isGameStarted = false;
+                playerMotor.StopRunning();
+                cameraMotor.StopFollowing();
+                endCutscene.Begin();
+
+                score = 0;
+            }
+        }
 
 	}
 
