@@ -17,6 +17,11 @@ public class BeachLevelManager : MonoBehaviour
     private bool garbageCollected = false;
     private float timeSinceGarbageCollected = 0.0f;
 
+    // Cutscenes
+    public DialogueTrigger startCutscene;
+    public DialogueTrigger endCutscene;
+    public Animator DialogueAnimator;
+
     // UI and the UI fields
     public Text scoreText;
     public Text garbageText;
@@ -37,7 +42,7 @@ public class BeachLevelManager : MonoBehaviour
     {
         Instance = this;
         pollutionSlide.value = TrashSpawner.garbageMultiplier;
-        informationText.text = "Press any key to start";
+        //informationText.text = "Press any key to start";
         playerMotor = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMotor>();
         cameraMotor = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMotor>();
         compMotor = GameObject.FindGameObjectWithTag("Companion").GetComponent<CompanionMotor>();
@@ -61,11 +66,13 @@ public class BeachLevelManager : MonoBehaviour
 
         //modifierText.text = "Modifer : x" + modifier.ToString("0.0");
 
+        startCutscene.Begin();
+
     }
 
     private void Update()
     {
-        if (Input.anyKey && !isGameStarted)
+        if (Input.anyKey && !isGameStarted && !DialogueAnimator.GetBool("isOpen"))
         {
             isGameStarted = true;
             playerMotor.StartRunning();
@@ -79,6 +86,7 @@ public class BeachLevelManager : MonoBehaviour
                 Music music = musicPlayer.GetComponent<Music>();
                 music.changeMusic(SceneManager.GetActiveScene());
             }
+            FindObjectOfType<CameraMotor>().isFollowing = true;
         }
 
         if (isGameStarted)
@@ -122,6 +130,7 @@ public class BeachLevelManager : MonoBehaviour
             {
                 informationText.text = "Flippy, you have to collect the garbage that people throw on the beach!";
             }
+
 
             timeSinceGarbageCollected += Time.deltaTime;
             if(timeSinceGarbageCollected > 5.0f)
