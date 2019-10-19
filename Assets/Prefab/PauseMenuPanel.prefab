@@ -77,7 +77,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Game Over!
+  m_Text: Paused
 --- !u!114 &1222357449886942906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -698,12 +698,12 @@ PrefabInstance:
     - target: {fileID: 8286548184341119521, guid: 15aadf4aec1d2a64881c16742b23d6cf,
         type: 3}
       propertyPath: m_Name
-      value: Retry
+      value: Resume
       objectReference: {fileID: 0}
     - target: {fileID: 8286548183434189261, guid: 15aadf4aec1d2a64881c16742b23d6cf,
         type: 3}
       propertyPath: m_Text
-      value: 'Retry
+      value: 'Resume
 
 '
       objectReference: {fileID: 0}
