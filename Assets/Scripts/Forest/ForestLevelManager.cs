@@ -13,7 +13,12 @@ public class ForestLevelManager : MonoBehaviour
 	private PlayerMotor playerMotor;
 	private CameraMotor cameraMotor;
 
-	public Animator deathMenuAnim;
+    // Cutscenes
+    public DialogueTrigger startCutscene;
+    public DialogueTrigger endCutscene;
+    public Animator DialogueAnimator;
+
+    public Animator deathMenuAnim;
     public Text deathScoreText, deathSeedText;
 
 	// UI and the UI fields
@@ -36,11 +41,13 @@ public class ForestLevelManager : MonoBehaviour
 		seedCountText.text = "Seeds : " + seeds.ToString();
 		livesText.text = "Lives Remaining : 3";
 
+        startCutscene.Begin();
+
 	}
 
 	private void Update()
 	{
-		if (Input.anyKey && !isGameStarted)
+		if (Input.anyKey && !isGameStarted && !DialogueAnimator.GetBool("isOpen"))
 		{
 			isGameStarted = true;
 			playerMotor.StartRunning();
@@ -54,7 +61,17 @@ public class ForestLevelManager : MonoBehaviour
 		{
 			score += (Time.deltaTime * modifier);
 			scoreText.text = "Score : " + score.ToString("0");
-		}
+
+            if (score > 60)
+            {
+                isGameStarted = false;
+                playerMotor.StopRunning();
+                cameraMotor.StopFollowing();
+                endCutscene.Begin();
+
+                score = 0;
+            }
+        }
 
 	}
 
@@ -87,6 +104,6 @@ public class ForestLevelManager : MonoBehaviour
     public void OnExitButtonPress()
     {
 
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Forest_EndingCutscene");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
 }
