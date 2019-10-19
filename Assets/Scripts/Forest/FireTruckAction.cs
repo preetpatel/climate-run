@@ -45,7 +45,7 @@ public class FireTruckAction : MonoBehaviour
     {
         if(transitioning)
         {
-            if (framesSinceTrigger > 180)
+            if (framesSinceTrigger > 170)
             {
                 transitioning = false;
                 growingBushes = true;
@@ -80,7 +80,7 @@ public class FireTruckAction : MonoBehaviour
 
             framesSinceBushGrow++;
 
-            if (framesSinceBushGrow >= 7)
+            if (framesSinceBushGrow >= 4)
             {
                 allBushesGrown = true;
                 foreach (KeyValuePair<GrowingBush, bool> bushGrown in grownBushes)
