@@ -12,7 +12,6 @@ public class ExtinguishableFire : MonoBehaviour
     public void Trigger()
     {
         transitioning = true;
-        Debug.Log("Triggering a fire");
     }
 
     // Update is called once per frame
@@ -20,22 +19,33 @@ public class ExtinguishableFire : MonoBehaviour
     {
         if (transitioning)
         {
-            Color currentColor = GetComponent<ParticleSystem>().startColor;
-            Debug.Log(currentColor.a);
-            float newA = currentColor.a - 10;
+            Color currentColor = GetComponent<ParticleSystem>().main.startColor.color;
+            float newR = currentColor.r - 0.02f;
+            float newG = currentColor.g - 0.02f;
+            float newB = currentColor.b - 0.02f;
+            float newA = currentColor.a - 0.02f;
 
-            if (currentColor.a <= 0.0f)
+            if (currentColor.r <= 0.0f)
             {
                 gameObject.SetActive(false);
                 transitioning = false;
             }
             else
             {
-                if (newA <= 0.0f)
+                if (newR < 0.0f)
+                    newR = 0.0f;
+                if (newG < 0.0f)
+                    newG = 0.0f;
+                if (newB < 0.0f)
+                    newB = 0.0f;
+                if (newA < 0.0f)
                     newA = 0.0f;
 
-                gameObject.GetComponent<ParticleSystem>().startColor =
-                    new Color(currentColor.r, currentColor.g, currentColor.b, newA);
+                Color newColor = new Color(newR, newG, newB, newA);
+                ParticleSystem.MinMaxGradient newGradient = new ParticleSystem.MinMaxGradient(newColor);
+
+                ParticleSystem.MainModule ma = gameObject.GetComponent<ParticleSystem>().main;
+                ma.startColor = newGradient;
             }
         }
     }
