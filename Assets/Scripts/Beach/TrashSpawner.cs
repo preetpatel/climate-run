@@ -27,10 +27,11 @@ public class TrashSpawner : MonoBehaviour
     {
         if (Random.Range(0.0f, 1.0f) > garbageMultiplier)
         {
-            transform.gameObject.SetActive(false);
+            //transform.gameObject.SetActive(false);
             return;
         } else
         {
+            //transform.gameObject.SetActive(true);
             trash.SetActive(true);
         }
     }
