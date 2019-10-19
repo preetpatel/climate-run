@@ -22,7 +22,6 @@ public class BeachLevelManager : MonoBehaviour
     public Text informationText;
     public Text livesText;
     public Slider pollutionSlide;
-    public Button pauseButton;
     public Image infoBox;
     private float score = 0;
     private float garbage = 0;
@@ -138,13 +137,8 @@ public class BeachLevelManager : MonoBehaviour
         deadGarbageText.text = "Garbage Collected: " + garbage.ToString("0");
         deathMenuAnim.SetTrigger("Dead");
         isGameStarted = false;
-        livesText.gameObject.SetActive(false);
-        scoreText.gameObject.SetActive(false);
-        garbageText.gameObject.SetActive(false);
-        informationText.gameObject.SetActive(false);
-        pollutionSlide.gameObject.SetActive(false);
-        pauseButton.gameObject.SetActive(false);
-        infoBox.gameObject.SetActive(false);
+        GameObject.FindGameObjectWithTag("AlivePanel").SetActive(false);
+           
     }
 
     public void OnRetryButton()
