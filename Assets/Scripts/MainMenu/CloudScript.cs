@@ -25,10 +25,8 @@ public class CloudScript : MonoBehaviour
     {
         //Set camWidth. Will be used later to check whether or not cloud is off screen.
         camWidth = Screen.width;
-        Debug.Log(camWidth);
 
         maxY = Screen.height - 100;
-        Debug.Log("Height: " + maxY);
 
         float tempNum = camWidth;
         int digits = 0;
