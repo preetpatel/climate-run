@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.47801256, g: 0.6362454, b: 0.696304, a: 1}
+  m_IndirectSpecularColor: {r: 0.47801286, g: 0.6362458, b: 0.69630504, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -531,8 +531,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 1605065732}
   - {fileID: 1454948972}
+  - {fileID: 1605065732}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -879,18 +879,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21e37c39cc09d484f981f438b8915b38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1232034739 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3299821735020795984, guid: f22f3a959706c4114b6dbf23a2cb6b09,
-    type: 3}
-  m_PrefabInstance: {fileID: 2074247893}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1295300216
 GameObject:
   m_ObjectHideFlags: 0
@@ -971,11 +959,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 587786019}
     m_Modifications:
-    - target: {fileID: 1765975225821437116, guid: 455e5a868541845d387486db738e3ebd,
-        type: 3}
-      propertyPath: m_Name
-      value: DeathMenuPanel
-      objectReference: {fileID: 0}
     - target: {fileID: 1765975225821437119, guid: 455e5a868541845d387486db738e3ebd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1014,7 +997,7 @@ PrefabInstance:
     - target: {fileID: 1765975225821437119, guid: 455e5a868541845d387486db738e3ebd,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1765975225821437119, guid: 455e5a868541845d387486db738e3ebd,
         type: 3}
@@ -1081,6 +1064,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1765975225821437116, guid: 455e5a868541845d387486db738e3ebd,
+        type: 3}
+      propertyPath: m_Name
+      value: DeathMenuPanel
+      objectReference: {fileID: 0}
     - target: {fileID: 1765975227208988478, guid: 455e5a868541845d387486db738e3ebd,
         type: 3}
       propertyPath: m_Name
@@ -1102,6 +1090,26 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1769613254}
     - target: {fileID: 1765975226931323371, guid: 455e5a868541845d387486db738e3ebd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnRetryButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 357087051097554775, guid: 455e5a868541845d387486db738e3ebd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1769613254}
+    - target: {fileID: 357087051097554775, guid: 455e5a868541845d387486db738e3ebd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnExitButtonPress
+      objectReference: {fileID: 0}
+    - target: {fileID: 6180666587646583287, guid: 455e5a868541845d387486db738e3ebd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1769613254}
+    - target: {fileID: 6180666587646583287, guid: 455e5a868541845d387486db738e3ebd,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnRetryButton
@@ -1142,7 +1150,7 @@ RectTransform:
   - {fileID: 1839046827}
   - {fileID: 697546880}
   m_Father: {fileID: 587786019}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1607,7 +1615,6 @@ MonoBehaviour:
   informationText: {fileID: 1471590131}
   livesText: {fileID: 314666880}
   pollutionSlide: {fileID: 1839046828}
-  pauseButton: {fileID: 1232034739}
   infoBox: {fileID: 1908943613}
   deathMenuAnim: {fileID: 1605065733}
   deadScoreText: {fileID: 136175325}
@@ -2091,11 +2098,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1454948972}
     m_Modifications:
-    - target: {fileID: 3299821735586376754, guid: f22f3a959706c4114b6dbf23a2cb6b09,
-        type: 3}
-      propertyPath: m_Name
-      value: PauseMenuPanel
-      objectReference: {fileID: 0}
     - target: {fileID: 3299821735586376755, guid: f22f3a959706c4114b6dbf23a2cb6b09,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2215,6 +2217,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3299821735586376754, guid: f22f3a959706c4114b6dbf23a2cb6b09,
+        type: 3}
+      propertyPath: m_Name
+      value: PauseMenuPanel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f22f3a959706c4114b6dbf23a2cb6b09, type: 3}
