@@ -48,10 +48,13 @@ public class FireTruckAction : MonoBehaviour
             if (framesSinceTrigger > 170)
             {
                 transitioning = false;
-                growingBushes = true;
-                framesSinceExtinguish = 0;
                 Time.timeScale = 1.0f;
                 return;
+            }
+
+            if (framesSinceTrigger > 150 && !growingBushes)
+            {
+                growingBushes = true;
             }
 
             framesSinceExtinguish++;
@@ -74,13 +77,14 @@ public class FireTruckAction : MonoBehaviour
 
             framesSinceTrigger++;
         }
-        else if (growingBushes)
+
+        if (growingBushes)
         {
             bool allBushesGrown = false;
 
             framesSinceBushGrow++;
 
-            if (framesSinceBushGrow >= 4)
+            if (framesSinceBushGrow >= 3)
             {
                 allBushesGrown = true;
                 foreach (KeyValuePair<GrowingBush, bool> bushGrown in grownBushes)
@@ -88,7 +92,6 @@ public class FireTruckAction : MonoBehaviour
                     GrowingBush bush = bushGrown.Key;
                     if (!bushGrown.Value)
                     {
-                        Debug.Log("There's a bush to grow :)");
                         grownBushes[bush] = true;
                         bush.Trigger();
                         allBushesGrown = false;
