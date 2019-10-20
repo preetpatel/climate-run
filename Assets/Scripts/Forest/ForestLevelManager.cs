@@ -159,6 +159,15 @@ public class ForestLevelManager : MonoBehaviour
 
         if (Settings.isMusicOn)
             StartCoroutine(AudioController.FadeOut(musicPlayer, 0.5f));
+
+        // Save the High Score
+        if(score > PlayerPrefs.GetInt("HighScoreForest"))
+        {
+            PlayerPrefs.SetInt("HighScoreForest", (int) score);
+            Debug.Log("High Score: " + PlayerPrefs.GetInt("HighScoreForest"));
+            Debug.Log("Score : " + score);
+        }
+
     }
 
     public void OnExitButtonPress()
