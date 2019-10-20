@@ -71,7 +71,8 @@ public class BeachTileManager : MonoBehaviour
             go.SetActive(true);
             activeLevels.Add(go);
         }
-        
+
+
 
         nextLevelZLocation += levelLength;
     }
