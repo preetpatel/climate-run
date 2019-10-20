@@ -247,7 +247,7 @@ public class PlayerMotor : MonoBehaviour
                 StartCoroutine(BeachLevelManager.Instance.updateLives(livesCounter));
             } else
             {
-                AntarcticaLevelManager.Instance.updateLives(livesCounter);
+                StartCoroutine(AntarcticaLevelManager.Instance.updateLives(livesCounter));
             }
         }
     }

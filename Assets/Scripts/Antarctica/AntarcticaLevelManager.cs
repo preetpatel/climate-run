@@ -20,20 +20,24 @@ public class AntarcticaLevelManager : MonoBehaviour
     // UI and the UI fields
     public Text scoreText;
     public Text informationText;
-    public Text livesText;
     private float score = 0;
     private AudioSource audioPlayer;
+
+    public Animator LivesAnimator;
 
     //Death menu
     public Animator deathMenuAnim;
     public Text deadScoreText;
     public Button pauseButton;
 
+    public Image heart1;
+    public Image heart2;
+    public Image heart3;
+
     private void Awake()
     {
         Instance = this;
         scoreText.text = "Score : " + score.ToString();
-        livesText.text = "Lives Remaining : 3";
         playerMotor = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMotor>();
         cameraMotor = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMotor>();
 
@@ -126,7 +130,6 @@ public class AntarcticaLevelManager : MonoBehaviour
         isGameStarted = false;
         scoreText.gameObject.SetActive(false);
         informationText.gameObject.SetActive(false);
-        livesText.gameObject.SetActive(false);
         pauseButton.gameObject.SetActive(false);
 
         if (Settings.isMusicOn)
@@ -145,8 +148,29 @@ public class AntarcticaLevelManager : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
-    public void updateLives(float livesAmount)
+    public IEnumerator updateLives(float livesAmount)
     {
-        livesText.text = "Lives Remaining : " + livesAmount.ToString("0");
+        LivesAnimator.SetTrigger("LifeLost");
+        switch (livesAmount)
+        {
+            case 2f:
+                heart1.gameObject.SetActive(true);
+                heart2.gameObject.SetActive(true);
+                heart3.gameObject.SetActive(false);
+                break;
+            case 1f:
+                heart1.gameObject.SetActive(true);
+                heart2.gameObject.SetActive(false);
+                heart3.gameObject.SetActive(false);
+                break;
+            case 0f:
+                heart1.gameObject.SetActive(false);
+                heart2.gameObject.SetActive(false);
+                heart3.gameObject.SetActive(false);
+                break;
+        }
+
+        yield return new WaitForSeconds(1f);
+        LivesAnimator.SetTrigger("GoBack");
     }
 }
