@@ -22,6 +22,7 @@ public class AntarcticaLevelManager : MonoBehaviour
     public Text informationText;
     public Text livesText;
     private float score = 0;
+    private AudioSource audioPlayer;
 
     //Death menu
     public Animator deathMenuAnim;
@@ -37,6 +38,20 @@ public class AntarcticaLevelManager : MonoBehaviour
         playerMotor = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMotor>();
         cameraMotor = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMotor>();
 
+        if (Settings.isMusicOn)
+        {
+            AudioSource[] audios = FindObjectsOfType<AudioSource>();
+            foreach (AudioSource audio in audios)
+            {
+                if (audio.CompareTag("Music"))
+                {
+                    audioPlayer = audio;
+                }
+            }
+
+            StartCoroutine(AudioController.FadeOut(audioPlayer, 0.5f));
+        }
+
         startCutscene.Begin();
     }
 
@@ -47,7 +62,14 @@ public class AntarcticaLevelManager : MonoBehaviour
         {
             isGameStarted = true;
             playerMotor.StartRunning();
-            cameraMotor.StartFollowing();    
+            cameraMotor.StartFollowing();
+
+            if (Settings.isMusicOn)
+            {
+                GameObject musicPlayer = GameObject.FindGameObjectWithTag("Music");
+                Music music = musicPlayer.GetComponent<Music>();
+                music.changeMusic(SceneManager.GetActiveScene());
+            }
         }
 
         if (isGameStarted)
@@ -62,7 +84,8 @@ public class AntarcticaLevelManager : MonoBehaviour
                 playerMotor.StopRunning();
                 cameraMotor.StopFollowing();
                 endCutscene.Begin();
-
+                if (Settings.isMusicOn)
+                    StartCoroutine(AudioController.FadeOut(audioPlayer, 0.5f));
                 score = 0;
             }
             else if (score > 15)
@@ -94,6 +117,9 @@ public class AntarcticaLevelManager : MonoBehaviour
         informationText.gameObject.SetActive(false);
         livesText.gameObject.SetActive(false);
         pauseButton.gameObject.SetActive(false);
+
+        if (Settings.isMusicOn)
+            StartCoroutine(AudioController.FadeOut(audioPlayer, 0.5f));
 
         GameObject.FindGameObjectWithTag("AlivePanel").SetActive(false);
     }

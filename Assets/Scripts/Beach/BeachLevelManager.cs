@@ -101,6 +101,7 @@ public class BeachLevelManager : MonoBehaviour
             /*            if (score > 60)
                         {
                             SceneManager.LoadScene("Antarctica_EndingCutscene");
+                            if(Settings.isMusicOn)
                              StartCoroutine(AudioController.FadeOut(audioPlayer, 0.5f));
                         }*/
 
@@ -143,7 +144,8 @@ public class BeachLevelManager : MonoBehaviour
         deathMenuAnim.SetTrigger("Dead");
         isGameStarted = false;
         GameObject.FindGameObjectWithTag("AlivePanel").SetActive(false);
-           
+        if (Settings.isMusicOn)
+            StartCoroutine(AudioController.FadeOut(audioPlayer, 0.5f));
     }
 
     public void OnRetryButton()

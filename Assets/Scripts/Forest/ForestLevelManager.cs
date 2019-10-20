@@ -121,6 +121,8 @@ public class ForestLevelManager : MonoBehaviour
         deathMenuAnim.SetTrigger("Dead");
         SideObjectSpawner.Instance.IsScrolling = false;
         GameObject.FindGameObjectWithTag("AlivePanel").SetActive(false);
+        if (Settings.isMusicOn)
+            StartCoroutine(AudioController.FadeOut(audioPlayer, 0.5f));
     }
 
     public void OnExitButtonPress()
