@@ -114,9 +114,6 @@ public class ForestLevelManager : MonoBehaviour
 	public IEnumerator updateLives(float livesAmount)
 	{
         lifeAnimation.SetTrigger("LifeLost");
-        Debug.Log(heart1.name);
-        Debug.Log(heart2.name);
-        Debug.Log(heart3.name);
         switch (livesAmount)
         {
             case 2f:
