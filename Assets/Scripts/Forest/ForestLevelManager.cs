@@ -21,15 +21,21 @@ public class ForestLevelManager : MonoBehaviour
     public Animator deathMenuAnim;
     public Text deathScoreText, deathSeedText;
 
-	// UI and the UI fields
-	public Text scoreText;
+    public Animator lifeAnimation;
+
+    // UI and the UI fields
+    public Text scoreText;
 	public Text seedCountText;
 	public Text informationText;
-	public Text livesText;
+    public Image heart1;
+    public Image heart2;
+    public Image heart3;
+   
 	private float score = 0;
 	private float seeds = 0;
 	private float modifier = 1.0f;
-    private AudioSource audioPlayer;
+    private AudioSource musicPlayer;
+    private GameObject audioPlayer;
 
 
     private void Awake()
@@ -41,7 +47,6 @@ public class ForestLevelManager : MonoBehaviour
 		cameraMotor = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMotor>();
 		scoreText.text = "Score : " + score.ToString("0");
 		seedCountText.text = "Seeds : " + seeds.ToString();
-		livesText.text = "Lives Remaining : 3";
 
         if(Settings.isMusicOn)
         {
@@ -50,13 +55,17 @@ public class ForestLevelManager : MonoBehaviour
             {
                 if (audio.CompareTag("Music"))
                 {
-                    audioPlayer = audio;
+                    musicPlayer = audio;
                 }
             }
 
-            StartCoroutine(AudioController.FadeOut(audioPlayer, 0.5f));
+            StartCoroutine(AudioController.FadeOut(musicPlayer, 0.5f));
         }
-       
+
+        heart1.gameObject.SetActive(true);
+        heart2.gameObject.SetActive(true);
+        heart3.gameObject.SetActive(true);
+
         startCutscene.Begin();
 	}
 
@@ -72,8 +81,8 @@ public class ForestLevelManager : MonoBehaviour
             FindObjectOfType<CameraMotor>().isFollowing = true;
             if (Settings.isMusicOn)
             {
-                GameObject musicPlayer = GameObject.FindGameObjectWithTag("Music");
-                Music music = musicPlayer.GetComponent<Music>();
+                audioPlayer = GameObject.FindGameObjectWithTag("SoundController");
+                Music music = audioPlayer.GetComponent<Music>();
                 music.changeMusic(SceneManager.GetActiveScene());
             }
 
@@ -90,7 +99,7 @@ public class ForestLevelManager : MonoBehaviour
                 playerMotor.StopRunning();
                 cameraMotor.StopFollowing();
                 endCutscene.Begin();
-                StartCoroutine(AudioController.FadeOut(audioPlayer, 0.5f));
+                StartCoroutine(AudioController.FadeOut(musicPlayer, 0.5f));
                 score = 0;
             }
         }
@@ -103,9 +112,30 @@ public class ForestLevelManager : MonoBehaviour
 		seedCountText.text = "Seeds : " + seeds.ToString();
 	}
 
-	public void updateLives(float livesAmount)
+	public IEnumerator updateLives(float livesAmount)
 	{
-		livesText.text = "Lives Remaining : " + livesAmount.ToString("0");
+        lifeAnimation.SetTrigger("LifeLost");
+        switch (livesAmount)
+        {
+            case 2f:
+                heart1.gameObject.SetActive(true);
+                heart2.gameObject.SetActive(true);
+                heart3.gameObject.SetActive(false);
+                break;
+            case 1f:
+                heart1.gameObject.SetActive(true);
+                heart2.gameObject.SetActive(false);
+                heart3.gameObject.SetActive(false);
+                break;
+            case 0f:
+                heart1.gameObject.SetActive(false);
+                heart2.gameObject.SetActive(false);
+                heart3.gameObject.SetActive(false);
+                break;
+        }
+
+        yield return new WaitForSeconds(1f);
+        lifeAnimation.SetTrigger("GoBack");
 	}
 
     public void OnRetryButton()
@@ -122,11 +152,13 @@ public class ForestLevelManager : MonoBehaviour
         SideObjectSpawner.Instance.IsScrolling = false;
         GameObject.FindGameObjectWithTag("AlivePanel").SetActive(false);
         if (Settings.isMusicOn)
-            StartCoroutine(AudioController.FadeOut(audioPlayer, 0.5f));
+            StartCoroutine(AudioController.FadeOut(musicPlayer, 0.5f));
     }
 
     public void OnExitButtonPress()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
+
+
 }
