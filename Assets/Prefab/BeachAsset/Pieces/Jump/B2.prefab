@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
-  visualIndex: 2
+  visualIndex: 1
 --- !u!1001 &1831930100821669062
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -113,6 +113,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 87aaf795e0b87c14a966ca3b0097e194, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8a13a717af9ff9841ba1ccad78590cad, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87aaf795e0b87c14a966ca3b0097e194, type: 3}
 --- !u!4 &1831930100821798470 stripped

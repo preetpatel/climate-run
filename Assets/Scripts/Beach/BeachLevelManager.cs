@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class BeachLevelManager : MonoBehaviour
@@ -24,13 +25,13 @@ public class BeachLevelManager : MonoBehaviour
     // UI and the UI fields
     public Text scoreText;
     public Text garbageText;
-    public Text informationText;
     public Text livesText;
     public Slider pollutionSlide;
     public Image infoBox;
     private float score = 0;
     private float garbage = 0;
     private float modifier = 1.0f;
+    private AudioSource audioPlayer;
 
     private bool isDead = false;
 
@@ -50,6 +51,20 @@ public class BeachLevelManager : MonoBehaviour
         garbageText.text = "Garbage : " + garbage.ToString();
         livesText.text = "Lives Remaining : 3";
 
+        if (Settings.isMusicOn)
+        {
+            AudioSource[] audios = FindObjectsOfType<AudioSource>();
+            foreach (AudioSource audio in audios)
+            {
+                if (audio.CompareTag("Music"))
+                {
+                    audioPlayer = audio;
+                }
+            }
+
+            StartCoroutine(AudioController.FadeOut(audioPlayer, 0.5f));
+        }
+
         //modifierText.text = "Modifer : x" + modifier.ToString("0.0");
 
         startCutscene.Begin();
@@ -64,26 +79,20 @@ public class BeachLevelManager : MonoBehaviour
             playerMotor.StartRunning();
             cameraMotor.StartFollowing();
             compMotor.StartRunning();
+
+            if (Settings.isMusicOn)
+            {
+                GameObject musicPlayer = GameObject.FindGameObjectWithTag("Music");
+                Music music = musicPlayer.GetComponent<Music>();
+                music.changeMusic(SceneManager.GetActiveScene());
+            }
             FindObjectOfType<CameraMotor>().isFollowing = true;
         }
 
         if (isGameStarted)
         {
-            if (!garbageCollected)
-            {
-                float garbMulti = TrashSpawner.garbageMultiplier;
-                TrashSpawner.garbageMultiplier = Mathf.Clamp(garbMulti += 0.001f, 0.0f, 1.0f);
-                pollutionSlide.value = TrashSpawner.garbageMultiplier;
-            }
             score += (Time.deltaTime * modifier);
             scoreText.text = "Score : " + score.ToString("0");
-
-            /*            if (score > 60)
-                        {
-                            SceneManager.LoadScene("Antarctica_EndingCutscene");
-                        }*/
-
-
             timeSinceGarbageCollected += Time.deltaTime;
             if(timeSinceGarbageCollected > 5.0f)
             {
@@ -93,6 +102,19 @@ public class BeachLevelManager : MonoBehaviour
 
         }
 
+    }
+
+    private void FixedUpdate() 
+    {
+        if (isGameStarted)
+        {
+            if (!garbageCollected)
+            {
+                float garbMulti = TrashSpawner.garbageMultiplier;
+                TrashSpawner.garbageMultiplier = Mathf.Clamp(garbMulti += 0.0005f, 0.0f, 1.0f);
+                pollutionSlide.value = TrashSpawner.garbageMultiplier;
+            }
+        }
     }
 
     public void getGarbage()
@@ -124,7 +146,8 @@ public class BeachLevelManager : MonoBehaviour
         isGameStarted = false;
         isDead = true;
         GameObject.FindGameObjectWithTag("AlivePanel").SetActive(false);
-           
+        if (Settings.isMusicOn)
+            StartCoroutine(AudioController.FadeOut(audioPlayer, 0.5f));
     }
 
     public void OnRetryButton()
