@@ -150,7 +150,12 @@ public class ForestLevelManager : MonoBehaviour
         deathSeedText.text = "Seeds Collected: " + seeds.ToString("0");
         deathMenuAnim.SetTrigger("Dead");
         SideObjectSpawner.Instance.IsScrolling = false;
-        GameObject.FindGameObjectWithTag("AlivePanel").SetActive(false);
+        GameObject panel = GameObject.FindGameObjectWithTag("AlivePanel");
+        if (panel != null)
+        {
+            panel.SetActive(false);
+        }
+
         if (Settings.isMusicOn)
             StartCoroutine(AudioController.FadeOut(musicPlayer, 0.5f));
     }
