@@ -9,6 +9,7 @@ public enum BeachPieceType
     longblock = 1,
     jump = 2,
     slide = 3,
+    shipwreck = 4,
 }
 
 public class BeachPiece : MonoBehaviour

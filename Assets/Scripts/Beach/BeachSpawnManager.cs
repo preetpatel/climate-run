@@ -24,6 +24,7 @@ public class BeachSpawnManager : MonoBehaviour
     public List<BeachPiece> longblocks = new List<BeachPiece>();
     public List<BeachPiece> jumps = new List<BeachPiece>();
     public List<BeachPiece> slides = new List<BeachPiece>();
+    public List<BeachPiece> shipwrecks = new List<BeachPiece>();
     [HideInInspector]
     public List<BeachPiece> pieces = new List<BeachPiece>();//all the pieces in the pool
 
@@ -92,6 +93,9 @@ public class BeachSpawnManager : MonoBehaviour
             }else if (pt == BeachPieceType.slide)
             {
                 go = slides[visualIndex].gameObject;
+            }else if (pt == BeachPieceType.shipwreck)
+            {
+                go = shipwrecks[visualIndex].gameObject;
             }
             go = Instantiate(go);
             p = go.GetComponent<BeachPiece>();
@@ -124,7 +128,25 @@ public class BeachSpawnManager : MonoBehaviour
         {
             continiousSegments++;
         }
- 
+        //birds animations
+        GameObject[] birds = new GameObject[100];
+        birds = GameObject.FindGameObjectsWithTag("Bird");
+        for (int i = 0; i < birds.Length; i++)
+        {
+            if(birds[i] == null)
+            {
+                continue;
+            }
+            Animation anim = birds[i].GetComponent<Animation>();
+            if (Random.Range(0.0f, 1.0f) > 0.5f)
+            {
+                anim.Play("Flap");
+                continue;
+            }
+            anim = birds[i].GetComponent<Animation>();
+            anim.Play("Glide");
+        }
+
     }
 
     private void SpawnSegment()
@@ -144,6 +166,8 @@ public class BeachSpawnManager : MonoBehaviour
         currentSpawnZ += s.length;
         amountOfActiveSegments++;
         s.Spawn();
+
+
     }
 
     private void SpawnTransition()
@@ -151,7 +175,7 @@ public class BeachSpawnManager : MonoBehaviour
         List<BeachSegment> possibleTransition = availableTransitions.FindAll(x => x.beginY1 == y1 || x.beginY2 == y2 || x.beginY3 == y3);
         int id = Random.Range(0, possibleTransition.Count);
 
-        BeachSegment s = GetSegment(id, false);
+        BeachSegment s = GetSegment(id, true);
 
         y1 = s.endY1;
         y2 = s.endY2;
