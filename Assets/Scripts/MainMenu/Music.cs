@@ -6,36 +6,35 @@ using UnityEngine.UI;
 
 public class Music : MonoBehaviour
 {
-    public AudioSource sfxPlayer;
-    public AudioSource music;
+    public static bool isSfxOn = true;
+    public AudioSource buttonSound;
+    public AudioClip buttonSoundClip;
 
-    // SFX
-    public AudioClip buttonSFX;
-    public AudioClip gameOverSFX;
-    public AudioClip damageSFX;
-
-    // Music
     public AudioClip mainMenuMusic;
+
     public AudioClip forestLevelMusic;
+
     public AudioClip beachLevelMusic;
+
     public AudioClip antarcticaLevelMusic;
 
-
-    
+    public AudioSource music;
 
     void Awake()
     {
-        GameObject[] objs = GameObject.FindGameObjectsWithTag("SoundController");
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("Music");
         if(objs.Length > 1)
         {
             Destroy(this.gameObject);
         }
+
         DontDestroyOnLoad(this.gameObject);
+        
     }
 
     void Start()
     {
-        if (sfxPlayer.CompareTag("SFX")) {
+        if (buttonSound.CompareTag("SFX")) {
             addButtonListeners();
             SceneManager.sceneLoaded += OnSceneLoaded;
 
@@ -46,7 +45,7 @@ public class Music : MonoBehaviour
 
         playMainMenuMusic(aScene);
 
-        if (sfxPlayer.CompareTag("SFX"))
+        if (buttonSound.CompareTag("SFX"))
         {
             addButtonListeners();
         }
@@ -54,7 +53,7 @@ public class Music : MonoBehaviour
 
     private void addButtonListeners()
     {
-        Button[] buttons = Resources.FindObjectsOfTypeAll<Button>();
+        Button[] buttons = GameObject.FindObjectsOfType<Button>();
         foreach (Button btn in buttons)
         {
             btn.onClick.AddListener(() => playSound());
@@ -63,9 +62,9 @@ public class Music : MonoBehaviour
     public void playSound()
     {
 
-        if (Settings.isSfxOn)
+        if (isSfxOn)
         {
-            sfxPlayer.PlayOneShot(buttonSFX);
+            buttonSound.PlayOneShot(buttonSoundClip);
         }
 
     }
@@ -108,22 +107,6 @@ public class Music : MonoBehaviour
                 music.loop = true;
                 music.Play();
             }
-        }
-    }
-
-    public void playGameOver()
-    {
-        if(Settings.isSfxOn)
-        {
-            sfxPlayer.PlayOneShot(gameOverSFX);
-        }
-    }
-
-    public void playDamage()
-    {
-        if (Settings.isSfxOn)
-        {
-            sfxPlayer.PlayOneShot(damageSFX);
         }
     }
 }

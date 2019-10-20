@@ -25,18 +25,13 @@ public class BeachLevelManager : MonoBehaviour
     // UI and the UI fields
     public Text scoreText;
     public Text garbageText;
+    public Text livesText;
     public Slider pollutionSlide;
-    public Animator LivesAnimator;
-
-    public Image heart1;
-    public Image heart2;
-    public Image heart3;
-
+    public Image infoBox;
     private float score = 0;
     private float garbage = 0;
     private float modifier = 1.0f;
-    private AudioSource musicPlayer;
-    private GameObject audioPlayer;
+    private AudioSource audioPlayer;
 
     //Death menu
     public Animator deathMenuAnim;
@@ -52,6 +47,7 @@ public class BeachLevelManager : MonoBehaviour
         compMotor = GameObject.FindGameObjectWithTag("Companion").GetComponent<CompanionMotor>();
         scoreText.text = "Score : " + score.ToString("0");
         garbageText.text = "Garbage : " + garbage.ToString();
+        livesText.text = "Lives Remaining : 3";
 
         if (Settings.isMusicOn)
         {
@@ -60,16 +56,14 @@ public class BeachLevelManager : MonoBehaviour
             {
                 if (audio.CompareTag("Music"))
                 {
-                    musicPlayer = audio;
+                    audioPlayer = audio;
                 }
             }
 
-            StartCoroutine(AudioController.FadeOut(musicPlayer, 0.5f));
+            StartCoroutine(AudioController.FadeOut(audioPlayer, 0.5f));
         }
 
-        heart1.gameObject.SetActive(true);
-        heart2.gameObject.SetActive(true);
-        heart3.gameObject.SetActive(true);
+        //modifierText.text = "Modifer : x" + modifier.ToString("0.0");
 
         startCutscene.Begin();
 
@@ -86,8 +80,8 @@ public class BeachLevelManager : MonoBehaviour
 
             if (Settings.isMusicOn)
             {
-                audioPlayer = GameObject.FindGameObjectWithTag("SoundController");
-                Music music = audioPlayer.GetComponent<Music>();
+                GameObject musicPlayer = GameObject.FindGameObjectWithTag("Music");
+                Music music = musicPlayer.GetComponent<Music>();
                 music.changeMusic(SceneManager.GetActiveScene());
             }
             FindObjectOfType<CameraMotor>().isFollowing = true;
@@ -131,30 +125,9 @@ public class BeachLevelManager : MonoBehaviour
         pollutionSlide.value = TrashSpawner.garbageMultiplier;
     }
     
-    public IEnumerator updateLives(float livesAmount)
+    public void updateLives(float livesAmount)
     {
-        LivesAnimator.SetTrigger("LifeLost");
-        switch (livesAmount)
-        {
-            case 2f:
-                heart1.gameObject.SetActive(true);
-                heart2.gameObject.SetActive(true);
-                heart3.gameObject.SetActive(false);
-                break;
-            case 1f:
-                heart1.gameObject.SetActive(true);
-                heart2.gameObject.SetActive(false);
-                heart3.gameObject.SetActive(false);
-                break;
-            case 0f:
-                heart1.gameObject.SetActive(false);
-                heart2.gameObject.SetActive(false);
-                heart3.gameObject.SetActive(false);
-                break;
-        }
-
-        yield return new WaitForSeconds(1f);
-        LivesAnimator.SetTrigger("GoBack");
+        livesText.text = "Lives Remaining : " + livesAmount.ToString("0");
     }
 
     // public void updatemodifer( float modifieramount)
@@ -171,7 +144,7 @@ public class BeachLevelManager : MonoBehaviour
         isGameStarted = false;
         GameObject.FindGameObjectWithTag("AlivePanel").SetActive(false);
         if (Settings.isMusicOn)
-            StartCoroutine(AudioController.FadeOut(musicPlayer, 0.5f));
+            StartCoroutine(AudioController.FadeOut(audioPlayer, 0.5f));
     }
 
     public void OnRetryButton()

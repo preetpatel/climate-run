@@ -12,7 +12,7 @@ public class Settings : MonoBehaviour
     public Button sfxButton;
     
     public static bool isMusicOn = true;
-    public static bool isSfxOn = true;
+    public static bool isSfxOn;
 
     public void Awake()
     {
@@ -27,7 +27,7 @@ public class Settings : MonoBehaviour
             
             if(audio.CompareTag("SFX"))
             {
-                isSfxOn = !isSfxOn;
+                isSfxOn = !Music.isSfxOn;
                 onSFXPress();
             }
         }
@@ -66,11 +66,11 @@ public class Settings : MonoBehaviour
         GameObject sfx = GameObject.FindGameObjectWithTag("SFX");
         if (isSfxOn)
         {
-            isSfxOn = true;
+            Music.isSfxOn = true;
         }
         else
         {
-            isSfxOn = false;
+            Music.isSfxOn = false;
         }
 
     }
