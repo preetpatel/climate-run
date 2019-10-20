@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GarbageSpawner : MonoBehaviour
 {
-    public float chanceToSpawn = 0.5f;
+    private float baseChanceToSpawn = 0.3f;
 
     private GameObject[] garbageAndThrower;
 
@@ -38,6 +38,7 @@ public class GarbageSpawner : MonoBehaviour
 
     private void OnEnable()
     {
+        float chanceToSpawn = (TrashSpawner.garbageMultiplier) + baseChanceToSpawn;
         thrown = false;
         if (Random.Range(0.0f, 1.0f) > chanceToSpawn)
         {
