@@ -241,7 +241,7 @@ public class PlayerMotor : MonoBehaviour
             Scene gameScene = SceneManager.GetActiveScene();
             if (gameScene.name.Equals("Forest"))
             {
-                ForestLevelManager.Instance.updateLives(livesCounter);
+                StartCoroutine(ForestLevelManager.Instance.updateLives(livesCounter));
             } else if (gameScene.name.Equals("Beach"))
             {
                 BeachLevelManager.Instance.updateLives(livesCounter);

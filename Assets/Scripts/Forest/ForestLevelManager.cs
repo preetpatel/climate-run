@@ -21,11 +21,16 @@ public class ForestLevelManager : MonoBehaviour
     public Animator deathMenuAnim;
     public Text deathScoreText, deathSeedText;
 
-	// UI and the UI fields
-	public Text scoreText;
+    public Animator lifeAnimation;
+
+    // UI and the UI fields
+    public Text scoreText;
 	public Text seedCountText;
 	public Text informationText;
-	public Text livesText;
+    public Image heart1;
+    public Image heart2;
+    public Image heart3;
+   
 	private float score = 0;
 	private float seeds = 0;
 	private float modifier = 1.0f;
@@ -41,7 +46,6 @@ public class ForestLevelManager : MonoBehaviour
 		cameraMotor = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMotor>();
 		scoreText.text = "Score : " + score.ToString("0");
 		seedCountText.text = "Seeds : " + seeds.ToString();
-		livesText.text = "Lives Remaining : 3";
 
         if(Settings.isMusicOn)
         {
@@ -56,7 +60,11 @@ public class ForestLevelManager : MonoBehaviour
 
             StartCoroutine(AudioController.FadeOut(audioPlayer, 0.5f));
         }
-       
+
+        heart1.gameObject.SetActive(true);
+        heart2.gameObject.SetActive(true);
+        heart3.gameObject.SetActive(true);
+
         startCutscene.Begin();
 	}
 
@@ -103,9 +111,33 @@ public class ForestLevelManager : MonoBehaviour
 		seedCountText.text = "Seeds : " + seeds.ToString();
 	}
 
-	public void updateLives(float livesAmount)
+	public IEnumerator updateLives(float livesAmount)
 	{
-		livesText.text = "Lives Remaining : " + livesAmount.ToString("0");
+        lifeAnimation.SetTrigger("LifeLost");
+        Debug.Log(heart1.name);
+        Debug.Log(heart2.name);
+        Debug.Log(heart3.name);
+        switch (livesAmount)
+        {
+            case 2f:
+                heart1.gameObject.SetActive(true);
+                heart2.gameObject.SetActive(true);
+                heart3.gameObject.SetActive(false);
+                break;
+            case 1f:
+                heart1.gameObject.SetActive(true);
+                heart2.gameObject.SetActive(false);
+                heart3.gameObject.SetActive(false);
+                break;
+            case 0f:
+                heart1.gameObject.SetActive(false);
+                heart2.gameObject.SetActive(false);
+                heart3.gameObject.SetActive(false);
+                break;
+        }
+
+        yield return new WaitForSeconds(1f);
+        lifeAnimation.SetTrigger("GoBack");
 	}
 
     public void OnRetryButton()
@@ -129,4 +161,6 @@ public class ForestLevelManager : MonoBehaviour
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
+
+
 }
