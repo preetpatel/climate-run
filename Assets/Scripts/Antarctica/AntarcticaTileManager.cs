@@ -46,7 +46,7 @@ public class AntarcticaTileManager : MonoBehaviour
 
     private void SpawnLevel(int prefabIndex = -1)
     {
-        if (lastPrefabIndex < 4)
+        if (lastPrefabIndex < 5)
         {
             GameObject go;
             go = Instantiate(tilePrefabs[lastPrefabIndex]) as GameObject;
