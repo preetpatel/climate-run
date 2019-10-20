@@ -89,22 +89,8 @@ public class BeachLevelManager : MonoBehaviour
 
         if (isGameStarted)
         {
-            if (!garbageCollected)
-            {
-                float garbMulti = TrashSpawner.garbageMultiplier;
-                TrashSpawner.garbageMultiplier = Mathf.Clamp(garbMulti += 0.001f, 0.0f, 1.0f);
-                pollutionSlide.value = TrashSpawner.garbageMultiplier;
-            }
             score += (Time.deltaTime * modifier);
             scoreText.text = "Score : " + score.ToString("0");
-
-            /*            if (score > 60)
-                        {
-                            SceneManager.LoadScene("Antarctica_EndingCutscene");
-                            if(Settings.isMusicOn)
-                             StartCoroutine(AudioController.FadeOut(audioPlayer, 0.5f));
-                        }*/
-
             timeSinceGarbageCollected += Time.deltaTime;
             if(timeSinceGarbageCollected > 5.0f)
             {
@@ -114,6 +100,19 @@ public class BeachLevelManager : MonoBehaviour
 
         }
 
+    }
+
+    private void FixedUpdate() 
+    {
+        if (isGameStarted)
+        {
+            if (!garbageCollected)
+            {
+                float garbMulti = TrashSpawner.garbageMultiplier;
+                TrashSpawner.garbageMultiplier = Mathf.Clamp(garbMulti += 0.0005f, 0.0f, 1.0f);
+                pollutionSlide.value = TrashSpawner.garbageMultiplier;
+            }
+        }
     }
 
     public void getGarbage()

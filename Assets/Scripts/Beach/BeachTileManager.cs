@@ -21,6 +21,7 @@ public class BeachTileManager : MonoBehaviour
     
     private List<GameObject> activeLevels;
     private List<GameObject> instantiatedLevels;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -44,6 +45,9 @@ public class BeachTileManager : MonoBehaviour
             SpawnLevel();
             DeleteLevel();
         }
+
+
+
     }
 
     private void SpawnLevel()
@@ -67,7 +71,8 @@ public class BeachTileManager : MonoBehaviour
             go.SetActive(true);
             activeLevels.Add(go);
         }
-        
+
+
 
         nextLevelZLocation += levelLength;
     }
