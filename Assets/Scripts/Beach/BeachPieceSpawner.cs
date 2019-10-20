@@ -27,6 +27,9 @@ public class BeachPieceSpawner : MonoBehaviour
             case BeachPieceType.shipwreck:
                 amtObj = BeachSpawnManager.Instance.shipwrecks.Count;
                 break;
+            case BeachPieceType.volleyballNet:
+                amtObj = BeachSpawnManager.Instance.volleyballNets.Count;
+                break;
         }
 
         currentPiece = BeachSpawnManager.Instance.GetPiece(type, Random.Range(0, amtObj));
