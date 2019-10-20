@@ -22,32 +22,62 @@ public class AntarcticaLevelManager : MonoBehaviour
     public Text informationText;
     public Text livesText;
     private float score = 0;
+    private AudioSource audioPlayer;
 
     //Death menu
     public Animator deathMenuAnim;
     public Text deadScoreText;
     public Button pauseButton;
 
+    private bool isEndless;
+    
     private void Awake()
     {
         Instance = this;
-        scoreText.text = score.ToString();
-        informationText.text = "Touch to start";
+        scoreText.text = "Score : " + score.ToString();
         livesText.text = "Lives Remaining : 3";
         playerMotor = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMotor>();
         cameraMotor = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMotor>();
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        PlayerMotor playerScript = player.GetComponent<PlayerMotor>();
+        isEndless = playerScript.isEndless;
+
+        if (Settings.isMusicOn)
+        {
+            AudioSource[] audios = FindObjectsOfType<AudioSource>();
+            foreach (AudioSource audio in audios)
+            {
+                if (audio.CompareTag("Music"))
+                {
+                    audioPlayer = audio;
+                }
+            }
+
+            StartCoroutine(AudioController.FadeOut(audioPlayer, 0.5f));
+        }
 
         startCutscene.Begin();
     }
 
     private void Update()
     {
+        if (!isGameStarted && !DialogueAnimator.GetBool("isOpen") && score > 50 && !isEndless)
+        {
+            SceneManager.LoadScene("Forest");
+        }
 
         if (Input.anyKey && !isGameStarted && !DialogueAnimator.GetBool("isOpen"))
         {
             isGameStarted = true;
             playerMotor.StartRunning();
-            cameraMotor.StartFollowing();    
+            cameraMotor.StartFollowing();
+
+            if (Settings.isMusicOn)
+            {
+                GameObject musicPlayer = GameObject.FindGameObjectWithTag("Music");
+                Music music = musicPlayer.GetComponent<Music>();
+                music.changeMusic(SceneManager.GetActiveScene());
+            }
         }
 
         if (isGameStarted)
@@ -56,30 +86,46 @@ public class AntarcticaLevelManager : MonoBehaviour
             scoreText.text = "Score: " + score.ToString("0");
 
             // refactor later
-            if (score > 50)
+            if (!isEndless)
             {
-                isGameStarted = false;
-                playerMotor.StopRunning();
-                cameraMotor.StopFollowing();
-                endCutscene.Begin();
-
-                score = 0;
+                if (score > 50)
+                {
+                    isGameStarted = false;
+                    playerMotor.StopRunning();
+                    cameraMotor.StopFollowing();
+                    DialogueAnimator.SetBool("isOpen", true);
+                    endCutscene.Begin();
+                    if (Settings.isMusicOn)
+                        StartCoroutine(AudioController.FadeOut(audioPlayer, 0.5f));
+                }
+                else if (score > 40)
+                {
+                    informationText.text = "The ice has all melted away!";
+                }
+                else if (score > 30)
+                {
+                    informationText.text = "The mountains are collapsing!";
+                }
+                else if (score > 12)
+                {
+                    informationText.text = "Careful! The water is toxic.";
+                }
+                else if (score > 8)
+                {
+                    informationText.text = "Swipe up to jump";
+                }
+                else if (score > 3)
+                {
+                    informationText.text = "Swipe down to slide";
+                }
+                else if (score > 0)
+                {
+                    informationText.text = "Swipe to move";
+                }
             }
-            else if (score > 11)
+            else
             {
-                informationText.text = "The ice is melting!";
-            }
-            else if (score > 8)
-            {
-                informationText.text = "Swipe up to jump";
-            }
-            else if (score > 5)
-            {
-                informationText.text = "Swipe down to slide";
-            }
-            else if (score > 0)
-            {
-                informationText.text = "Swipe to move";
+                informationText.text = null;
             }
 
         }
@@ -87,23 +133,28 @@ public class AntarcticaLevelManager : MonoBehaviour
 
     public void OnDeath()
     {
-        deadScoreText.text = "Score: " + score.ToString("0");
+        deadScoreText.text = "Score : " + score.ToString("0");
         deathMenuAnim.SetTrigger("Dead");
         isGameStarted = false;
         scoreText.gameObject.SetActive(false);
         informationText.gameObject.SetActive(false);
         livesText.gameObject.SetActive(false);
         pauseButton.gameObject.SetActive(false);
+
+        if (Settings.isMusicOn)
+            StartCoroutine(AudioController.FadeOut(audioPlayer, 0.5f));
+
+        GameObject.FindGameObjectWithTag("AlivePanel").SetActive(false);
     }
 
     public void OnRetryButton()
     {
-        SceneManager.LoadScene("Antarctica", LoadSceneMode.Single);
+        SceneManager.LoadScene("Antarctica");
     }
 
     public void OnExitButtonPress()
     {
-        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void updateLives(float livesAmount)

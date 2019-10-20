@@ -10,9 +10,22 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenuUI;
     public GameObject pauseButtonUI;
 
+    private AudioSource audioPlayer;
+
     private void Start()
     {
         Time.timeScale = 1f;
+        if (Settings.isMusicOn)
+        {
+            AudioSource[] audios = FindObjectsOfType<AudioSource>();
+            foreach (AudioSource audio in audios)
+            {
+                if (audio.CompareTag("Music"))
+                {
+                    audioPlayer = audio;
+                }
+            }
+        }
     }
 
     // For enabling pause menu on PC using the escape key
@@ -33,7 +46,8 @@ public class PauseMenu : MonoBehaviour
         pauseButtonUI.SetActive(false);
         Time.timeScale = 0f;
         isPaused = true;
-
+        if (Settings.isMusicOn)
+            audioPlayer.Pause();
     }
 
     public void PressResumeButtonHandler()
@@ -42,6 +56,8 @@ public class PauseMenu : MonoBehaviour
         pauseButtonUI.SetActive(true);
         Time.timeScale = 1f;
         isPaused = false;
+        if (Settings.isMusicOn)
+            audioPlayer.Play();
     }
 
     public void PressMenuButtonHandler()

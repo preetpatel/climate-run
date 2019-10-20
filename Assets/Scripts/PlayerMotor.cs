@@ -14,6 +14,8 @@ public class PlayerMotor : MonoBehaviour
     // Wait for player
     private bool isRunning = false;
 
+    public bool isEndless = false;
+
     // Movements
     private CharacterController controller;
     private float jumpForce = 6.0f;
@@ -22,8 +24,8 @@ public class PlayerMotor : MonoBehaviour
 
 
     // speed modifier
-    private float originalSpeed = 7.0f;
-    private float speed;
+    public float originalSpeed = 7.0f;
+    public float speed;
     private float speedIncreaseLastTick;
     private float speedIncreaseTime = 2.5f;
     private float speedIncrement = 0.1f;
@@ -186,6 +188,12 @@ public class PlayerMotor : MonoBehaviour
         anim.SetTrigger("StartRunning");
     }
 
+    public void StopRunning()
+    {
+        isRunning = false;
+        anim.SetTrigger("StopRunning");
+    }
+
     public void StartSliding()
     {
         anim.SetBool("Sliding", true);
@@ -217,13 +225,9 @@ public class PlayerMotor : MonoBehaviour
             } else if (SceneManager.GetActiveScene().name.Equals("Beach"))
             {
                 BeachLevelManager.Instance.OnDeath();
-            } else if (SceneManager.GetActiveScene().name.Equals("Antarctica"))
+            } else
             {
                 AntarcticaLevelManager.Instance.OnDeath();
-            } else if (SceneManager.GetActiveScene().name.Equals("Antarctica_Endless"))
-            {
-                AntarcticaEndlessLevelManager.Instance.OnDeath();
-
             }
         }
         else // Otherwise if we still have lives remaining, move the character up and give another chance
@@ -243,13 +247,9 @@ public class PlayerMotor : MonoBehaviour
             } else if (gameScene.name.Equals("Beach"))
             {
                 BeachLevelManager.Instance.updateLives(livesCounter);
-            } else if  (gameScene.name.Equals("Antarctica"))
+            } else
             {
                 AntarcticaLevelManager.Instance.updateLives(livesCounter);
-            } else if (gameScene.name.Equals("Antarctica_Endless"))
-            {
-                AntarcticaEndlessLevelManager.Instance.updateLives(livesCounter);
-                
             }
         }
     }
@@ -261,6 +261,11 @@ public class PlayerMotor : MonoBehaviour
             case "Obstacle":
 				hit.collider.enabled = false;
                 Crash();
+                break;
+            case "FireTruck":
+                GameObject segment = hit.gameObject.transform.parent.gameObject;
+                FireTruckAction sprayScript = segment.GetComponent<FireTruckAction>();
+                sprayScript.doWaterSpray();
                 break;
         }
     }

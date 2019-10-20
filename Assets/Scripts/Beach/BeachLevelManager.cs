@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class BeachLevelManager : MonoBehaviour
@@ -16,17 +17,21 @@ public class BeachLevelManager : MonoBehaviour
     private bool garbageCollected = false;
     private float timeSinceGarbageCollected = 0.0f;
 
+    // Cutscenes
+    public DialogueTrigger startCutscene;
+    public DialogueTrigger endCutscene;
+    public Animator DialogueAnimator;
+
     // UI and the UI fields
     public Text scoreText;
     public Text garbageText;
-    public Text informationText;
     public Text livesText;
     public Slider pollutionSlide;
-    public Button pauseButton;
     public Image infoBox;
     private float score = 0;
     private float garbage = 0;
     private float modifier = 1.0f;
+    private AudioSource audioPlayer;
 
     //Death menu
     public Animator deathMenuAnim;
@@ -35,70 +40,57 @@ public class BeachLevelManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        pollutionSlide.value = GarbageSpawner.garbageMultiplier;
-        informationText.text = "Press any key to start";
+        pollutionSlide.value = TrashSpawner.garbageMultiplier;
+        //informationText.text = "Press any key to start";
         playerMotor = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMotor>();
         cameraMotor = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMotor>();
         compMotor = GameObject.FindGameObjectWithTag("Companion").GetComponent<CompanionMotor>();
         scoreText.text = "Score : " + score.ToString("0");
         garbageText.text = "Garbage : " + garbage.ToString();
         livesText.text = "Lives Remaining : 3";
-        
+
+        if (Settings.isMusicOn)
+        {
+            AudioSource[] audios = FindObjectsOfType<AudioSource>();
+            foreach (AudioSource audio in audios)
+            {
+                if (audio.CompareTag("Music"))
+                {
+                    audioPlayer = audio;
+                }
+            }
+
+            StartCoroutine(AudioController.FadeOut(audioPlayer, 0.5f));
+        }
+
         //modifierText.text = "Modifer : x" + modifier.ToString("0.0");
+
+        startCutscene.Begin();
 
     }
 
     private void Update()
     {
-        if (Input.anyKey && !isGameStarted)
+        if (Input.anyKey && !isGameStarted && !DialogueAnimator.GetBool("isOpen"))
         {
             isGameStarted = true;
             playerMotor.StartRunning();
             cameraMotor.StartFollowing();
             compMotor.StartRunning();
-            informationText.text = "";
+
+            if (Settings.isMusicOn)
+            {
+                GameObject musicPlayer = GameObject.FindGameObjectWithTag("Music");
+                Music music = musicPlayer.GetComponent<Music>();
+                music.changeMusic(SceneManager.GetActiveScene());
+            }
+            FindObjectOfType<CameraMotor>().isFollowing = true;
         }
 
         if (isGameStarted)
         {
-            if (!garbageCollected)
-            {
-                float garbMulti = GarbageSpawner.garbageMultiplier;
-                GarbageSpawner.garbageMultiplier = Mathf.Clamp(garbMulti += 0.001f, 0.0f, 1.0f);
-                pollutionSlide.value = GarbageSpawner.garbageMultiplier;
-            }
             score += (Time.deltaTime * modifier);
             scoreText.text = "Score : " + score.ToString("0");
-
-            /*            if (score > 60)
-                        {
-                            SceneManager.LoadScene("Antarctica_EndingCutscene");
-                        }*/
-            if(score > 25)
-            {
-                infoBox.gameObject.SetActive(false);
-            }
-            else if (score > 20)
-            {
-                informationText.text = "Good luck";
-            }
-            else if (score > 15)
-            {
-                informationText.text = "More obstacles will appear on your track as the pollution meter rises";
-            }
-            else if (score > 10)
-            {
-                informationText.text = "The pollution meter rises whenever you don't collect a garbage";
-            }
-            else if (score > 5)
-            {
-                informationText.text = "Garbage will pile up if you leave them unhandled";
-            }
-            else if (score > 0)
-            {
-                informationText.text = "Flippy, you have to collect the garbage people throw on the beach!";
-            }
-
             timeSinceGarbageCollected += Time.deltaTime;
             if(timeSinceGarbageCollected > 5.0f)
             {
@@ -110,14 +102,27 @@ public class BeachLevelManager : MonoBehaviour
 
     }
 
+    private void FixedUpdate() 
+    {
+        if (isGameStarted)
+        {
+            if (!garbageCollected)
+            {
+                float garbMulti = TrashSpawner.garbageMultiplier;
+                TrashSpawner.garbageMultiplier = Mathf.Clamp(garbMulti += 0.0005f, 0.0f, 1.0f);
+                pollutionSlide.value = TrashSpawner.garbageMultiplier;
+            }
+        }
+    }
+
     public void getGarbage()
     {
         garbage++;
         garbageText.text = "Garbage : " + garbage.ToString();
         garbageCollected = true;
-        float garbMulti = GarbageSpawner.garbageMultiplier;
-        GarbageSpawner.garbageMultiplier = Mathf.Clamp(garbMulti -= 0.25f, 0.0f, 1.0f);
-        pollutionSlide.value = GarbageSpawner.garbageMultiplier;
+        float garbMulti = TrashSpawner.garbageMultiplier;
+        TrashSpawner.garbageMultiplier = Mathf.Clamp(garbMulti -= 0.25f, 0.0f, 1.0f);
+        pollutionSlide.value = TrashSpawner.garbageMultiplier;
     }
     
     public void updateLives(float livesAmount)
@@ -137,13 +142,9 @@ public class BeachLevelManager : MonoBehaviour
         deadGarbageText.text = "Garbage Collected: " + garbage.ToString("0");
         deathMenuAnim.SetTrigger("Dead");
         isGameStarted = false;
-        livesText.gameObject.SetActive(false);
-        scoreText.gameObject.SetActive(false);
-        garbageText.gameObject.SetActive(false);
-        informationText.gameObject.SetActive(false);
-        pollutionSlide.gameObject.SetActive(false);
-        pauseButton.gameObject.SetActive(false);
-        infoBox.gameObject.SetActive(false);
+        GameObject.FindGameObjectWithTag("AlivePanel").SetActive(false);
+        if (Settings.isMusicOn)
+            StartCoroutine(AudioController.FadeOut(audioPlayer, 0.5f));
     }
 
     public void OnRetryButton()

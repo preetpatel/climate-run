@@ -4,68 +4,58 @@ using UnityEngine;
 
 public class GarbageSpawner : MonoBehaviour
 {
-    public float chanceToSpawn = 0.5f;
-    public bool forceSpawnAll = false;
-    public bool isTrashObtacle = false;
-    public static float garbageMultiplier = 1.0f;
+    private float baseChanceToSpawn = 0.3f;
 
-    private GameObject[] garbage;
+    private GameObject[] garbageAndThrower;
 
     private Transform playerTransform;
+
+    private bool thrown = false;
 
     private void Awake()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        garbage = new GameObject[transform.childCount];
+
+        garbageAndThrower = new GameObject[transform.childCount];
         for (int i = 0; i < transform.childCount; i++)
         {
-            garbage[i] = transform.GetChild(i).gameObject;
+            garbageAndThrower[i] = transform.GetChild(i).gameObject;
         }
         OnDisable();
     }
 
     private void Update() 
     {
-        for (int i = 0; i < transform.childCount; i++)
+        if (garbageAndThrower[0].activeInHierarchy && transform.position.z < playerTransform.position.z + 35 && !thrown)
         {
-            if (!isTrashObtacle && garbage[i].activeInHierarchy && garbage[i].transform.position.z < playerTransform.position.z + 25)
+            for (int i = 0; i < transform.childCount; i++)
             {
-                garbage[i].SendMessage("OnTriggerThrow");
+                garbageAndThrower[i].SendMessage("OnTriggerThrow");
             }
+            thrown = true;
         }
     }
 
     private void OnEnable()
     {
-        float chance;
-        if (isTrashObtacle)
-        {
-            chance = garbageMultiplier;
-        } else
-        {
-            chance = chanceToSpawn;
-        }
-        if (Random.Range(0.0f, 1.0f) > chance)
+        float chanceToSpawn = (TrashSpawner.garbageMultiplier) + baseChanceToSpawn;
+        thrown = false;
+        if (Random.Range(0.0f, 1.0f) > chanceToSpawn)
         {
             return;
         }
-        
-        if (forceSpawnAll)
+
+        for (int i = 0; i < transform.childCount; i++)
         {
-            for (int i = 0; i < garbage.Length; i++)
-                garbage[i].SetActive(true);
-        } else
-        {
-            for (int i = 0; i < garbage.Length; i++)
-            {
-                garbage[i].SetActive(true);
-            }
+            garbageAndThrower[i].SetActive(true);
         }
     }
 
     public void OnDisable()
     {
-        foreach (GameObject go in garbage)
-            go.SetActive(false);
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            garbageAndThrower[i].SetActive(false);
+        }
     }
 }

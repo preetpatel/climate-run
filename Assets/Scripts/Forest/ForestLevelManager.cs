@@ -13,7 +13,12 @@ public class ForestLevelManager : MonoBehaviour
 	private PlayerMotor playerMotor;
 	private CameraMotor cameraMotor;
 
-	public Animator deathMenuAnim;
+    // Cutscenes
+    public DialogueTrigger startCutscene;
+    public DialogueTrigger endCutscene;
+    public Animator DialogueAnimator;
+
+    public Animator deathMenuAnim;
     public Text deathScoreText, deathSeedText;
 
 	// UI and the UI fields
@@ -24,8 +29,10 @@ public class ForestLevelManager : MonoBehaviour
 	private float score = 0;
 	private float seeds = 0;
 	private float modifier = 1.0f;
+    private AudioSource audioPlayer;
 
-	private void Awake()
+
+    private void Awake()
 	{
         Instance = this;
 
@@ -36,11 +43,26 @@ public class ForestLevelManager : MonoBehaviour
 		seedCountText.text = "Seeds : " + seeds.ToString();
 		livesText.text = "Lives Remaining : 3";
 
+        if(Settings.isMusicOn)
+        {
+            AudioSource[] audios = FindObjectsOfType<AudioSource>();
+            foreach (AudioSource audio in audios)
+            {
+                if (audio.CompareTag("Music"))
+                {
+                    audioPlayer = audio;
+                }
+            }
+
+            StartCoroutine(AudioController.FadeOut(audioPlayer, 0.5f));
+        }
+       
+        startCutscene.Begin();
 	}
 
 	private void Update()
 	{
-		if (Input.anyKey && !isGameStarted)
+		if (Input.anyKey && !isGameStarted && !DialogueAnimator.GetBool("isOpen"))
 		{
 			isGameStarted = true;
 			playerMotor.StartRunning();
@@ -48,13 +70,30 @@ public class ForestLevelManager : MonoBehaviour
 			informationText.text = "";
             FindObjectOfType<SideObjectSpawner>().IsScrolling = true;
             FindObjectOfType<CameraMotor>().isFollowing = true;
-		}
+            if (Settings.isMusicOn)
+            {
+                GameObject musicPlayer = GameObject.FindGameObjectWithTag("Music");
+                Music music = musicPlayer.GetComponent<Music>();
+                music.changeMusic(SceneManager.GetActiveScene());
+            }
+
+        }
 
 		if (isGameStarted)
 		{
 			score += (Time.deltaTime * modifier);
 			scoreText.text = "Score : " + score.ToString("0");
-		}
+
+            if (score > 60)
+            {
+                isGameStarted = false;
+                playerMotor.StopRunning();
+                cameraMotor.StopFollowing();
+                endCutscene.Begin();
+                StartCoroutine(AudioController.FadeOut(audioPlayer, 0.5f));
+                score = 0;
+            }
+        }
 
 	}
 
@@ -81,11 +120,13 @@ public class ForestLevelManager : MonoBehaviour
         deathSeedText.text = "Seeds Collected: " + seeds.ToString("0");
         deathMenuAnim.SetTrigger("Dead");
         SideObjectSpawner.Instance.IsScrolling = false;
+        GameObject.FindGameObjectWithTag("AlivePanel").SetActive(false);
+        if (Settings.isMusicOn)
+            StartCoroutine(AudioController.FadeOut(audioPlayer, 0.5f));
     }
 
     public void OnExitButtonPress()
     {
-
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Forest_EndingCutscene");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
 }
