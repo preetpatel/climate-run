@@ -11,6 +11,7 @@ public class AntarcticaLevelManager : MonoBehaviour
     private bool isGameStarted = false;
     private PlayerMotor playerMotor;
     private CameraMotor cameraMotor;
+    private CompanionMotor compMotor;
 
     // Cutscenes
     public DialogueTrigger startCutscene;
@@ -41,6 +42,7 @@ public class AntarcticaLevelManager : MonoBehaviour
         scoreText.text = "Score : " + score.ToString();
         playerMotor = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMotor>();
         cameraMotor = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMotor>();
+        compMotor = GameObject.FindGameObjectWithTag("Companion").GetComponent<CompanionMotor>();
 
         if (Settings.isMusicOn)
         {
@@ -71,6 +73,7 @@ public class AntarcticaLevelManager : MonoBehaviour
             isGameStarted = true;
             playerMotor.StartRunning();
             cameraMotor.StartFollowing();
+            compMotor.StartRunning();
 
             if (Settings.isMusicOn)
             {
@@ -92,6 +95,7 @@ public class AntarcticaLevelManager : MonoBehaviour
                 isGameStarted = false;
                 playerMotor.StopRunning();
                 cameraMotor.StopFollowing();
+                compMotor.StopRunning();
                 DialogueAnimator.SetBool("isOpen", true);
                 endCutscene.Begin();
                 if (Settings.isMusicOn)

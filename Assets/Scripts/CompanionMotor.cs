@@ -110,7 +110,13 @@ public class CompanionMotor : MonoBehaviour
     public void StartRunning()
     {
         isRunning = true;
-        anim.SetTrigger("StartFollow");
+        anim.SetTrigger("StartRunning");
+    }
+
+    public void StopRunning()
+    {
+        isRunning = false;
+        anim.SetTrigger("StopRunning");
     }
 
 }
