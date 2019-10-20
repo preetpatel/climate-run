@@ -38,6 +38,8 @@ public class BeachLevelManager : MonoBehaviour
     private AudioSource musicPlayer;
     private GameObject audioPlayer;
 
+    private bool isDead = false;
+
     //Death menu
     public Animator deathMenuAnim;
     public Text deadScoreText, deadGarbageText;
@@ -77,7 +79,7 @@ public class BeachLevelManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.anyKey && !isGameStarted && !DialogueAnimator.GetBool("isOpen"))
+        if (Input.anyKey && !isGameStarted && !DialogueAnimator.GetBool("isOpen")&&!isDead)
         {
             isGameStarted = true;
             playerMotor.StartRunning();
@@ -102,6 +104,16 @@ public class BeachLevelManager : MonoBehaviour
             {
                 garbageCollected = false;
                 timeSinceGarbageCollected = 0.0f;
+            }
+
+            if (score > 60)
+            {
+                isGameStarted = false;
+                playerMotor.StopRunning();
+                cameraMotor.StopFollowing();
+                endCutscene.Begin();
+                // StartCoroutine(AudioController.FadeOut(audioPlayer, 0.5f));
+                score = 0;
             }
 
         }
@@ -169,6 +181,7 @@ public class BeachLevelManager : MonoBehaviour
         deadGarbageText.text = "Garbage Collected: " + garbage.ToString("0");
         deathMenuAnim.SetTrigger("Dead");
         isGameStarted = false;
+        isDead = true;
         GameObject.FindGameObjectWithTag("AlivePanel").SetActive(false);
         if (Settings.isMusicOn)
             StartCoroutine(AudioController.FadeOut(musicPlayer, 0.5f));
