@@ -145,6 +145,7 @@ public class ForestLevelManager : MonoBehaviour
 
     public void OnDeath()
 	{
+        Debug.Log("Hello");
         isGameStarted = false;   
         deathScoreText.text = "Score: " + score.ToString("0");
         deathSeedText.text = "Seeds Collected: " + seeds.ToString("0");
