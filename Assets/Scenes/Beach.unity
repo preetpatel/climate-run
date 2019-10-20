@@ -1875,11 +1875,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8137986397950877536, guid: c248e38ca17dc6843b4546e93ea81d48,
-        type: 3}
-      propertyPath: m_Name
-      value: Dialogue
-      objectReference: {fileID: 0}
     - target: {fileID: 407205876563168740, guid: c248e38ca17dc6843b4546e93ea81d48,
         type: 3}
       propertyPath: dialogue.sentences.Array.size
@@ -1919,46 +1914,45 @@ PrefabInstance:
     - target: {fileID: 407205876532410014, guid: c248e38ca17dc6843b4546e93ea81d48,
         type: 3}
       propertyPath: dialogue.sentences.Array.size
-      value: 11
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 407205876532410014, guid: c248e38ca17dc6843b4546e93ea81d48,
         type: 3}
       propertyPath: dialogue.sentences.Array.data[0]
-      value: Phew that was close!
+      value: Creepers? .......Sorry that was weird.
       objectReference: {fileID: 0}
     - target: {fileID: 407205876532410014, guid: c248e38ca17dc6843b4546e93ea81d48,
         type: 3}
       propertyPath: dialogue.sentences.Array.data[1]
-      value: "You sure don\u2019t look like you\u2019re from around here\u2026 "
+      value: Hi, The name is Azir. As you can see, I rule this kingdom they call
+        Shurima.
       objectReference: {fileID: 0}
     - target: {fileID: 407205876532410014, guid: c248e38ca17dc6843b4546e93ea81d48,
         type: 3}
       propertyPath: dialogue.sentences.Array.data[2]
-      value: "Oh where are my manners. My name\u2019s Darwin"
+      value: The humans always throw rubbish on my golden kingdom.
       objectReference: {fileID: 0}
     - target: {fileID: 407205876532410014, guid: c248e38ca17dc6843b4546e93ea81d48,
         type: 3}
       propertyPath: dialogue.sentences.Array.data[3]
-      value: We never used to get fires around here like that.
+      value: We used to have some crocodiles around here, but all gone due to the
+        ocean pollution that man made.
       objectReference: {fileID: 0}
     - target: {fileID: 407205876532410014, guid: c248e38ca17dc6843b4546e93ea81d48,
         type: 3}
       propertyPath: dialogue.sentences.Array.data[4]
-      value: "The humans like to clear land using fire and this year it\u2019s getting
-        out of hand!"
+      value: And you, my soldier. Have saved my kingdom from fallen into a wasteyard!
       objectReference: {fileID: 0}
     - target: {fileID: 407205876532410014, guid: c248e38ca17dc6843b4546e93ea81d48,
         type: 3}
       propertyPath: dialogue.sentences.Array.data[5]
-      value: "The rising temperatures and dryness sure don\u2019t help either!\r"
+      value: I can never thank you enough for saving my kingdom, but as for now I
+        will allow you to continue your journey.
       objectReference: {fileID: 0}
     - target: {fileID: 407205876532410014, guid: c248e38ca17dc6843b4546e93ea81d48,
         type: 3}
       propertyPath: dialogue.sentences.Array.data[6]
-      value: 'Thank you for helping us out though!
-
-        Collecting those seeds
-        and planting them will help a lot in rebuilding our home!'
+      value: Hahahahhahaha! Shurima! Your emperor has returned!
       objectReference: {fileID: 0}
     - target: {fileID: 407205876532410014, guid: c248e38ca17dc6843b4546e93ea81d48,
         type: 3}
@@ -1986,6 +1980,11 @@ PrefabInstance:
         type: 3}
       propertyPath: dialogue.name
       value: Chicken
+      objectReference: {fileID: 0}
+    - target: {fileID: 8137986397950877536, guid: c248e38ca17dc6843b4546e93ea81d48,
+        type: 3}
+      propertyPath: m_Name
+      value: Dialogue
       objectReference: {fileID: 0}
     - target: {fileID: 4321955176050261300, guid: c248e38ca17dc6843b4546e93ea81d48,
         type: 3}

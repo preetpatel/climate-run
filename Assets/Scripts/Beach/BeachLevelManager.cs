@@ -100,6 +100,16 @@ public class BeachLevelManager : MonoBehaviour
                 timeSinceGarbageCollected = 0.0f;
             }
 
+            if (score > 60)
+            {
+                isGameStarted = false;
+                playerMotor.StopRunning();
+                cameraMotor.StopFollowing();
+                endCutscene.Begin();
+                StartCoroutine(AudioController.FadeOut(audioPlayer, 0.5f));
+                score = 0;
+            }
+
         }
 
     }
