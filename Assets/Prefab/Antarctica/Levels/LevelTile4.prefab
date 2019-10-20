@@ -400,7 +400,6 @@ GameObject:
   - component: {fileID: 7885310189127335735}
   - component: {fileID: 7533527506642136782}
   - component: {fileID: 5153801284791238518}
-  - component: {fileID: 1357751177281527419}
   m_Layer: 0
   m_Name: Pingu
   m_TagString: Untagged
@@ -462,18 +461,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.5, z: 0}
---- !u!114 &1357751177281527419
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3323408916567759527}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42392a7f959a7f9449a248864124b257, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &3646332898240213315
 GameObject:
   m_ObjectHideFlags: 0
@@ -1909,6 +1896,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2185720197482530418}
     m_Modifications:
+    - target: {fileID: 3837375812283966196, guid: f44412b1af7e83840b92b8a2b7244632,
+        type: 3}
+      propertyPath: m_Name
+      value: Snow
+      objectReference: {fileID: 0}
     - target: {fileID: 7766823396128875717, guid: f44412b1af7e83840b92b8a2b7244632,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1963,11 +1955,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3837375812283966196, guid: f44412b1af7e83840b92b8a2b7244632,
-        type: 3}
-      propertyPath: m_Name
-      value: Snow
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f44412b1af7e83840b92b8a2b7244632, type: 3}
