@@ -17,7 +17,6 @@ public class GarbageThrower : MonoBehaviour
     private void OnEnable()
     {
         animator.speed = playerMotor.speed / playerMotor.originalSpeed;
-        animator.SetTrigger("Spawn");
     }
     
     public void OnTriggerThrow()

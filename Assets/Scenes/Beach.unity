@@ -714,10 +714,10 @@ Light:
     m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
+    m_Strength: 0.5
+    m_Bias: 0.24
     m_NormalBias: 0.4
-    m_NearPlane: 0.2
+    m_NearPlane: 0.3
     m_CullingMatrixOverride:
       e00: 1
       e01: 0
@@ -858,6 +858,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21e37c39cc09d484f981f438b8915b38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  originalSpeed: 7
+  speed: 0
 --- !u!1 &759888108
 GameObject:
   m_ObjectHideFlags: 0
@@ -2292,8 +2294,8 @@ MonoBehaviour:
   ramps:
   - {fileID: 9111013812032384620, guid: cd06fe6ec83c22c498a4b7951798176b, type: 3}
   longblocks:
-  - {fileID: 736396092361717349, guid: 39464de2fadf70d4b9bf6ebd588e0add, type: 3}
-  - {fileID: 2461856481805429066, guid: 7149016dc90642d479ccd2a7f5dfe492, type: 3}
+  - {fileID: 537402305874046681, guid: c7653d7334044774dabdb339e228259e, type: 3}
+  - {fileID: -7150452633924205530, guid: ca60975036b75d3459aee294584de3b4, type: 3}
   jumps:
   - {fileID: 7287434681386983424, guid: 43601145df4352143b8615c4d04e44de, type: 3}
   - {fileID: 6272316887010515826, guid: 7e6a993d0a07ae14683b9d5e1fea9de8, type: 3}
