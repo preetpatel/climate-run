@@ -13,6 +13,7 @@ public class GrowingBush : MonoBehaviour
 
     public void Trigger()
     {
+        Debug.Log("triggering a bush");
         animator.SetTrigger("Grow");
     }
 }
