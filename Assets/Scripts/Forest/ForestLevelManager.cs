@@ -153,11 +153,6 @@ public class ForestLevelManager : MonoBehaviour
         GameObject.FindGameObjectWithTag("AlivePanel").SetActive(false);
         if (Settings.isMusicOn)
             StartCoroutine(AudioController.FadeOut(musicPlayer, 0.5f));
-        if(Settings.isSfxOn)
-        {
-            Music music = audioPlayer.GetComponent<Music>();
-            music.playGameOver();
-        }
     }
 
     public void OnExitButtonPress()

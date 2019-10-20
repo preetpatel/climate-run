@@ -12,6 +12,7 @@ public class Music : MonoBehaviour
     // SFX
     public AudioClip buttonSFX;
     public AudioClip gameOverSFX;
+    public AudioClip damageSFX;
 
     // Music
     public AudioClip mainMenuMusic;
@@ -115,6 +116,14 @@ public class Music : MonoBehaviour
         if(Settings.isSfxOn)
         {
             sfxPlayer.PlayOneShot(gameOverSFX);
+        }
+    }
+
+    public void playDamage()
+    {
+        if (Settings.isSfxOn)
+        {
+            sfxPlayer.PlayOneShot(damageSFX);
         }
     }
 }

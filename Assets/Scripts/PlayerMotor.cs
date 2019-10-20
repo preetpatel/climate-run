@@ -210,20 +210,25 @@ public class PlayerMotor : MonoBehaviour
     {
 
         livesCounter -= 1;
-
+        GameObject audioPlayer = GameObject.FindGameObjectWithTag("SoundController");
+        Music sfx = audioPlayer.GetComponent<Music>();
         // If no more lives are left, do a crash
         if (livesCounter < 1)
         {
             anim.SetTrigger("Death");
             isRunning = false;
 
+            if (Settings.isSfxOn)
+            {
+                sfx.playGameOver();
+            }
             if (SceneManager.GetActiveScene().name.Equals("Forest"))
             {
                 ForestLevelManager.Instance.OnDeath();
             } else if (SceneManager.GetActiveScene().name.Equals("Beach"))
             {
                 BeachLevelManager.Instance.OnDeath();
-            } else
+            } else if (SceneManager.GetActiveScene().name.Equals("Antarctica"))
             {
                 AntarcticaLevelManager.Instance.OnDeath();
             }
@@ -237,6 +242,10 @@ public class PlayerMotor : MonoBehaviour
             controller.Move(hitButRevert);
             cameraMotor.shakeDuration = 0.5f;
 
+            if(Settings.isSfxOn)
+            {
+                sfx.playDamage();
+            }
             // Update lives for forest
             Scene gameScene = SceneManager.GetActiveScene();
             if (gameScene.name.Equals("Forest"))

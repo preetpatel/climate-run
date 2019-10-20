@@ -403,14 +403,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sfxPlayer: {fileID: 162979942}
+  music: {fileID: 851877131}
   buttonSFX: {fileID: 8300000, guid: 1b2ff9a943d2f4a4e89ce924ed519822, type: 3}
   gameOverSFX: {fileID: 8300000, guid: 48669e740efa42840af0bc833eb37aaf, type: 3}
+  damageSFX: {fileID: 8300000, guid: dbd0aa4924ab7cd4ab14676ce626ac67, type: 3}
   mainMenuMusic: {fileID: 8300000, guid: dc6f0651979d6ad48ad62668e1a962ad, type: 3}
   forestLevelMusic: {fileID: 8300000, guid: dd54f6fbc877e0a4b92aca3043ae3707, type: 3}
   beachLevelMusic: {fileID: 8300000, guid: ca4916b227162f042afff5e2fae5d78c, type: 3}
   antarcticaLevelMusic: {fileID: 8300000, guid: 436200de60f72ae42bf1a178ef1988e3,
     type: 3}
-  music: {fileID: 851877131}
 --- !u!4 &272731228
 Transform:
   m_ObjectHideFlags: 0
@@ -853,11 +854,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Settings
       objectReference: {fileID: 0}
-    - target: {fileID: 8286548183434189261, guid: 15aadf4aec1d2a64881c16742b23d6cf,
-        type: 3}
-      propertyPath: m_Text
-      value: Settings
-      objectReference: {fileID: 0}
     - target: {fileID: 8286548184341119523, guid: 15aadf4aec1d2a64881c16742b23d6cf,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -867,6 +863,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: GoToSettings
+      objectReference: {fileID: 0}
+    - target: {fileID: 8286548183434189261, guid: 15aadf4aec1d2a64881c16742b23d6cf,
+        type: 3}
+      propertyPath: m_Text
+      value: Settings
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15aadf4aec1d2a64881c16742b23d6cf, type: 3}
@@ -1474,11 +1475,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Story
       objectReference: {fileID: 0}
-    - target: {fileID: 8286548183434189261, guid: 15aadf4aec1d2a64881c16742b23d6cf,
-        type: 3}
-      propertyPath: m_Text
-      value: Story
-      objectReference: {fileID: 0}
     - target: {fileID: 8286548184341119523, guid: 15aadf4aec1d2a64881c16742b23d6cf,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1488,6 +1484,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: GoToLevelSelector
+      objectReference: {fileID: 0}
+    - target: {fileID: 8286548183434189261, guid: 15aadf4aec1d2a64881c16742b23d6cf,
+        type: 3}
+      propertyPath: m_Text
+      value: Story
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15aadf4aec1d2a64881c16742b23d6cf, type: 3}
