@@ -14,6 +14,8 @@ public class PlayerMotor : MonoBehaviour
     // Wait for player
     private bool isRunning = false;
 
+    public bool isEndless = false;
+
     // Movements
     private CharacterController controller;
     private float jumpForce = 6.0f;
@@ -210,25 +212,20 @@ public class PlayerMotor : MonoBehaviour
     {
 
         livesCounter -= 1;
-        GameObject audioPlayer = GameObject.FindGameObjectWithTag("SoundController");
-        Music sfx = audioPlayer.GetComponent<Music>();
+
         // If no more lives are left, do a crash
         if (livesCounter < 1)
         {
             anim.SetTrigger("Death");
             isRunning = false;
 
-            if (Settings.isSfxOn)
-            {
-                sfx.playGameOver();
-            }
             if (SceneManager.GetActiveScene().name.Equals("Forest"))
             {
                 ForestLevelManager.Instance.OnDeath();
             } else if (SceneManager.GetActiveScene().name.Equals("Beach"))
             {
                 BeachLevelManager.Instance.OnDeath();
-            } else if (SceneManager.GetActiveScene().name.Equals("Antarctica"))
+            } else
             {
                 AntarcticaLevelManager.Instance.OnDeath();
             }
@@ -242,21 +239,17 @@ public class PlayerMotor : MonoBehaviour
             controller.Move(hitButRevert);
             cameraMotor.shakeDuration = 0.5f;
 
-            if(Settings.isSfxOn)
-            {
-                sfx.playDamage();
-            }
             // Update lives for forest
             Scene gameScene = SceneManager.GetActiveScene();
             if (gameScene.name.Equals("Forest"))
             {
-                StartCoroutine(ForestLevelManager.Instance.updateLives(livesCounter));
+                ForestLevelManager.Instance.updateLives(livesCounter);
             } else if (gameScene.name.Equals("Beach"))
             {
-                StartCoroutine(BeachLevelManager.Instance.updateLives(livesCounter));
+                BeachLevelManager.Instance.updateLives(livesCounter);
             } else
             {
-                StartCoroutine(AntarcticaLevelManager.Instance.updateLives(livesCounter));
+                AntarcticaLevelManager.Instance.updateLives(livesCounter);
             }
         }
     }

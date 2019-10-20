@@ -8,6 +8,7 @@ public class AntarcticaEndlessTileManager : MonoBehaviour
     public GameObject[] tilePrefabs;
 
     private Transform playerTransform;
+   
 
     private float spawnZ = 0.0f;
 
@@ -60,11 +61,14 @@ public class AntarcticaEndlessTileManager : MonoBehaviour
             levelTiles = new int[] {0, 2, 3};
         }
 
-        spawnLevelTileIndex = Random.Range(0, levelTiles.Length);
-        go = Instantiate(tilePrefabs[levelTiles[spawnLevelTileIndex]]) as GameObject;
-        go.transform.SetParent(transform);
+        Vector3 position = new Vector3(-1000,-10,100);
 
-        go.transform.position = Vector3.forward * spawnZ;
+        spawnLevelTileIndex = Random.Range(0, levelTiles.Length);
+        GameObject newTile = tilePrefabs[levelTiles[spawnLevelTileIndex]];
+            
+        go = Instantiate(newTile,position,newTile.transform.rotation) as GameObject;
+        go.transform.SetParent(transform);
+        
         spawnZ += levelLength;
         activeLevels.Add(go);
         numberOfLevelTiles++;
