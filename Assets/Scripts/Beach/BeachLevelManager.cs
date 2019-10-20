@@ -32,6 +32,8 @@ public class BeachLevelManager : MonoBehaviour
     private float garbage = 0;
     private float modifier = 1.0f;
 
+    private bool isDead = false;
+
     //Death menu
     public Animator deathMenuAnim;
     public Text deadScoreText, deadGarbageText;
@@ -56,7 +58,7 @@ public class BeachLevelManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.anyKey && !isGameStarted && !DialogueAnimator.GetBool("isOpen"))
+        if (Input.anyKey && !isGameStarted && !DialogueAnimator.GetBool("isOpen")&&!isDead)
         {
             isGameStarted = true;
             playerMotor.StartRunning();
@@ -120,6 +122,7 @@ public class BeachLevelManager : MonoBehaviour
         deadGarbageText.text = "Garbage Collected: " + garbage.ToString("0");
         deathMenuAnim.SetTrigger("Dead");
         isGameStarted = false;
+        isDead = true;
         GameObject.FindGameObjectWithTag("AlivePanel").SetActive(false);
            
     }
