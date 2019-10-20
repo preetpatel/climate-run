@@ -94,6 +94,8 @@ public class AntarcticaLevelManager : MonoBehaviour
         informationText.gameObject.SetActive(false);
         livesText.gameObject.SetActive(false);
         pauseButton.gameObject.SetActive(false);
+
+        GameObject.FindGameObjectWithTag("AlivePanel").SetActive(false);
     }
 
     public void OnRetryButton()
