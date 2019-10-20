@@ -70,7 +70,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chanceToSpawn: 0.5
-  forceSpawnAll: 0
 --- !u!1001 &1271532688817890015
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -146,6 +145,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 4fcb0a8479e68e442a7af3d66d10b5cf, type: 2}
+    - target: {fileID: 9500000, guid: bfe4bd7ca2c7a254dbc9bcd23bb71cbe, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfe4bd7ca2c7a254dbc9bcd23bb71cbe, type: 3}
 --- !u!1 &1271532688817792127 stripped
