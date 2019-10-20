@@ -31,6 +31,8 @@ public class ForestLevelManager : MonoBehaviour
 	private float modifier = 1.0f;
     private AudioSource audioPlayer;
 
+    private bool isDead = false;
+
 
     private void Awake()
 	{
@@ -62,7 +64,7 @@ public class ForestLevelManager : MonoBehaviour
 
 	private void Update()
 	{
-		if (Input.anyKey && !isGameStarted && !DialogueAnimator.GetBool("isOpen"))
+		if (Input.anyKey && !isGameStarted && !DialogueAnimator.GetBool("isOpen")&&!isDead)
 		{
 			isGameStarted = true;
 			playerMotor.StartRunning();
@@ -115,7 +117,8 @@ public class ForestLevelManager : MonoBehaviour
 
     public void OnDeath()
 	{
-        isGameStarted = false;   
+        isGameStarted = false;
+        isDead = true;
         deathScoreText.text = "Score: " + score.ToString("0");
         deathSeedText.text = "Seeds Collected: " + seeds.ToString("0");
         deathMenuAnim.SetTrigger("Dead");

@@ -29,6 +29,8 @@ public class AntarcticaLevelManager : MonoBehaviour
     public Text deadScoreText;
     public Button pauseButton;
 
+    private bool isDead = false;
+
     private void Awake()
     {
         Instance = this;
@@ -61,7 +63,7 @@ public class AntarcticaLevelManager : MonoBehaviour
             SceneManager.LoadScene("Forest");
         }
 
-        if (Input.anyKey && !isGameStarted && !DialogueAnimator.GetBool("isOpen"))
+        if (Input.anyKey && !isGameStarted && !DialogueAnimator.GetBool("isOpen")&&!isDead)
         {
             isGameStarted = true;
             playerMotor.StartRunning();
@@ -124,6 +126,7 @@ public class AntarcticaLevelManager : MonoBehaviour
         deadScoreText.text = "Score : " + score.ToString("0");
         deathMenuAnim.SetTrigger("Dead");
         isGameStarted = false;
+        isDead = true;
         scoreText.gameObject.SetActive(false);
         informationText.gameObject.SetActive(false);
         livesText.gameObject.SetActive(false);
