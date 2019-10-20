@@ -21,7 +21,8 @@ public class AntarcticaLevelManager : MonoBehaviour
     public Text scoreText;
     public Text informationText;
     private float score = 0;
-    private AudioSource audioPlayer;
+    private AudioSource musicPlayer;
+    private GameObject audioPlayer;
 
     public Animator LivesAnimator;
 
@@ -48,11 +49,11 @@ public class AntarcticaLevelManager : MonoBehaviour
             {
                 if (audio.CompareTag("Music"))
                 {
-                    audioPlayer = audio;
+                    musicPlayer = audio;
                 }
             }
 
-            StartCoroutine(AudioController.FadeOut(audioPlayer, 0.5f));
+            StartCoroutine(AudioController.FadeOut(musicPlayer, 0.5f));
         }
 
         startCutscene.Begin();
@@ -73,11 +74,12 @@ public class AntarcticaLevelManager : MonoBehaviour
 
             if (Settings.isMusicOn)
             {
-                GameObject musicPlayer = GameObject.FindGameObjectWithTag("Music");
-                Music music = musicPlayer.GetComponent<Music>();
+                audioPlayer = GameObject.FindGameObjectWithTag("SoundController");
+                Music music = audioPlayer.GetComponent<Music>();
                 music.changeMusic(SceneManager.GetActiveScene());
             }
         }
+
 
         if (isGameStarted)
         {
@@ -93,7 +95,7 @@ public class AntarcticaLevelManager : MonoBehaviour
                 DialogueAnimator.SetBool("isOpen", true);
                 endCutscene.Begin();
                 if (Settings.isMusicOn)
-                    StartCoroutine(AudioController.FadeOut(audioPlayer, 0.5f));
+                    StartCoroutine(AudioController.FadeOut(musicPlayer, 0.5f));
             }
             else if (score > 40)
             {
@@ -128,12 +130,14 @@ public class AntarcticaLevelManager : MonoBehaviour
         deadScoreText.text = "Score : " + score.ToString("0");
         deathMenuAnim.SetTrigger("Dead");
         isGameStarted = false;
-        scoreText.gameObject.SetActive(false);
-        informationText.gameObject.SetActive(false);
-        pauseButton.gameObject.SetActive(false);
 
         if (Settings.isMusicOn)
-            StartCoroutine(AudioController.FadeOut(audioPlayer, 0.5f));
+            StartCoroutine(AudioController.FadeOut(musicPlayer, 0.5f));
+        if (Settings.isSfxOn)
+        {
+            Music music = audioPlayer.GetComponent<Music>();
+            music.playGameOver();
+        }
 
         GameObject.FindGameObjectWithTag("AlivePanel").SetActive(false);
     }

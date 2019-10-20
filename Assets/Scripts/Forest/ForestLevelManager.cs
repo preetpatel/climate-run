@@ -34,7 +34,8 @@ public class ForestLevelManager : MonoBehaviour
 	private float score = 0;
 	private float seeds = 0;
 	private float modifier = 1.0f;
-    private AudioSource audioPlayer;
+    private AudioSource musicPlayer;
+    private GameObject audioPlayer;
 
 
     private void Awake()
@@ -54,11 +55,11 @@ public class ForestLevelManager : MonoBehaviour
             {
                 if (audio.CompareTag("Music"))
                 {
-                    audioPlayer = audio;
+                    musicPlayer = audio;
                 }
             }
 
-            StartCoroutine(AudioController.FadeOut(audioPlayer, 0.5f));
+            StartCoroutine(AudioController.FadeOut(musicPlayer, 0.5f));
         }
 
         heart1.gameObject.SetActive(true);
@@ -80,8 +81,8 @@ public class ForestLevelManager : MonoBehaviour
             FindObjectOfType<CameraMotor>().isFollowing = true;
             if (Settings.isMusicOn)
             {
-                GameObject musicPlayer = GameObject.FindGameObjectWithTag("Music");
-                Music music = musicPlayer.GetComponent<Music>();
+                audioPlayer = GameObject.FindGameObjectWithTag("SoundController");
+                Music music = audioPlayer.GetComponent<Music>();
                 music.changeMusic(SceneManager.GetActiveScene());
             }
 
@@ -98,7 +99,7 @@ public class ForestLevelManager : MonoBehaviour
                 playerMotor.StopRunning();
                 cameraMotor.StopFollowing();
                 endCutscene.Begin();
-                StartCoroutine(AudioController.FadeOut(audioPlayer, 0.5f));
+                StartCoroutine(AudioController.FadeOut(musicPlayer, 0.5f));
                 score = 0;
             }
         }
@@ -151,7 +152,12 @@ public class ForestLevelManager : MonoBehaviour
         SideObjectSpawner.Instance.IsScrolling = false;
         GameObject.FindGameObjectWithTag("AlivePanel").SetActive(false);
         if (Settings.isMusicOn)
-            StartCoroutine(AudioController.FadeOut(audioPlayer, 0.5f));
+            StartCoroutine(AudioController.FadeOut(musicPlayer, 0.5f));
+        if(Settings.isSfxOn)
+        {
+            Music music = audioPlayer.GetComponent<Music>();
+            music.playGameOver();
+        }
     }
 
     public void OnExitButtonPress()

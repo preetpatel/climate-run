@@ -35,7 +35,8 @@ public class BeachLevelManager : MonoBehaviour
     private float score = 0;
     private float garbage = 0;
     private float modifier = 1.0f;
-    private AudioSource audioPlayer;
+    private AudioSource musicPlayer;
+    private GameObject audioPlayer;
 
     //Death menu
     public Animator deathMenuAnim;
@@ -59,11 +60,11 @@ public class BeachLevelManager : MonoBehaviour
             {
                 if (audio.CompareTag("Music"))
                 {
-                    audioPlayer = audio;
+                    musicPlayer = audio;
                 }
             }
 
-            StartCoroutine(AudioController.FadeOut(audioPlayer, 0.5f));
+            StartCoroutine(AudioController.FadeOut(musicPlayer, 0.5f));
         }
 
         heart1.gameObject.SetActive(true);
@@ -85,8 +86,8 @@ public class BeachLevelManager : MonoBehaviour
 
             if (Settings.isMusicOn)
             {
-                GameObject musicPlayer = GameObject.FindGameObjectWithTag("Music");
-                Music music = musicPlayer.GetComponent<Music>();
+                audioPlayer = GameObject.FindGameObjectWithTag("SoundController");
+                Music music = audioPlayer.GetComponent<Music>();
                 music.changeMusic(SceneManager.GetActiveScene());
             }
             FindObjectOfType<CameraMotor>().isFollowing = true;
@@ -170,7 +171,13 @@ public class BeachLevelManager : MonoBehaviour
         isGameStarted = false;
         GameObject.FindGameObjectWithTag("AlivePanel").SetActive(false);
         if (Settings.isMusicOn)
-            StartCoroutine(AudioController.FadeOut(audioPlayer, 0.5f));
+            StartCoroutine(AudioController.FadeOut(musicPlayer, 0.5f));
+        if (Settings.isSfxOn)
+        {
+            Music music = audioPlayer.GetComponent<Music>();
+            music.playGameOver();
+        }
+
     }
 
     public void OnRetryButton()

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44300318, g: 0.49219632, b: 0.57192606, a: 1}
+  m_IndirectSpecularColor: {r: 0.44300264, g: 0.492195, b: 0.571925, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -130,8 +130,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 162979945}
-  - component: {fileID: 162979943}
   - component: {fileID: 162979942}
+  - component: {fileID: 162979943}
   m_Layer: 0
   m_Name: SFX Player
   m_TagString: SFX
@@ -244,17 +244,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 162979941}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1472f8e59d80e042805fc21c1e13c03, type: 3}
+  m_Script: {fileID: 11500000, guid: c54ddc1b9d816214b856bb4b4be890f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonSound: {fileID: 162979942}
-  buttonSoundClip: {fileID: 8300000, guid: 480ee44bfdb2be248837742ccd001790, type: 3}
-  mainMenuMusic: {fileID: 8300000, guid: dc6f0651979d6ad48ad62668e1a962ad, type: 3}
-  forestLevelMusic: {fileID: 8300000, guid: dd54f6fbc877e0a4b92aca3043ae3707, type: 3}
-  beachLevelMusic: {fileID: 8300000, guid: ca4916b227162f042afff5e2fae5d78c, type: 3}
-  antarcticaLevelMusic: {fileID: 8300000, guid: 436200de60f72ae42bf1a178ef1988e3,
-    type: 3}
-  music: {fileID: 851877131}
 --- !u!4 &162979945
 Transform:
   m_ObjectHideFlags: 0
@@ -380,6 +372,58 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &272731226
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 272731228}
+  - component: {fileID: 272731227}
+  m_Layer: 0
+  m_Name: Sound Controller
+  m_TagString: SoundController
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &272731227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 272731226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1472f8e59d80e042805fc21c1e13c03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfxPlayer: {fileID: 162979942}
+  buttonSFX: {fileID: 8300000, guid: 1b2ff9a943d2f4a4e89ce924ed519822, type: 3}
+  gameOverSFX: {fileID: 8300000, guid: 48669e740efa42840af0bc833eb37aaf, type: 3}
+  mainMenuMusic: {fileID: 8300000, guid: dc6f0651979d6ad48ad62668e1a962ad, type: 3}
+  forestLevelMusic: {fileID: 8300000, guid: dd54f6fbc877e0a4b92aca3043ae3707, type: 3}
+  beachLevelMusic: {fileID: 8300000, guid: ca4916b227162f042afff5e2fae5d78c, type: 3}
+  antarcticaLevelMusic: {fileID: 8300000, guid: 436200de60f72ae42bf1a178ef1988e3,
+    type: 3}
+  music: {fileID: 851877131}
+--- !u!4 &272731228
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 272731226}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.11, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &603474881
 GameObject:
@@ -689,17 +733,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 851877130}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1472f8e59d80e042805fc21c1e13c03, type: 3}
+  m_Script: {fileID: 11500000, guid: c54ddc1b9d816214b856bb4b4be890f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonSound: {fileID: 851877131}
-  buttonSoundClip: {fileID: 8300000, guid: 480ee44bfdb2be248837742ccd001790, type: 3}
-  mainMenuMusic: {fileID: 8300000, guid: dc6f0651979d6ad48ad62668e1a962ad, type: 3}
-  forestLevelMusic: {fileID: 8300000, guid: dd54f6fbc877e0a4b92aca3043ae3707, type: 3}
-  beachLevelMusic: {fileID: 8300000, guid: ca4916b227162f042afff5e2fae5d78c, type: 3}
-  antarcticaLevelMusic: {fileID: 8300000, guid: 436200de60f72ae42bf1a178ef1988e3,
-    type: 3}
-  music: {fileID: 851877131}
 --- !u!1001 &1186622431
 PrefabInstance:
   m_ObjectHideFlags: 0

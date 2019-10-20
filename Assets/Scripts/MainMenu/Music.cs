@@ -6,35 +6,35 @@ using UnityEngine.UI;
 
 public class Music : MonoBehaviour
 {
-    public static bool isSfxOn = true;
-    public AudioSource buttonSound;
-    public AudioClip buttonSoundClip;
+    public AudioSource sfxPlayer;
+    public AudioSource music;
 
+    // SFX
+    public AudioClip buttonSFX;
+    public AudioClip gameOverSFX;
+
+    // Music
     public AudioClip mainMenuMusic;
-
     public AudioClip forestLevelMusic;
-
     public AudioClip beachLevelMusic;
-
     public AudioClip antarcticaLevelMusic;
 
-    public AudioSource music;
+
+    
 
     void Awake()
     {
-        GameObject[] objs = GameObject.FindGameObjectsWithTag("Music");
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("SoundController");
         if(objs.Length > 1)
         {
             Destroy(this.gameObject);
         }
-
         DontDestroyOnLoad(this.gameObject);
-        
     }
 
     void Start()
     {
-        if (buttonSound.CompareTag("SFX")) {
+        if (sfxPlayer.CompareTag("SFX")) {
             addButtonListeners();
             SceneManager.sceneLoaded += OnSceneLoaded;
 
@@ -45,7 +45,7 @@ public class Music : MonoBehaviour
 
         playMainMenuMusic(aScene);
 
-        if (buttonSound.CompareTag("SFX"))
+        if (sfxPlayer.CompareTag("SFX"))
         {
             addButtonListeners();
         }
@@ -62,9 +62,9 @@ public class Music : MonoBehaviour
     public void playSound()
     {
 
-        if (isSfxOn)
+        if (Settings.isSfxOn)
         {
-            buttonSound.PlayOneShot(buttonSoundClip);
+            sfxPlayer.PlayOneShot(buttonSFX);
         }
 
     }
@@ -107,6 +107,14 @@ public class Music : MonoBehaviour
                 music.loop = true;
                 music.Play();
             }
+        }
+    }
+
+    public void playGameOver()
+    {
+        if(Settings.isSfxOn)
+        {
+            sfxPlayer.PlayOneShot(gameOverSFX);
         }
     }
 }
