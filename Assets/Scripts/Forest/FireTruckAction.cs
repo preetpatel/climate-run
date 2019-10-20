@@ -88,7 +88,6 @@ public class FireTruckAction : MonoBehaviour
                     GrowingBush bush = bushGrown.Key;
                     if (!bushGrown.Value)
                     {
-                        Debug.Log("There's a bush to grow :)");
                         grownBushes[bush] = true;
                         bush.Trigger();
                         allBushesGrown = false;
