@@ -14,7 +14,10 @@ public class Music : MonoBehaviour
 
     public AudioClip forestLevelMusic;
 
-  
+    public AudioClip beachLevelMusic;
+
+    public AudioClip antarcticaLevelMusic;
+
     public AudioSource music;
 
     void Awake()
@@ -74,6 +77,16 @@ public class Music : MonoBehaviour
             { 
                 StartCoroutine(AudioController.FadeIn(music, 0.5f));
                 music.clip = forestLevelMusic;
+                music.Play();
+            } else if (aScene.name.Equals("Beach"))
+            {
+                StartCoroutine(AudioController.FadeIn(music, 0.5f));
+                music.clip = beachLevelMusic;
+                music.Play();
+            } else if (aScene.name.Equals("Antarctica"))
+            {
+                StartCoroutine(AudioController.FadeIn(music, 0.5f));
+                music.clip = antarcticaLevelMusic;
                 music.Play();
             }
         } else
