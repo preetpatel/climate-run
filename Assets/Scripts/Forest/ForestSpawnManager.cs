@@ -19,7 +19,6 @@ public class ForestSpawnManager : MonoBehaviour
     private int currentSpawnZ;
     private int currentLevel;
     private int y1, y2, y3;
-    private int segsSinceFireTruck;
 
     // List of pieces
     public List<Piece> ramps = new List<Piece>();
@@ -36,7 +35,6 @@ public class ForestSpawnManager : MonoBehaviour
     // List of segments
     public List<Segment> availableSegments = new List<Segment>();
     public List<Segment> availableTransitions = new List<Segment>();
-    public List<Segment> availableFireTrucks = new List<Segment>();
 
     [HideInInspector]   
     public List<Segment> segments; // active segments
@@ -50,17 +48,6 @@ public class ForestSpawnManager : MonoBehaviour
         cameraContainer = Camera.main.transform;
         currentSpawnZ = 0;
         currentLevel = 0;
-        segsSinceFireTruck = 0;
-
-        int i = 0;
-        foreach (Segment seg in availableSegments)
-            seg.SegId = i++;
-
-        foreach (Segment tSeg in availableTransitions)
-            tSeg.SegId = i++;
-
-        foreach (Segment fSeg in availableFireTrucks)
-            fSeg.SegId = i++;
     }
 
     private void Update()
@@ -70,12 +57,7 @@ public class ForestSpawnManager : MonoBehaviour
 
         if(amountOfActiveSegments >= MAX_SEGMENTS_ON)
         {
-            Segment seg = segments[amountOfActiveSegments - 1];
-            seg.DeSpawn();
-            
-            if (seg.fireTruck)
-                segments.Remove(seg);
-
+            segments[amountOfActiveSegments - 1].DeSpawn();
             amountOfActiveSegments--;
         }
     }
@@ -112,21 +94,8 @@ public class ForestSpawnManager : MonoBehaviour
 
     private bool SpawnSegment()
     {
-        List<Segment> possibleSeg;
-        bool getFireTruck = false;
-        if (segsSinceFireTruck > 20)
-        {
-            segsSinceFireTruck = 0;
-            getFireTruck = true;
-            possibleSeg = availableFireTrucks.FindAll(
+        List<Segment> possibleSeg = availableSegments.FindAll(
             x => x.beginY1 == y1 || x.beginY2 == y2 || x.beginY3 == y3);
-        }
-        else
-        {
-            segsSinceFireTruck++;
-            possibleSeg = availableSegments.FindAll(
-            x => x.beginY1 == y1 || x.beginY2 == y2 || x.beginY3 == y3);
-        }
 
         //if(possibleSeg.Count == 0)
         //{
@@ -135,21 +104,22 @@ public class ForestSpawnManager : MonoBehaviour
         //    return true;
         //}
 
-        int i = Random.Range(0, possibleSeg.Count);
-        int id = possibleSeg[i].SegId;
+        int id = Random.Range(0, possibleSeg.Count);
+        //int id = possibleSeg[i].SegId;
 
         if (segments[0].SegId == 1 && id == 1)
         {
             bool beforeRange = Random.Range(0, 5) <= 1 ? true : false;
             if (beforeRange)
-                i = 0;
+                id = 0;
             else
-                i = Random.Range(2, possibleSeg.Count);
-
-            id = possibleSeg[i].SegId;
+            {
+                id = Random.Range(2, possibleSeg.Count);
+                //id = possibleSeg[i].SegId;
+            }
         }
 
-        Segment s = GetSegment(id, false, getFireTruck);
+        Segment s = GetSegment(id, false);
 
         y1 = s.endY1;
         y2 = s.endY2;
@@ -168,11 +138,9 @@ public class ForestSpawnManager : MonoBehaviour
     {
         List<Segment> possibleTransition = availableTransitions.FindAll(
             x => x.beginY1 == y1 || x.beginY2 == y2 || x.beginY3 == y3);
-        int i = Random.Range(0, possibleTransition.Count);
+        int id = Random.Range(0, possibleTransition.Count);
 
-        int id = possibleTransition[i].SegId;
-
-        Segment s = GetSegment(id, true, false);
+        Segment s = GetSegment(id, true);
 
         y1 = s.endY1;
         y2 = s.endY2;
@@ -183,38 +151,26 @@ public class ForestSpawnManager : MonoBehaviour
 
         currentSpawnZ += s.length;
         amountOfActiveSegments++;
-        segsSinceFireTruck++;
         s.Spawn();
     }
 
-    public Segment GetSegment(int id, bool transition, bool fireTruck)
+    public Segment GetSegment(int id, bool transition)
     {
         Segment s = null;
 
-        if (!fireTruck)
-        {
-            s = segments.Find(x => x.SegId == id &&
+        s = segments.Find(x => x.SegId == id &&
                 x.transition == transition &&
-                x.fireTruck == fireTruck &&
                 !x.gameObject.activeSelf);
-        }
 
         if(s == null)
         {
-            GameObject template;
-            if (transition)
-                template = availableTransitions.Find(x => x.SegId == id).gameObject;
-            else if (fireTruck)
-                template = availableFireTrucks.Find(x => x.SegId == id).gameObject;
-            else
-                template = availableSegments.Find(x => x.SegId == id).gameObject;
-
-            GameObject go = Instantiate(template) as GameObject;
+            GameObject go = Instantiate((transition) ? 
+                availableTransitions[id].gameObject : 
+                availableSegments[id].gameObject) as GameObject;
             s = go.GetComponent<Segment>();
 
             s.SegId = id;
             s.transition = transition;
-            s.fireTruck = fireTruck;
 
             segments.Insert(0, s);
         }

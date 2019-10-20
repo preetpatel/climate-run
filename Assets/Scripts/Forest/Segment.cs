@@ -6,7 +6,6 @@ public class Segment : MonoBehaviour
 {
     public int SegId { set; get; }
     public bool transition;
-    public bool fireTruck;
 
     public int length;
     public int beginY1, beginY2, beginY3;

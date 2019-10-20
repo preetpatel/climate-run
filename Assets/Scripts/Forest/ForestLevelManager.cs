@@ -37,8 +37,6 @@ public class ForestLevelManager : MonoBehaviour
     private AudioSource musicPlayer;
     private GameObject audioPlayer;
 
-    private bool isDead = false;
-
 
     private void Awake()
 	{
@@ -73,7 +71,7 @@ public class ForestLevelManager : MonoBehaviour
 
 	private void Update()
 	{
-		if (Input.anyKey && !isGameStarted && !DialogueAnimator.GetBool("isOpen")&&!isDead)
+		if (Input.anyKey && !isGameStarted && !DialogueAnimator.GetBool("isOpen"))
 		{
 			isGameStarted = true;
 			playerMotor.StartRunning();
@@ -147,13 +145,18 @@ public class ForestLevelManager : MonoBehaviour
 
     public void OnDeath()
 	{
-        isGameStarted = false;
-        isDead = true;
+        Debug.Log("Hello");
+        isGameStarted = false;   
         deathScoreText.text = "Score: " + score.ToString("0");
         deathSeedText.text = "Seeds Collected: " + seeds.ToString("0");
         deathMenuAnim.SetTrigger("Dead");
         SideObjectSpawner.Instance.IsScrolling = false;
-        GameObject.FindGameObjectWithTag("AlivePanel").SetActive(false);
+        GameObject panel = GameObject.FindGameObjectWithTag("AlivePanel");
+        if (panel != null)
+        {
+            panel.SetActive(false);
+        }
+
         if (Settings.isMusicOn)
             StartCoroutine(AudioController.FadeOut(musicPlayer, 0.5f));
     }
