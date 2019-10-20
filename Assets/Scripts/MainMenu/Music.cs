@@ -53,7 +53,7 @@ public class Music : MonoBehaviour
 
     private void addButtonListeners()
     {
-        Button[] buttons = GameObject.FindObjectsOfType<Button>();
+        Button[] buttons = Resources.FindObjectsOfTypeAll<Button>();
         foreach (Button btn in buttons)
         {
             btn.onClick.AddListener(() => playSound());
