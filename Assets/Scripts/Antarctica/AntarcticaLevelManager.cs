@@ -32,8 +32,7 @@ public class AntarcticaLevelManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        scoreText.text = score.ToString();
-        informationText.text = "Touch to start";
+        scoreText.text = "Score : " + score.ToString();
         livesText.text = "Lives Remaining : 3";
         playerMotor = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMotor>();
         cameraMotor = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMotor>();
@@ -57,6 +56,10 @@ public class AntarcticaLevelManager : MonoBehaviour
 
     private void Update()
     {
+        if (!isGameStarted && !DialogueAnimator.GetBool("isOpen") && score > 50)
+        {
+            SceneManager.LoadScene("Forest");
+        }
 
         if (Input.anyKey && !isGameStarted && !DialogueAnimator.GetBool("isOpen"))
         {
@@ -78,25 +81,33 @@ public class AntarcticaLevelManager : MonoBehaviour
             scoreText.text = "Score: " + score.ToString("0");
 
             // refactor later
-            if (score > 60)
+            if (score > 50)
             {
                 isGameStarted = false;
                 playerMotor.StopRunning();
                 cameraMotor.StopFollowing();
+                DialogueAnimator.SetBool("isOpen", true);
                 endCutscene.Begin();
                 if (Settings.isMusicOn)
                     StartCoroutine(AudioController.FadeOut(audioPlayer, 0.5f));
-                score = 0;
             }
-            else if (score > 15)
+            else if (score > 40)
             {
-                informationText.text = "The ice is melting!";
+                informationText.text = "The ice has all melted away!";
             }
-            else if (score > 10)
+            else if (score > 30)
+            {
+                informationText.text = "The mountains are collapsing!";
+            }
+            else if (score > 12)
+            {
+                informationText.text = "Careful! The water is toxic.";
+            }
+            else if (score > 8)
             {
                 informationText.text = "Swipe up to jump";
             }
-            else if (score > 5)
+            else if (score > 3)
             {
                 informationText.text = "Swipe down to slide";
             }
@@ -110,7 +121,7 @@ public class AntarcticaLevelManager : MonoBehaviour
 
     public void OnDeath()
     {
-        deadScoreText.text = "Score: " + score.ToString("0");
+        deadScoreText.text = "Score : " + score.ToString("0");
         deathMenuAnim.SetTrigger("Dead");
         isGameStarted = false;
         scoreText.gameObject.SetActive(false);
