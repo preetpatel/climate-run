@@ -114,7 +114,7 @@ public class ForestSpawnManager : MonoBehaviour
     {
         List<Segment> possibleSeg;
         bool getFireTruck = false;
-        if (segsSinceFireTruck > 20)
+        if (segsSinceFireTruck > 18)
         {
             segsSinceFireTruck = 0;
             getFireTruck = true;
