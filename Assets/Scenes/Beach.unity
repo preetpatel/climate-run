@@ -1875,6 +1875,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8137986397950877536, guid: c248e38ca17dc6843b4546e93ea81d48,
+        type: 3}
+      propertyPath: m_Name
+      value: Dialogue
+      objectReference: {fileID: 0}
     - target: {fileID: 407205876563168740, guid: c248e38ca17dc6843b4546e93ea81d48,
         type: 3}
       propertyPath: dialogue.sentences.Array.size
@@ -1980,11 +1985,6 @@ PrefabInstance:
         type: 3}
       propertyPath: dialogue.name
       value: Chicken
-      objectReference: {fileID: 0}
-    - target: {fileID: 8137986397950877536, guid: c248e38ca17dc6843b4546e93ea81d48,
-        type: 3}
-      propertyPath: m_Name
-      value: Dialogue
       objectReference: {fileID: 0}
     - target: {fileID: 4321955176050261300, guid: c248e38ca17dc6843b4546e93ea81d48,
         type: 3}
@@ -2314,7 +2314,7 @@ MonoBehaviour:
   - {fileID: -1453827558740004328, guid: d9c72af39037228499ada886a2135541, type: 3}
   - {fileID: 1706286230038873123, guid: ec92ae6f0d9c54944b4eca364bb2481c, type: 3}
   longblocks:
-  - {fileID: 537402305874046681, guid: c7653d7334044774dabdb339e228259e, type: 3}
+  - {fileID: 6410886214179109244, guid: 2c6c48a067ea7734eb6e841ea477311a, type: 3}
   - {fileID: -7150452633924205530, guid: ca60975036b75d3459aee294584de3b4, type: 3}
   jumps:
   - {fileID: 6272316887010515826, guid: 7e6a993d0a07ae14683b9d5e1fea9de8, type: 3}
@@ -2379,7 +2379,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePrefabs:
-  - {fileID: 5780021485349039964, guid: 8a09da45a0b138646956c1629f15b740, type: 3}
+  - {fileID: 1469259183024968738, guid: 8a09da45a0b138646956c1629f15b740, type: 3}
   - {fileID: 8561708710973451157, guid: f4f666f6b6227544b872646c6fc8aea1, type: 3}
   - {fileID: 2570380844778494922, guid: e1d3feed86b545d49b2b68d51ad1f2e2, type: 3}
 --- !u!4 &2121742238
