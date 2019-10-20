@@ -38,6 +38,7 @@ public class GarbageSpawner : MonoBehaviour
 
     private void OnEnable()
     {
+        thrown = false;
         if (Random.Range(0.0f, 1.0f) > chanceToSpawn)
         {
             return;
