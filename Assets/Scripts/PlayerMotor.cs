@@ -183,7 +183,7 @@ public class PlayerMotor : MonoBehaviour
 
         transform.SetPositionAndRotation(targetPos, targetDir);
 
-        if ((transform.position - desiredPos).magnitude < 2f)
+        if (Mathf.Abs((transform.position - desiredPos).magnitude) < 2f)
         {
             walkingTowardsTarget = false;
             anim.SetTrigger("StopRunning");
