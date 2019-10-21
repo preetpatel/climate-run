@@ -62,7 +62,14 @@ public class AntarcticaLevelManager : MonoBehaviour
             StartCoroutine(AudioController.FadeOut(musicPlayer, 0.5f));
         }
 
-        startCutscene.Begin();
+        if (!isEndless)
+        {
+            startCutscene.Begin();
+        }
+        else
+        {
+            informationText.text = "Touch to start";
+        }
     }
 
     private void Update()
