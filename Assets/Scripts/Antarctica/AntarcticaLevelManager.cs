@@ -12,6 +12,7 @@ public class AntarcticaLevelManager : MonoBehaviour
     private PlayerMotor playerMotor;
     private CameraMotor cameraMotor;
     private CompanionMotor compMotor;
+    private const string HIGHSCOREKEY = "AntarcticaHighScore";
 
     // Cutscenes
     public DialogueTrigger startCutscene;
@@ -21,10 +22,12 @@ public class AntarcticaLevelManager : MonoBehaviour
     // UI and the UI fields
     public Text scoreText;
     public Text informationText;
+    public Text HighScoreText;
     private float score = 0;
     private AudioSource musicPlayer;
     private GameObject audioPlayer;
 
+    public Animator HighScoreAnimator;
     public Animator LivesAnimator;
 
     //Death menu
@@ -138,7 +141,19 @@ public class AntarcticaLevelManager : MonoBehaviour
         if (Settings.isMusicOn)
             StartCoroutine(AudioController.FadeOut(musicPlayer, 0.5f));
 
+        bool isNewHighScore = SaveState.saveHighScore((int) Mathf.Round(score), HIGHSCOREKEY);
+
+        if(isNewHighScore)
+        {
+            HighScoreAnimator.SetTrigger("IsHighScore");
+            HighScoreText.text = "New High Score!!";
+        } else
+        {
+            HighScoreText.text = "HighScore : " + PlayerPrefs.GetInt(HIGHSCOREKEY);
+        }
+
         GameObject.FindGameObjectWithTag("AlivePanel").SetActive(false);
+
     }
 
     public void OnRetryButton()
