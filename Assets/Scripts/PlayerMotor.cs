@@ -212,6 +212,11 @@ public class PlayerMotor : MonoBehaviour
         return Physics.Raycast(groundRay, 0.2f + 0.1f);
     }
 
+    public void ResetMotorBeforeSceneLoad()
+    {
+        isRunning = false;
+    }
+
     public void StartRunning()
     {
         isRunning = true;
