@@ -239,4 +239,11 @@ public class AntarcticaLevelManager : MonoBehaviour
         HighscoreTable.AddHighscoreEntry(roundedScore, name, "antarctica");
         GameObject.FindGameObjectWithTag("HighScore").SetActive(false);
     }
+
+    public void SkipLevel()
+    {
+        score = 51;
+        DialogueAnimator.SetBool("isOpen", true);
+        endCutscene.Begin();
+    }
 }
