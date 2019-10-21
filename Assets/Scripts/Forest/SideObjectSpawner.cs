@@ -41,7 +41,7 @@ public class SideObjectSpawner : MonoBehaviour
             {
                 transform.GetChild(0).localPosition += Vector3.forward * totalLength;
 
-                if (transform.GetChild(0).localPosition.z > ForestSpawnManager.Instance.DISTANCE_UNTIL_END)
+                if (transform.GetChild(0).position.z > ForestSpawnManager.Instance.DISTANCE_UNTIL_END)
                 {
                     finished = true;
                 }

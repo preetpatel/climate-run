@@ -105,14 +105,9 @@ public class ForestSpawnManager : MonoBehaviour
     {
         for (int i = 0; i < INITIAL_SEGMENTS; i++)
             if (i < INITIAL_TRANSITION_SEGMENTS)
-            {
                 SpawnTransition();
-            }
             else
-            {
                 GenerateSegment();
-            }
-
     }
 
     private void GenerateSegment()
@@ -135,12 +130,11 @@ public class ForestSpawnManager : MonoBehaviour
     {
         List<Segment> possibleSeg;
         bool getFireTruck = false;
-        if (segsSinceFireTruck > 15)
+        if (segsSinceFireTruck > 10)
         {
             segsSinceFireTruck = 0;
             getFireTruck = true;
-            possibleSeg = availableFireTrucks.FindAll(
-            x => x.beginY1 == y1 || x.beginY2 == y2 || x.beginY3 == y3);
+            possibleSeg = new List<Segment>(availableFireTrucks);
         }
         else
         {

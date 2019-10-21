@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8472707644517021426}
   - component: {fileID: 8472707644517021429}
   m_Layer: 0
-  m_Name: TreeRowOnly_12
+  m_Name: TreeRowOnly
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,7 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transition: 0
-  length: 12
+  fireTruck: 0
+  length: 16
   beginY1: 0
   beginY2: 0
   beginY3: 0
@@ -152,7 +153,7 @@ PrefabInstance:
     - target: {fileID: 6408954611786650472, guid: 8b94c892c9138924b8f3d223f5e0fc21,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 2.91
       objectReference: {fileID: 0}
     - target: {fileID: 6408954611786650472, guid: 8b94c892c9138924b8f3d223f5e0fc21,
         type: 3}
