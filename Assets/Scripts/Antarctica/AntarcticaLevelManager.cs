@@ -87,7 +87,9 @@ public class AntarcticaLevelManager : MonoBehaviour
     {
         if (!isGameStarted && !DialogueAnimator.GetBool("isOpen") && score > scoreOnFinish && !isEndless)
         {
-            SceneManager.LoadScene("Beach"); //if the level is finished load beach
+
+            isGameOver = true;
+            SceneManager.LoadScene("Beach");
             return;
         }
 
