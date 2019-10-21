@@ -166,7 +166,6 @@ public class PlayerMotor : MonoBehaviour
         if (transform.position.y < 0)
         {
             Crash();
-            //transform.position = new Vector3(0, 0, 0);
         }
     }
 

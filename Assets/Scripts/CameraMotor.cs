@@ -22,9 +22,6 @@ public class CameraMotor : MonoBehaviour
 
     private void Start()
     {
-        // Remove the if statemtnt if you want your scenes to have the start menu Forest level has
-       // if (!SceneManager.GetActiveScene().name.Equals("Forest") && !SceneManager.GetActiveScene().name.Equals("Beach"))
-            //transform.position = lookAt.position + initialOffset;
     } 
 
     private void LateUpdate()

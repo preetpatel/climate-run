@@ -143,13 +143,6 @@ public class ForestSpawnManager : MonoBehaviour
             x => x.beginY1 == y1 || x.beginY2 == y2 || x.beginY3 == y3);
         }
 
-        //if(possibleSeg.Count == 0)
-        //{
-        //    continuousSegments = 0;
-        //    SpawnTransition();
-        //    return true;
-        //}
-
         int i = Random.Range(0, possibleSeg.Count);
         int id = possibleSeg[i].SegId;
 

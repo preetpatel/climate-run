@@ -235,12 +235,6 @@ public class BeachLevelManager : MonoBehaviour
         LivesAnimator.SetTrigger("GoBack");
     }
 
-    // public void updatemodifer( float modifieramount)
-    // {
-    //     modifier = 1.0f + modifieramount;
-    //     modifiertext.text = "modifer : x" + modifier.tostring("0.0");
-    // }
-
     /* Called when the user dies, brings up the UI and stops the game */
     public void OnDeath()
     {

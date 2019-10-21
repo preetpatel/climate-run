@@ -118,7 +118,6 @@ public class AntarcticaLevelManager : MonoBehaviour
             score += Time.deltaTime;
             scoreText.text = score.ToString("0");
 
-            // refactor later
             if (!isEndless)
             {
 
@@ -182,7 +181,7 @@ public class AntarcticaLevelManager : MonoBehaviour
 
         if (isEndless)
         {
-            if (isNewHighScore) //seet new high score if in endless mode
+            if (isNewHighScore) //set new high score if in endless mode
             {
                 newHighScore.SetActive(true);
                 HighScoreAnimator.SetTrigger("IsHighScore");

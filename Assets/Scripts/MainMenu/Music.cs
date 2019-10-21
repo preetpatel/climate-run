@@ -5,6 +5,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/**
+ *  This class is made to handle Music and SFX
+ **/
 public class Music : MonoBehaviour
 {
     public AudioSource sfxPlayer;
@@ -33,6 +36,7 @@ public class Music : MonoBehaviour
         }
         DontDestroyOnLoad(this.gameObject);
 
+        // Check if the values are null (will be if settings not opened)
         if (!Settings.isMusicOn.HasValue || !(Settings.MUSICKEY == null))
         {
             Settings.isMusicOn = true;
@@ -67,6 +71,8 @@ public class Music : MonoBehaviour
         }
 
     }
+
+    // called every time a new scene is loaded
     private void OnSceneLoaded(Scene aScene, LoadSceneMode aMode)
     {
 
@@ -78,6 +84,7 @@ public class Music : MonoBehaviour
         }
     }
 
+    // used to add listeners to all buttons in the scene
     private void addButtonListeners()
     {
         Button[] buttons = Resources.FindObjectsOfTypeAll<Button>();
@@ -86,6 +93,7 @@ public class Music : MonoBehaviour
             btn.onClick.AddListener(() => playSound());
         }
     }
+
     public void playSound()
     {
 
@@ -96,6 +104,7 @@ public class Music : MonoBehaviour
 
     }
 
+    // used to switch music depending on the scene its currently in
     public void changeMusic(Scene aScene)
     {
         if (!aScene.name.Equals("Settings") && !aScene.name.Equals("MainMenu"))

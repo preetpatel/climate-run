@@ -94,7 +94,6 @@ public class CompanionMotor : MonoBehaviour
         moveVector.z = speed;
 
         // Move the actual character
-        /*controller.Move(moveVector * Time.deltaTime);*/
         transform.SetPositionAndRotation(targetPosition, Quaternion.Euler(new Vector3(0, 0, 0)));
 
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BeachSpawnManager : MonoBehaviour
 {
-    public bool SHOW_COLLIDER = false; //$$
+    public bool SHOW_COLLIDER = false;
 
     public static BeachSpawnManager Instance {set;get;}
 
@@ -44,8 +44,7 @@ public class BeachSpawnManager : MonoBehaviour
         cameraContainer = Camera.main.transform;
         currentSpawnZ = 15;
         currentLevel = 0;
- 
-        //FindObjectOfType<CameraMotor>().isFollowing = true;
+
     }
 
     public BeachSegment GetSegment(int id, bool transition)
