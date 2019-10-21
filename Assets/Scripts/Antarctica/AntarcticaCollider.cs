@@ -30,6 +30,7 @@ public class AntarcticaCollider : MonoBehaviour
 
     private void LoadNextObstacle(float colliderPosition)
     {
+        //load next obstacle based on the collider position
         cameraMotor.shakeDuration = 1f;
         int objectIndex = Random.Range(0, gameObjects.Length);
         nextObstacleZLocation = colliderPosition + 38;

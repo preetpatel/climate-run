@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/*This class is not being used anymore*/
 public class AntarcticaEndlessLevelManager : MonoBehaviour
 {
     public static AntarcticaEndlessLevelManager Instance {set; get;}

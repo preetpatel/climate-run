@@ -16,6 +16,7 @@ public class Garbage : MonoBehaviour
     
     private void OnEnable()
     {
+        //make sure to spawn garbage at the correct location
         animator.speed = playerMotor.speed / playerMotor.originalSpeed;
         animator.SetTrigger("Spawn");
     }

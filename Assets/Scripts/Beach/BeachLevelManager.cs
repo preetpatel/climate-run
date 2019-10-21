@@ -138,7 +138,7 @@ public class BeachLevelManager : MonoBehaviour
             // Ends the game when the user has reached the end.
             if (!isEndless)
             {
-                if (score > 60)
+                if (score > 2)
                 {
                     isGameStarted = false;
                     playerMotor.StopRunning();
@@ -251,11 +251,13 @@ public class BeachLevelManager : MonoBehaviour
 
     public void OnRetryButton()
 	{
+        //retry the level
 		UnityEngine.SceneManagement.SceneManager.LoadScene("Beach");
 	}
 
     public void OnExitButtonPress()
     {
+        //go back to main menu
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
 

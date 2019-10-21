@@ -52,7 +52,7 @@ public class ForestLevelManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-
+        //initialise fields
         playerMotor = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMotor>();
         cameraMotor = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMotor>();
         compMotor = GameObject.FindGameObjectWithTag("Companion").GetComponent<GorillaMotor>();
@@ -62,7 +62,7 @@ public class ForestLevelManager : MonoBehaviour
         isEndless = SceneController.getIsEndless();
 
         if (Settings.isMusicOn.Value)
-        {
+        {//checking for music
             AudioSource[] audios = FindObjectsOfType<AudioSource>();
             foreach (AudioSource audio in audios)
             {
@@ -79,13 +79,13 @@ public class ForestLevelManager : MonoBehaviour
         heart2.gameObject.SetActive(true);
         heart3.gameObject.SetActive(true);
 
-        if (!isEndless)
+        if (!isEndless)//if not endless
         {
             informationText.text = "";
-            startCutscene.Begin();
+            startCutscene.Begin(); //start the cutscene
         } else
         {
-            informationText.text = "Tap Anywhere To Begin!";
+            informationText.text = "Tap Anywhere To Begin!"; //or start directly
         }
     }
 
@@ -93,7 +93,7 @@ public class ForestLevelManager : MonoBehaviour
 	{
         if (!isGameStarted && !DialogueAnimator.GetBool("isOpen") && done && !isEndless)
         {
-            SceneManager.LoadScene("Congrats");
+            SceneManager.LoadScene("Congrats");// end of the story
             return;
         }
 
@@ -101,6 +101,7 @@ public class ForestLevelManager : MonoBehaviour
         {
             if (Input.anyKey && !isGameStarted && !DialogueAnimator.GetBool("isOpen"))
             {
+                //start the game by tapping any key
                 isGameStarted = true;
                 playerMotor.StartRunning();
                 cameraMotor.StartFollowing();
@@ -129,6 +130,7 @@ public class ForestLevelManager : MonoBehaviour
     {
         if (!isEndless)
         {
+            //
             DialogueAnimator.SetBool("isOpen", true);
 
             done = true;
