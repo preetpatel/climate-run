@@ -78,7 +78,6 @@ public class GorillaMotor : MonoBehaviour
             moveVector.Normalize();
 
             // Move the actual character
-            /*controller.Move(moveVector * Time.deltaTime);*/
             transform.SetPositionAndRotation(targetPosition, Quaternion.LookRotation(moveVector, Vector3.up));
         }
 

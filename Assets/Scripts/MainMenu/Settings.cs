@@ -5,6 +5,9 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+/**
+ *  This class is used for the settings scene
+ **/
 public class Settings : MonoBehaviour
 {
 
@@ -19,6 +22,7 @@ public class Settings : MonoBehaviour
 
     public void Awake()
     {
+        // Check the status of music and sfx, and set the button colours correctly
         AudioSource[] audios = GameObject.FindObjectsOfType<AudioSource>();
         foreach (AudioSource audio in audios)
         {
@@ -37,11 +41,13 @@ public class Settings : MonoBehaviour
 
     }
 
+    // used when music button is pressed
     public void onMusicPress()
     {
         isMusicOn = buttonPressed(musicButton, isMusicOn.Value);
 
         AudioSource[] audios = GameObject.FindObjectsOfType<AudioSource>();
+        // play the music and save the state
         foreach (AudioSource audio in audios)
         {
             if (audio.CompareTag("Music"))
@@ -64,10 +70,12 @@ public class Settings : MonoBehaviour
         
     }
 
+    // used when sfx button is pressed
     public void onSFXPress()
     {
         isSfxOn = buttonPressed(sfxButton, isSfxOn.Value);
 
+        // save the state about the SFX's status
         GameObject sfx = GameObject.FindGameObjectWithTag("SFX");
         if (isSfxOn.Value)
         {
@@ -89,6 +97,8 @@ public class Settings : MonoBehaviour
     {
         Text text = buttonPressed.GetComponentInChildren<Text>();
         Image image = buttonPressed.image;
+
+        // Change the colour and text of buttons depending on their state
         if (isButtonOn)
         {
             buttonPressed.image.color = Color.red;
