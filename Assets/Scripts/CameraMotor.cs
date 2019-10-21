@@ -33,11 +33,11 @@ public class CameraMotor : MonoBehaviour
         {
             Vector3 targetPos = Vector3.zero;
 
-            targetPos.x = Mathf.SmoothStep(transform.position.x, cutscenePos.position.x, Time.deltaTime * 2);
-            targetPos.y = Mathf.SmoothStep(transform.position.y, cutscenePos.position.y, Time.deltaTime * 2);
-            targetPos.z = Mathf.SmoothStep(transform.position.z, cutscenePos.position.z, Time.deltaTime * 2);
+            targetPos.x = Mathf.SmoothStep(transform.position.x, cutscenePos.position.x, Time.deltaTime * 4);
+            targetPos.y = Mathf.SmoothStep(transform.position.y, cutscenePos.position.y, Time.deltaTime * 4);
+            targetPos.z = Mathf.SmoothStep(transform.position.z, cutscenePos.position.z, Time.deltaTime * 4);
 
-            Quaternion targetDir = Quaternion.Slerp(transform.rotation, cutscenePos.rotation, Time.deltaTime * 2);
+            Quaternion targetDir = Quaternion.Slerp(transform.rotation, cutscenePos.rotation, Time.deltaTime * 4);
 
             transform.SetPositionAndRotation(targetPos, targetDir);
 

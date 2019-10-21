@@ -183,7 +183,7 @@ public class PlayerMotor : MonoBehaviour
 
         transform.SetPositionAndRotation(targetPos, targetDir);
 
-        if ((transform.position - desiredPos).magnitude < 2f)
+        if (Mathf.Abs((transform.position - desiredPos).magnitude) < 2f)
         {
             walkingTowardsTarget = false;
             anim.SetTrigger("StopRunning");
@@ -210,6 +210,11 @@ public class PlayerMotor : MonoBehaviour
         );
 
         return Physics.Raycast(groundRay, 0.2f + 0.1f);
+    }
+
+    public void ResetMotorBeforeSceneLoad()
+    {
+        isRunning = false;
     }
 
     public void StartRunning()

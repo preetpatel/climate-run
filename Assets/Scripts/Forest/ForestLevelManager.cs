@@ -94,6 +94,7 @@ public class ForestLevelManager : MonoBehaviour
         if (!isGameStarted && !DialogueAnimator.GetBool("isOpen") && done && !isEndless)
         {
             SceneManager.LoadScene("Congrats");
+            return;
         }
 
         if (!isGameOver)
@@ -129,6 +130,9 @@ public class ForestLevelManager : MonoBehaviour
         if (!isEndless)
         {
             DialogueAnimator.SetBool("isOpen", true);
+
+            done = true;
+            isGameOver = true;
 
             Transform gorillaPosition = endSegment.transform.Find("GorillaPosition");
             compMotor.DoEndSequence(gorillaPosition);

@@ -103,7 +103,9 @@ public class BeachLevelManager : MonoBehaviour
         // Goes to the next level in the story if the user has met the conditions
         if (!isGameStarted && !DialogueAnimator.GetBool("isOpen") && score > 120 && !isEndless)
         {
+            isGameOver = true;
             SceneManager.LoadScene("Forest");
+            return;
         }
 
         // Starts the game after the user has run through the initial text.
