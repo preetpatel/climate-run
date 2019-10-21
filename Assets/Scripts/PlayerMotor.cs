@@ -269,11 +269,16 @@ public class PlayerMotor : MonoBehaviour
 				hit.collider.enabled = false;
                 Crash();
                 break;
-            case "FireTruck":
-                GameObject segment = hit.gameObject.transform.parent.gameObject;
-                FireTruckAction sprayScript = segment.GetComponent<FireTruckAction>();
-                sprayScript.doWaterSpray();
-                break;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "FireTruck")
+        {
+            GameObject segment = other.gameObject.transform.parent.gameObject;
+            FireTruckAction sprayScript = segment.GetComponent<FireTruckAction>();
+            sprayScript.doWaterSpray();
         }
     }
 }
