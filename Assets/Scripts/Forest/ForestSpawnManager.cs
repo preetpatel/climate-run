@@ -13,6 +13,7 @@ public class ForestSpawnManager : MonoBehaviour
     private const int INITIAL_SEGMENTS = 10;
     private const int INITIAL_TRANSITION_SEGMENTS = 2;
     private const int MAX_SEGMENTS_ON = 15;
+    public int DISTANCE_UNTIL_END = 200;
     private Transform cameraContainer;
     private int amountOfActiveSegments;
     private int continuousSegments;
@@ -20,6 +21,7 @@ public class ForestSpawnManager : MonoBehaviour
     private int currentLevel;
     private int y1, y2, y3;
     private int segsSinceFireTruck;
+    private bool finished = false;
 
     // List of pieces
     public List<Piece> ramps = new List<Piece>();
@@ -34,6 +36,7 @@ public class ForestSpawnManager : MonoBehaviour
     public List<Piece> pieces = new List<Piece>(); // active pieces
 
     // List of segments
+    public Segment endSegment;
     public List<Segment> availableSegments = new List<Segment>();
     public List<Segment> availableTransitions = new List<Segment>();
     public List<Segment> availableFireTrucks = new List<Segment>();
@@ -65,18 +68,36 @@ public class ForestSpawnManager : MonoBehaviour
 
     private void Update()
     {
-        if (currentSpawnZ - cameraContainer.position.z < DISTANCE_BEFORE_SPAWN)
-            GenerateSegment();
-
-        if (amountOfActiveSegments >= MAX_SEGMENTS_ON)
+        if (!finished)
         {
-            Segment seg = segments[amountOfActiveSegments - 1];
-            seg.DeSpawn();
+            if (currentSpawnZ > DISTANCE_UNTIL_END)
+            {
+                finished = true;
 
-            if (seg.fireTruck)
-                segments.Remove(seg);
+                GameObject end = Instantiate(endSegment.gameObject);
 
-            amountOfActiveSegments--;
+                end.transform.SetParent(transform);
+                end.transform.localPosition = Vector3.forward * currentSpawnZ;
+
+                Segment s = end.GetComponent<Segment>();
+                s.Spawn();
+            }
+            else
+            {
+                if (currentSpawnZ - cameraContainer.position.z < DISTANCE_BEFORE_SPAWN)
+                    GenerateSegment();
+
+                if (amountOfActiveSegments >= MAX_SEGMENTS_ON)
+                {
+                    Segment seg = segments[amountOfActiveSegments - 1];
+                    seg.DeSpawn();
+
+                    if (seg.fireTruck)
+                        segments.Remove(seg);
+
+                    amountOfActiveSegments--;
+                }
+            }
         }
     }
 

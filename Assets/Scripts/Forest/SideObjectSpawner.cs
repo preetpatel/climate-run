@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SideObjectSpawner : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class SideObjectSpawner : MonoBehaviour
     public float scrollSpeed = -2;
     public float totalLength;
     public bool IsScrolling { get; set; }
+    private bool finished = false;
 
     private float scrollLocation;
     private Transform playerTransform;
@@ -25,21 +27,30 @@ public class SideObjectSpawner : MonoBehaviour
 
     private void Update()
     {
-        if (!IsScrolling)
+        if (!finished)
         {
-            return;
-        }
-        scrollLocation += scrollSpeed * Time.deltaTime;
-        Vector3 newLocation = (playerTransform.position.z + scrollLocation) * Vector3.forward;
-        transform.position = newLocation;
+            if (!IsScrolling)
+            {
+                return;
+            }
+            scrollLocation += scrollSpeed * Time.deltaTime;
+            Vector3 newLocation = (playerTransform.position.z + scrollLocation) * Vector3.forward;
+            transform.position = newLocation;
 
-        if (transform.GetChild(0).transform.position.z < playerTransform.position.z - DISTANCE_TO_DESPAWN_OBJECT)
-        {
-            transform.GetChild(0).localPosition += Vector3.forward * totalLength;
-            transform.GetChild(0).SetSiblingIndex(transform.childCount);
+            if (transform.GetChild(0).transform.position.z < playerTransform.position.z - DISTANCE_TO_DESPAWN_OBJECT)
+            {
+                transform.GetChild(0).localPosition += Vector3.forward * totalLength;
 
-            transform.GetChild(0).localPosition += Vector3.forward * totalLength;
-            transform.GetChild(0).SetSiblingIndex(transform.childCount);
+                if (transform.GetChild(0).localPosition.z > ForestSpawnManager.Instance.DISTANCE_UNTIL_END)
+                {
+                    finished = true;
+                }
+
+                transform.GetChild(0).SetSiblingIndex(transform.childCount);
+
+                transform.GetChild(0).localPosition += Vector3.forward * totalLength;
+                transform.GetChild(0).SetSiblingIndex(transform.childCount);
+            }
         }
     }
 }
