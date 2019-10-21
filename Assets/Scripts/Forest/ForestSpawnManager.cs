@@ -134,8 +134,7 @@ public class ForestSpawnManager : MonoBehaviour
         {
             segsSinceFireTruck = 0;
             getFireTruck = true;
-            possibleSeg = availableFireTrucks.FindAll(
-            x => x.beginY1 == y1 || x.beginY2 == y2 || x.beginY3 == y3);
+            possibleSeg = new List<Segment>(availableFireTrucks);
         }
         else
         {
