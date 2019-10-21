@@ -988,16 +988,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 1765975227208988478, guid: 455e5a868541845d387486db738e3ebd,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2428278801976921229, guid: 455e5a868541845d387486db738e3ebd,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 49
-      objectReference: {fileID: 0}
     - target: {fileID: 307210246013495288, guid: 455e5a868541845d387486db738e3ebd,
         type: 3}
       propertyPath: m_IsActive
@@ -1037,6 +1027,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: saveHighScore
+      objectReference: {fileID: 0}
+    - target: {fileID: 2428278801976921229, guid: 455e5a868541845d387486db738e3ebd,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 49
+      objectReference: {fileID: 0}
+    - target: {fileID: 1765975227208988478, guid: 455e5a868541845d387486db738e3ebd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5553704450344458568, guid: 455e5a868541845d387486db738e3ebd,
         type: 3}
@@ -1372,7 +1372,7 @@ PrefabInstance:
     - target: {fileID: 653472833885484251, guid: 0ea1be9dcd46f0c4eb3a8914b626d93e,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.04758334
+      value: 0.04154883
       objectReference: {fileID: 0}
     - target: {fileID: 653472833885484251, guid: 0ea1be9dcd46f0c4eb3a8914b626d93e,
         type: 3}
@@ -1387,7 +1387,7 @@ PrefabInstance:
     - target: {fileID: 653472833885484251, guid: 0ea1be9dcd46f0c4eb3a8914b626d93e,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.9479352
+      value: 0.96241695
       objectReference: {fileID: 0}
     - target: {fileID: 653472833885484251, guid: 0ea1be9dcd46f0c4eb3a8914b626d93e,
         type: 3}
@@ -1398,6 +1398,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003263208438457569, guid: 0ea1be9dcd46f0c4eb3a8914b626d93e,
+        type: 3}
+      propertyPath: m_FontData.m_HorizontalOverflow
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2291003799525351493, guid: 0ea1be9dcd46f0c4eb3a8914b626d93e,
         type: 3}
@@ -1437,7 +1442,7 @@ PrefabInstance:
     - target: {fileID: 2046558592693146852, guid: 0ea1be9dcd46f0c4eb3a8914b626d93e,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.75411576
+      value: 0.7147397
       objectReference: {fileID: 0}
     - target: {fileID: 2046558592693146852, guid: 0ea1be9dcd46f0c4eb3a8914b626d93e,
         type: 3}
@@ -1447,7 +1452,7 @@ PrefabInstance:
     - target: {fileID: 2046558592693146852, guid: 0ea1be9dcd46f0c4eb3a8914b626d93e,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.94994694
+      value: 0.9516636
       objectReference: {fileID: 0}
     - target: {fileID: 653472834544318863, guid: 0ea1be9dcd46f0c4eb3a8914b626d93e,
         type: 3}
@@ -1458,6 +1463,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMin.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 653472834544318863, guid: 0ea1be9dcd46f0c4eb3a8914b626d93e,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.7032919
+      objectReference: {fileID: 0}
+    - target: {fileID: 653472834544318863, guid: 0ea1be9dcd46f0c4eb3a8914b626d93e,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.2504416
       objectReference: {fileID: 0}
     - target: {fileID: 653472834516805044, guid: 0ea1be9dcd46f0c4eb3a8914b626d93e,
         type: 3}
@@ -1483,11 +1498,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8003263208438457569, guid: 0ea1be9dcd46f0c4eb3a8914b626d93e,
-        type: 3}
-      propertyPath: m_FontData.m_HorizontalOverflow
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ea1be9dcd46f0c4eb3a8914b626d93e, type: 3}
