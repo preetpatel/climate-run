@@ -127,7 +127,6 @@ public class HighscoreTable : MonoBehaviour
             };
         }
 
-        Debug.Log(highscoreEntry.name);
         // Add new entry to Highscores
         highscores.highscoreEntryList.Add(highscoreEntry);
 

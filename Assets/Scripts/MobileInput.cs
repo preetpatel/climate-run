@@ -143,7 +143,6 @@ public class MobileInput : MonoBehaviour
                 tap = true;
                 startTouch = Input.mousePosition;
                 doubleTap = Time.time - lastTap < doubleTapDelta;
-                Debug.Log(Time.time - lastTap);
                 lastTap = Time.time;
             }
             else if (Input.touches[0].phase == TouchPhase.Ended || Input.touches[0].phase == TouchPhase.Canceled)
