@@ -101,6 +101,7 @@ public class BeachLevelManager : MonoBehaviour
         if (!isGameStarted && !DialogueAnimator.GetBool("isOpen") && score > 60 && !isEndless)
         {
             SceneManager.LoadScene("Forest");
+            return;
         }
 
         // Starts the game after the user has run through the initial text.
@@ -141,6 +142,7 @@ public class BeachLevelManager : MonoBehaviour
                 if (score > 60)
                 {
                     isGameStarted = false;
+                    isGameOver = true;
                     playerMotor.StopRunning();
                     compMotor.StopRunning();
                     cameraMotor.StopFollowing();
