@@ -22,7 +22,7 @@ public class FireTruckAction : MonoBehaviour
         if (!triggeredAlready)
         {
             triggeredAlready = true;
-            Time.timeScale = 0.4f;
+            Time.timeScale = 0.30f;
             transitioning = true;
 
             extinguishableFireParticles = new Dictionary<SplashFireCombo, bool>();
@@ -52,14 +52,14 @@ public class FireTruckAction : MonoBehaviour
                 return;
             }
 
-            if (framesSinceTrigger > 150 && !growingBushes)
+            if (framesSinceTrigger > 130 && !growingBushes)
             {
                 growingBushes = true;
             }
 
             framesSinceExtinguish++;
 
-            if (framesSinceExtinguish >= 7)
+            if (framesSinceExtinguish >= 5)
             {
                 framesSinceExtinguish = 0;
 

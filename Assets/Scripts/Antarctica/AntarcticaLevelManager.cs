@@ -51,7 +51,7 @@ public class AntarcticaLevelManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        scoreText.text = "Score : " + score.ToString();
+        scoreText.text = score.ToString();
         playerMotor = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMotor>();
         cameraMotor = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMotor>();
         compMotor = GameObject.FindGameObjectWithTag("Companion").GetComponent<CompanionMotor>();
@@ -112,7 +112,7 @@ public class AntarcticaLevelManager : MonoBehaviour
         if (isGameStarted)
         {
             score += Time.deltaTime;
-            scoreText.text = "Score: " + score.ToString("0");
+            scoreText.text = score.ToString("0");
 
             // refactor later
             if (!isEndless)

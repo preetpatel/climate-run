@@ -58,8 +58,8 @@ public class ForestLevelManager : MonoBehaviour
 		playerMotor = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMotor>();
 		cameraMotor = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMotor>();
         compMotor = GameObject.FindGameObjectWithTag("Companion").GetComponent<GorillaMotor>();
-        scoreText.text = "Score : " + score.ToString("0");
-		seedCountText.text = "Seeds : " + seeds.ToString();
+        scoreText.text = score.ToString("0");
+		seedCountText.text = seeds.ToString();
 
         isEndless = SceneController.getIsEndless();
 
@@ -113,7 +113,7 @@ public class ForestLevelManager : MonoBehaviour
 		if (isGameStarted)
 		{
 			score += (Time.deltaTime * modifier);
-			scoreText.text = "Score : " + score.ToString("0");
+			scoreText.text = score.ToString("0");
 
             if (!isEndless)
             {
@@ -135,7 +135,7 @@ public class ForestLevelManager : MonoBehaviour
 	public void getSeeds()
 	{
 		seeds++;
-		seedCountText.text = "Seeds : " + seeds.ToString();
+		seedCountText.text = seeds.ToString();
 	}
 
 	public IEnumerator updateLives(float livesAmount)

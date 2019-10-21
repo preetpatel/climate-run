@@ -82,9 +82,9 @@ public class GorillaMotor : MonoBehaviour
         Vector3 desiredPos = playerTransform.position;
         Vector3 targetPosition = Vector3.zero;
 
-        targetPosition.x = Mathf.SmoothStep(transform.position.x, desiredPos.x, Time.deltaTime * 8);
-        targetPosition.y = Mathf.Lerp(transform.position.y, desiredPos.y * 1.3f, Time.deltaTime * 3);
-        targetPosition.z = Mathf.Lerp(transform.position.z, desiredPos.z, Time.deltaTime * 2.5f);
+        targetPosition.x = Mathf.SmoothStep(transform.position.x, desiredPos.x, Time.deltaTime * 6);
+        targetPosition.y = Mathf.Lerp(transform.position.y, desiredPos.y, Time.deltaTime * 2);
+        targetPosition.z = Mathf.Lerp(transform.position.z, desiredPos.z, Time.deltaTime * 2);
 
         //// Calculating our move vector
         //Vector3 moveVector = Vector3.zero;
