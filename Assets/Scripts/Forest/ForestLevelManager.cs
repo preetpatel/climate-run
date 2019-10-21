@@ -89,7 +89,12 @@ public class ForestLevelManager : MonoBehaviour
 
 	private void Update()
 	{
-        if(!isGameOver)
+        if (!isGameStarted && !DialogueAnimator.GetBool("isOpen") && score > 60 && !isEndless)
+        {
+            SceneManager.LoadScene("Congrats");
+        }
+
+        if (!isGameOver)
         {
             if (Input.anyKey && !isGameStarted && !DialogueAnimator.GetBool("isOpen"))
             {
@@ -122,9 +127,9 @@ public class ForestLevelManager : MonoBehaviour
                     isGameStarted = false;
                     playerMotor.StopRunning();
                     cameraMotor.StopFollowing();
+                    DialogueAnimator.SetBool("isOpen", true);
                     endCutscene.Begin();
                     StartCoroutine(AudioController.FadeOut(musicPlayer, 0.5f));
-                    score = 0;
                 }
             }
 

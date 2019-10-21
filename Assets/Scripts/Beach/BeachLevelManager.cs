@@ -94,7 +94,12 @@ public class BeachLevelManager : MonoBehaviour
 
     private void Update()
     {
-        if(!isGameOver)
+        if (!isGameStarted && !DialogueAnimator.GetBool("isOpen") && score > 60 && !isEndless)
+        {
+            SceneManager.LoadScene("Forest");
+        }
+
+        if (!isGameOver)
         {
             if (Input.anyKey && !isGameStarted && !DialogueAnimator.GetBool("isOpen") && !isDead)
             {
@@ -131,9 +136,9 @@ public class BeachLevelManager : MonoBehaviour
                     isGameStarted = false;
                     playerMotor.StopRunning();
                     cameraMotor.StopFollowing();
+                    DialogueAnimator.SetBool("isOpen", true);
                     endCutscene.Begin();
                     // StartCoroutine(AudioController.FadeOut(audioPlayer, 0.5f));
-                    score = 0;
                 }
             }
 
