@@ -9,7 +9,7 @@ public class ForestSpawnManager : MonoBehaviour
     public static ForestSpawnManager Instance { set; get; }
 
     // Level Spawning
-    private const float DISTANCE_BEFORE_SPAWN = 100.0f;
+    private const float DISTANCE_BEFORE_SPAWN = 75.0f;
     private const int INITIAL_SEGMENTS = 10;
     private const int INITIAL_TRANSITION_SEGMENTS = 2;
     private const int MAX_SEGMENTS_ON = 15;
@@ -114,7 +114,7 @@ public class ForestSpawnManager : MonoBehaviour
     {
         List<Segment> possibleSeg;
         bool getFireTruck = false;
-        if (segsSinceFireTruck > 18)
+        if (segsSinceFireTruck > 15)
         {
             segsSinceFireTruck = 0;
             getFireTruck = true;
