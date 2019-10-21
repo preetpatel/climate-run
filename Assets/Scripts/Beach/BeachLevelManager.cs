@@ -47,6 +47,9 @@ public class BeachLevelManager : MonoBehaviour
     public Animator deathMenuAnim;
     public Text deadScoreText, deadGarbageText;
 
+    // Check if in endless mode
+    private bool isEndless;
+
     private void Awake()
     {
         Instance = this;
@@ -57,6 +60,8 @@ public class BeachLevelManager : MonoBehaviour
         compMotor = GameObject.FindGameObjectWithTag("Companion").GetComponent<CompanionMotor>();
         scoreText.text = "Score : " + score.ToString("0");
         garbageText.text = "Garbage : " + garbage.ToString();
+
+        isEndless = SceneController.getIsEndless();
 
         if (Settings.isMusicOn)
         {
@@ -76,7 +81,10 @@ public class BeachLevelManager : MonoBehaviour
         heart2.gameObject.SetActive(true);
         heart3.gameObject.SetActive(true);
 
-        startCutscene.Begin();
+        if (!isEndless)
+        {
+            startCutscene.Begin();
+        }
 
     }
 
@@ -109,14 +117,17 @@ public class BeachLevelManager : MonoBehaviour
                 timeSinceGarbageCollected = 0.0f;
             }
 
-            if (score > 60)
+            if (!isEndless)
             {
-                isGameStarted = false;
-                playerMotor.StopRunning();
-                cameraMotor.StopFollowing();
-                endCutscene.Begin();
-                // StartCoroutine(AudioController.FadeOut(audioPlayer, 0.5f));
-                score = 0;
+                if (score > 60)
+                {
+                    isGameStarted = false;
+                    playerMotor.StopRunning();
+                    cameraMotor.StopFollowing();
+                    endCutscene.Begin();
+                    // StartCoroutine(AudioController.FadeOut(audioPlayer, 0.5f));
+                    score = 0;
+                }
             }
 
         }

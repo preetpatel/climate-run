@@ -13,6 +13,7 @@ public class ForestLevelManager : MonoBehaviour
 	private PlayerMotor playerMotor;
 	private CameraMotor cameraMotor;
     private const string HIGHSCOREKEY = "ForestHighScore";
+    private GorillaMotor compMotor;
 
     // Cutscenes
     public DialogueTrigger startCutscene;
@@ -41,6 +42,8 @@ public class ForestLevelManager : MonoBehaviour
     private AudioSource musicPlayer;
     private GameObject audioPlayer;
 
+    // Check if in endless mode
+    private bool isEndless;
 
     private void Awake()
 	{
@@ -49,10 +52,13 @@ public class ForestLevelManager : MonoBehaviour
 		informationText.text = "Tap Anywhere To Begin!";
 		playerMotor = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMotor>();
 		cameraMotor = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMotor>();
-		scoreText.text = "Score : " + score.ToString("0");
+        compMotor = GameObject.FindGameObjectWithTag("Companion").GetComponent<GorillaMotor>();
+        scoreText.text = "Score : " + score.ToString("0");
 		seedCountText.text = "Seeds : " + seeds.ToString();
 
-        if(Settings.isMusicOn)
+        isEndless = SceneController.getIsEndless();
+
+        if (Settings.isMusicOn)
         {
             AudioSource[] audios = FindObjectsOfType<AudioSource>();
             foreach (AudioSource audio in audios)
@@ -70,8 +76,11 @@ public class ForestLevelManager : MonoBehaviour
         heart2.gameObject.SetActive(true);
         heart3.gameObject.SetActive(true);
 
-        startCutscene.Begin();
-	}
+        if (!isEndless)
+        {
+            startCutscene.Begin();
+        }
+    }
 
 	private void Update()
 	{
@@ -80,7 +89,8 @@ public class ForestLevelManager : MonoBehaviour
 			isGameStarted = true;
 			playerMotor.StartRunning();
 			cameraMotor.StartFollowing();
-			informationText.text = "";
+            compMotor.StartRunning();
+            informationText.text = "";
             FindObjectOfType<SideObjectSpawner>().IsScrolling = true;
             FindObjectOfType<CameraMotor>().isFollowing = true;
             if (Settings.isMusicOn)
@@ -97,15 +107,19 @@ public class ForestLevelManager : MonoBehaviour
 			score += (Time.deltaTime * modifier);
 			scoreText.text = "Score : " + score.ToString("0");
 
-            if (score > 60)
+            if (!isEndless)
             {
-                isGameStarted = false;
-                playerMotor.StopRunning();
-                cameraMotor.StopFollowing();
-                endCutscene.Begin();
-                StartCoroutine(AudioController.FadeOut(musicPlayer, 0.5f));
-                score = 0;
+                if (score > 60)
+                {
+                    isGameStarted = false;
+                    playerMotor.StopRunning();
+                    cameraMotor.StopFollowing();
+                    endCutscene.Begin();
+                    StartCoroutine(AudioController.FadeOut(musicPlayer, 0.5f));
+                    score = 0;
+                }
             }
+
         }
 
 	}
