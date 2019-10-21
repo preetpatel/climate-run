@@ -54,12 +54,14 @@ public class BeachLevelManager : MonoBehaviour
     // Check if in endless mode
     private bool isEndless;
 
+    private float scoreOnFinish = 100.0f;
+    private bool isFinished = false;
+
     /* This method is run before the first frame update, it intialises all necessary variables */
     private void Awake()
     {
         Instance = this;
         pollutionSlide.value = TrashSpawner.garbageMultiplier;
-        //informationText.text = "Press any key to start";
         playerMotor = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMotor>();
         cameraMotor = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMotor>();
         compMotor = GameObject.FindGameObjectWithTag("Companion").GetComponent<CompanionMotor>();
@@ -122,42 +124,45 @@ public class BeachLevelManager : MonoBehaviour
                 }
                 FindObjectOfType<CameraMotor>().isFollowing = true;
             }
-        }
 
-        // Updates score and other variables if the game is running
-        if (isGameStarted)
-        {
-            score += (Time.deltaTime * modifier);
-            scoreText.text = score.ToString("0");
-            timeSinceGarbageCollected += Time.deltaTime;
-            if(timeSinceGarbageCollected > 3.5f)
+            // Updates score and other variables if the game is running
+            if (isGameStarted)
             {
-                garbageCollected = false;
-                timeSinceGarbageCollected = 0.0f;
-            }
-
-            // Ends the game when the user has reached the end.
-            if (!isEndless)
-            {
-                // Ensures the level doesn't end while hes mid air.
-                if (score > 100 && playerMotor.transform.position.z <= 0.1)
+                score += (Time.deltaTime * modifier);
+                scoreText.text = score.ToString("0");
+                timeSinceGarbageCollected += Time.deltaTime;
+                if (timeSinceGarbageCollected > 3.5f)
                 {
-                    isGameStarted = false;
-                    playerMotor.StopRunning();
-                    compMotor.StopRunning();
-                    cameraMotor.StopFollowing();
-                    DialogueAnimator.SetBool("isOpen", true);
-                    if (TrashSpawner.garbageMultiplier <= 50)
+                    garbageCollected = false;
+                    timeSinceGarbageCollected = 0.0f;
+                }
+
+                // Ends the game when the user has reached the end.
+                if (!isEndless)
+                {
+                    if (score > 100 && !isFinished)
                     {
-                        endCutscene.Begin();
-                    } else
-                    {
-                        lostGame = true;
-                        lossCutscene.Begin();
-                    }
-                    if (Settings.isMusicOn.Value)
+
+                        isGameStarted = false;
+                        playerMotor.StopRunning();
+                        compMotor.StopRunning();
+                        cameraMotor.StopFollowing();
+                        DialogueAnimator.SetBool("isOpen", true);
+                        isFinished = true;
+                        isGameOver = true;
+                        if (TrashSpawner.garbageMultiplier <= 0.5f)
+                        {
+                            endCutscene.Begin();
+                        }
+                        else
+                        {
+                            lostGame = true;
+                            lossCutscene.Begin();
+                        }
+
+                        if (Settings.isMusicOn.Value)
                             StartCoroutine(AudioController.FadeOut(musicPlayer, 0.5f));
-                    // StartCoroutine(AudioController.FadeOut(audioPlayer, 0.5f));
+                    }
                 }
             }
         }
@@ -167,10 +172,15 @@ public class BeachLevelManager : MonoBehaviour
             openedDeathMenu = true;
             OnDeath();
         }
+
+        if (!lostGame && !DialogueAnimator.GetBool("isOpen") && isFinished)
+        {
+            SceneManager.LoadScene("Forest");
+        }
     }
 
-    /* Updates at fixed intervals, used to ensure the garbage multiplier increases at a constant rate */
-    private void FixedUpdate() 
+        /* Updates at fixed intervals, used to ensure the garbage multiplier increases at a constant rate */
+        private void FixedUpdate() 
     {
         if (isGameStarted)
         {
@@ -282,5 +292,10 @@ public class BeachLevelManager : MonoBehaviour
         string name = SceneController.saveName();
         HighscoreTable.AddHighscoreEntry(roundedScore, name, "beach");
         GameObject.FindGameObjectWithTag("HighScore").SetActive(false);
+    }
+
+    public void SkipLevel()
+    {
+        score = scoreOnFinish + 1;
     }
 }

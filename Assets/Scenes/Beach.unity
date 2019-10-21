@@ -810,6 +810,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1772021604}
     m_Modifications:
+    - target: {fileID: 3299821735586376754, guid: f22f3a959706c4114b6dbf23a2cb6b09,
+        type: 3}
+      propertyPath: m_Name
+      value: PauseMenuPanel
+      objectReference: {fileID: 0}
     - target: {fileID: 3299821735586376755, guid: f22f3a959706c4114b6dbf23a2cb6b09,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -930,10 +935,15 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3299821735586376754, guid: f22f3a959706c4114b6dbf23a2cb6b09,
+    - target: {fileID: 6755504049117100517, guid: f22f3a959706c4114b6dbf23a2cb6b09,
         type: 3}
-      propertyPath: m_Name
-      value: PauseMenuPanel
+      propertyPath: m_AnchoredPosition.y
+      value: 31.300049
+      objectReference: {fileID: 0}
+    - target: {fileID: 6755504049117100517, guid: f22f3a959706c4114b6dbf23a2cb6b09,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 31.300049
       objectReference: {fileID: 0}
     - target: {fileID: 5614962598974243984, guid: f22f3a959706c4114b6dbf23a2cb6b09,
         type: 3}
@@ -944,16 +954,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6755504049117100517, guid: f22f3a959706c4114b6dbf23a2cb6b09,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 31.300049
-      objectReference: {fileID: 0}
-    - target: {fileID: 6755504049117100517, guid: f22f3a959706c4114b6dbf23a2cb6b09,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 31.300049
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f22f3a959706c4114b6dbf23a2cb6b09, type: 3}
@@ -982,6 +982,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1772021604}
     m_Modifications:
+    - target: {fileID: 2922623202547160804, guid: 0ea1be9dcd46f0c4eb3a8914b626d93e,
+        type: 3}
+      propertyPath: m_Name
+      value: Score Background
+      objectReference: {fileID: 0}
     - target: {fileID: 653472833885484251, guid: 0ea1be9dcd46f0c4eb3a8914b626d93e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1086,11 +1091,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2922623202547160804, guid: 0ea1be9dcd46f0c4eb3a8914b626d93e,
-        type: 3}
-      propertyPath: m_Name
-      value: Score Background
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ea1be9dcd46f0c4eb3a8914b626d93e, type: 3}
@@ -1524,6 +1524,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 114088958}
     m_Modifications:
+    - target: {fileID: 1765975225821437116, guid: 455e5a868541845d387486db738e3ebd,
+        type: 3}
+      propertyPath: m_Name
+      value: DeathMenuPanel
+      objectReference: {fileID: 0}
     - target: {fileID: 1765975225821437119, guid: 455e5a868541845d387486db738e3ebd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1629,46 +1634,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 1765975225821437116, guid: 455e5a868541845d387486db738e3ebd,
-        type: 3}
-      propertyPath: m_Name
-      value: DeathMenuPanel
-      objectReference: {fileID: 0}
-    - target: {fileID: 1765975227208988478, guid: 455e5a868541845d387486db738e3ebd,
-        type: 3}
-      propertyPath: m_Name
-      value: Garbage
-      objectReference: {fileID: 0}
-    - target: {fileID: 1765975227208988478, guid: 455e5a868541845d387486db738e3ebd,
-        type: 3}
-      propertyPath: m_Name
-      value: Garbage
-      objectReference: {fileID: 0}
-    - target: {fileID: 1765975227208988478, guid: 455e5a868541845d387486db738e3ebd,
-        type: 3}
-      propertyPath: m_Name
-      value: Garbage
-      objectReference: {fileID: 0}
-    - target: {fileID: 1765975226045714271, guid: 455e5a868541845d387486db738e3ebd,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2038921045}
-    - target: {fileID: 1765975226045714271, guid: 455e5a868541845d387486db738e3ebd,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2038921045}
-    - target: {fileID: 1765975226045714271, guid: 455e5a868541845d387486db738e3ebd,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnExitButtonPress
-      objectReference: {fileID: 0}
-    - target: {fileID: 1765975226931323371, guid: 455e5a868541845d387486db738e3ebd,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2038921045}
     - target: {fileID: 307210246013495288, guid: 455e5a868541845d387486db738e3ebd,
         type: 3}
       propertyPath: m_TagString
@@ -1729,6 +1694,41 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: saveHighScore
       objectReference: {fileID: 0}
+    - target: {fileID: 1765975227208988478, guid: 455e5a868541845d387486db738e3ebd,
+        type: 3}
+      propertyPath: m_Name
+      value: Garbage
+      objectReference: {fileID: 0}
+    - target: {fileID: 1765975227208988478, guid: 455e5a868541845d387486db738e3ebd,
+        type: 3}
+      propertyPath: m_Name
+      value: Garbage
+      objectReference: {fileID: 0}
+    - target: {fileID: 1765975227208988478, guid: 455e5a868541845d387486db738e3ebd,
+        type: 3}
+      propertyPath: m_Name
+      value: Garbage
+      objectReference: {fileID: 0}
+    - target: {fileID: 1765975226045714271, guid: 455e5a868541845d387486db738e3ebd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2038921045}
+    - target: {fileID: 1765975226045714271, guid: 455e5a868541845d387486db738e3ebd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2038921045}
+    - target: {fileID: 1765975226045714271, guid: 455e5a868541845d387486db738e3ebd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnExitButtonPress
+      objectReference: {fileID: 0}
+    - target: {fileID: 1765975226931323371, guid: 455e5a868541845d387486db738e3ebd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2038921045}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 455e5a868541845d387486db738e3ebd, type: 3}
 --- !u!114 &1815258557 stripped
@@ -1798,6 +1798,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8137986397950877536, guid: c248e38ca17dc6843b4546e93ea81d48,
+        type: 3}
+      propertyPath: m_Name
+      value: Dialogue
+      objectReference: {fileID: 0}
     - target: {fileID: 407205876563168740, guid: c248e38ca17dc6843b4546e93ea81d48,
         type: 3}
       propertyPath: dialogue.sentences.Array.size
@@ -1928,11 +1933,6 @@ PrefabInstance:
         type: 3}
       propertyPath: dialogue.name
       value: Chippy the Chicken
-      objectReference: {fileID: 0}
-    - target: {fileID: 8137986397950877536, guid: c248e38ca17dc6843b4546e93ea81d48,
-        type: 3}
-      propertyPath: m_Name
-      value: Dialogue
       objectReference: {fileID: 0}
     - target: {fileID: 4321955176050261300, guid: c248e38ca17dc6843b4546e93ea81d48,
         type: 3}
@@ -2206,7 +2206,7 @@ GameObject:
   - component: {fileID: 2038921045}
   m_Layer: 0
   m_Name: BeachLevelManager
-  m_TagString: Untagged
+  m_TagString: LevelManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2226,7 +2226,7 @@ MonoBehaviour:
   newHighScore: {fileID: 1815258563}
   startCutscene: {fileID: 798527587}
   endCutscene: {fileID: 1168313406}
-  lossCutscene: {fileID: 0}
+  lossCutscene: {fileID: 366566468}
   DialogueAnimator: {fileID: 1143699538}
   scoreText: {fileID: 902902050}
   garbageText: {fileID: 902902049}

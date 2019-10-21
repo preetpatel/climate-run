@@ -85,7 +85,7 @@ public class PauseMenu : MonoBehaviour
         {
             BeachLevelManager LevelManager;
             LevelManager = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<BeachLevelManager>();
-            //LevelManager.SkipLevel();
+            LevelManager.SkipLevel();
         }
         else if (gameScene.name.Equals("Antarctica"))
         {
