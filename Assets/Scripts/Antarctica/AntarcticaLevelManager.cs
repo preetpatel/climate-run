@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class AntarcticaLevelManager : MonoBehaviour
 {
-    public static AntarcticaLevelManager Instance {set; get;}
+    public static AntarcticaLevelManager Instance { set; get; }
 
     private bool isGameStarted = false;
     private PlayerMotor playerMotor;
@@ -44,9 +44,10 @@ public class AntarcticaLevelManager : MonoBehaviour
     private bool isGameOver = false;
 
     // Check if in endless mode
-    private bool isEndless;    
+    private bool isEndless;
 
-
+    // ends the level when this score is reached
+    private float scoreOnFinish = 50.0f;
 
     private void Awake()
     {
@@ -84,7 +85,7 @@ public class AntarcticaLevelManager : MonoBehaviour
 
     private void Update()
     {
-        if (!isGameStarted && !DialogueAnimator.GetBool("isOpen") && score > 50 && !isEndless)
+        if (!isGameStarted && !DialogueAnimator.GetBool("isOpen") && score > scoreOnFinish && !isEndless)
         {
             SceneManager.LoadScene("Beach");
         }
@@ -106,7 +107,7 @@ public class AntarcticaLevelManager : MonoBehaviour
                 }
             }
         }
-        
+
 
 
         if (isGameStarted)
@@ -117,11 +118,13 @@ public class AntarcticaLevelManager : MonoBehaviour
             // refactor later
             if (!isEndless)
             {
-                if (score > 50)
+
+                if (score > scoreOnFinish)
                 {
                     isGameStarted = false;
                     playerMotor.StopRunning();
                     cameraMotor.StopFollowing();
+                    compMotor.StopRunning();
                     DialogueAnimator.SetBool("isOpen", true);
                     endCutscene.Begin();
                     if (Settings.isMusicOn.Value)
@@ -172,7 +175,7 @@ public class AntarcticaLevelManager : MonoBehaviour
         roundedScore = (int)Mathf.Round(score);
         bool isNewHighScore = SaveState.saveHighScore(roundedScore, HIGHSCOREKEY);
 
-        if(isEndless)
+        if (isEndless)
         {
             if (isNewHighScore)
             {
@@ -181,16 +184,17 @@ public class AntarcticaLevelManager : MonoBehaviour
             }
 
             HighScoreText.text = "HighScore : " + PlayerPrefs.GetInt(HIGHSCOREKEY);
-        } else
+        }
+        else
         {
             HighScoreText.gameObject.SetActive(false);
         }
 
-        
+
 
         GameObject panel = GameObject.FindGameObjectWithTag("AlivePanel");
 
-        if(panel != null)
+        if (panel != null)
         {
             panel.SetActive(false);
         }
@@ -238,5 +242,10 @@ public class AntarcticaLevelManager : MonoBehaviour
         Debug.Log(name);
         HighscoreTable.AddHighscoreEntry(roundedScore, name, "antarctica");
         GameObject.FindGameObjectWithTag("HighScore").SetActive(false);
+    }
+
+    public void SkipLevel()
+    {
+        score = scoreOnFinish + 1;
     }
 }
