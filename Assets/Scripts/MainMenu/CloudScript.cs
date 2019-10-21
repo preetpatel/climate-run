@@ -43,7 +43,6 @@ public class CloudScript : MonoBehaviour
         //Set Cloud Movement Speed, and Position to random values within range defined above
         speed = Random.Range(minSpeed, maxSpeed);
         transform.position = new Vector3(-buffer, Random.Range(minY, maxY), transform.position.z);
-
         
     }
 

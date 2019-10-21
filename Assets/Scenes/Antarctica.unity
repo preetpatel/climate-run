@@ -139,7 +139,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21e37c39cc09d484f981f438b8915b38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isEndless: 0
   originalSpeed: 7
   speed: 0
 --- !u!1 &62785938
@@ -1059,6 +1058,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 49
       objectReference: {fileID: 0}
+    - target: {fileID: 4191598366832576404, guid: 455e5a868541845d387486db738e3ebd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1570381321}
+    - target: {fileID: 4191598366832576404, guid: 455e5a868541845d387486db738e3ebd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: saveHighScore
+      objectReference: {fileID: 0}
+    - target: {fileID: 307210246013495288, guid: 455e5a868541845d387486db738e3ebd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 307210246013495288, guid: 455e5a868541845d387486db738e3ebd,
+        type: 3}
+      propertyPath: m_TagString
+      value: HighScore
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 455e5a868541845d387486db738e3ebd, type: 3}
 --- !u!224 &755450664 stripped
@@ -1079,6 +1098,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &755450666 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4688088707431280963, guid: 455e5a868541845d387486db738e3ebd,
+    type: 3}
+  m_PrefabInstance: {fileID: 755450663}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &755450667 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 307210246013495288, guid: 455e5a868541845d387486db738e3ebd,
+    type: 3}
+  m_PrefabInstance: {fileID: 755450663}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &915393946
 GameObject:
   m_ObjectHideFlags: 0
@@ -1393,6 +1424,8 @@ MonoBehaviour:
   scoreText: {fileID: 443218550}
   informationText: {fileID: 62785940}
   HighScoreText: {fileID: 755450665}
+  newHighScore: {fileID: 755450667}
+  HighScoreAnimator: {fileID: 755450666}
   LivesAnimator: {fileID: 443218554}
   deathMenuAnim: {fileID: 1630823332}
   deadScoreText: {fileID: 291347439}
@@ -1504,6 +1537,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 281913648}
     m_Modifications:
+    - target: {fileID: 132422553982956019, guid: 7fecaac0aab7a7e41a830b0d912116fe,
+        type: 3}
+      propertyPath: m_Name
+      value: DialogueBox
+      objectReference: {fileID: 0}
     - target: {fileID: 132422553982956018, guid: 7fecaac0aab7a7e41a830b0d912116fe,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1609,11 +1647,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 132422553982956019, guid: 7fecaac0aab7a7e41a830b0d912116fe,
-        type: 3}
-      propertyPath: m_Name
-      value: DialogueBox
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fecaac0aab7a7e41a830b0d912116fe, type: 3}
 --- !u!1001 &407205875146939694
@@ -1623,6 +1656,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8137986397950877536, guid: c248e38ca17dc6843b4546e93ea81d48,
+        type: 3}
+      propertyPath: m_Name
+      value: Dialogue
+      objectReference: {fileID: 0}
     - target: {fileID: 407205876563168740, guid: c248e38ca17dc6843b4546e93ea81d48,
         type: 3}
       propertyPath: dialogue.sentences.Array.size
@@ -1744,11 +1782,6 @@ PrefabInstance:
         type: 3}
       propertyPath: dialogue.sentences.Array.data[15]
       value: So let's go and help others!
-      objectReference: {fileID: 0}
-    - target: {fileID: 8137986397950877536, guid: c248e38ca17dc6843b4546e93ea81d48,
-        type: 3}
-      propertyPath: m_Name
-      value: Dialogue
       objectReference: {fileID: 0}
     - target: {fileID: 4321955176050261300, guid: c248e38ca17dc6843b4546e93ea81d48,
         type: 3}

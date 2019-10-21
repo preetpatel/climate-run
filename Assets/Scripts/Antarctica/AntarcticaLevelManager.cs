@@ -23,6 +23,7 @@ public class AntarcticaLevelManager : MonoBehaviour
     public Text scoreText;
     public Text informationText;
     public Text HighScoreText;
+    public GameObject newHighScore;
     private float score = 0;
     private AudioSource musicPlayer;
     private GameObject audioPlayer;
@@ -38,9 +39,14 @@ public class AntarcticaLevelManager : MonoBehaviour
     public Image heart1;
     public Image heart2;
     public Image heart3;
-    
+
+    private int roundedScore;
+    private bool isGameOver = false;
+
     // Check if in endless mode
     private bool isEndless;    
+
+
 
     private void Awake()
     {
@@ -83,20 +89,24 @@ public class AntarcticaLevelManager : MonoBehaviour
             SceneManager.LoadScene("Beach");
         }
 
-        if (Input.anyKey && !isGameStarted && !DialogueAnimator.GetBool("isOpen"))
+        if (!isGameOver)
         {
-            isGameStarted = true;
-            playerMotor.StartRunning();
-            cameraMotor.StartFollowing();
-            compMotor.StartRunning();
-
-            if (Settings.isMusicOn)
+            if (Input.anyKey && !isGameStarted && !DialogueAnimator.GetBool("isOpen"))
             {
-                audioPlayer = GameObject.FindGameObjectWithTag("SoundController");
-                Music music = audioPlayer.GetComponent<Music>();
-                music.changeMusic(SceneManager.GetActiveScene());
+                isGameStarted = true;
+                playerMotor.StartRunning();
+                cameraMotor.StartFollowing();
+                compMotor.StartRunning();
+
+                if (Settings.isMusicOn)
+                {
+                    audioPlayer = GameObject.FindGameObjectWithTag("SoundController");
+                    Music music = audioPlayer.GetComponent<Music>();
+                    music.changeMusic(SceneManager.GetActiveScene());
+                }
             }
         }
+        
 
 
         if (isGameStarted)
@@ -154,25 +164,36 @@ public class AntarcticaLevelManager : MonoBehaviour
         deadScoreText.text = "Score : " + score.ToString("0");
         deathMenuAnim.SetTrigger("Dead");
         isGameStarted = false;
+        isGameOver = true;
 
         if (Settings.isMusicOn)
             StartCoroutine(AudioController.FadeOut(musicPlayer, 0.5f));
 
-        int roundedScore = (int)Mathf.Round(score);
+        roundedScore = (int)Mathf.Round(score);
         bool isNewHighScore = SaveState.saveHighScore(roundedScore, HIGHSCOREKEY);
 
-        if(isNewHighScore)
+        if(isEndless)
         {
-            HighScoreAnimator.SetTrigger("IsHighScore");
-            HighScoreText.text = "New High Score!!";
-            HighscoreTable.AddHighscoreEntry(roundedScore, name);
+            if (isNewHighScore)
+            {
+                newHighScore.SetActive(true);
+                HighScoreAnimator.SetTrigger("IsHighScore");
+            }
+
+            HighScoreText.text = "HighScore : " + PlayerPrefs.GetInt(HIGHSCOREKEY);
         } else
         {
-            HighScoreText.text = "HighScore : " + PlayerPrefs.GetInt(HIGHSCOREKEY);
+            HighScoreText.gameObject.SetActive(false);
         }
 
-        GameObject.FindGameObjectWithTag("AlivePanel").SetActive(false);
+        
 
+        GameObject panel = GameObject.FindGameObjectWithTag("AlivePanel");
+
+        if(panel != null)
+        {
+            panel.SetActive(false);
+        }
     }
 
     public void OnRetryButton()
@@ -209,5 +230,13 @@ public class AntarcticaLevelManager : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
         LivesAnimator.SetTrigger("GoBack");
+    }
+
+    public void saveHighScore()
+    {
+        string name = SceneController.saveName();
+        Debug.Log(name);
+        HighscoreTable.AddHighscoreEntry(roundedScore, name);
+        GameObject.FindGameObjectWithTag("HighScore").SetActive(false);
     }
 }

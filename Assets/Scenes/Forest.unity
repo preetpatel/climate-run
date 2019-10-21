@@ -656,6 +656,16 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Companion
       objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: 4ca1ee57b69b4524481bfb29281833c1,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 55704224950df0e458b5a4bf0b120a36, type: 2}
+    - target: {fileID: -6057140222963153312, guid: 4ca1ee57b69b4524481bfb29281833c1,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 4ca1ee57b69b4524481bfb29281833c1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -724,16 +734,6 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 4ca1ee57b69b4524481bfb29281833c1,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: 4ca1ee57b69b4524481bfb29281833c1,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 55704224950df0e458b5a4bf0b120a36, type: 2}
-    - target: {fileID: -6057140222963153312, guid: 4ca1ee57b69b4524481bfb29281833c1,
-        type: 3}
-      propertyPath: m_ApplyRootMotion
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -970,6 +970,7 @@ MonoBehaviour:
   seedCountText: {fileID: 891226813}
   informationText: {fileID: 250084773}
   HighScoreText: {fileID: 365510638}
+  newHighScore: {fileID: 365510640}
   heart1: {fileID: 891226811}
   heart2: {fileID: 891226810}
   heart3: {fileID: 891226809}
@@ -1433,6 +1434,26 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnRetryButton
       objectReference: {fileID: 0}
+    - target: {fileID: 4733140604491298941, guid: 455e5a868541845d387486db738e3ebd,
+        type: 3}
+      propertyPath: m_Name
+      value: Title
+      objectReference: {fileID: 0}
+    - target: {fileID: 4191598366832576404, guid: 455e5a868541845d387486db738e3ebd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 215478636}
+    - target: {fileID: 4191598366832576404, guid: 455e5a868541845d387486db738e3ebd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: saveHighScore
+      objectReference: {fileID: 0}
+    - target: {fileID: 307210246013495288, guid: 455e5a868541845d387486db738e3ebd,
+        type: 3}
+      propertyPath: m_TagString
+      value: HighScore
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 455e5a868541845d387486db738e3ebd, type: 3}
 --- !u!224 &365510634 stripped
@@ -1485,7 +1506,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
 --- !u!95 &365510639 stripped
 Animator:
-  m_CorrespondingSourceObject: {fileID: 4071147741557195473, guid: 455e5a868541845d387486db738e3ebd,
+  m_CorrespondingSourceObject: {fileID: 4688088707431280963, guid: 455e5a868541845d387486db738e3ebd,
+    type: 3}
+  m_PrefabInstance: {fileID: 365510633}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &365510640 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 307210246013495288, guid: 455e5a868541845d387486db738e3ebd,
     type: 3}
   m_PrefabInstance: {fileID: 365510633}
   m_PrefabAsset: {fileID: 0}

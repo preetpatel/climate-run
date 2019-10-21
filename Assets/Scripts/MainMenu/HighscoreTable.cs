@@ -34,14 +34,8 @@ public class HighscoreTable : MonoBehaviour
 
         if (highscores == null)
         {
-            // There's no stored table, initialize
-            Debug.Log("Initializing table with default values...");
-            AddHighscoreEntry(1000000, "CMK");
-            AddHighscoreEntry(897621, "JOE");
-            AddHighscoreEntry(872931, "DAV");
-            AddHighscoreEntry(785123, "CAT");
-            AddHighscoreEntry(542024, "MAX");
-            AddHighscoreEntry(68245, "AAA");
+            AddHighscoreEntry(12, "DEV");
+
             // Reload
             jsonString = PlayerPrefs.GetString("highscoreTable");
             highscores = JsonUtility.FromJson<Highscores>(jsonString);
@@ -114,6 +108,7 @@ public class HighscoreTable : MonoBehaviour
 
     public static void AddHighscoreEntry(int score, string name)
     {
+       
         // Create HighscoreEntry
         HighscoreEntry highscoreEntry = new HighscoreEntry { score = score, name = name };
 
@@ -130,6 +125,7 @@ public class HighscoreTable : MonoBehaviour
             };
         }
 
+        Debug.Log(highscoreEntry.name);
         // Add new entry to Highscores
         highscores.highscoreEntryList.Add(highscoreEntry);
 
