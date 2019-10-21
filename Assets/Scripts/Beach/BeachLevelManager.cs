@@ -63,7 +63,7 @@ public class BeachLevelManager : MonoBehaviour
         cameraMotor = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMotor>();
         compMotor = GameObject.FindGameObjectWithTag("Companion").GetComponent<CompanionMotor>();
         scoreText.text = score.ToString("0");
-        garbageText.text = garbage.ToString();
+        garbageText.text = garbage.ToString("0");
 
         isEndless = SceneController.getIsEndless();
 
