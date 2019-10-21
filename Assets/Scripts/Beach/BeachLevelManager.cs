@@ -177,6 +177,7 @@ public class BeachLevelManager : MonoBehaviour
 
         if (!lostGame && !DialogueAnimator.GetBool("isOpen") && isFinished)
         {
+            isGameOver = true;
             SceneManager.LoadScene("Forest");
         }
     }
