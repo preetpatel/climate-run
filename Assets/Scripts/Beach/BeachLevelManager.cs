@@ -142,9 +142,12 @@ public class BeachLevelManager : MonoBehaviour
                 {
                     isGameStarted = false;
                     playerMotor.StopRunning();
+                    compMotor.StopRunning();
                     cameraMotor.StopFollowing();
                     DialogueAnimator.SetBool("isOpen", true);
                     endCutscene.Begin();
+                    if (Settings.isMusicOn.Value)
+                        StartCoroutine(AudioController.FadeOut(musicPlayer, 0.5f));
                     // StartCoroutine(AudioController.FadeOut(audioPlayer, 0.5f));
                 }
             }
