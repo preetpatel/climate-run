@@ -66,4 +66,32 @@ public class PauseMenu : MonoBehaviour
         isPaused = false;
         SceneManager.LoadScene("MainMenu");
     }
+
+
+    public void PressSkipButtonHandler()
+    {
+        Time.timeScale = 1f;
+        isPaused = false;
+
+        Scene gameScene = SceneManager.GetActiveScene();
+        if (gameScene.name.Equals("Forest"))
+        {
+            ForestLevelManager LevelManager;
+            LevelManager = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<ForestLevelManager>();
+            //LevelManager.SkipLevel();
+        }
+        else if (gameScene.name.Equals("Beach"))
+        {
+            BeachLevelManager LevelManager;
+            LevelManager = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<BeachLevelManager>();
+            //LevelManager.SkipLevel();
+        }
+        else if (gameScene.name.Equals("Antarctica"))
+        {
+            AntarcticaLevelManager LevelManager;
+            LevelManager = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<AntarcticaLevelManager>();
+            //LevelManager.SkipLevel();
+        }
+
+    }
 }
