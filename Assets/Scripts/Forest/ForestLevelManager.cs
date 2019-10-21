@@ -12,6 +12,7 @@ public class ForestLevelManager : MonoBehaviour
 	private bool isGameStarted = false;
 	private PlayerMotor playerMotor;
 	private CameraMotor cameraMotor;
+    private const string HIGHSCOREKEY = "ForestHighScore";
 
     // Cutscenes
     public DialogueTrigger startCutscene;
@@ -22,15 +23,18 @@ public class ForestLevelManager : MonoBehaviour
     public Text deathScoreText, deathSeedText;
 
     public Animator lifeAnimation;
+    public Animator HighScoreAnimator;
 
     // UI and the UI fields
     public Text scoreText;
 	public Text seedCountText;
 	public Text informationText;
+    public Text HighScoreText;
     public Image heart1;
     public Image heart2;
     public Image heart3;
    
+
 	private float score = 0;
 	private float seeds = 0;
 	private float modifier = 1.0f;
@@ -144,8 +148,7 @@ public class ForestLevelManager : MonoBehaviour
 	}
 
     public void OnDeath()
-	{
-        Debug.Log("Hello");
+    { 
         isGameStarted = false;   
         deathScoreText.text = "Score: " + score.ToString("0");
         deathSeedText.text = "Seeds Collected: " + seeds.ToString("0");
@@ -161,11 +164,16 @@ public class ForestLevelManager : MonoBehaviour
             StartCoroutine(AudioController.FadeOut(musicPlayer, 0.5f));
 
         // Save the High Score
-        if(score > PlayerPrefs.GetInt("HighScoreForest"))
+        bool isNewHighScore = SaveState.saveHighScore((int) Mathf.Round(score), HIGHSCOREKEY);
+
+        if (isNewHighScore)
         {
-            PlayerPrefs.SetInt("HighScoreForest", (int) score);
-            Debug.Log("High Score: " + PlayerPrefs.GetInt("HighScoreForest"));
-            Debug.Log("Score : " + score);
+            HighScoreAnimator.SetTrigger("IsHighScore");
+            HighScoreText.text = "New High Score!!";
+        }
+        else
+        {
+            HighScoreText.text = "HighScore : " + PlayerPrefs.GetInt(HIGHSCOREKEY);
         }
 
     }

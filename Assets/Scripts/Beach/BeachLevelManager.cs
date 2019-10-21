@@ -16,6 +16,7 @@ public class BeachLevelManager : MonoBehaviour
     private CompanionMotor compMotor;
     private bool garbageCollected = false;
     private float timeSinceGarbageCollected = 0.0f;
+    private const string HIGHSCOREKEY = "BeachHighScore";
 
     // Cutscenes
     public DialogueTrigger startCutscene;
@@ -25,8 +26,10 @@ public class BeachLevelManager : MonoBehaviour
     // UI and the UI fields
     public Text scoreText;
     public Text garbageText;
+    public Text HighScoreText;
     public Slider pollutionSlide;
     public Animator LivesAnimator;
+    public Animator HighScoreAnimator;
 
     public Image heart1;
     public Image heart2;
@@ -182,6 +185,19 @@ public class BeachLevelManager : MonoBehaviour
         deathMenuAnim.SetTrigger("Dead");
         isGameStarted = false;
         isDead = true;
+
+        bool isNewHighScore = SaveState.saveHighScore((int)Mathf.Round(score), HIGHSCOREKEY);
+
+        if (isNewHighScore)
+        {
+            HighScoreAnimator.SetTrigger("IsHighScore");
+            HighScoreText.text = "New High Score!!";
+        }
+        else
+        {
+            HighScoreText.text = "HighScore : " + PlayerPrefs.GetInt(HIGHSCOREKEY);
+        }
+
         GameObject.FindGameObjectWithTag("AlivePanel").SetActive(false);
         if (Settings.isMusicOn)
             StartCoroutine(AudioController.FadeOut(musicPlayer, 0.5f));
