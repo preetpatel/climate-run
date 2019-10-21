@@ -20,25 +20,15 @@ public class GorillaMotor : MonoBehaviour
     private float jumpForce = 6.0f;
     private float gravity = 12.0f;
     private float verticalVelocity = 0;
-
-
-    // speed modifier
-    private float originalSpeed = 7.0f;
-    private float speed;
-    private float speedIncreaseLastTick;
-    private float speedIncreaseTime = 2.5f;
-    private float speedIncrement = 0.1f;
-    private int livesCounter = 3;
-
-    // 0 is left, 1 is middle, 2 is right
-    private int lane = 1;
+    private bool finishing = false;
+    private bool done = false;
+    private bool haveSetSlow = false;
 
     private void Start()
     {
         controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
         playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        speed = originalSpeed;
     }
 
     private void Update()
@@ -48,75 +38,64 @@ public class GorillaMotor : MonoBehaviour
             return;
         }
 
-        if (Time.time - speedIncreaseLastTick > speedIncreaseTime)
-        {
-            speedIncreaseLastTick = Time.time;
-            speed += speedIncrement;
-
-            Scene gameScene = SceneManager.GetActiveScene();
-            if (gameScene.name.Equals("Forest"))
-            {
-                // ForestLevelManager.Instance.updateLives(speed - originalSpeed);
-            }
-            else if (gameScene.name.Equals("Beach"))
-            {
-                // Add speed increments for Beach
-            }
-            else if (gameScene.name.Equals("Antarctica"))
-            {
-                // Add speed increments for Antarctica
-            }
-
-        }
-        // Check which lane we should be
-        if (MobileInput.Instance.SwipeLeft)
-        {
-            MoveLane(false);
-        }
-        if (MobileInput.Instance.SwipeRight)
-        {
-            MoveLane(true);
-        }
-
         // Calculate where we will be in the future
         Vector3 desiredPos = playerTransform.position;
         Vector3 targetPosition = Vector3.zero;
 
-        targetPosition.x = Mathf.SmoothStep(transform.position.x, desiredPos.x, Time.deltaTime * 6);
-        targetPosition.y = Mathf.Lerp(transform.position.y, desiredPos.y, Time.deltaTime * 2);
-        targetPosition.z = Mathf.Lerp(transform.position.z, desiredPos.z, Time.deltaTime * 2);
+        if (!finishing)
+        {
+            targetPosition.x = Mathf.SmoothStep(transform.position.x, desiredPos.x, Time.deltaTime * 6);
+            targetPosition.y = Mathf.Lerp(transform.position.y, desiredPos.y, Time.deltaTime * 2);
+            targetPosition.z = Mathf.Lerp(transform.position.z, desiredPos.z, Time.deltaTime * 2);
+        }
+        else if (!done)
+        {
+            // walking towards target
+            
+            targetPosition.x = Mathf.Lerp(transform.position.x, desiredPos.x, Time.deltaTime * 0.5f);
+            targetPosition.y = Mathf.Lerp(transform.position.y, desiredPos.y, Time.deltaTime * 0.5f);
+            targetPosition.z = Mathf.Lerp(transform.position.z, desiredPos.z, Time.deltaTime * 0.5f);
 
-        //// Calculating our move vector
-        //Vector3 moveVector = Vector3.zero;
+            if ((transform.position - desiredPos).magnitude < 4f && !haveSetSlow)
+            {
+                haveSetSlow = true;
+                anim.SetTrigger("WalkSlowly");
+            }
 
-        //// where we should be - where we are to get a normalised vector.
-        //if (Mathf.Abs((targetPosition - transform.position).x) > 0.08)
-        //    moveVector.x = (targetPosition - transform.position).normalized.x * speed;
+            if ((transform.position - desiredPos).magnitude < 2f)
+            {
+                done = true;
+                anim.SetTrigger("Stop");
+                transform.SetPositionAndRotation(targetPosition, 
+                    Quaternion.LookRotation(new Vector3(0.5f,0,-0.5f), Vector3.up));
+                return;
+            }
+        }
 
-        //moveVector.y = targetPosition.y - transform.position.y;
-        //moveVector.z = speed;
+        if (!done)
+        {
+            Vector3 moveVector = targetPosition - transform.position;
+            moveVector.Normalize();
 
-        Vector3 moveVector = targetPosition - transform.position;
-        moveVector.Normalize();
+            // Move the actual character
+            /*controller.Move(moveVector * Time.deltaTime);*/
+            transform.SetPositionAndRotation(targetPosition, Quaternion.LookRotation(moveVector, Vector3.up));
+        }
 
-        // Move the actual character
-        /*controller.Move(moveVector * Time.deltaTime);*/
-        transform.SetPositionAndRotation(targetPosition, Quaternion.LookRotation(moveVector, Vector3.up));
-
-    }
-
-    private void MoveLane(bool goRight)
-    {
-
-        // Switches lanes, and is clamped between 0 and 2
-        lane += (goRight) ? 1 : -1;
-        lane = Mathf.Clamp(lane, 0, 2);
     }
 
     public void StartRunning()
     {
         isRunning = true;
         anim.SetTrigger("StartFollow");
+    }
+
+    public void DoEndSequence(Transform gorillaPosition)
+    {
+        Debug.Log("doing end sequence");
+        anim.SetTrigger("Walk");
+        playerTransform = gorillaPosition;
+        finishing = true;
     }
 
 }

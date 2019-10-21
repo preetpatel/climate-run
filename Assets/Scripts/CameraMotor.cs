@@ -17,6 +17,9 @@ public class CameraMotor : MonoBehaviour
     // Wait for player
     public bool isFollowing = false;
 
+    private bool transitionToCutscenePos = false;
+    private Transform cutscenePos;
+
     private void Start()
     {
         // Remove the if statemtnt if you want your scenes to have the start menu Forest level has
@@ -26,6 +29,26 @@ public class CameraMotor : MonoBehaviour
 
     private void LateUpdate()
     {
+        if (transitionToCutscenePos)
+        {
+            Vector3 targetPos = Vector3.zero;
+
+            targetPos.x = Mathf.SmoothStep(transform.position.x, cutscenePos.position.x, Time.deltaTime * 2);
+            targetPos.y = Mathf.SmoothStep(transform.position.y, cutscenePos.position.y, Time.deltaTime * 2);
+            targetPos.z = Mathf.SmoothStep(transform.position.z, cutscenePos.position.z, Time.deltaTime * 2);
+
+            Quaternion targetDir = Quaternion.Slerp(transform.rotation, cutscenePos.rotation, Time.deltaTime * 2);
+
+            transform.SetPositionAndRotation(targetPos, targetDir);
+
+            if ((targetPos - cutscenePos.position).magnitude < 1.0f)
+            {
+                transitionToCutscenePos = false;
+            }
+
+            return;
+        }
+
         if (!isFollowing)
         {
             return;
@@ -67,5 +90,12 @@ public class CameraMotor : MonoBehaviour
     public void StopFollowing()
     {
         isFollowing = false;
+    }
+
+    public void MoveToCutscenePos(Transform position)
+    {
+        isFollowing = false;
+        transitionToCutscenePos = true;
+        cutscenePos = position;
     }
 }

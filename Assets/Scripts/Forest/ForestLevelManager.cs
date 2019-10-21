@@ -7,11 +7,11 @@ using UnityEngine.SceneManagement;
 
 public class ForestLevelManager : MonoBehaviour
 {
-	public static ForestLevelManager Instance { set; get; }
+    public static ForestLevelManager Instance { set; get; }
 
-	private bool isGameStarted = false;
-	private PlayerMotor playerMotor;
-	private CameraMotor cameraMotor;
+    private bool isGameStarted = false;
+    private PlayerMotor playerMotor;
+    private CameraMotor cameraMotor;
     private const string HIGHSCOREKEY = "ForestHighScore";
     private GorillaMotor compMotor;
 
@@ -28,19 +28,18 @@ public class ForestLevelManager : MonoBehaviour
 
     // UI and the UI fields
     public Text scoreText;
-	public Text seedCountText;
-	public Text informationText;
+    public Text seedCountText;
+    public Text informationText;
     public Text HighScoreText;
     public GameObject newHighScore;
     public Image heart1;
     public Image heart2;
     public Image heart3;
     private int roundedScore;
-   
 
-	private float score = 0;
-	private float seeds = 0;
-	private float modifier = 1.0f;
+    private float score = 0;
+    private float seeds = 0;
+    private float modifier = 1.0f;
     private AudioSource musicPlayer;
     private GameObject audioPlayer;
 
@@ -48,15 +47,15 @@ public class ForestLevelManager : MonoBehaviour
 
     // Check if in endless mode
     private bool isEndless;
-
+    private bool done = false;
 
     private void Awake()
-	{
+    {
         Instance = this;
 
-		informationText.text = "Tap Anywhere To Begin!";
-		playerMotor = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMotor>();
-		cameraMotor = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMotor>();
+        informationText.text = "Tap Anywhere To Begin!";
+        playerMotor = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMotor>();
+        cameraMotor = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMotor>();
         compMotor = GameObject.FindGameObjectWithTag("Companion").GetComponent<GorillaMotor>();
         scoreText.text = score.ToString("0");
 		seedCountText.text = seeds.ToString();
@@ -89,7 +88,7 @@ public class ForestLevelManager : MonoBehaviour
 
 	private void Update()
 	{
-        if (!isGameStarted && !DialogueAnimator.GetBool("isOpen") && score > 60 && !isEndless)
+        if (!isGameStarted && !DialogueAnimator.GetBool("isOpen") && done && !isEndless)
         {
             SceneManager.LoadScene("Congrats");
         }
@@ -115,27 +114,28 @@ public class ForestLevelManager : MonoBehaviour
             }
         }
 
-		if (isGameStarted)
-		{
-			score += (Time.deltaTime * modifier);
-			scoreText.text = score.ToString("0");
-
-            if (!isEndless)
-            {
-                if (score > 60)
-                {
-                    isGameStarted = false;
-                    playerMotor.StopRunning();
-                    cameraMotor.StopFollowing();
-                    DialogueAnimator.SetBool("isOpen", true);
-                    endCutscene.Begin();
-                    StartCoroutine(AudioController.FadeOut(musicPlayer, 0.5f));
-                }
-            }
-
+        if (isGameStarted)
+        {
+            score += (Time.deltaTime * modifier);
+            scoreText.text = "Score : " + score.ToString("0");
         }
+    }
 
-	}
+    public void StopGameIfNotEndless(GameObject endSegment)
+    {
+        if (!isEndless)
+        {
+            DialogueAnimator.SetBool("isOpen", true);
+
+            Transform gorillaPosition = endSegment.transform.Find("GorillaPosition");
+            compMotor.DoEndSequence(gorillaPosition);
+
+            isGameStarted = false;
+            cameraMotor.MoveToCutscenePos(endSegment.transform.Find("CameraPosition"));
+            endCutscene.Begin();
+            StartCoroutine(AudioController.FadeOut(musicPlayer, 0.5f));
+        }
+    }
 
 	public void getSeeds()
 	{

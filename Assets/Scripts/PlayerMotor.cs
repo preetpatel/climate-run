@@ -13,6 +13,8 @@ public class PlayerMotor : MonoBehaviour
 
     // Wait for player
     private bool isRunning = false;
+    private bool walkingTowardsTarget = false;
+    private Transform walkTarget;
 
     // Movements
     private CharacterController controller;
@@ -20,7 +22,6 @@ public class PlayerMotor : MonoBehaviour
     private float gravity = 12.0f;
     private float verticalVelocity = 0;
     private bool DID_SWIPE_UP;
-
 
     // speed modifier
     public float originalSpeed = 7.0f;
@@ -42,6 +43,12 @@ public class PlayerMotor : MonoBehaviour
 
     private void Update()
     {
+        if (walkingTowardsTarget)
+        {
+            MoveToCutscenePos();
+            return;
+        }
+
         if (!isRunning)
         {
             return;
@@ -160,6 +167,27 @@ public class PlayerMotor : MonoBehaviour
         {
             Crash();
             //transform.position = new Vector3(0, 0, 0);
+        }
+    }
+
+    private void MoveToCutscenePos()
+    {
+        Vector3 targetPos = Vector3.zero;
+        Vector3 desiredPos = walkTarget.position;
+
+        targetPos.x = Mathf.Lerp(transform.position.x, desiredPos.x, Time.deltaTime * 0.5f);
+        targetPos.y = Mathf.Lerp(transform.position.y, desiredPos.y, Time.deltaTime * 0.5f);
+        targetPos.z = Mathf.Lerp(transform.position.z, desiredPos.z, Time.deltaTime * 0.5f);
+
+        Quaternion targetDir = Quaternion.Slerp(transform.rotation, walkTarget.rotation, Time.deltaTime * 2);
+
+        transform.SetPositionAndRotation(targetPos, targetDir);
+
+        if ((transform.position - desiredPos).magnitude < 2f)
+        {
+            walkingTowardsTarget = false;
+            anim.SetTrigger("StopRunning");
+            return;
         }
     }
 
@@ -283,6 +311,14 @@ public class PlayerMotor : MonoBehaviour
             GameObject segment = other.gameObject.transform.parent.gameObject;
             FireTruckAction sprayScript = segment.GetComponent<FireTruckAction>();
             sprayScript.doWaterSpray();
+        }
+        else if (other.gameObject.tag == "ForestFinish")
+        {
+            GameObject triggerParent = other.gameObject.transform.parent.gameObject;
+            ForestLevelManager.Instance.StopGameIfNotEndless(triggerParent);
+            walkTarget = triggerParent.transform.Find("FlippyPosition");
+            walkingTowardsTarget = true;
+            isRunning = false;
         }
     }
 }
