@@ -239,7 +239,6 @@ public class AntarcticaLevelManager : MonoBehaviour
     public void saveHighScore()
     {
         string name = SceneController.saveName();
-        Debug.Log(name);
         HighscoreTable.AddHighscoreEntry(roundedScore, name, "antarctica");
         GameObject.FindGameObjectWithTag("HighScore").SetActive(false);
     }
