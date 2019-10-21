@@ -1537,11 +1537,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 114088958}
     m_Modifications:
-    - target: {fileID: 1765975225821437116, guid: 455e5a868541845d387486db738e3ebd,
-        type: 3}
-      propertyPath: m_Name
-      value: DeathMenuPanel
-      objectReference: {fileID: 0}
     - target: {fileID: 1765975225821437119, guid: 455e5a868541845d387486db738e3ebd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1646,6 +1641,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1765975225821437116, guid: 455e5a868541845d387486db738e3ebd,
+        type: 3}
+      propertyPath: m_Name
+      value: DeathMenuPanel
       objectReference: {fileID: 0}
     - target: {fileID: 1765975227208988478, guid: 455e5a868541845d387486db738e3ebd,
         type: 3}
@@ -1907,6 +1907,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8137986397950877536, guid: c248e38ca17dc6843b4546e93ea81d48,
+        type: 3}
+      propertyPath: m_Name
+      value: Dialogue
+      objectReference: {fileID: 0}
     - target: {fileID: 407205876563168740, guid: c248e38ca17dc6843b4546e93ea81d48,
         type: 3}
       propertyPath: dialogue.sentences.Array.size
@@ -2012,11 +2017,6 @@ PrefabInstance:
         type: 3}
       propertyPath: dialogue.name
       value: Chicken
-      objectReference: {fileID: 0}
-    - target: {fileID: 8137986397950877536, guid: c248e38ca17dc6843b4546e93ea81d48,
-        type: 3}
-      propertyPath: m_Name
-      value: Dialogue
       objectReference: {fileID: 0}
     - target: {fileID: 4321955176050261300, guid: c248e38ca17dc6843b4546e93ea81d48,
         type: 3}
@@ -2354,7 +2354,8 @@ MonoBehaviour:
   - {fileID: 3495738988221317881, guid: 78db877cf6c166c488dfa53ed6a656fe, type: 3}
   - {fileID: 3123904652817937295, guid: 7604b78d7ce357e4f93d687c949921a1, type: 3}
   slides:
-  - {fileID: 4990462205719884838, guid: de08467cadc45cc40a15b301012f18e0, type: 3}
+  - {fileID: -6044667591746077750, guid: 9d42c6a718a2d6f42bff0f835da13a10, type: 3}
+  - {fileID: -7394949650747881750, guid: c709f39159da4c148b05506c9937facc, type: 3}
   shipwrecks:
   - {fileID: 3761263791936766436, guid: f4db2c50b4c4170499df656498dd0fd8, type: 3}
   volleyballNets:
