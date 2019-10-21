@@ -45,8 +45,6 @@ public class BeachLevelManager : MonoBehaviour
     private AudioSource musicPlayer;
     private GameObject audioPlayer;
 
-    private bool isDead = false;
-
     //Death menu
     public Animator deathMenuAnim;
     public Text deadScoreText, deadGarbageText;
@@ -107,7 +105,7 @@ public class BeachLevelManager : MonoBehaviour
         // Starts the game after the user has run through the initial text.
         if (!isGameOver)
         {
-            if (Input.anyKey && !isGameStarted && !DialogueAnimator.GetBool("isOpen") && !isDead)
+            if (Input.anyKey && !isGameStarted && !DialogueAnimator.GetBool("isOpen"))
             {
                 isGameStarted = true;
                 playerMotor.StartRunning();
@@ -147,19 +145,24 @@ public class BeachLevelManager : MonoBehaviour
                     cameraMotor.StopFollowing();
                     DialogueAnimator.SetBool("isOpen", true);
                     endCutscene.Begin();
-                    // if (TrashSpawner.garbageMultiplier <= 50)
-                    // {
-                    //     endCutscene.Begin();
-                    // } else
-                    // {
-                    //     isGameOver = true;
-                    //     lossCutscene.Begin();
-                    // }
+                    if (TrashSpawner.garbageMultiplier <= 50)
+                    {
+                        endCutscene.Begin();
+                    } else
+                    {
+                        isGameOver = true;
+                        lossCutscene.Begin();
+                    }
                     if (Settings.isMusicOn.Value)
                             StartCoroutine(AudioController.FadeOut(musicPlayer, 0.5f));
                     // StartCoroutine(AudioController.FadeOut(audioPlayer, 0.5f));
                 }
             }
+        }
+
+        if (isGameOver && !DialogueAnimator.GetBool("isOpen"))
+        {
+            OnDeath();
         }
     }
 
@@ -230,7 +233,6 @@ public class BeachLevelManager : MonoBehaviour
         deathMenuAnim.SetTrigger("Dead");
         isGameStarted = false;
         isGameOver = true;
-        isDead = true;
 
         // Save the High Score
         roundedScore = (int)Mathf.Round(score);
