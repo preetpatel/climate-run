@@ -19,6 +19,7 @@ public class PlayerMotor : MonoBehaviour
     private float jumpForce = 6.0f;
     private float gravity = 12.0f;
     private float verticalVelocity = 0;
+    private bool DID_SWIPE_UP;
 
 
     // speed modifier
@@ -97,10 +98,12 @@ public class PlayerMotor : MonoBehaviour
         // Calculate Y
         if (isGrounded) // if grounded
         {
+            DID_SWIPE_UP = false;
             verticalVelocity = 0.0f;
 
-            if (MobileInput.Instance.SwipeUp)
+            if (MobileInput.Instance.SwipeUp && !DID_SWIPE_UP)
             {
+                DID_SWIPE_UP = true;
                 // Jump
                 anim.SetTrigger("Jump");
                 verticalVelocity = jumpForce;
@@ -114,8 +117,9 @@ public class PlayerMotor : MonoBehaviour
         }
         else // fast fall
         {
-            if (MobileInput.Instance.SwipeUp)
+            if (MobileInput.Instance.SwipeUp && !DID_SWIPE_UP)
             {
+                DID_SWIPE_UP = true;
                 // Jump
                 anim.SetTrigger("Jump");
                 verticalVelocity = jumpForce;
