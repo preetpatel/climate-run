@@ -72,15 +72,7 @@ public class ForestSpawnManager : MonoBehaviour
         {
             if (currentSpawnZ > DISTANCE_UNTIL_END && !SceneController.getIsEndless())
             {
-                finished = true;
-
-                GameObject end = Instantiate(endSegment.gameObject);
-
-                end.transform.SetParent(transform);
-                end.transform.localPosition = Vector3.forward * currentSpawnZ;
-
-                Segment s = end.GetComponent<Segment>();
-                s.Spawn();
+                SpawnEndSegment();
             }
             else
             {
@@ -99,6 +91,58 @@ public class ForestSpawnManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void SpawnEndSegment()
+    {
+        finished = true;
+
+        GameObject end = Instantiate(endSegment.gameObject);
+
+        end.transform.SetParent(transform);
+        end.transform.localPosition = Vector3.forward * currentSpawnZ;
+
+        Segment s = end.GetComponent<Segment>();
+        s.Spawn();
+    }
+
+    public void SpawnEndImmediately()
+    {
+        List<Segment> segmentsToRemove = new List<Segment>();
+        Transform playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+
+        int i;
+
+        for (i = 0; i < segments.Count; i++)
+        {
+            if (!segments[i].gameObject.activeSelf)
+                segments.RemoveAt(i);
+        }
+
+        foreach (Segment s in segments)
+        {
+            if (s.gameObject.activeSelf && 
+                (s.transform.position.z < playerTransform.position.z - 15.0f ||
+                 s.transform.position.z > playerTransform.position.z + 10.0f))
+            {
+                s.gameObject.SetActive(false);
+            }
+
+            segmentsToRemove.Add(s);
+
+            i++;
+            if (i > segments.Count - 2)
+                break;
+        }
+
+        foreach (Segment s in segmentsToRemove)
+        {
+            segments.Remove(s);
+        }
+
+        currentSpawnZ = (int) segments[0].transform.position.z + segments[0].length;
+
+        SpawnEndSegment();
     }
 
     private void Start()

@@ -227,8 +227,14 @@ public class ForestLevelManager : MonoBehaviour
 
     public void OnExitButtonPress()
     {
-        //go back to mainmenu
-        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+        // go to the main menu
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void SkipLevel()
+    {
+        Debug.Log("skip");
+        ForestSpawnManager.Instance.SpawnEndImmediately();
     }
 
     public void saveHighScore()
