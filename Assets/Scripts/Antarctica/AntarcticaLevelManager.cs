@@ -45,8 +45,9 @@ public class AntarcticaLevelManager : MonoBehaviour
         scoreText.text = "Score : " + score.ToString();
         playerMotor = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMotor>();
         cameraMotor = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMotor>();
-        isEndless = SceneController.getIsEndless();
         compMotor = GameObject.FindGameObjectWithTag("Companion").GetComponent<CompanionMotor>();
+
+        isEndless = SceneController.getIsEndless();
 
         if (Settings.isMusicOn)
         {
@@ -74,7 +75,7 @@ public class AntarcticaLevelManager : MonoBehaviour
 
     private void Update()
     {
-        if (!isGameStarted && !DialogueAnimator.GetBool("isOpen") && score > 50)
+        if (!isGameStarted && !DialogueAnimator.GetBool("isOpen") && score > 50 && !isEndless)
         {
             SceneManager.LoadScene("Beach");
         }

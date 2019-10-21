@@ -37,6 +37,8 @@ public class ForestLevelManager : MonoBehaviour
     private AudioSource musicPlayer;
     private GameObject audioPlayer;
 
+    // Check if in endless mode
+    private bool isEndless;
 
     private void Awake()
 	{
@@ -48,7 +50,9 @@ public class ForestLevelManager : MonoBehaviour
 		scoreText.text = "Score : " + score.ToString("0");
 		seedCountText.text = "Seeds : " + seeds.ToString();
 
-        if(Settings.isMusicOn)
+        isEndless = SceneController.getIsEndless();
+
+        if (Settings.isMusicOn)
         {
             AudioSource[] audios = FindObjectsOfType<AudioSource>();
             foreach (AudioSource audio in audios)
@@ -66,8 +70,11 @@ public class ForestLevelManager : MonoBehaviour
         heart2.gameObject.SetActive(true);
         heart3.gameObject.SetActive(true);
 
-        startCutscene.Begin();
-	}
+        if (!isEndless)
+        {
+            startCutscene.Begin();
+        }
+    }
 
 	private void Update()
 	{
@@ -93,15 +100,19 @@ public class ForestLevelManager : MonoBehaviour
 			score += (Time.deltaTime * modifier);
 			scoreText.text = "Score : " + score.ToString("0");
 
-            if (score > 60)
+            if (!isEndless)
             {
-                isGameStarted = false;
-                playerMotor.StopRunning();
-                cameraMotor.StopFollowing();
-                endCutscene.Begin();
-                StartCoroutine(AudioController.FadeOut(musicPlayer, 0.5f));
-                score = 0;
+                if (score > 60)
+                {
+                    isGameStarted = false;
+                    playerMotor.StopRunning();
+                    cameraMotor.StopFollowing();
+                    endCutscene.Begin();
+                    StartCoroutine(AudioController.FadeOut(musicPlayer, 0.5f));
+                    score = 0;
+                }
             }
+
         }
 
 	}
