@@ -216,7 +216,7 @@ public class ForestLevelManager : MonoBehaviour
     {
         string name = SceneController.saveName();
         Debug.Log(name);
-        HighscoreTable.AddHighscoreEntry(roundedScore, name);
+        HighscoreTable.AddHighscoreEntry(roundedScore, name, "forest");
         GameObject.FindGameObjectWithTag("HighScore").SetActive(false);
     }
 }

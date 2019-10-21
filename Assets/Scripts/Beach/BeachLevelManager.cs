@@ -243,7 +243,7 @@ public class BeachLevelManager : MonoBehaviour
     {
         string name = SceneController.saveName();
         Debug.Log(name);
-        HighscoreTable.AddHighscoreEntry(roundedScore, name);
+        HighscoreTable.AddHighscoreEntry(roundedScore, name, "beach");
         GameObject.FindGameObjectWithTag("HighScore").SetActive(false);
     }
 }
