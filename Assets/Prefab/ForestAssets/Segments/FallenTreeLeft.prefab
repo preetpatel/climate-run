@@ -458,12 +458,12 @@ PrefabInstance:
     - target: {fileID: 3987519971138751743, guid: 9a0d92e1714fa49819695065d6957f82,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 3987519971138751743, guid: 9a0d92e1714fa49819695065d6957f82,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 12.41
+      value: 11.99
       objectReference: {fileID: 0}
     - target: {fileID: 3987519971138751743, guid: 9a0d92e1714fa49819695065d6957f82,
         type: 3}
@@ -504,6 +504,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6041127594838115049, guid: 9a0d92e1714fa49819695065d6957f82,
+        type: 3}
+      propertyPath: chanceToSpawn
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6041127594838115049, guid: 9a0d92e1714fa49819695065d6957f82,
+        type: 3}
+      propertyPath: maxCoin
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a0d92e1714fa49819695065d6957f82, type: 3}
@@ -1367,7 +1377,7 @@ PrefabInstance:
     - target: {fileID: 2794757800459585466, guid: 4b32875056c3a460f862aff370b27f3f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.0072803
+      value: 2.2
       objectReference: {fileID: 0}
     - target: {fileID: 2794757800459585466, guid: 4b32875056c3a460f862aff370b27f3f,
         type: 3}
@@ -1423,6 +1433,11 @@ PrefabInstance:
         type: 3}
       propertyPath: forceSpawnAll
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776094526236772780, guid: 4b32875056c3a460f862aff370b27f3f,
+        type: 3}
+      propertyPath: chanceToSpawn
+      value: 0.9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b32875056c3a460f862aff370b27f3f, type: 3}
