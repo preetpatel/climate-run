@@ -134,7 +134,7 @@ public class BeachLevelManager : MonoBehaviour
 
             if (!isEndless)
             {
-                if (Input.GetKeyDown(KeyCode.A))
+                if (Input.GetKeyDown(KeyCode.S))
                 {
                     score = scoreOnFinish + 1;
                 }
