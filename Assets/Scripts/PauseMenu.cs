@@ -79,7 +79,7 @@ public class PauseMenu : MonoBehaviour
         {
             ForestLevelManager LevelManager;
             LevelManager = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<ForestLevelManager>();
-            //LevelManager.SkipLevel();
+            LevelManager.SkipLevel();
         }
         else if (gameScene.name.Equals("Beach"))
         {
