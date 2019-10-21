@@ -70,7 +70,7 @@ public class ForestSpawnManager : MonoBehaviour
     {
         if (!finished)
         {
-            if (currentSpawnZ > DISTANCE_UNTIL_END)
+            if (currentSpawnZ > DISTANCE_UNTIL_END && !SceneController.getIsEndless())
             {
                 finished = true;
 
