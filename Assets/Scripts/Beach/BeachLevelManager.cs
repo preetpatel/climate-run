@@ -17,6 +17,7 @@ public class BeachLevelManager : MonoBehaviour
     private float timeSinceGarbageCollected = 0.0f;
     private const string HIGHSCOREKEY = "BeachHighScore";
     private bool isGameOver = false;
+    private bool lostGame = false;
     public GameObject newHighScore;
 
     // Cutscenes
@@ -48,6 +49,7 @@ public class BeachLevelManager : MonoBehaviour
     //Death menu
     public Animator deathMenuAnim;
     public Text deadScoreText, deadGarbageText;
+    private bool openedDeathMenu = false;
 
     // Check if in endless mode
     private bool isEndless;
@@ -137,20 +139,20 @@ public class BeachLevelManager : MonoBehaviour
             // Ends the game when the user has reached the end.
             if (!isEndless)
             {
-                if (score > 120)
+                // Ensures the level doesn't end while hes mid air.
+                if (score > 100 && playerMotor.transform.position.z <= 0.1)
                 {
                     isGameStarted = false;
                     playerMotor.StopRunning();
                     compMotor.StopRunning();
                     cameraMotor.StopFollowing();
                     DialogueAnimator.SetBool("isOpen", true);
-                    endCutscene.Begin();
                     if (TrashSpawner.garbageMultiplier <= 50)
                     {
                         endCutscene.Begin();
                     } else
                     {
-                        isGameOver = true;
+                        lostGame = true;
                         lossCutscene.Begin();
                     }
                     if (Settings.isMusicOn.Value)
@@ -160,8 +162,9 @@ public class BeachLevelManager : MonoBehaviour
             }
         }
 
-        if (isGameOver && !DialogueAnimator.GetBool("isOpen"))
+        if (lostGame && !DialogueAnimator.GetBool("isOpen") && !openedDeathMenu)
         {
+            openedDeathMenu = true;
             OnDeath();
         }
     }
