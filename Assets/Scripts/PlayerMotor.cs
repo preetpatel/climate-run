@@ -222,7 +222,7 @@ public class PlayerMotor : MonoBehaviour
             anim.SetTrigger("Death");
             isRunning = false;
 
-            if (Settings.isSfxOn)
+            if (Settings.isSfxOn.Value)
             {
                 sfx.playGameOver();
             }
@@ -246,7 +246,7 @@ public class PlayerMotor : MonoBehaviour
             controller.Move(hitButRevert);
             cameraMotor.shakeDuration = 0.5f;
 
-            if(Settings.isSfxOn)
+            if(Settings.isSfxOn.Value)
             {
                 sfx.playDamage();
             }

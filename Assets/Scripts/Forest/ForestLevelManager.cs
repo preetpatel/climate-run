@@ -63,7 +63,7 @@ public class ForestLevelManager : MonoBehaviour
 
         isEndless = SceneController.getIsEndless();
 
-        if (Settings.isMusicOn)
+        if (Settings.isMusicOn.Value)
         {
             AudioSource[] audios = FindObjectsOfType<AudioSource>();
             foreach (AudioSource audio in audios)
@@ -100,7 +100,7 @@ public class ForestLevelManager : MonoBehaviour
                 informationText.text = "";
                 FindObjectOfType<SideObjectSpawner>().IsScrolling = true;
                 FindObjectOfType<CameraMotor>().isFollowing = true;
-                if (Settings.isMusicOn)
+                if (Settings.isMusicOn.Value)
                 {
                     audioPlayer = GameObject.FindGameObjectWithTag("SoundController");
                     Music music = audioPlayer.GetComponent<Music>();
@@ -183,7 +183,7 @@ public class ForestLevelManager : MonoBehaviour
             panel.SetActive(false);
         }
 
-        if (Settings.isMusicOn)
+        if (Settings.isMusicOn.Value)
             StartCoroutine(AudioController.FadeOut(musicPlayer, 0.5f));
 
         // Save the High Score
