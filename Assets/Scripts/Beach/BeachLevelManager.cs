@@ -22,6 +22,7 @@ public class BeachLevelManager : MonoBehaviour
     // Cutscenes
     public DialogueTrigger startCutscene;
     public DialogueTrigger endCutscene;
+    public DialogueTrigger lossCutscene;
     public Animator DialogueAnimator;
 
     // UI and the UI fields
@@ -98,7 +99,7 @@ public class BeachLevelManager : MonoBehaviour
     private void Update()
     {
         // Goes to the next level in the story if the user has met the conditions
-        if (!isGameStarted && !DialogueAnimator.GetBool("isOpen") && score > 60 && !isEndless)
+        if (!isGameStarted && !DialogueAnimator.GetBool("isOpen") && score > 120 && !isEndless)
         {
             SceneManager.LoadScene("Forest");
         }
@@ -146,14 +147,20 @@ public class BeachLevelManager : MonoBehaviour
                     cameraMotor.StopFollowing();
                     DialogueAnimator.SetBool("isOpen", true);
                     endCutscene.Begin();
+                    // if (TrashSpawner.garbageMultiplier <= 50)
+                    // {
+                    //     endCutscene.Begin();
+                    // } else
+                    // {
+                    //     isGameOver = true;
+                    //     lossCutscene.Begin();
+                    // }
                     if (Settings.isMusicOn.Value)
-                        StartCoroutine(AudioController.FadeOut(musicPlayer, 0.5f));
+                            StartCoroutine(AudioController.FadeOut(musicPlayer, 0.5f));
                     // StartCoroutine(AudioController.FadeOut(audioPlayer, 0.5f));
                 }
             }
-
         }
-
     }
 
     /* Updates at fixed intervals, used to ensure the garbage multiplier increases at a constant rate */
@@ -176,6 +183,7 @@ public class BeachLevelManager : MonoBehaviour
         garbage++;
         garbageText.text = garbage.ToString();
         garbageCollected = true;
+        score += 3;
         float garbMulti = TrashSpawner.garbageMultiplier;
         TrashSpawner.garbageMultiplier = Mathf.Clamp(garbMulti -= 0.2f, 0.0f, 1.0f);
         pollutionSlide.value = TrashSpawner.garbageMultiplier;
