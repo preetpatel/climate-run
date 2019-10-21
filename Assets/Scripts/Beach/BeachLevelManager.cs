@@ -58,8 +58,8 @@ public class BeachLevelManager : MonoBehaviour
         playerMotor = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMotor>();
         cameraMotor = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMotor>();
         compMotor = GameObject.FindGameObjectWithTag("Companion").GetComponent<CompanionMotor>();
-        scoreText.text = "Score : " + score.ToString("0");
-        garbageText.text = "Garbage : " + garbage.ToString();
+        scoreText.text = score.ToString("0");
+        garbageText.text = garbage.ToString();
 
         isEndless = SceneController.getIsEndless();
 
@@ -109,7 +109,7 @@ public class BeachLevelManager : MonoBehaviour
         if (isGameStarted)
         {
             score += (Time.deltaTime * modifier);
-            scoreText.text = "Score : " + score.ToString("0");
+            scoreText.text = score.ToString("0");
             timeSinceGarbageCollected += Time.deltaTime;
             if(timeSinceGarbageCollected > 5.0f)
             {
@@ -150,7 +150,7 @@ public class BeachLevelManager : MonoBehaviour
     public void getGarbage()
     {
         garbage++;
-        garbageText.text = "Garbage : " + garbage.ToString();
+        garbageText.text = garbage.ToString();
         garbageCollected = true;
         float garbMulti = TrashSpawner.garbageMultiplier;
         TrashSpawner.garbageMultiplier = Mathf.Clamp(garbMulti -= 0.25f, 0.0f, 1.0f);
