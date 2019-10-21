@@ -375,7 +375,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 023bb6bfb37b5334f82b6b3ac607c538, type: 2}
+      objectReference: {fileID: 9100000, guid: 84dd067921f4e0045bb3a9a6e8fb7789, type: 2}
     - target: {fileID: 4410910982438300, guid: 312b31977ed9b2d48a14849ebb8c7fb3, type: 3}
       propertyPath: m_LocalPosition.z
       value: 2.266
@@ -418,6 +418,57 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &366566466
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 366566467}
+  - component: {fileID: 366566468}
+  m_Layer: 0
+  m_Name: LossCutscene
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &366566467
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 366566466}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 579.125, y: -248.56256, z: -598}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1884856948}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &366566468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 366566466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40f523caa8725804486330a2949e7caf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Chippy the Chicken
+    sentences:
+    - Oh no we didn't do enough.
+    - The beach is still far too polluted.
+    - with all this rubbish laying around it may never return to its former glory.
+    - Thank you for trying to help, hopefully next time we can pick up more rubbish
+      and clean up the local environment.
 --- !u!1 &447671978
 GameObject:
   m_ObjectHideFlags: 0
@@ -883,6 +934,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6755504049117100517, guid: f22f3a959706c4114b6dbf23a2cb6b09,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 31.300049
       objectReference: {fileID: 0}
     - target: {fileID: 6755504049117100517, guid: f22f3a959706c4114b6dbf23a2cb6b09,
         type: 3}
@@ -1578,21 +1634,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 1765975227208988478, guid: 455e5a868541845d387486db738e3ebd,
-        type: 3}
-      propertyPath: m_Name
-      value: Garbage
-      objectReference: {fileID: 0}
-    - target: {fileID: 1765975227208988478, guid: 455e5a868541845d387486db738e3ebd,
-        type: 3}
-      propertyPath: m_Name
-      value: Garbage
-      objectReference: {fileID: 0}
-    - target: {fileID: 1765975227208988478, guid: 455e5a868541845d387486db738e3ebd,
-        type: 3}
-      propertyPath: m_Name
-      value: Garbage
-      objectReference: {fileID: 0}
     - target: {fileID: 307210246013495288, guid: 455e5a868541845d387486db738e3ebd,
         type: 3}
       propertyPath: m_TagString
@@ -1611,8 +1652,13 @@ PrefabInstance:
     - target: {fileID: 357087051097554775, guid: 455e5a868541845d387486db738e3ebd,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnRetryButton
+      value: OnExitButtonPress
       objectReference: {fileID: 0}
+    - target: {fileID: 357087051097554775, guid: 455e5a868541845d387486db738e3ebd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2038921045}
     - target: {fileID: 6180666587646583287, guid: 455e5a868541845d387486db738e3ebd,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1636,7 +1682,7 @@ PrefabInstance:
     - target: {fileID: 6180666587646583287, guid: 455e5a868541845d387486db738e3ebd,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: saveHighScore
+      value: OnRetryButton
       objectReference: {fileID: 0}
     - target: {fileID: 4191598366832576404, guid: 455e5a868541845d387486db738e3ebd,
         type: 3}
@@ -1647,6 +1693,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: saveHighScore
+      objectReference: {fileID: 0}
+    - target: {fileID: 1765975227208988478, guid: 455e5a868541845d387486db738e3ebd,
+        type: 3}
+      propertyPath: m_Name
+      value: Garbage
+      objectReference: {fileID: 0}
+    - target: {fileID: 1765975227208988478, guid: 455e5a868541845d387486db738e3ebd,
+        type: 3}
+      propertyPath: m_Name
+      value: Garbage
+      objectReference: {fileID: 0}
+    - target: {fileID: 1765975227208988478, guid: 455e5a868541845d387486db738e3ebd,
+        type: 3}
+      propertyPath: m_Name
+      value: Garbage
       objectReference: {fileID: 0}
     - target: {fileID: 1765975226045714271, guid: 455e5a868541845d387486db738e3ebd,
         type: 3}
@@ -1745,92 +1806,117 @@ PrefabInstance:
     - target: {fileID: 407205876563168740, guid: c248e38ca17dc6843b4546e93ea81d48,
         type: 3}
       propertyPath: dialogue.sentences.Array.size
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 407205876563168740, guid: c248e38ca17dc6843b4546e93ea81d48,
         type: 3}
       propertyPath: dialogue.name
-      value: Chicken
+      value: Chippy the Chicken
       objectReference: {fileID: 0}
     - target: {fileID: 407205876563168740, guid: c248e38ca17dc6843b4546e93ea81d48,
         type: 3}
       propertyPath: dialogue.sentences.Array.data[0]
-      value: Flippy, you have to collect the garbage that people throw on the beach!
+      value: Hey, I just saw you wash up on shore are you ok?
       objectReference: {fileID: 0}
     - target: {fileID: 407205876563168740, guid: c248e38ca17dc6843b4546e93ea81d48,
         type: 3}
       propertyPath: dialogue.sentences.Array.data[1]
-      value: Garbage will pile up if you leave it unhandled
+      value: My name is Chippy, whats yours?
       objectReference: {fileID: 0}
     - target: {fileID: 407205876563168740, guid: c248e38ca17dc6843b4546e93ea81d48,
         type: 3}
       propertyPath: dialogue.sentences.Array.data[2]
-      value: The pollution meter on the top right rises whenever you don't collect
-        the garbage, and will decrease when you do
+      value: Flippy? Thats a cool name.
       objectReference: {fileID: 0}
     - target: {fileID: 407205876563168740, guid: c248e38ca17dc6843b4546e93ea81d48,
         type: 3}
       propertyPath: dialogue.sentences.Array.data[3]
-      value: More obstacles will appear on your track as the pollution meter rises
+      value: Hey Flippy, I need your help. This beach, my home, has been polluted.
       objectReference: {fileID: 0}
     - target: {fileID: 407205876563168740, guid: c248e38ca17dc6843b4546e93ea81d48,
         type: 3}
       propertyPath: dialogue.sentences.Array.data[4]
-      value: Good luck
+      value: The local people have been throwing their rubbish on the ground causing
+        damage to the local environment.
+      objectReference: {fileID: 0}
+    - target: {fileID: 407205876563168740, guid: c248e38ca17dc6843b4546e93ea81d48,
+        type: 3}
+      propertyPath: dialogue.sentences.Array.data[5]
+      value: I need you to help me pick up some of this rubbish.
+      objectReference: {fileID: 0}
+    - target: {fileID: 407205876563168740, guid: c248e38ca17dc6843b4546e93ea81d48,
+        type: 3}
+      propertyPath: dialogue.sentences.Array.data[6]
+      value: But be warned, some of the rubbish has piled up and caused obstacles
+        which may get in the way. Don't try to pick those up.
+      objectReference: {fileID: 0}
+    - target: {fileID: 407205876563168740, guid: c248e38ca17dc6843b4546e93ea81d48,
+        type: 3}
+      propertyPath: dialogue.sentences.Array.data[7]
+      value: As we pick up the rubbish we should start to see these piles go away.
+      objectReference: {fileID: 0}
+    - target: {fileID: 407205876563168740, guid: c248e38ca17dc6843b4546e93ea81d48,
+        type: 3}
+      propertyPath: dialogue.sentences.Array.data[8]
+      value: You can see the pollution level on the bar at the top right.
+      objectReference: {fileID: 0}
+    - target: {fileID: 407205876563168740, guid: c248e38ca17dc6843b4546e93ea81d48,
+        type: 3}
+      propertyPath: dialogue.sentences.Array.data[9]
+      value: Are you ready to help me? LETS GO!
       objectReference: {fileID: 0}
     - target: {fileID: 407205876532410014, guid: c248e38ca17dc6843b4546e93ea81d48,
         type: 3}
       propertyPath: dialogue.sentences.Array.size
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 407205876532410014, guid: c248e38ca17dc6843b4546e93ea81d48,
         type: 3}
       propertyPath: dialogue.sentences.Array.data[0]
-      value: Creepers? .......Sorry that was weird.
+      value: WOW! You did a great job!
       objectReference: {fileID: 0}
     - target: {fileID: 407205876532410014, guid: c248e38ca17dc6843b4546e93ea81d48,
         type: 3}
       propertyPath: dialogue.sentences.Array.data[1]
-      value: Hi, The name is Azir. As you can see, I rule this kingdom they call
-        Shurima.
+      value: Picking up all that rubbish has really helped in lowering the level
+        of pollution.
       objectReference: {fileID: 0}
     - target: {fileID: 407205876532410014, guid: c248e38ca17dc6843b4546e93ea81d48,
         type: 3}
       propertyPath: dialogue.sentences.Array.data[2]
-      value: The humans always throw rubbish on my golden kingdom.
+      value: Thank you so much for helping.
       objectReference: {fileID: 0}
     - target: {fileID: 407205876532410014, guid: c248e38ca17dc6843b4546e93ea81d48,
         type: 3}
       propertyPath: dialogue.sentences.Array.data[3]
-      value: We used to have some crocodiles around here, but all gone due to the
-        ocean pollution that man made.
+      value: With all your hard work we can start to restore the beach back to its
+        former glory.
       objectReference: {fileID: 0}
     - target: {fileID: 407205876532410014, guid: c248e38ca17dc6843b4546e93ea81d48,
         type: 3}
       propertyPath: dialogue.sentences.Array.data[4]
-      value: And you, my soldier. Have saved my kingdom from fallen into a wasteyard!
+      value: 'And the ocean too! Without this rubbish, the marine life will thrive! '
       objectReference: {fileID: 0}
     - target: {fileID: 407205876532410014, guid: c248e38ca17dc6843b4546e93ea81d48,
         type: 3}
       propertyPath: dialogue.sentences.Array.data[5]
-      value: I can never thank you enough for saving my kingdom, but as for now I
-        will allow you to continue your journey.
+      value: All the corals will be living the best lives without the ocean acidification
+        caused by the rubbish!
       objectReference: {fileID: 0}
     - target: {fileID: 407205876532410014, guid: c248e38ca17dc6843b4546e93ea81d48,
         type: 3}
       propertyPath: dialogue.sentences.Array.data[6]
-      value: Hahahahhahaha! Shurima! Your emperor has returned!
+      value: But I  think its time for you to move on.
       objectReference: {fileID: 0}
     - target: {fileID: 407205876532410014, guid: c248e38ca17dc6843b4546e93ea81d48,
         type: 3}
       propertyPath: dialogue.sentences.Array.data[7]
-      value: I hope more people could help out like you did!
+      value: Continue heading north till you reach the forest.
       objectReference: {fileID: 0}
     - target: {fileID: 407205876532410014, guid: c248e38ca17dc6843b4546e93ea81d48,
         type: 3}
       propertyPath: dialogue.sentences.Array.data[8]
-      value: "You can further help our environment by planting more trees like you
-        did!\r"
+      value: They probably need your help up there.
       objectReference: {fileID: 0}
     - target: {fileID: 407205876532410014, guid: c248e38ca17dc6843b4546e93ea81d48,
         type: 3}
@@ -1846,7 +1932,7 @@ PrefabInstance:
     - target: {fileID: 407205876532410014, guid: c248e38ca17dc6843b4546e93ea81d48,
         type: 3}
       propertyPath: dialogue.name
-      value: Chicken
+      value: Chippy the Chicken
       objectReference: {fileID: 0}
     - target: {fileID: 4321955176050261300, guid: c248e38ca17dc6843b4546e93ea81d48,
         type: 3}
@@ -1925,6 +2011,12 @@ PrefabInstance:
       objectReference: {fileID: 1143699540}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c248e38ca17dc6843b4546e93ea81d48, type: 3}
+--- !u!4 &1884856948 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4321955176050261300, guid: c248e38ca17dc6843b4546e93ea81d48,
+    type: 3}
+  m_PrefabInstance: {fileID: 1884856947}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1939821855
 GameObject:
   m_ObjectHideFlags: 0
@@ -2048,8 +2140,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.25, y: 0}
   m_AnchorMax: {x: 0.75, y: 1}
-  m_AnchoredPosition: {x: 0, y: 5.8999023}
-  m_SizeDelta: {x: 0, y: 11.8}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2027796046
 MonoBehaviour:
@@ -2114,7 +2206,7 @@ GameObject:
   - component: {fileID: 2038921045}
   m_Layer: 0
   m_Name: BeachLevelManager
-  m_TagString: Untagged
+  m_TagString: LevelManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2134,6 +2226,7 @@ MonoBehaviour:
   newHighScore: {fileID: 1815258563}
   startCutscene: {fileID: 798527587}
   endCutscene: {fileID: 1168313406}
+  lossCutscene: {fileID: 366566468}
   DialogueAnimator: {fileID: 1143699538}
   scoreText: {fileID: 902902050}
   garbageText: {fileID: 902902049}
