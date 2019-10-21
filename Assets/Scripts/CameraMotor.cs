@@ -92,7 +92,7 @@ public class CameraMotor : MonoBehaviour
         isFollowing = false;
     }
 
-    public void MoveToCustcenePos(Transform position)
+    public void MoveToCutscenePos(Transform position)
     {
         isFollowing = false;
         transitionToCutscenePos = true;
