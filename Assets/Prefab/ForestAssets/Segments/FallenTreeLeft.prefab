@@ -232,7 +232,7 @@ GameObject:
   - component: {fileID: 8565023618193661037}
   - component: {fileID: 8565023618193661036}
   m_Layer: 0
-  m_Name: FallenTreeLeft_14
+  m_Name: FallenTreeLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -283,6 +283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transition: 0
+  fireTruck: 0
   length: 22
   beginY1: 0
   beginY2: 0
@@ -311,7 +312,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4156798437703472, guid: 93acc49b5a9f4e84b89aa62e0282a2a3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 23.46
+      value: 13.08
       objectReference: {fileID: 0}
     - target: {fileID: 4156798437703472, guid: 93acc49b5a9f4e84b89aa62e0282a2a3, type: 3}
       propertyPath: m_LocalRotation.x
