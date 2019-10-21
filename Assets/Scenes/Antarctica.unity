@@ -139,7 +139,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21e37c39cc09d484f981f438b8915b38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isEndless: 0
   originalSpeed: 7
   speed: 0
 --- !u!1 &62785938
@@ -693,11 +692,24 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 8080284998113961508, guid: 0ea1be9dcd46f0c4eb3a8914b626d93e,
+    - target: {fileID: 4506779033812919810, guid: 0ea1be9dcd46f0c4eb3a8914b626d93e,
         type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6f8b8a1a6ef9d2046b61966e84f56e6e,
+        type: 3}
+    - target: {fileID: 1693949552330382227, guid: 0ea1be9dcd46f0c4eb3a8914b626d93e,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6f8b8a1a6ef9d2046b61966e84f56e6e,
+        type: 3}
+    - target: {fileID: 782668423961657902, guid: 0ea1be9dcd46f0c4eb3a8914b626d93e,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6f8b8a1a6ef9d2046b61966e84f56e6e,
+        type: 3}
     - target: {fileID: 5043981131747839577, guid: 0ea1be9dcd46f0c4eb3a8914b626d93e,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -711,6 +723,11 @@ PrefabInstance:
     - target: {fileID: 5043981131747839577, guid: 0ea1be9dcd46f0c4eb3a8914b626d93e,
         type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8080284998113961508, guid: 0ea1be9dcd46f0c4eb3a8914b626d93e,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -782,11 +799,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 256728309}
     m_Modifications:
-    - target: {fileID: 3299821735586376754, guid: f22f3a959706c4114b6dbf23a2cb6b09,
-        type: 3}
-      propertyPath: m_Name
-      value: PauseMenuPanel
-      objectReference: {fileID: 0}
     - target: {fileID: 3299821735586376755, guid: f22f3a959706c4114b6dbf23a2cb6b09,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -891,6 +903,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3299821735586376754, guid: f22f3a959706c4114b6dbf23a2cb6b09,
+        type: 3}
+      propertyPath: m_Name
+      value: PauseMenuPanel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f22f3a959706c4114b6dbf23a2cb6b09, type: 3}
@@ -1393,6 +1410,7 @@ MonoBehaviour:
   scoreText: {fileID: 443218550}
   informationText: {fileID: 62785940}
   HighScoreText: {fileID: 755450665}
+  HighScoreAnimator: {fileID: 0}
   LivesAnimator: {fileID: 443218554}
   deathMenuAnim: {fileID: 1630823332}
   deadScoreText: {fileID: 291347439}
@@ -1504,6 +1522,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 281913648}
     m_Modifications:
+    - target: {fileID: 132422553982956019, guid: 7fecaac0aab7a7e41a830b0d912116fe,
+        type: 3}
+      propertyPath: m_Name
+      value: DialogueBox
+      objectReference: {fileID: 0}
     - target: {fileID: 132422553982956018, guid: 7fecaac0aab7a7e41a830b0d912116fe,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1608,11 +1631,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 132422553982956019, guid: 7fecaac0aab7a7e41a830b0d912116fe,
-        type: 3}
-      propertyPath: m_Name
-      value: DialogueBox
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fecaac0aab7a7e41a830b0d912116fe, type: 3}
