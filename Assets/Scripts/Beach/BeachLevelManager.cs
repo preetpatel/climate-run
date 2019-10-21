@@ -138,7 +138,7 @@ public class BeachLevelManager : MonoBehaviour
             // Ends the game when the user has reached the end.
             if (!isEndless)
             {
-                if (score > 60)
+                if (score > 120)
                 {
                     isGameStarted = false;
                     playerMotor.StopRunning();
