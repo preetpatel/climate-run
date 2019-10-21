@@ -44,9 +44,10 @@ public class AntarcticaLevelManager : MonoBehaviour
     private bool isGameOver = false;
 
     // Check if in endless mode
-    private bool isEndless;    
+    private bool isEndless;
 
-
+    // ends the level when this score is reached
+    private float scoreOnFinish = 50.0f;
 
     private void Awake()
     {
@@ -84,7 +85,7 @@ public class AntarcticaLevelManager : MonoBehaviour
 
     private void Update()
     {
-        if (!isGameStarted && !DialogueAnimator.GetBool("isOpen") && score > 50 && !isEndless)
+        if (!isGameStarted && !DialogueAnimator.GetBool("isOpen") && score > scoreOnFinish && !isEndless)
         {
             SceneManager.LoadScene("Beach");
         }
@@ -117,7 +118,12 @@ public class AntarcticaLevelManager : MonoBehaviour
             // refactor later
             if (!isEndless)
             {
-                if (score > 50)
+                if (Input.GetKeyDown(KeyCode.S))
+                {
+                    score = scoreOnFinish + 1;
+                }
+
+                if (score > scoreOnFinish)
                 {
                     isGameStarted = false;
                     playerMotor.StopRunning();
@@ -240,10 +246,4 @@ public class AntarcticaLevelManager : MonoBehaviour
         GameObject.FindGameObjectWithTag("HighScore").SetActive(false);
     }
 
-    public void SkipLevel()
-    {
-        score = 51;
-        DialogueAnimator.SetBool("isOpen", true);
-        endCutscene.Begin();
-    }
 }

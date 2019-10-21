@@ -54,6 +54,9 @@ public class BeachLevelManager : MonoBehaviour
     // Check if in endless mode
     private bool isEndless;
 
+    // ends the level when this score is reached
+    private float scoreOnFinish = 60.0f;
+
     private void Awake()
     {
         Instance = this;
@@ -94,7 +97,7 @@ public class BeachLevelManager : MonoBehaviour
 
     private void Update()
     {
-        if (!isGameStarted && !DialogueAnimator.GetBool("isOpen") && score > 60 && !isEndless)
+        if (!isGameStarted && !DialogueAnimator.GetBool("isOpen") && score > scoreOnFinish && !isEndless)
         {
             SceneManager.LoadScene("Forest");
         }
@@ -131,7 +134,12 @@ public class BeachLevelManager : MonoBehaviour
 
             if (!isEndless)
             {
-                if (score > 60)
+                if (Input.GetKeyDown(KeyCode.A))
+                {
+                    score = scoreOnFinish + 1;
+                }
+
+                if (score > scoreOnFinish)
                 {
                     isGameStarted = false;
                     playerMotor.StopRunning();
