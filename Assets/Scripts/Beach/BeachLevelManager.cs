@@ -252,7 +252,11 @@ public class BeachLevelManager : MonoBehaviour
             HighScoreText.gameObject.SetActive(false);
         }
 
-        GameObject.FindGameObjectWithTag("AlivePanel").SetActive(false);
+        GameObject panel = GameObject.FindGameObjectWithTag("AlivePanel");
+        if(panel != null)
+        {
+            panel.SetActive(false);
+        }
         if (Settings.isMusicOn.Value)
             StartCoroutine(AudioController.FadeOut(musicPlayer, 0.5f));
     }
