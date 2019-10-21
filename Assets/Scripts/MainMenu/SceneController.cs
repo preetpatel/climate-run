@@ -3,7 +3,12 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
-    public static bool isEndless = false;
+    private static bool isEndless = false;
+
+    public static bool getIsEndless()
+    {
+        return isEndless;
+    }
 
     private void Start()
     {
