@@ -1,4 +1,4 @@
-# SOFTENG306A2
+# Climate Run
 An endless runner based on climate change
 
 ## Download the Android APK
