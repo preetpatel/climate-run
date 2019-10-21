@@ -3,6 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
+    public static bool isEndless = false;
+
     private void Start()
     {
         Time.timeScale = 1f;
@@ -10,6 +12,7 @@ public class SceneController : MonoBehaviour
     }
     public void GoToLevelSelector()
     {
+        isEndless = false;
         SceneManager.LoadScene("LevelSelector");
     }
 
@@ -36,5 +39,11 @@ public class SceneController : MonoBehaviour
     public void GoToSettings()
     {
         SceneManager.LoadScene("Settings");
+    }
+
+    public void GoToEndless()
+    {
+        isEndless = true;
+        SceneManager.LoadScene("LevelSelector");
     }
 }

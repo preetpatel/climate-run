@@ -13,9 +13,6 @@ public class PlayerMotor : MonoBehaviour
 
     // Wait for player
     private bool isRunning = false;
-    
-    // Check if player is in endless mode or not
-    public bool isEndless = false;
 
     // Movements
     private CharacterController controller;

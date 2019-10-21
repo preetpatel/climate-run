@@ -32,7 +32,7 @@ public class AntarcticaTileManager : MonoBehaviour
         activeLevels = new List<GameObject>();
         player = GameObject.FindGameObjectWithTag("Player");
         PlayerMotor playerScript = player.GetComponent<PlayerMotor>();
-        isEndless = playerScript.isEndless;
+        isEndless = SceneController.isEndless;
         playerTransform = player.transform;
         numberOfLevelTiles = 0;
         for (int i = 0; i < amnLevelsOnScreen; i++)

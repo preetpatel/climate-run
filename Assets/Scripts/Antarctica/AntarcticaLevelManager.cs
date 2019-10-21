@@ -45,7 +45,7 @@ public class AntarcticaLevelManager : MonoBehaviour
         scoreText.text = "Score : " + score.ToString();
         playerMotor = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMotor>();
         cameraMotor = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMotor>();
-        isEndless = playerMotor.isEndless;
+        isEndless = SceneController.isEndless;
         compMotor = GameObject.FindGameObjectWithTag("Companion").GetComponent<CompanionMotor>();
 
         if (Settings.isMusicOn)
