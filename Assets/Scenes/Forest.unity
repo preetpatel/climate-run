@@ -966,8 +966,8 @@ MonoBehaviour:
   deathSeedText: {fileID: 365510635}
   lifeAnimation: {fileID: 891226814}
   HighScoreAnimator: {fileID: 365510639}
-  scoreText: {fileID: 891226810}
-  seedCountText: {fileID: 891226809}
+  scoreText: {fileID: 891226809}
+  seedCountText: {fileID: 891226810}
   informationText: {fileID: 250084773}
   HighScoreText: {fileID: 365510638}
   newHighScore: {fileID: 365510640}
@@ -1030,7 +1030,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1927720559}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -3680,7 +3680,7 @@ PrefabInstance:
     - target: {fileID: 653472833885484251, guid: 0ea1be9dcd46f0c4eb3a8914b626d93e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 653472834516805046, guid: 0ea1be9dcd46f0c4eb3a8914b626d93e,
         type: 3}
@@ -3738,7 +3738,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &891226809 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 653472833885484250, guid: 0ea1be9dcd46f0c4eb3a8914b626d93e,
+  m_CorrespondingSourceObject: {fileID: 8003263208438457569, guid: 0ea1be9dcd46f0c4eb3a8914b626d93e,
     type: 3}
   m_PrefabInstance: {fileID: 891226807}
   m_PrefabAsset: {fileID: 0}
@@ -7250,8 +7250,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 250084772}
   - {fileID: 891226808}
+  - {fileID: 250084772}
   - {fileID: 626738041}
   m_Father: {fileID: 1220065144}
   m_RootOrder: 1
