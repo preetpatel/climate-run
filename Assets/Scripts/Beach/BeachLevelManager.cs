@@ -63,7 +63,7 @@ public class BeachLevelManager : MonoBehaviour
         cameraMotor = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMotor>();
         compMotor = GameObject.FindGameObjectWithTag("Companion").GetComponent<CompanionMotor>();
         scoreText.text = score.ToString("0");
-        garbageText.text = garbage.ToString("0");
+        garbageText.text = garbage.ToString();
 
         isEndless = SceneController.getIsEndless();
 
@@ -123,7 +123,7 @@ public class BeachLevelManager : MonoBehaviour
             score += (Time.deltaTime * modifier);
             scoreText.text = score.ToString("0");
             timeSinceGarbageCollected += Time.deltaTime;
-            if(timeSinceGarbageCollected > 5.0f)
+            if(timeSinceGarbageCollected > 3.5f)
             {
                 garbageCollected = false;
                 timeSinceGarbageCollected = 0.0f;
@@ -165,7 +165,7 @@ public class BeachLevelManager : MonoBehaviour
         garbageText.text = garbage.ToString();
         garbageCollected = true;
         float garbMulti = TrashSpawner.garbageMultiplier;
-        TrashSpawner.garbageMultiplier = Mathf.Clamp(garbMulti -= 0.25f, 0.0f, 1.0f);
+        TrashSpawner.garbageMultiplier = Mathf.Clamp(garbMulti -= 0.2f, 0.0f, 1.0f);
         pollutionSlide.value = TrashSpawner.garbageMultiplier;
     }
     
