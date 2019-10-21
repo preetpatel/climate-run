@@ -52,6 +52,7 @@ public class BeachTileManager : MonoBehaviour
 
     private void SpawnLevel()
     {
+        //spawns the background tile when the penguin has reached a certain position
         List<GameObject> possibleTiles = null;
         possibleTiles = instantiatedLevels.FindAll(
             x => !x.gameObject.activeSelf);

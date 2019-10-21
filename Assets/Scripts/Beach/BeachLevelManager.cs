@@ -280,11 +280,13 @@ public class BeachLevelManager : MonoBehaviour
 
     public void OnRetryButton()
 	{
+        //retry the level
 		UnityEngine.SceneManagement.SceneManager.LoadScene("Beach");
 	}
 
     public void OnExitButtonPress()
     {
+        //go back to main menu
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
 

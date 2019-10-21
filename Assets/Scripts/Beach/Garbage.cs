@@ -16,12 +16,14 @@ public class Garbage : MonoBehaviour
     
     private void OnEnable()
     {
+        //make sure to spawn garbage at the correct location
         animator.speed = playerMotor.speed / playerMotor.originalSpeed;
         animator.SetTrigger("Spawn");
     }
 
     private void OnTriggerEnter(UnityEngine.Collider other)
     {
+        //Collect the garbage when player hit them
         if (other.tag == "Player")
         {
             BeachLevelManager.Instance.getGarbage();
@@ -31,6 +33,7 @@ public class Garbage : MonoBehaviour
 
     public void OnTriggerThrow()
     {
+        //throw the garbage
         animator.SetTrigger("Thrown");
     }
 }

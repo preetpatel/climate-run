@@ -14,6 +14,8 @@ public class GarbageSpawner : MonoBehaviour
 
     private void Awake()
     {
+        //spawn the person who throws garbage with the player's transform
+    
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
 
         garbageAndThrower = new GameObject[transform.childCount];
@@ -25,7 +27,8 @@ public class GarbageSpawner : MonoBehaviour
     }
 
     private void Update() 
-    {
+    {   
+        //get the garbage thrower to throw garbage
         if (garbageAndThrower[0].activeInHierarchy && transform.position.z < playerTransform.position.z + 25 && !thrown)
         {
             for (int i = 0; i < transform.childCount; i++)

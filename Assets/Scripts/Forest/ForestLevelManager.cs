@@ -52,7 +52,7 @@ public class ForestLevelManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-
+        //initialise fields
         playerMotor = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMotor>();
         cameraMotor = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMotor>();
         compMotor = GameObject.FindGameObjectWithTag("Companion").GetComponent<GorillaMotor>();
@@ -62,7 +62,7 @@ public class ForestLevelManager : MonoBehaviour
         isEndless = SceneController.getIsEndless();
 
         if (Settings.isMusicOn.Value)
-        {
+        {//checking for music
             AudioSource[] audios = FindObjectsOfType<AudioSource>();
             foreach (AudioSource audio in audios)
             {
@@ -79,13 +79,13 @@ public class ForestLevelManager : MonoBehaviour
         heart2.gameObject.SetActive(true);
         heart3.gameObject.SetActive(true);
 
-        if (!isEndless)
+        if (!isEndless)//if not endless
         {
             informationText.text = "";
-            startCutscene.Begin();
+            startCutscene.Begin(); //start the cutscene
         } else
         {
-            informationText.text = "Tap Anywhere To Begin!";
+            informationText.text = "Tap Anywhere To Begin!"; //or start directly
         }
     }
 
@@ -93,7 +93,7 @@ public class ForestLevelManager : MonoBehaviour
 	{
         if (!isGameStarted && !DialogueAnimator.GetBool("isOpen") && done && !isEndless)
         {
-            SceneManager.LoadScene("Congrats");
+            SceneManager.LoadScene("Congrats");// end of the story
             return;
         }
 
@@ -101,6 +101,7 @@ public class ForestLevelManager : MonoBehaviour
         {
             if (Input.anyKey && !isGameStarted && !DialogueAnimator.GetBool("isOpen"))
             {
+                //start the game by tapping any key
                 isGameStarted = true;
                 playerMotor.StartRunning();
                 cameraMotor.StartFollowing();
@@ -129,11 +130,13 @@ public class ForestLevelManager : MonoBehaviour
     {
         if (!isEndless)
         {
+            //set the dialogue animator to open true
             DialogueAnimator.SetBool("isOpen", true);
 
             done = true;
             isGameOver = true;
 
+            //find the gorillaposition and use it to start the end 3D cutscene
             Transform gorillaPosition = endSegment.transform.Find("GorillaPosition");
             compMotor.DoEndSequence(gorillaPosition);
 
@@ -152,6 +155,7 @@ public class ForestLevelManager : MonoBehaviour
 
 	public IEnumerator updateLives(float livesAmount)
 	{
+        //update lives when player hit something
         lifeAnimation.SetTrigger("LifeLost");
         switch (livesAmount)
         {
@@ -178,11 +182,13 @@ public class ForestLevelManager : MonoBehaviour
 
     public void OnRetryButton()
 	{
+        //retry the level
 		UnityEngine.SceneManagement.SceneManager.LoadScene("Forest");
 	}
 
     public void OnDeath()
     { 
+        //show death menu when player dies
         isGameStarted = false;
         isGameOver = true;
         deathScoreText.text = "Score: " + score.ToString("0");
@@ -221,6 +227,7 @@ public class ForestLevelManager : MonoBehaviour
 
     public void OnExitButtonPress()
     {
+        //go back to mainmenu
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
 
