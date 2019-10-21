@@ -17,6 +17,8 @@ public class BeachLevelManager : MonoBehaviour
     private bool garbageCollected = false;
     private float timeSinceGarbageCollected = 0.0f;
     private const string HIGHSCOREKEY = "BeachHighScore";
+    private bool isGameOver = false;
+    public GameObject newHighScore;
 
     // Cutscenes
     public DialogueTrigger startCutscene;
@@ -34,6 +36,8 @@ public class BeachLevelManager : MonoBehaviour
     public Image heart1;
     public Image heart2;
     public Image heart3;
+
+    private int roundedScore;
 
     private float score = 0;
     private float garbage = 0;
@@ -90,20 +94,23 @@ public class BeachLevelManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.anyKey && !isGameStarted && !DialogueAnimator.GetBool("isOpen")&&!isDead)
+        if(!isGameOver)
         {
-            isGameStarted = true;
-            playerMotor.StartRunning();
-            cameraMotor.StartFollowing();
-            compMotor.StartRunning();
-
-            if (Settings.isMusicOn)
+            if (Input.anyKey && !isGameStarted && !DialogueAnimator.GetBool("isOpen") && !isDead)
             {
-                audioPlayer = GameObject.FindGameObjectWithTag("SoundController");
-                Music music = audioPlayer.GetComponent<Music>();
-                music.changeMusic(SceneManager.GetActiveScene());
+                isGameStarted = true;
+                playerMotor.StartRunning();
+                cameraMotor.StartFollowing();
+                compMotor.StartRunning();
+
+                if (Settings.isMusicOn)
+                {
+                    audioPlayer = GameObject.FindGameObjectWithTag("SoundController");
+                    Music music = audioPlayer.GetComponent<Music>();
+                    music.changeMusic(SceneManager.GetActiveScene());
+                }
+                FindObjectOfType<CameraMotor>().isFollowing = true;
             }
-            FindObjectOfType<CameraMotor>().isFollowing = true;
         }
 
         if (isGameStarted)
@@ -195,18 +202,26 @@ public class BeachLevelManager : MonoBehaviour
         deadGarbageText.text = "Garbage Collected: " + garbage.ToString("0");
         deathMenuAnim.SetTrigger("Dead");
         isGameStarted = false;
+        isGameOver = true;
         isDead = true;
 
-        bool isNewHighScore = SaveState.saveHighScore((int)Mathf.Round(score), HIGHSCOREKEY);
+        // Save the High Score
+        roundedScore = (int)Mathf.Round(score);
+        bool isNewHighScore = SaveState.saveHighScore(roundedScore, HIGHSCOREKEY);
 
-        if (isNewHighScore)
+        if (isEndless)
         {
-            HighScoreAnimator.SetTrigger("IsHighScore");
-            HighScoreText.text = "New High Score!!";
+            if (isNewHighScore)
+            {
+                newHighScore.SetActive(true);
+                HighScoreAnimator.SetTrigger("IsHighScore");
+            }
+
+            HighScoreText.text = "HighScore : " + PlayerPrefs.GetInt(HIGHSCOREKEY);
         }
         else
         {
-            HighScoreText.text = "HighScore : " + PlayerPrefs.GetInt(HIGHSCOREKEY);
+            HighScoreText.gameObject.SetActive(false);
         }
 
         GameObject.FindGameObjectWithTag("AlivePanel").SetActive(false);
@@ -222,5 +237,13 @@ public class BeachLevelManager : MonoBehaviour
     public void OnExitButtonPress()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+    }
+
+    public void saveHighScore()
+    {
+        string name = SceneController.saveName();
+        Debug.Log(name);
+        HighscoreTable.AddHighscoreEntry(roundedScore, name, "beach");
+        GameObject.FindGameObjectWithTag("HighScore").SetActive(false);
     }
 }

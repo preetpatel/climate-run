@@ -31,9 +31,11 @@ public class ForestLevelManager : MonoBehaviour
 	public Text seedCountText;
 	public Text informationText;
     public Text HighScoreText;
+    public GameObject newHighScore;
     public Image heart1;
     public Image heart2;
     public Image heart3;
+    private int roundedScore;
    
 
 	private float score = 0;
@@ -42,8 +44,11 @@ public class ForestLevelManager : MonoBehaviour
     private AudioSource musicPlayer;
     private GameObject audioPlayer;
 
+    private bool isGameOver = false;
+
     // Check if in endless mode
     private bool isEndless;
+
 
     private void Awake()
 	{
@@ -84,22 +89,25 @@ public class ForestLevelManager : MonoBehaviour
 
 	private void Update()
 	{
-		if (Input.anyKey && !isGameStarted && !DialogueAnimator.GetBool("isOpen"))
-		{
-			isGameStarted = true;
-			playerMotor.StartRunning();
-			cameraMotor.StartFollowing();
-            compMotor.StartRunning();
-            informationText.text = "";
-            FindObjectOfType<SideObjectSpawner>().IsScrolling = true;
-            FindObjectOfType<CameraMotor>().isFollowing = true;
-            if (Settings.isMusicOn)
+        if(!isGameOver)
+        {
+            if (Input.anyKey && !isGameStarted && !DialogueAnimator.GetBool("isOpen"))
             {
-                audioPlayer = GameObject.FindGameObjectWithTag("SoundController");
-                Music music = audioPlayer.GetComponent<Music>();
-                music.changeMusic(SceneManager.GetActiveScene());
-            }
+                isGameStarted = true;
+                playerMotor.StartRunning();
+                cameraMotor.StartFollowing();
+                compMotor.StartRunning();
+                informationText.text = "";
+                FindObjectOfType<SideObjectSpawner>().IsScrolling = true;
+                FindObjectOfType<CameraMotor>().isFollowing = true;
+                if (Settings.isMusicOn)
+                {
+                    audioPlayer = GameObject.FindGameObjectWithTag("SoundController");
+                    Music music = audioPlayer.GetComponent<Music>();
+                    music.changeMusic(SceneManager.GetActiveScene());
+                }
 
+            }
         }
 
 		if (isGameStarted)
@@ -163,7 +171,8 @@ public class ForestLevelManager : MonoBehaviour
 
     public void OnDeath()
     { 
-        isGameStarted = false;   
+        isGameStarted = false;
+        isGameOver = true;
         deathScoreText.text = "Score: " + score.ToString("0");
         deathSeedText.text = "Seeds Collected: " + seeds.ToString("0");
         deathMenuAnim.SetTrigger("Dead");
@@ -178,16 +187,22 @@ public class ForestLevelManager : MonoBehaviour
             StartCoroutine(AudioController.FadeOut(musicPlayer, 0.5f));
 
         // Save the High Score
-        bool isNewHighScore = SaveState.saveHighScore((int) Mathf.Round(score), HIGHSCOREKEY);
+        roundedScore = (int)Mathf.Round(score);
+        bool isNewHighScore = SaveState.saveHighScore(roundedScore, HIGHSCOREKEY);
 
-        if (isNewHighScore)
+        if (isEndless)
         {
-            HighScoreAnimator.SetTrigger("IsHighScore");
-            HighScoreText.text = "New High Score!!";
+            if (isNewHighScore)
+            {
+                newHighScore.SetActive(true);
+                HighScoreAnimator.SetTrigger("IsHighScore");
+            }
+
+            HighScoreText.text = "HighScore : " + PlayerPrefs.GetInt(HIGHSCOREKEY);
         }
         else
         {
-            HighScoreText.text = "HighScore : " + PlayerPrefs.GetInt(HIGHSCOREKEY);
+            HighScoreText.gameObject.SetActive(false);
         }
 
     }
@@ -197,5 +212,11 @@ public class ForestLevelManager : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
 
-
+    public void saveHighScore()
+    {
+        string name = SceneController.saveName();
+        Debug.Log(name);
+        HighscoreTable.AddHighscoreEntry(roundedScore, name, "forest");
+        GameObject.FindGameObjectWithTag("HighScore").SetActive(false);
+    }
 }

@@ -1412,6 +1412,21 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnRetryButton
       objectReference: {fileID: 0}
+    - target: {fileID: 4191598366832576404, guid: 455e5a868541845d387486db738e3ebd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2038921045}
+    - target: {fileID: 4191598366832576404, guid: 455e5a868541845d387486db738e3ebd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: saveHighScore
+      objectReference: {fileID: 0}
+    - target: {fileID: 307210246013495288, guid: 455e5a868541845d387486db738e3ebd,
+        type: 3}
+      propertyPath: m_TagString
+      value: HighScore
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 455e5a868541845d387486db738e3ebd, type: 3}
 --- !u!114 &1815258557 stripped
@@ -1464,7 +1479,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
 --- !u!95 &1815258562 stripped
 Animator:
-  m_CorrespondingSourceObject: {fileID: 4071147741557195473, guid: 455e5a868541845d387486db738e3ebd,
+  m_CorrespondingSourceObject: {fileID: 4688088707431280963, guid: 455e5a868541845d387486db738e3ebd,
+    type: 3}
+  m_PrefabInstance: {fileID: 1815258556}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1815258563 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 307210246013495288, guid: 455e5a868541845d387486db738e3ebd,
     type: 3}
   m_PrefabInstance: {fileID: 1815258556}
   m_PrefabAsset: {fileID: 0}
@@ -2019,6 +2040,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75a0b848624b9c24ebf9c3eef431d9bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  newHighScore: {fileID: 1815258563}
   startCutscene: {fileID: 798527587}
   endCutscene: {fileID: 1168313406}
   DialogueAnimator: {fileID: 250712039}
