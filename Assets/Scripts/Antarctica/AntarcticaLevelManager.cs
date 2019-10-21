@@ -35,6 +35,9 @@ public class AntarcticaLevelManager : MonoBehaviour
     public Image heart1;
     public Image heart2;
     public Image heart3;
+    
+    // Check if in endless mode
+    private bool isEndless;    
 
     private void Awake()
     {
@@ -42,6 +45,7 @@ public class AntarcticaLevelManager : MonoBehaviour
         scoreText.text = "Score : " + score.ToString();
         playerMotor = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMotor>();
         cameraMotor = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMotor>();
+        isEndless = playerMotor.isEndless;
         compMotor = GameObject.FindGameObjectWithTag("Companion").GetComponent<CompanionMotor>();
 
         if (Settings.isMusicOn)
@@ -90,42 +94,47 @@ public class AntarcticaLevelManager : MonoBehaviour
             scoreText.text = "Score: " + score.ToString("0");
 
             // refactor later
-            if (score > 50)
+            if (!isEndless)
             {
-                isGameStarted = false;
-                playerMotor.StopRunning();
-                cameraMotor.StopFollowing();
-                compMotor.StopRunning();
-                DialogueAnimator.SetBool("isOpen", true);
-                endCutscene.Begin();
-                if (Settings.isMusicOn)
-                    StartCoroutine(AudioController.FadeOut(musicPlayer, 0.5f));
+                if (score > 50)
+                {
+                    isGameStarted = false;
+                    playerMotor.StopRunning();
+                    cameraMotor.StopFollowing();
+                    DialogueAnimator.SetBool("isOpen", true);
+                    endCutscene.Begin();
+                    if (Settings.isMusicOn)
+                        StartCoroutine(AudioController.FadeOut(musicPlayer, 0.5f));
+                }
+                else if (score > 40)
+                {
+                    informationText.text = "The ice has all melted away!";
+                }
+                else if (score > 30)
+                {
+                    informationText.text = "The mountains are collapsing!";
+                }
+                else if (score > 12)
+                {
+                    informationText.text = "Careful! The water is toxic.";
+                }
+                else if (score > 8)
+                {
+                    informationText.text = "Swipe up to jump";
+                }
+                else if (score > 3)
+                {
+                    informationText.text = "Swipe down to slide";
+                }
+                else if (score > 0)
+                {
+                    informationText.text = "Swipe to move";
+                }
             }
-            else if (score > 40)
+            else
             {
-                informationText.text = "The ice has all melted away!";
+                informationText.text = null;
             }
-            else if (score > 30)
-            {
-                informationText.text = "The mountains are collapsing!";
-            }
-            else if (score > 12)
-            {
-                informationText.text = "Careful! The water is toxic.";
-            }
-            else if (score > 8)
-            {
-                informationText.text = "Swipe up to jump";
-            }
-            else if (score > 3)
-            {
-                informationText.text = "Swipe down to slide";
-            }
-            else if (score > 0)
-            {
-                informationText.text = "Swipe to move";
-            }
-
         }
     }
 
