@@ -141,12 +141,14 @@ public class AntarcticaLevelManager : MonoBehaviour
         if (Settings.isMusicOn)
             StartCoroutine(AudioController.FadeOut(musicPlayer, 0.5f));
 
-        bool isNewHighScore = SaveState.saveHighScore((int) Mathf.Round(score), HIGHSCOREKEY);
+        int roundedScore = (int)Mathf.Round(score);
+        bool isNewHighScore = SaveState.saveHighScore(roundedScore, HIGHSCOREKEY);
 
         if(isNewHighScore)
         {
             HighScoreAnimator.SetTrigger("IsHighScore");
             HighScoreText.text = "New High Score!!";
+            HighscoreTable.AddHighscoreEntry(roundedScore, name);
         } else
         {
             HighScoreText.text = "HighScore : " + PlayerPrefs.GetInt(HIGHSCOREKEY);
