@@ -27,18 +27,36 @@ public class Music : MonoBehaviour
     void Awake()
     {
         GameObject[] objs = GameObject.FindGameObjectsWithTag("SoundController");
-        if(objs.Length > 1)
+        if(objs.Length > 1) 
         {
             Destroy(this.gameObject);
         }
         DontDestroyOnLoad(this.gameObject);
-        Settings.isMusicOn = Boolean.Parse(PlayerPrefs.GetString(Settings.MUSICKEY));
-        Settings.isSfxOn = Boolean.Parse(PlayerPrefs.GetString(Settings.SFXKEY));
-        
-        if(Settings.isMusicOn)
+
+        if (!Settings.isMusicOn.HasValue || !(Settings.MUSICKEY == null))
+        {
+            Settings.isMusicOn = true;
+            Settings.MUSICKEY = "music";
+        } else
+        {
+            Settings.isMusicOn = Boolean.Parse(PlayerPrefs.GetString(Settings.MUSICKEY));
+        }
+
+        if(!Settings.isSfxOn.HasValue || !(Settings.SFXKEY == null))
+        {
+            Settings.isSfxOn = true;
+            Settings.SFXKEY = "sfx";
+        } else
+        {
+            Settings.isSfxOn = Boolean.Parse(PlayerPrefs.GetString(Settings.SFXKEY));
+        }
+
+        if(Settings.isMusicOn.Value)
         {
             music.Play();
         }
+
+
     }
 
     void Start()
@@ -71,7 +89,7 @@ public class Music : MonoBehaviour
     public void playSound()
     {
 
-        if (Settings.isSfxOn)
+        if (Settings.isSfxOn.Value)
         {
             sfxPlayer.PlayOneShot(buttonSFX);
         }
@@ -109,7 +127,7 @@ public class Music : MonoBehaviour
     {
         if (scene.name.Equals("Settings") || scene.name.Equals("MainMenu"))
         {
-            if (!music.clip.name.Equals(mainMenuMusic.name) && Settings.isMusicOn)
+            if (!music.clip.name.Equals(mainMenuMusic.name) && Settings.isMusicOn.Value)
             { 
                 StartCoroutine(AudioController.FadeIn(music, 0.5f));
                 music.clip = mainMenuMusic;
@@ -121,7 +139,7 @@ public class Music : MonoBehaviour
 
     public void playGameOver()
     {
-        if(Settings.isSfxOn)
+        if(Settings.isSfxOn.Value)
         {
             sfxPlayer.PlayOneShot(gameOverSFX);
         }
@@ -129,7 +147,7 @@ public class Music : MonoBehaviour
 
     public void playDamage()
     {
-        if (Settings.isSfxOn)
+        if (Settings.isSfxOn.Value)
         {
             sfxPlayer.PlayOneShot(damageSFX);
         }

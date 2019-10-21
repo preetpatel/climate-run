@@ -67,7 +67,7 @@ public class BeachLevelManager : MonoBehaviour
 
         isEndless = SceneController.getIsEndless();
 
-        if (Settings.isMusicOn)
+        if (Settings.isMusicOn.Value)
         {
             AudioSource[] audios = FindObjectsOfType<AudioSource>();
             foreach (AudioSource audio in audios)
@@ -103,7 +103,7 @@ public class BeachLevelManager : MonoBehaviour
                 cameraMotor.StartFollowing();
                 compMotor.StartRunning();
 
-                if (Settings.isMusicOn)
+                if (Settings.isMusicOn.Value)
                 {
                     audioPlayer = GameObject.FindGameObjectWithTag("SoundController");
                     Music music = audioPlayer.GetComponent<Music>();
@@ -225,7 +225,7 @@ public class BeachLevelManager : MonoBehaviour
         }
 
         GameObject.FindGameObjectWithTag("AlivePanel").SetActive(false);
-        if (Settings.isMusicOn)
+        if (Settings.isMusicOn.Value)
             StartCoroutine(AudioController.FadeOut(musicPlayer, 0.5f));
     }
 

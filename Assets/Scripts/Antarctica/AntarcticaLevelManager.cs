@@ -58,7 +58,7 @@ public class AntarcticaLevelManager : MonoBehaviour
 
         isEndless = SceneController.getIsEndless();
 
-        if (Settings.isMusicOn)
+        if (Settings.isMusicOn.Value)
         {
             AudioSource[] audios = FindObjectsOfType<AudioSource>();
             foreach (AudioSource audio in audios)
@@ -98,7 +98,7 @@ public class AntarcticaLevelManager : MonoBehaviour
                 cameraMotor.StartFollowing();
                 compMotor.StartRunning();
 
-                if (Settings.isMusicOn)
+                if (Settings.isMusicOn.Value)
                 {
                     audioPlayer = GameObject.FindGameObjectWithTag("SoundController");
                     Music music = audioPlayer.GetComponent<Music>();
@@ -124,7 +124,7 @@ public class AntarcticaLevelManager : MonoBehaviour
                     cameraMotor.StopFollowing();
                     DialogueAnimator.SetBool("isOpen", true);
                     endCutscene.Begin();
-                    if (Settings.isMusicOn)
+                    if (Settings.isMusicOn.Value)
                         StartCoroutine(AudioController.FadeOut(musicPlayer, 0.5f));
                 }
                 else if (score > 40)
@@ -166,7 +166,7 @@ public class AntarcticaLevelManager : MonoBehaviour
         isGameStarted = false;
         isGameOver = true;
 
-        if (Settings.isMusicOn)
+        if (Settings.isMusicOn.Value)
             StartCoroutine(AudioController.FadeOut(musicPlayer, 0.5f));
 
         roundedScore = (int)Mathf.Round(score);
