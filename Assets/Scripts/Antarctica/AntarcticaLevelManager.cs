@@ -76,7 +76,7 @@ public class AntarcticaLevelManager : MonoBehaviour
     {
         if (!isGameStarted && !DialogueAnimator.GetBool("isOpen") && score > 50)
         {
-            SceneManager.LoadScene("Forest");
+            SceneManager.LoadScene("Beach");
         }
 
         if (Input.anyKey && !isGameStarted && !DialogueAnimator.GetBool("isOpen"))
