@@ -120,7 +120,7 @@ public class ForestLevelManager : MonoBehaviour
         if (isGameStarted)
         {
             score += (Time.deltaTime * modifier);
-            scoreText.text = "Score : " + score.ToString("0");
+            scoreText.text = score.ToString("0");
         }
     }
 
