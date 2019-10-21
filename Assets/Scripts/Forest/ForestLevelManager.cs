@@ -130,12 +130,13 @@ public class ForestLevelManager : MonoBehaviour
     {
         if (!isEndless)
         {
-            //
+            //set the dialogue animator to open true
             DialogueAnimator.SetBool("isOpen", true);
 
             done = true;
             isGameOver = true;
 
+            //find the gorillaposition and use it to start the end 3D cutscene
             Transform gorillaPosition = endSegment.transform.Find("GorillaPosition");
             compMotor.DoEndSequence(gorillaPosition);
 
@@ -154,6 +155,7 @@ public class ForestLevelManager : MonoBehaviour
 
 	public IEnumerator updateLives(float livesAmount)
 	{
+        //update lives when player hit something
         lifeAnimation.SetTrigger("LifeLost");
         switch (livesAmount)
         {
@@ -180,11 +182,13 @@ public class ForestLevelManager : MonoBehaviour
 
     public void OnRetryButton()
 	{
+        //retry the level
 		UnityEngine.SceneManagement.SceneManager.LoadScene("Forest");
 	}
 
     public void OnDeath()
     { 
+        //show death menu when player dies
         isGameStarted = false;
         isGameOver = true;
         deathScoreText.text = "Score: " + score.ToString("0");
@@ -223,6 +227,7 @@ public class ForestLevelManager : MonoBehaviour
 
     public void OnExitButtonPress()
     {
+        //go back to mainmenu
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
 

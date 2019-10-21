@@ -87,7 +87,7 @@ public class AntarcticaLevelManager : MonoBehaviour
     {
         if (!isGameStarted && !DialogueAnimator.GetBool("isOpen") && score > scoreOnFinish && !isEndless)
         {
-            SceneManager.LoadScene("Beach");
+            SceneManager.LoadScene("Beach"); //if the level is finished load beach
             return;
         }
 
@@ -166,6 +166,7 @@ public class AntarcticaLevelManager : MonoBehaviour
 
     public void OnDeath()
     {
+        //show death menu if player is dead
         deadScoreText.text = "Score : " + score.ToString("0");
         deathMenuAnim.SetTrigger("Dead");
         isGameStarted = false;
@@ -179,7 +180,7 @@ public class AntarcticaLevelManager : MonoBehaviour
 
         if (isEndless)
         {
-            if (isNewHighScore)
+            if (isNewHighScore) //seet new high score if in endless mode
             {
                 newHighScore.SetActive(true);
                 HighScoreAnimator.SetTrigger("IsHighScore");
@@ -214,6 +215,7 @@ public class AntarcticaLevelManager : MonoBehaviour
 
     public IEnumerator updateLives(float livesAmount)
     {
+        //udpate lives when player hit obstacles
         LivesAnimator.SetTrigger("LifeLost");
         switch (livesAmount)
         {
