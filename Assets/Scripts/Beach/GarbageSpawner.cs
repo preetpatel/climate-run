@@ -26,7 +26,7 @@ public class GarbageSpawner : MonoBehaviour
 
     private void Update() 
     {
-        if (garbageAndThrower[0].activeInHierarchy && transform.position.z < playerTransform.position.z + 35 && !thrown)
+        if (garbageAndThrower[0].activeInHierarchy && transform.position.z < playerTransform.position.z + 25 && !thrown)
         {
             for (int i = 0; i < transform.childCount; i++)
             {
