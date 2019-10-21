@@ -8,7 +8,6 @@ public class BeachLevelManager : MonoBehaviour
 {
 
     public static BeachLevelManager Instance { set; get; }
-
     private bool isGameStarted = false;
     private bool startedShaking = false;
     private PlayerMotor playerMotor;
@@ -54,6 +53,7 @@ public class BeachLevelManager : MonoBehaviour
     // Check if in endless mode
     private bool isEndless;
 
+    /* This method is run before the first frame update, it intialises all necessary variables */
     private void Awake()
     {
         Instance = this;
@@ -67,6 +67,7 @@ public class BeachLevelManager : MonoBehaviour
 
         isEndless = SceneController.getIsEndless();
 
+        // Initialise music
         if (Settings.isMusicOn.Value)
         {
             AudioSource[] audios = FindObjectsOfType<AudioSource>();
@@ -85,6 +86,7 @@ public class BeachLevelManager : MonoBehaviour
         heart2.gameObject.SetActive(true);
         heart3.gameObject.SetActive(true);
 
+        // If its endless you skip all cutscenes
         if (!isEndless)
         {
             startCutscene.Begin();
@@ -92,13 +94,16 @@ public class BeachLevelManager : MonoBehaviour
 
     }
 
+    /* This method is run every frame */
     private void Update()
     {
+        // Goes to the next level in the story if the user has met the conditions
         if (!isGameStarted && !DialogueAnimator.GetBool("isOpen") && score > 60 && !isEndless)
         {
             SceneManager.LoadScene("Forest");
         }
 
+        // Starts the game after the user has run through the initial text.
         if (!isGameOver)
         {
             if (Input.anyKey && !isGameStarted && !DialogueAnimator.GetBool("isOpen") && !isDead)
@@ -118,6 +123,7 @@ public class BeachLevelManager : MonoBehaviour
             }
         }
 
+        // Updates score and other variables if the game is running
         if (isGameStarted)
         {
             score += (Time.deltaTime * modifier);
@@ -129,6 +135,7 @@ public class BeachLevelManager : MonoBehaviour
                 timeSinceGarbageCollected = 0.0f;
             }
 
+            // Ends the game when the user has reached the end.
             if (!isEndless)
             {
                 if (score > 60)
@@ -146,6 +153,7 @@ public class BeachLevelManager : MonoBehaviour
 
     }
 
+    /* Updates at fixed intervals, used to ensure the garbage multiplier increases at a constant rate */
     private void FixedUpdate() 
     {
         if (isGameStarted)
@@ -159,6 +167,7 @@ public class BeachLevelManager : MonoBehaviour
         }
     }
 
+    /* Called when a piece of garbage is collected, updates the pollution level and other variables */
     public void getGarbage()
     {
         garbage++;
@@ -169,6 +178,7 @@ public class BeachLevelManager : MonoBehaviour
         pollutionSlide.value = TrashSpawner.garbageMultiplier;
     }
     
+    /* Called when the user hits an obstacle, updates the lives UI indicators. */
     public IEnumerator updateLives(float livesAmount)
     {
         LivesAnimator.SetTrigger("LifeLost");
@@ -201,6 +211,7 @@ public class BeachLevelManager : MonoBehaviour
     //     modifiertext.text = "modifer : x" + modifier.tostring("0.0");
     // }
 
+    /* Called when the user dies, brings up the UI and stops the game */
     public void OnDeath()
     {
         deadScoreText.text = "Score: " + score.ToString("0");
@@ -214,6 +225,7 @@ public class BeachLevelManager : MonoBehaviour
         roundedScore = (int)Mathf.Round(score);
         bool isNewHighScore = SaveState.saveHighScore(roundedScore, HIGHSCOREKEY);
 
+        // If its endless allow the user to save their score
         if (isEndless)
         {
             if (isNewHighScore)
@@ -244,6 +256,7 @@ public class BeachLevelManager : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
 
+    // Saves the Users high score
     public void saveHighScore()
     {
         string name = SceneController.saveName();
