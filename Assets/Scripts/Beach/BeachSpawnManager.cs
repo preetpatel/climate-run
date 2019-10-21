@@ -42,7 +42,7 @@ public class BeachSpawnManager : MonoBehaviour
     {
         Instance = this;
         cameraContainer = Camera.main.transform;
-        currentSpawnZ = 0;
+        currentSpawnZ = 15;
         currentLevel = 0;
  
         //FindObjectOfType<CameraMotor>().isFollowing = true;
