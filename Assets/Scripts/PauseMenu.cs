@@ -15,7 +15,7 @@ public class PauseMenu : MonoBehaviour
     private void Start()
     {
         Time.timeScale = 1f;
-        if (Settings.isMusicOn)
+        if (Settings.isMusicOn.Value)
         {
             AudioSource[] audios = FindObjectsOfType<AudioSource>();
             foreach (AudioSource audio in audios)
@@ -46,7 +46,7 @@ public class PauseMenu : MonoBehaviour
         pauseButtonUI.SetActive(false);
         Time.timeScale = 0f;
         isPaused = true;
-        if (Settings.isMusicOn)
+        if (Settings.isMusicOn.Value)
             audioPlayer.Pause();
     }
 
@@ -56,7 +56,7 @@ public class PauseMenu : MonoBehaviour
         pauseButtonUI.SetActive(true);
         Time.timeScale = 1f;
         isPaused = false;
-        if (Settings.isMusicOn)
+        if (Settings.isMusicOn.Value)
             audioPlayer.Play();
     }
 

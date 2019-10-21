@@ -12,6 +12,7 @@ public class AntarcticaLevelManager : MonoBehaviour
     private PlayerMotor playerMotor;
     private CameraMotor cameraMotor;
     private CompanionMotor compMotor;
+    private const string HIGHSCOREKEY = "AntarcticaHighScore";
 
     // Cutscenes
     public DialogueTrigger startCutscene;
@@ -21,10 +22,13 @@ public class AntarcticaLevelManager : MonoBehaviour
     // UI and the UI fields
     public Text scoreText;
     public Text informationText;
+    public Text HighScoreText;
+    public GameObject newHighScore;
     private float score = 0;
     private AudioSource musicPlayer;
     private GameObject audioPlayer;
 
+    public Animator HighScoreAnimator;
     public Animator LivesAnimator;
 
     //Death menu
@@ -36,15 +40,25 @@ public class AntarcticaLevelManager : MonoBehaviour
     public Image heart2;
     public Image heart3;
 
+    private int roundedScore;
+    private bool isGameOver = false;
+
+    // Check if in endless mode
+    private bool isEndless;    
+
+
+
     private void Awake()
     {
         Instance = this;
-        scoreText.text = "Score : " + score.ToString();
+        scoreText.text = score.ToString();
         playerMotor = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMotor>();
         cameraMotor = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMotor>();
         compMotor = GameObject.FindGameObjectWithTag("Companion").GetComponent<CompanionMotor>();
 
-        if (Settings.isMusicOn)
+        isEndless = SceneController.getIsEndless();
+
+        if (Settings.isMusicOn.Value)
         {
             AudioSource[] audios = FindObjectsOfType<AudioSource>();
             foreach (AudioSource audio in audios)
@@ -58,74 +72,90 @@ public class AntarcticaLevelManager : MonoBehaviour
             StartCoroutine(AudioController.FadeOut(musicPlayer, 0.5f));
         }
 
-        startCutscene.Begin();
+        if (!isEndless)
+        {
+            startCutscene.Begin();
+        }
+        else
+        {
+            informationText.text = "Touch to start";
+        }
     }
 
     private void Update()
     {
-        if (!isGameStarted && !DialogueAnimator.GetBool("isOpen") && score > 50)
+        if (!isGameStarted && !DialogueAnimator.GetBool("isOpen") && score > 50 && !isEndless)
         {
-            SceneManager.LoadScene("Forest");
+            SceneManager.LoadScene("Beach");
         }
 
-        if (Input.anyKey && !isGameStarted && !DialogueAnimator.GetBool("isOpen"))
+        if (!isGameOver)
         {
-            isGameStarted = true;
-            playerMotor.StartRunning();
-            cameraMotor.StartFollowing();
-            compMotor.StartRunning();
-
-            if (Settings.isMusicOn)
+            if (Input.anyKey && !isGameStarted && !DialogueAnimator.GetBool("isOpen"))
             {
-                audioPlayer = GameObject.FindGameObjectWithTag("SoundController");
-                Music music = audioPlayer.GetComponent<Music>();
-                music.changeMusic(SceneManager.GetActiveScene());
+                isGameStarted = true;
+                playerMotor.StartRunning();
+                cameraMotor.StartFollowing();
+                compMotor.StartRunning();
+
+                if (Settings.isMusicOn.Value)
+                {
+                    audioPlayer = GameObject.FindGameObjectWithTag("SoundController");
+                    Music music = audioPlayer.GetComponent<Music>();
+                    music.changeMusic(SceneManager.GetActiveScene());
+                }
             }
         }
+        
 
 
         if (isGameStarted)
         {
             score += Time.deltaTime;
-            scoreText.text = "Score: " + score.ToString("0");
+            scoreText.text = score.ToString("0");
 
             // refactor later
-            if (score > 50)
+            if (!isEndless)
             {
-                isGameStarted = false;
-                playerMotor.StopRunning();
-                cameraMotor.StopFollowing();
-                compMotor.StopRunning();
-                DialogueAnimator.SetBool("isOpen", true);
-                endCutscene.Begin();
-                if (Settings.isMusicOn)
-                    StartCoroutine(AudioController.FadeOut(musicPlayer, 0.5f));
+                if (score > 50)
+                {
+                    isGameStarted = false;
+                    playerMotor.StopRunning();
+                    cameraMotor.StopFollowing();
+                    DialogueAnimator.SetBool("isOpen", true);
+                    endCutscene.Begin();
+                    if (Settings.isMusicOn.Value)
+                        StartCoroutine(AudioController.FadeOut(musicPlayer, 0.5f));
+                }
+                else if (score > 40)
+                {
+                    informationText.text = "The ice has all melted away!";
+                }
+                else if (score > 30)
+                {
+                    informationText.text = "The mountains are collapsing!";
+                }
+                else if (score > 12)
+                {
+                    informationText.text = "Careful! The water is toxic.";
+                }
+                else if (score > 8)
+                {
+                    informationText.text = "Swipe up to jump";
+                }
+                else if (score > 3)
+                {
+                    informationText.text = "Swipe down to slide";
+                }
+                else if (score > 0)
+                {
+                    informationText.text = "Swipe to move";
+                }
             }
-            else if (score > 40)
+            else
             {
-                informationText.text = "The ice has all melted away!";
+                informationText.text = null;
             }
-            else if (score > 30)
-            {
-                informationText.text = "The mountains are collapsing!";
-            }
-            else if (score > 12)
-            {
-                informationText.text = "Careful! The water is toxic.";
-            }
-            else if (score > 8)
-            {
-                informationText.text = "Swipe up to jump";
-            }
-            else if (score > 3)
-            {
-                informationText.text = "Swipe down to slide";
-            }
-            else if (score > 0)
-            {
-                informationText.text = "Swipe to move";
-            }
-
         }
     }
 
@@ -134,11 +164,36 @@ public class AntarcticaLevelManager : MonoBehaviour
         deadScoreText.text = "Score : " + score.ToString("0");
         deathMenuAnim.SetTrigger("Dead");
         isGameStarted = false;
+        isGameOver = true;
 
-        if (Settings.isMusicOn)
+        if (Settings.isMusicOn.Value)
             StartCoroutine(AudioController.FadeOut(musicPlayer, 0.5f));
 
-        GameObject.FindGameObjectWithTag("AlivePanel").SetActive(false);
+        roundedScore = (int)Mathf.Round(score);
+        bool isNewHighScore = SaveState.saveHighScore(roundedScore, HIGHSCOREKEY);
+
+        if(isEndless)
+        {
+            if (isNewHighScore)
+            {
+                newHighScore.SetActive(true);
+                HighScoreAnimator.SetTrigger("IsHighScore");
+            }
+
+            HighScoreText.text = "HighScore : " + PlayerPrefs.GetInt(HIGHSCOREKEY);
+        } else
+        {
+            HighScoreText.gameObject.SetActive(false);
+        }
+
+        
+
+        GameObject panel = GameObject.FindGameObjectWithTag("AlivePanel");
+
+        if(panel != null)
+        {
+            panel.SetActive(false);
+        }
     }
 
     public void OnRetryButton()
@@ -175,5 +230,13 @@ public class AntarcticaLevelManager : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
         LivesAnimator.SetTrigger("GoBack");
+    }
+
+    public void saveHighScore()
+    {
+        string name = SceneController.saveName();
+        Debug.Log(name);
+        HighscoreTable.AddHighscoreEntry(roundedScore, name, "antarctica");
+        GameObject.FindGameObjectWithTag("HighScore").SetActive(false);
     }
 }

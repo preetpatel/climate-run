@@ -1,8 +1,28 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SceneController : MonoBehaviour
 {
+    private static bool isEndless = false;
+
+    public static bool getIsEndless()
+    {
+        return isEndless;
+    }
+
+    public static string saveName()
+    {
+        InputField txt_Input = GameObject.Find("InputField").GetComponent<InputField>();
+
+        string name = txt_Input.text;
+        if(string.IsNullOrEmpty(name) || string.IsNullOrWhiteSpace(name))
+        {
+            name = "XXX";
+        }
+        return name;
+    }
+
     private void Start()
     {
         Time.timeScale = 1f;
@@ -10,6 +30,7 @@ public class SceneController : MonoBehaviour
     }
     public void GoToLevelSelector()
     {
+        isEndless = false;
         SceneManager.LoadScene("LevelSelector");
     }
 
@@ -36,5 +57,16 @@ public class SceneController : MonoBehaviour
     public void GoToSettings()
     {
         SceneManager.LoadScene("Settings");
+    }
+
+    public void GoToEndless()
+    {
+        isEndless = true;
+        SceneManager.LoadScene("LevelSelector");
+    }
+
+    public void GoToHighScore()
+    {
+        SceneManager.LoadScene("High Scores");
     }
 }

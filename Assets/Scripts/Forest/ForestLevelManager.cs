@@ -12,6 +12,8 @@ public class ForestLevelManager : MonoBehaviour
 	private bool isGameStarted = false;
 	private PlayerMotor playerMotor;
 	private CameraMotor cameraMotor;
+    private const string HIGHSCOREKEY = "ForestHighScore";
+    private GorillaMotor compMotor;
 
     // Cutscenes
     public DialogueTrigger startCutscene;
@@ -22,20 +24,30 @@ public class ForestLevelManager : MonoBehaviour
     public Text deathScoreText, deathSeedText;
 
     public Animator lifeAnimation;
+    public Animator HighScoreAnimator;
 
     // UI and the UI fields
     public Text scoreText;
 	public Text seedCountText;
 	public Text informationText;
+    public Text HighScoreText;
+    public GameObject newHighScore;
     public Image heart1;
     public Image heart2;
     public Image heart3;
+    private int roundedScore;
    
+
 	private float score = 0;
 	private float seeds = 0;
 	private float modifier = 1.0f;
     private AudioSource musicPlayer;
     private GameObject audioPlayer;
+
+    private bool isGameOver = false;
+
+    // Check if in endless mode
+    private bool isEndless;
 
 
     private void Awake()
@@ -45,10 +57,13 @@ public class ForestLevelManager : MonoBehaviour
 		informationText.text = "Tap Anywhere To Begin!";
 		playerMotor = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMotor>();
 		cameraMotor = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMotor>();
-		scoreText.text = "Score : " + score.ToString("0");
-		seedCountText.text = "Seeds : " + seeds.ToString();
+        compMotor = GameObject.FindGameObjectWithTag("Companion").GetComponent<GorillaMotor>();
+        scoreText.text = score.ToString("0");
+		seedCountText.text = seeds.ToString();
 
-        if(Settings.isMusicOn)
+        isEndless = SceneController.getIsEndless();
+
+        if (Settings.isMusicOn.Value)
         {
             AudioSource[] audios = FindObjectsOfType<AudioSource>();
             foreach (AudioSource audio in audios)
@@ -66,42 +81,58 @@ public class ForestLevelManager : MonoBehaviour
         heart2.gameObject.SetActive(true);
         heart3.gameObject.SetActive(true);
 
-        startCutscene.Begin();
-	}
+        if (!isEndless)
+        {
+            startCutscene.Begin();
+        }
+    }
 
 	private void Update()
 	{
-		if (Input.anyKey && !isGameStarted && !DialogueAnimator.GetBool("isOpen"))
-		{
-			isGameStarted = true;
-			playerMotor.StartRunning();
-			cameraMotor.StartFollowing();
-			informationText.text = "";
-            FindObjectOfType<SideObjectSpawner>().IsScrolling = true;
-            FindObjectOfType<CameraMotor>().isFollowing = true;
-            if (Settings.isMusicOn)
-            {
-                audioPlayer = GameObject.FindGameObjectWithTag("SoundController");
-                Music music = audioPlayer.GetComponent<Music>();
-                music.changeMusic(SceneManager.GetActiveScene());
-            }
+        if (!isGameStarted && !DialogueAnimator.GetBool("isOpen") && score > 60 && !isEndless)
+        {
+            SceneManager.LoadScene("Congrats");
+        }
 
+        if (!isGameOver)
+        {
+            if (Input.anyKey && !isGameStarted && !DialogueAnimator.GetBool("isOpen"))
+            {
+                isGameStarted = true;
+                playerMotor.StartRunning();
+                cameraMotor.StartFollowing();
+                compMotor.StartRunning();
+                informationText.text = "";
+                FindObjectOfType<SideObjectSpawner>().IsScrolling = true;
+                FindObjectOfType<CameraMotor>().isFollowing = true;
+                if (Settings.isMusicOn.Value)
+                {
+                    audioPlayer = GameObject.FindGameObjectWithTag("SoundController");
+                    Music music = audioPlayer.GetComponent<Music>();
+                    music.changeMusic(SceneManager.GetActiveScene());
+                }
+
+            }
         }
 
 		if (isGameStarted)
 		{
 			score += (Time.deltaTime * modifier);
-			scoreText.text = "Score : " + score.ToString("0");
+			scoreText.text = score.ToString("0");
 
-            if (score > 60)
+            if (!isEndless)
             {
-                isGameStarted = false;
-                playerMotor.StopRunning();
-                cameraMotor.StopFollowing();
-                endCutscene.Begin();
-                StartCoroutine(AudioController.FadeOut(musicPlayer, 0.5f));
-                score = 0;
+                if (score > 60)
+                {
+                    isGameStarted = false;
+                    playerMotor.StopRunning();
+                    cameraMotor.StopFollowing();
+                    DialogueAnimator.SetBool("isOpen", true);
+                    endCutscene.Begin();
+                    StartCoroutine(AudioController.FadeOut(musicPlayer, 0.5f));
+                }
             }
+
         }
 
 	}
@@ -109,7 +140,7 @@ public class ForestLevelManager : MonoBehaviour
 	public void getSeeds()
 	{
 		seeds++;
-		seedCountText.text = "Seeds : " + seeds.ToString();
+		seedCountText.text = seeds.ToString();
 	}
 
 	public IEnumerator updateLives(float livesAmount)
@@ -144,9 +175,9 @@ public class ForestLevelManager : MonoBehaviour
 	}
 
     public void OnDeath()
-	{
-        Debug.Log("Hello");
-        isGameStarted = false;   
+    { 
+        isGameStarted = false;
+        isGameOver = true;
         deathScoreText.text = "Score: " + score.ToString("0");
         deathSeedText.text = "Seeds Collected: " + seeds.ToString("0");
         deathMenuAnim.SetTrigger("Dead");
@@ -157,8 +188,28 @@ public class ForestLevelManager : MonoBehaviour
             panel.SetActive(false);
         }
 
-        if (Settings.isMusicOn)
+        if (Settings.isMusicOn.Value)
             StartCoroutine(AudioController.FadeOut(musicPlayer, 0.5f));
+
+        // Save the High Score
+        roundedScore = (int)Mathf.Round(score);
+        bool isNewHighScore = SaveState.saveHighScore(roundedScore, HIGHSCOREKEY);
+
+        if (isEndless)
+        {
+            if (isNewHighScore)
+            {
+                newHighScore.SetActive(true);
+                HighScoreAnimator.SetTrigger("IsHighScore");
+            }
+
+            HighScoreText.text = "HighScore : " + PlayerPrefs.GetInt(HIGHSCOREKEY);
+        }
+        else
+        {
+            HighScoreText.gameObject.SetActive(false);
+        }
+
     }
 
     public void OnExitButtonPress()
@@ -166,5 +217,11 @@ public class ForestLevelManager : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
 
-
+    public void saveHighScore()
+    {
+        string name = SceneController.saveName();
+        Debug.Log(name);
+        HighscoreTable.AddHighscoreEntry(roundedScore, name, "forest");
+        GameObject.FindGameObjectWithTag("HighScore").SetActive(false);
+    }
 }
