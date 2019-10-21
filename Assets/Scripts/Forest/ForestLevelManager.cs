@@ -53,7 +53,6 @@ public class ForestLevelManager : MonoBehaviour
     {
         Instance = this;
 
-        informationText.text = "Tap Anywhere To Begin!";
         playerMotor = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMotor>();
         cameraMotor = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMotor>();
         compMotor = GameObject.FindGameObjectWithTag("Companion").GetComponent<GorillaMotor>();
@@ -82,7 +81,11 @@ public class ForestLevelManager : MonoBehaviour
 
         if (!isEndless)
         {
+            informationText.text = "";
             startCutscene.Begin();
+        } else
+        {
+            informationText.text = "Tap Anywhere To Begin!";
         }
     }
 
