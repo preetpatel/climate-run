@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -31,6 +32,13 @@ public class Music : MonoBehaviour
             Destroy(this.gameObject);
         }
         DontDestroyOnLoad(this.gameObject);
+        Settings.isMusicOn = Boolean.Parse(PlayerPrefs.GetString(Settings.MUSICKEY));
+        Settings.isSfxOn = Boolean.Parse(PlayerPrefs.GetString(Settings.SFXKEY));
+        
+        if(Settings.isMusicOn)
+        {
+            music.Play();
+        }
     }
 
     void Start()
@@ -38,8 +46,8 @@ public class Music : MonoBehaviour
         if (sfxPlayer.CompareTag("SFX")) {
             addButtonListeners();
             SceneManager.sceneLoaded += OnSceneLoaded;
-
         }
+
     }
     private void OnSceneLoaded(Scene aScene, LoadSceneMode aMode)
     {

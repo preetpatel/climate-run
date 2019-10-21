@@ -14,6 +14,9 @@ public class Settings : MonoBehaviour
     public static bool isMusicOn = true;
     public static bool isSfxOn = true;
 
+    public static readonly string MUSICKEY = "music";
+    public static readonly string SFXKEY = "sfx";
+
     public void Awake()
     {
         AudioSource[] audios = GameObject.FindObjectsOfType<AudioSource>();
@@ -49,11 +52,13 @@ public class Settings : MonoBehaviour
                     {
                         audio.Play();
                     }
+                    
                 } else
                 {
                     audio.Pause();
                 }
-                
+
+                SaveState.saveMusicSettings(isMusicOn.ToString(), MUSICKEY);
             }
         }
         
@@ -72,7 +77,7 @@ public class Settings : MonoBehaviour
         {
             isSfxOn = false;
         }
-
+        SaveState.saveMusicSettings(isSfxOn.ToString(), SFXKEY);
     }
 
     public void goBackToMainMenu()
