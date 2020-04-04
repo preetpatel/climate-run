@@ -2,6 +2,10 @@
 # Climate Run
 An endless runner based on climate change
 
+## Play it on the web
+But before you do, just letting you know that this was made for a mobile device and then ported to the web so expect lots of bugs
+Climate Run Web: https://preetpatel.com/climaterun
+
 The world currently faces a challenge of climate change and what we do now to educate the upcoming generation of youngsters defines the actions that could lead the the recovery or damage of Earth.
 Climate Run is a fun endless runner designed for kids of age 12+ to explore the changes that earth is going through such as the melting ice caps in Antarctica; the effects dumping waste into the sea has on beaches and marine life; and the uncontrollable fires in the Amazon rainforest.
 
